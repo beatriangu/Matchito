@@ -1,0 +1,28 @@
+# 📌 Dependencias principales de Flask
+flask==2.3.3
+flask-cors==3.0.10
+flask-mail==0.9.1
+flask-jwt-extended==4.5.2   # Para autenticación con JWT
+flask-caching==1.10.1       # Para mejorar rendimiento con caché
+flask-session==0.4.0        # Para manejar sesiones de usuario
+flask-wtf==1.2.1            # Protección contra CSRF en formularios
+
+# 📌 Conexión a PostgreSQL
+psycopg2-binary==2.9.6
+
+# 📌 Variables de entorno
+python-dotenv==1.0.0
+
+# 📌 Testing y calidad de código
+pytest==8.3.2
+pytest-httpx==0.35.0
+pytest-flask==1.2.0
+coverage==7.3.1
+flake8==6.1.0
+black==23.9.1
+isort==5.12.0
+
+# 📌 Otras herramientas
+requests==2.31.0
+werkzeug==2.3.8
+geoip2==4.6.0  # Para geolocalización con IP

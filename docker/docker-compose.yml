@@ -1,0 +1,54 @@
+services:
+  backend:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile_backend
+    container_name: matchito_backend
+    restart: always
+    ports:
+      - "5000:5000"
+    env_file:
+      - ../.env
+    volumes:
+      - ../backend:/app
+    depends_on:
+      - postgres_db
+
+  postgres_db:
+    image: postgres:15
+    container_name: matchito_db
+    restart: always
+    env_file:
+      - ../.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ../database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../database/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+
+  adminer:
+    image: adminer
+    container_name: matchito_adminer
+    restart: always
+    ports:
+      - "8081:8080"
+
+  nginx:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile_nginx
+
+    container_name: matchito_nginx
+    restart: always
+    ports:
+      - "8082:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
+
+
+
+
