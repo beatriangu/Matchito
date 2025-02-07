@@ -72,6 +72,7 @@ def get_all_profiles():
     ]
 
     return jsonify(profiles)
+
 @profiles_bp.route("/suggestions", methods=["GET"])
 def get_suggestions():
     """Devuelve perfiles sugeridos basados en intereses, ubicación y edad."""
@@ -102,8 +103,9 @@ def get_suggestions():
     max_age = user_age + 5
 
     # Buscar perfiles compatibles
+    # CORRECCIÓN: Se obtienen first_name y last_name desde users y se incluye p.profile_picture.
     cur.execute("""
-        SELECT p.user_id, u.username, p.first_name, p.last_name, p.latitude, p.longitude
+        SELECT p.user_id, u.username, u.first_name, u.last_name, p.latitude, p.longitude, p.profile_picture
         FROM profiles p
         JOIN users u ON p.user_id = u.id
         WHERE p.user_id != %s
@@ -119,7 +121,15 @@ def get_suggestions():
     conn.close()
 
     profiles = [
-        {"id": u[0], "username": u[1], "first_name": u[2], "last_name": u[3]}
+        {
+            "id": u[0],
+            "username": u[1],
+            "first_name": u[2],
+            "last_name": u[3],
+            "latitude": u[4],
+            "longitude": u[5],
+            "profile_picture": u[6]
+        }
         for u in suggestions
     ]
 

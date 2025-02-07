@@ -1,5 +1,5 @@
 -- 🔹 Borrar tablas si existen (para evitar conflictos)
-DROP TABLE IF EXISTS reports, notifications, messages, matches, profile_interests, interests, profiles, users CASCADE;
+DROP TABLE IF EXISTS reports, notifications, messages, matches, profile_interests, interests, profiles, users, likes CASCADE;
 
 -- 🔹 Tabla de usuarios
 CREATE TABLE users (
@@ -72,5 +72,16 @@ CREATE TABLE reports (
     reported_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     reason TEXT NOT NULL,
     reported_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 🔹 Tabla de Likes
+CREATE TABLE likes (
+    id SERIAL PRIMARY KEY,
+    liker_id INTEGER NOT NULL,
+    liked_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (liker_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (liked_id) REFERENCES users(id) ON DELETE CASCADE,
+    UNIQUE (liker_id, liked_id)  -- Un usuario solo puede dar like una vez a otro
 );
 

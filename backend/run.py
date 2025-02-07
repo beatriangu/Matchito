@@ -3,6 +3,7 @@ from config import Config
 from app.routes.auth import auth_bp  # Importamos el blueprint de autenticación
 from app.routes.profiles import profiles_bp
 from app.utils.db import get_db_connection  # Aseguramos que la importación sea correcta
+from app.routes.likes import likes_bp
 
 def create_app():
     app = Flask(__name__)
@@ -10,6 +11,7 @@ def create_app():
 
     app.register_blueprint(auth_bp, url_prefix='/auth')  # Rutas de autenticación
     app.register_blueprint(profiles_bp, url_prefix='/profiles')
+    app.register_blueprint(likes_bp, url_prefix='/likes')
     
     @app.route('/')
     def home():
