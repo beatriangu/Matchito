@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Mensajes en Tiempo Real</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.min.js"></script>
+</head>
+<body>
+  <h1>Prueba de Mensajes en Tiempo Real</h1>
+  <script>
+    // Conecta al servidor SocketIO
+    const socket = io("http://127.0.0.1:5000");
+
+    socket.on("connect", () => {
+      console.log("Conectado al servidor");
+      // Únete a la sala del usuario con id 1
+      socket.emit("join", { user_id: 1 });
+    });
+
+    // Maneja la respuesta al unirse
+    socket.on("join_response", (data) => {
+      console.log("Join Response:", data);
+    });
+
+    // Escucha mensajes entrantes
+    socket.on("receive_message", (data) => {
+      console.log("Mensaje recibido:", data);
+    });
+
+    // Envía un mensaje de prueba después de 3 segundos
+    setTimeout(() => {
+      socket.emit("send_message", { sender_id: 2, receiver_id: 1, message: "¡Hola, este es un mensaje en tiempo real!" });
+      console.log("Mensaje enviado");
+    }, 3000);
+  </script>
+</body>
+</html>

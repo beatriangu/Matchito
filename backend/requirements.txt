@@ -7,6 +7,8 @@ flask-jwt-extended==4.5.2   # Para autenticación con JWT
 flask-caching==1.10.1       # Para mejorar rendimiento con caché
 flask-session==0.4.0        # Para manejar sesiones de usuario
 flask-wtf==1.2.1            # Protección contra CSRF en formularios
+flask-socketio
+eventlet
 
 # 📌 Conexión a PostgreSQL
 psycopg2-binary==2.9.6
