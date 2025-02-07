@@ -14,13 +14,14 @@ CREATE TABLE users (
 
 -- 🔹 Tabla de perfiles
 CREATE TABLE profiles (
-    user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
-    gender VARCHAR(10),
-    sexual_orientation VARCHAR(20),
+    user_id SERIAL PRIMARY KEY,
+    gender VARCHAR(20) NOT NULL,
+    sexual_orientation VARCHAR(20) NOT NULL,
+    birthdate DATE NOT NULL,
     bio TEXT,
-    fame_rating INTEGER DEFAULT 0,
-    latitude FLOAT,
-    longitude FLOAT
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION,
+    profile_picture VARCHAR(255)  -- Nueva columna para la URL de la imagen de perfil
 );
 
 -- 🔹 Tabla de intereses (tags)

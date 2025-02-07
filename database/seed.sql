@@ -1,1503 +1,1503 @@
 -- Poblando la base de datos con usuarios y perfiles
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenelephant341', 'eugen.michels@example.com', 'bca3a752cdb7fe21b332445fec700612e31c5aadd8411c341db8106f2e9df145', 'Eugen', 'Michels');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Eugen y me gusta conocer gente nueva!', 74, 70.3333, -64.1781);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenostrice001', 'pirmin.helm2125@example.com', 'acf118f37b4c5723a2afcbcaa880bfa01d33639cf1a1b5132441313ea83975f5', 'Pirmin', 'Helm');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2001-10-28', 'Hola, soy Pirmin y me gusta conocer gente nueva!', 51.9245, -99.3773, 'https://randomuser.me/api/portraits/men/92.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazylion853', 'catherine.austin@example.com', '94ce18dded2e761fa5ec7e0843f8f57edc8d2465a58ecae91331bcff21cfaf5e', 'Catherine', 'Austin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Catherine y me gusta conocer gente nueva!', 92, 65.3703, -107.5185);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigrabbit54001db', 'vladimir.rose69a1@example.com', '8fdd880f097cddfef86895d2c48f649e943bed14639f0ad29671508b536c9fc1', 'Vladimir', 'Rose');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1989-04-24', 'Hola, soy Vladimir y me gusta conocer gente nueva!', -51.0752, 177.4954, 'https://randomuser.me/api/portraits/men/36.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicleopard886', 'ross.duncan@example.com', 'e2dbf8f5c4cc151480213d21f95c72aa73a001bce4915b17691ae40952dcd793', 'Ross', 'Duncan');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Ross y me gusta conocer gente nueva!', 85, -38.5254, 20.7950);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyduck83810e1', 'beatrix.pohlad75@example.com', '26429a356b1d25b7d57c0f9a6d5fed8a290cb42374185887dcd2874548df0779', 'Beatrix', 'Pohl');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1994-07-27', 'Hola, soy Beatrix y me gusta conocer gente nueva!', 59.4903, -47.7692, 'https://randomuser.me/api/portraits/women/75.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpleleopard342', 'lou.legrand@example.com', '97e42128566d696e4262d5bdd46c22e3a110c9b716839f53329790988f50088f', 'Lou', 'Legrand');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Lou y me gusta conocer gente nueva!', 34, 66.5439, 121.3288);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulrab155c', 'julio.welchbfe6@example.com', 'ed9f6f25068608efd412958da4dfc19328ca3511251fa6d5f9c42baf230e32f8', 'Julio', 'Welch');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1976-02-08', 'Hola, soy Julio y me gusta conocer gente nueva!', 14.2667, -57.7079, 'https://randomuser.me/api/portraits/men/53.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenlion641', 'andrea.diez@example.com', '35a5ea9db6c0b4a0e946902c33e1759a9156c50fd3678078d5c6628a6ec62722', 'Andrea', 'Diez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Andrea y me gusta conocer gente nueva!', 93, 22.3663, 5.6320);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackleopard5627', 'theodore.oliviera2b9@example.com', '0376b2ffe93ba48301f7d99ebee86a1cad9daac0710a57dde79867ecd39e3127', 'Théodore', 'Olivier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1990-05-16', 'Hola, soy Théodore y me gusta conocer gente nueva!', 8.7466, 165.68, 'https://randomuser.me/api/portraits/men/11.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangegoose739', 'ruby.hawkins@example.com', 'dca13388cd38b5da22c8ac48d374a045af2c9a10d78bceba787d92a521cc1ccf', 'Ruby', 'Hawkins');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Ruby y me gusta conocer gente nueva!', 55, 58.9828, -59.9917);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organiclion4a960', 'kelya.schmittee48@example.com', 'cb8db7f3aeeb5b2730b5ef71d18c03914b5241c6ce08309e1c0418549ff622fe', 'Kelya', 'Schmitt');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2006-11-16', 'Hola, soy Kelya y me gusta conocer gente nueva!', 83.3609, -31.8838, 'https://randomuser.me/api/portraits/women/33.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whiteostrich372', 'elaine.morrison@example.com', 'f42ff50167e9c6cc7e45a597368484d622fcd95aae12d3704b647023648bec9e', 'Elaine', 'Morrison');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Elaine y me gusta conocer gente nueva!', 73, -71.6605, 36.0462);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyzebra391b0a', 'carl.porter6d1f@example.com', '00b8f9e229a8ee3e43e999f580113ea5458d9550352eb3b9366782171b6d5ea5', 'Carl', 'Porter');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2000-09-26', 'Hola, soy Carl y me gusta conocer gente nueva!', 84.4076, -69.2295, 'https://randomuser.me/api/portraits/men/43.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangebear701', 'reimar.gebert@example.com', 'ea377f45367c8842dff46d5034c553b0e6de3a76d84acd6778bc58a2f91a444e', 'Reimar', 'Gebert');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Reimar y me gusta conocer gente nueva!', 28, 75.1839, -96.2490);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishzebr3b0b', 'daniela.suarez161a@example.com', '9b97ac5e767e5393cd0eed09a8e51b6f3775eba38f792593ea016e8ba9e996b0', 'Daniela', 'Suarez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1975-09-28', 'Hola, soy Daniela y me gusta conocer gente nueva!', 54.5113, 65.4135, 'https://randomuser.me/api/portraits/women/89.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicgorilla819', 'loris.rey@example.com', '37b49cae1e43dc58a02e68923d5d13b090b30bb288c5106e48ae36f54f964479', 'Loris', 'Rey');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Loris y me gusta conocer gente nueva!', 59, 16.5713, 8.2860);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadbear83049c2', 'hugo.serrano89f4@example.com', 'a0132bd0487e889f18a50ba8bd17644fafdb37e5fcf23515b8815eb451f20c10', 'Hugo', 'Serrano');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1990-06-27', 'Hola, soy Hugo y me gusta conocer gente nueva!', 13.2859, 24.1585, 'https://randomuser.me/api/portraits/men/29.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happypanda828', 'mathis.bertrand@example.com', '9b4f1d0e11dcc029c3493d945e44ee077b68978466c0aab6d1ce453aac5f0384', 'Mathis', 'Bertrand');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Mathis y me gusta conocer gente nueva!', 21, 43.6593, 44.9237);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifultigeec1', 'sharlene.castillo91fb@example.com', '3f29e1b2b05f8371595dc761fed8e8b37544b38d56dfce81a551b46c82f2f56b', 'Sharlene', 'Castillo');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1998-05-06', 'Hola, soy Sharlene y me gusta conocer gente nueva!', 77.6561, -137.3777, 'https://randomuser.me/api/portraits/women/2.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangesnake288', 'anna.foster@example.com', '3037f596f81898d23ef25cd12cf0a000a71aaf740a230ba5af39f2a5c3744011', 'Anna', 'Foster');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Anna y me gusta conocer gente nueva!', 98, 76.5618, -101.1515);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenmeercatc577', 'kate.cartered39@example.com', '6bfbd709d5fdc0618ab5ea71913d552464b1fad43b2fc34cf25e96f3d2a904dc', 'Kate', 'Carter');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1981-10-09', 'Hola, soy Kate y me gusta conocer gente nueva!', -80.8293, 28.1937, 'https://randomuser.me/api/portraits/women/16.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowfrog571', 'jonathan.hidalgo@example.com', '071a36ed1084aedc35ce6587bc0183bc24fa16cb1c288e6feb24722f6682dcd0', 'Jonathan', 'Hidalgo');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Jonathan y me gusta conocer gente nueva!', 67, -20.9952, 19.1177);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadbear218ebb7', 'pat.gregorydd01@example.com', '4151f71c176ed43c0320cffb8b2a2afc2bd8f016323c5f3f4462a7e70c16c5a0', 'Pat', 'Gregory');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1980-12-13', 'Hola, soy Pat y me gusta conocer gente nueva!', -15.9262, 116.2496, 'https://randomuser.me/api/portraits/men/93.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigpeacock953', 'ben.walker@example.com', '32c4feed996880bc92a062dc476f9b8cdb2596a989f2cc5246e9cef605bd5c78', 'Ben', 'Walker');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Ben y me gusta conocer gente nueva!', 65, 57.8099, -43.2867);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluerabbit653c34', 'matthew.hamiltona38c@example.com', 'ea3d7d28fd6e362047d6424bc9229093f3a54ed7d92b36f0d2858c70ed8d7005', 'Matthew', 'Hamilton');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1998-11-19', 'Hola, soy Matthew y me gusta conocer gente nueva!', 65.6882, 58.7385, 'https://randomuser.me/api/portraits/men/18.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazybear579', 'montserrat.gomez@example.com', 'd45ec3b2bc7e9d583a4c46e3a07e96bb84ad7628dabbcda73b8da150c8615ac6', 'Montserrat', 'Gómez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Montserrat y me gusta conocer gente nueva!', 41, -82.1202, 106.4443);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyelephant0017', 'robert.kosters117f@example.com', '002340b41aee7da76f4201bf18776291a812f796e20678c563b77b5b6c47c8a1', 'Robert', 'Kösters');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1989-10-28', 'Hola, soy Robert y me gusta conocer gente nueva!', -67.5234, -9.9423, 'https://randomuser.me/api/portraits/men/32.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazygoose793', 'eugenio.caballero@example.com', 'f12e74fc76c944f765099c9446d88f47955933a7776f0e4040b945264875c10c', 'Eugenio', 'Caballero');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Eugenio y me gusta conocer gente nueva!', 40, 63.0716, 34.1533);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blueswan1374faf', 'zack.kim9e17@example.com', '90b8de4051f02b7a29484341f3a903e1b2c6a233f5465e19c634535c7b315e6f', 'Zack', 'Kim');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1987-07-12', 'Hola, soy Zack y me gusta conocer gente nueva!', -46.6443, -20.1713, 'https://randomuser.me/api/portraits/men/18.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyfish586', 'leonie.roux@example.com', '475368189e17ec9d12cf43f873f4ba27b0ae9ccbd0686fa21f5caad89ed57243', 'Léonie', 'Roux');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Léonie y me gusta conocer gente nueva!', 85, -16.8727, 95.8225);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluefish8664252', 'bastien.rey0078@example.com', '2b82ba8aab66f192f5977551a98666d1d285cf3e4b081da0ec4714c29486ac9e', 'Bastien', 'Rey');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1997-12-18', 'Hola, soy Bastien y me gusta conocer gente nueva!', 45.9359, -103.9386, 'https://randomuser.me/api/portraits/men/52.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowfrog201', 'mateo.guillot@example.com', 'cb835c490922ac919ccb1f8a82dacda2341aa01a016fb9fca13b164047b1af1f', 'Matéo', 'Guillot');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Matéo y me gusta conocer gente nueva!', 50, 33.4633, -127.5506);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazylion1605f8c', 'kathi.weisser4dda@example.com', 'a6b46dd0d1ae5e86cbc8f37e75ceeb6760230c1ca4ffbcb0c97b96dd7d9c464b', 'Kathi', 'Weisser');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1980-08-21', 'Hola, soy Kathi y me gusta conocer gente nueva!', 78.2612, -82.4784, 'https://randomuser.me/api/portraits/women/46.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangelion874', 'albane.schmitt@example.com', '9131259d0e544cf42637f55feb191cdd68b318bc75dd4df4a459b5cae3e71eec', 'Albane', 'Schmitt');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Albane y me gusta conocer gente nueva!', 70, 53.7007, -153.6373);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallbear100f71d', 'mattie.davidson50e2@example.com', 'af5768223b36fe49f168d2aa3d2bb54b4e21b7b9965ac96d29e9d18fafbdf8cc', 'Mattie', 'Davidson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1995-04-11', 'Hola, soy Mattie y me gusta conocer gente nueva!', 33.5742, 113.9647, 'https://randomuser.me/api/portraits/women/74.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallsnake996', 'valentin.crespo@example.com', '04efaf080f5a3e74e1c29d1ca6a48569382cbbcd324e8d59d2b83ef21c039f00', 'Valentín', 'Crespo');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Valentín y me gusta conocer gente nueva!', 8, -60.0682, -55.5979);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyleopard6430b', 'matheo.arnaudd3e9@example.com', '8bbe1842c6dc006ad49abdb814a52d34d82a21d018b988595f53d43dc8b1dd41', 'Mathéo', 'Arnaud');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1988-04-03', 'Hola, soy Mathéo y me gusta conocer gente nueva!', 78.6328, -101.144, 'https://randomuser.me/api/portraits/men/85.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigtiger844', 'benjamin.king@example.com', '915a0068dc84a301798cd3c42814be2ff4000c08353b84c1aa8f9668d01ec625', 'Benjamin', 'King');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Benjamin y me gusta conocer gente nueva!', 14, -32.7705, 41.1713);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallzebra3750ce', 'stella.simonfefc@example.com', '27223b82963b3a8fea8429d8c46226e7060b180ba68f3914b51ccc119143ef65', 'Stella', 'Simon');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1985-10-04', 'Hola, soy Stella y me gusta conocer gente nueva!', 60.6392, -99.8826, 'https://randomuser.me/api/portraits/women/71.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyswan568', 'lawrence.lambert@example.com', '88bb047bcdfcde8a8c8eab6d9aeb88dc63afa21f8109fddaea39648aa6481626', 'Lawrence', 'Lambert');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Lawrence y me gusta conocer gente nueva!', 62, 87.6984, 51.0348);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowcat2616101', 'arthur.guerinfca3@example.com', '6ac9a32c0ca8e84e5bf0c3eccf128cc298ef5cc009ee295209465b79b55a9367', 'Arthur', 'Guerin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1982-10-21', 'Hola, soy Arthur y me gusta conocer gente nueva!', -47.6881, 4.2754, 'https://randomuser.me/api/portraits/men/39.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redbutterfly977', 'blanca.martin@example.com', '3e0b8bd843e63a4aa4e66c5433fc2db959b362734e7efb308708296870bbf7c9', 'Blanca', 'Martin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Blanca y me gusta conocer gente nueva!', 81, -44.5329, -32.4658);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulgooae55', 'clara.porterae98@example.com', '355550250b12c4d2ac1b14b6bc9b1a58d6529dc9d21cf9241d01c7ea77e7b35d', 'Clara', 'Porter');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2001-08-19', 'Hola, soy Clara y me gusta conocer gente nueva!', -55.9187, 19.953, 'https://randomuser.me/api/portraits/women/58.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldengorilla341', 'marcos.vargas@example.com', 'b2d35525e0cec4244fe6c1471a5a1f5e67f73b3860a638ab6cb9a2cd5de158ce', 'Marcos', 'Vargas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Marcos y me gusta conocer gente nueva!', 1, 4.3688, 21.4729);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrybear264ae28', 'esperanza.nuneze35c@example.com', '7c492f3824ca5deae2eb70f2685abe516228f4dba100d5ad3a7477a82415690a', 'Esperanza', 'Núñez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1982-08-28', 'Hola, soy Esperanza y me gusta conocer gente nueva!', 35.5131, -5.3609, 'https://randomuser.me/api/portraits/women/50.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverpeacock789', 'maximilian.hug@example.com', '48faf589cbad0aa47802da41f11b6ba24ef771975b4d64dfd69cc06bba836249', 'Maximilian', 'Hug');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Maximilian y me gusta conocer gente nueva!', 63, -84.2578, 9.6331);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitedog1544fec', 'benedikt.kuhnt88de@example.com', '94b5f0fa59e958580234a46304f711dbf0276bcee26ce8ef14e9c750fcaa5a2b', 'Benedikt', 'Kuhnt');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1980-11-26', 'Hola, soy Benedikt y me gusta conocer gente nueva!', -26.0651, 156.2204, 'https://randomuser.me/api/portraits/men/28.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenelephant565', 'harvey.garza@example.com', '384be34744a9578a680fc12eb40e857831ecc2e6d99f85a16c70fe7554cb98d3', 'Harvey', 'Garza');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Harvey y me gusta conocer gente nueva!', 76, -34.4489, -9.5418);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happytiger42a6eb', 'petar.lutter4993@example.com', 'cb9b5a0f4a8b09ba490e3acc902f38acf85205797cd59654645e5c1ef8c1ada0', 'Petar', 'Lutter');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1988-10-11', 'Hola, soy Petar y me gusta conocer gente nueva!', -2.3786, 23.5561, 'https://randomuser.me/api/portraits/men/96.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitewolf497', 'marie.rodriguez@example.com', '91dbdd4a1c1bbe3af464f2618161e115977d02a5d49cc0e23313937c31580143', 'Marie', 'Rodriguez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Marie y me gusta conocer gente nueva!', 31, 62.5943, 48.5581);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackfrog186ad5b', 'mar.cortes0d35@example.com', '0d145618b19a0f851fe7760f7cf702160c429fa19aa58a8fa05a1f8eadc1ce0a', 'Mar', 'Cortes');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2007-02-05', 'Hola, soy Mar y me gusta conocer gente nueva!', -5.7141, 104.199, 'https://randomuser.me/api/portraits/women/46.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazymeercat771', 'eva.medina@example.com', '0b26a3f52b8acd1ae7ddae8571a361890cd89d8cc2e9f71d85174aadef2bb116', 'Eva', 'Medina');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Eva y me gusta conocer gente nueva!', 22, 55.4042, -43.6017);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvermouse35dee', 'janet.snyder3fa8@example.com', '793a84a351bd364d2f0323b67b39407711e54bc4748c439fb32734538ef8dd15', 'Janet', 'Snyder');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1979-01-05', 'Hola, soy Janet y me gusta conocer gente nueva!', 13.7437, 93.5006, 'https://randomuser.me/api/portraits/women/7.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownmeercat974', 'cristina.hidalgo@example.com', '0f37b016b2b0c63b384229d1c514bc02a8033934d476c539b20db4e1067b107a', 'Cristina', 'Hidalgo');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Cristina y me gusta conocer gente nueva!', 77, 0.1850, 9.1132);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluezebra6441aaa', 'gisa.wusta2ba@example.com', '92811b045c373851391092a029753a3a6ca79a1ad624fa34672002f717aa83b4', 'Gisa', 'Wüst');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1975-09-01', 'Hola, soy Gisa y me gusta conocer gente nueva!', 5.2284, -65.6602, 'https://randomuser.me/api/portraits/women/72.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazylion129', 'anthony.bohmer@example.com', '7eb76e118de60ad5a6edd5974094688c21aa393bfb7a135cd6ccf7267b24ae34', 'Anthony', 'Böhmer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Anthony y me gusta conocer gente nueva!', 38, 29.3688, -157.0746);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazygorilla6e990', 'rose.garnierd1f3@example.com', '965abb254b10e268bd85fa6d2e8fc44c2483dd44066db334c98c0425f1c96e11', 'Rose', 'Garnier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1995-06-27', 'Hola, soy Rose y me gusta conocer gente nueva!', 57.7566, 174.4832, 'https://randomuser.me/api/portraits/women/23.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackzebra633', 'rocio.castillo@example.com', '8a88fbb234ec0452991a71276cb1be9e6aca02cafbe4718831d165373b968a9b', 'Rocío', 'Castillo');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Rocío y me gusta conocer gente nueva!', 57, -82.1279, -103.4963);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverleopar5398', 'sybille.haubolda41f@example.com', '47acf82a48cfa5c340ea536cdd66c75ef85eb8d3fcff468fc7c8abcaceb15ed0', 'Sybille', 'Haubold');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2006-06-21', 'Hola, soy Sybille y me gusta conocer gente nueva!', -31.2703, 101.4731, 'https://randomuser.me/api/portraits/women/13.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowrabbit812', 'maurice.scott@example.com', 'cbbee1e4310e4d978c13b8c11afe499a1ef298901520f6e2b94bf9f3d924abd9', 'Maurice', 'Scott');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Maurice y me gusta conocer gente nueva!', 78, -72.2496, -85.5220);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallgorillaef1f', 'elea.deschamps1cb9@example.com', '193d3043e029a9f9fbac4f4aaad437edc2c5837719c5cc5f49939573baf78760', 'Eléa', 'Deschamps');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1975-07-16', 'Hola, soy Eléa y me gusta conocer gente nueva!', 80.0861, -105.2805, 'https://randomuser.me/api/portraits/women/40.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadladybug847', 'adam.ruiz@example.com', '1d256b5d20bdd8be57ed1f3881d7f06bc92da0093f03eef4e2e62b4295cbe4fe', 'Adam', 'Ruiz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Adam y me gusta conocer gente nueva!', 68, -46.4035, -66.3388);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenladybug8479', 'amandine.thomas9030@example.com', 'c384e174bbbbc54c6660bc669a8206cb48375c17a59676d37cc02fe074edd571', 'Amandine', 'Thomas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1983-06-27', 'Hola, soy Amandine y me gusta conocer gente nueva!', 28.193, 142.0316, 'https://randomuser.me/api/portraits/women/60.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallbird225', 'chloe.hayes@example.com', '56f09d7fa9eb77b92c741dd19409c0152ba19b22e0cde3bfa1e66970f8eeec57', 'Chloe', 'Hayes');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Chloe y me gusta conocer gente nueva!', 84, -13.1981, -83.6800);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadgorilla60b1a6', 'irene.vargase0c9@example.com', 'ff19a384c13a612256e934171ee656a69f27765367729058412b4fd0d00160f3', 'Irene', 'Vargas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1980-12-18', 'Hola, soy Irene y me gusta conocer gente nueva!', -88.3082, -114.392, 'https://randomuser.me/api/portraits/women/10.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenmouse659', 'louna.deschamps@example.com', '7c3136173017802c225d5c723764ed00b962cec6a55d83b713849e4065e2dd95', 'Louna', 'Deschamps');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Louna y me gusta conocer gente nueva!', 21, -77.9615, -172.1254);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigleopard79b569', 'marco.sanzf433@example.com', '00154761637ca746c354a6d9cfbf1da1a92e79afa6bb127bb8a1c434e9c73170', 'Marco', 'Sanz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1984-08-28', 'Hola, soy Marco y me gusta conocer gente nueva!', -1.9467, 146.0712, 'https://randomuser.me/api/portraits/men/82.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishzebra486', 'alex.jean@example.com', '5c972e0f84f07e06ce46afababea662a699c68e36cb23b2523db7dfb60dc9ca0', 'Alex', 'Jean');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Alex y me gusta conocer gente nueva!', 53, -64.3460, -17.2477);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicgoose55bc', 'philip.gibson265d@example.com', 'baff4fb62c8b1c5a7934aeb176930b58670bc06d1db866b398b7a511a6b90f25', 'Philip', 'Gibson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1994-12-09', 'Hola, soy Philip y me gusta conocer gente nueva!', 62.182, 119.906, 'https://randomuser.me/api/portraits/men/35.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyfrog976', 'jamie.peters@example.com', '70b5bdb210f523e8260aedd5cf84fc9c684aa93ede98669204b715dd4289efda', 'Jamie', 'Peters');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Jamie y me gusta conocer gente nueva!', 50, 10.2553, 45.8492);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownmouse888cb4', 'cord.hassel1c0c@example.com', '29220f1c8eb8b39e7f5730175c3ad5706cf37197ec7853d92a41d0e45d9e74c6', 'Cord', 'Hassel');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1993-07-03', 'Hola, soy Cord y me gusta conocer gente nueva!', 18.4171, -118.6942, 'https://randomuser.me/api/portraits/men/1.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redwolf618', 'gauthier.dubois@example.com', 'e4d6dc0f6e2842e950ae809a86e90456285822d9d350ccc4dae596e0a724d7a3', 'Gauthier', 'Dubois');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Gauthier y me gusta conocer gente nueva!', 14, -63.6110, 0.2711);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinykoala760fb95', 'angelina.martinez8627@example.com', 'd14620964103e55fabdeb6bdc65890ca9db70ed53354c42900a6a8c459883297', 'Angelina', 'Martinez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2004-10-21', 'Hola, soy Angelina y me gusta conocer gente nueva!', 13.8208, -81.3413, 'https://randomuser.me/api/portraits/women/41.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallswan328', 'raymond.grote@example.com', '3e2b8f7655a269367d0503ead3d27ef7e070fa31a0ccdff6d3150c67cc5c789e', 'Raymond', 'Grote');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Raymond y me gusta conocer gente nueva!', 37, -39.1973, -30.5874);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishsnakc204', 'jeanette.simmmonsc73d@example.com', '4ffc0a1145b5a2c7b12a81844b5989acab01b6bef6139ce874b38c72a9cf520f', 'Jeanette', 'Simmmons');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1999-09-06', 'Hola, soy Jeanette y me gusta conocer gente nueva!', -89.7803, -59.1998, 'https://randomuser.me/api/portraits/women/58.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazypeacock368', 'marine.robin@example.com', '94edf28c6d6da38fd35d7ad53e485307f89fbeaf120485c8d17a43f323deee71', 'Marine', 'Robin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Marine y me gusta conocer gente nueva!', 86, -66.7838, -131.2791);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowbear89a9b6', 'charlotte.lambert5144@example.com', '6cbcf42824e37b42397f743f852806ce04a9e63119ad00a0c9e5c2b081adc62f', 'Charlotte', 'Lambert');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1989-10-23', 'Hola, soy Charlotte y me gusta conocer gente nueva!', -46.7593, 138.4944, 'https://randomuser.me/api/portraits/women/12.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverzebra720', 'julia.burke@example.com', 'fc8db96bab2a414d1db52c4177a15d3e292fb9d4354d0992f29bfc3f4715825e', 'Julia', 'Burke');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Julia y me gusta conocer gente nueva!', 58, -10.7490, -108.8800);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavymouse67fffb', 'kelya.rouxefe0@example.com', '8c649a8f85f3d89d4eba2cf885e7f9273c9672b73eaf3ce43c5ea038ca648f0f', 'Kelya', 'Roux');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1984-09-09', 'Hola, soy Kelya y me gusta conocer gente nueva!', -23.2413, -41.3782, 'https://randomuser.me/api/portraits/women/57.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organictiger299', 'victoria.fernandez@example.com', '93196ca4a16ce11625d2998c9568fc31c9e6810456b5fbe2c864208da7d4c114', 'Victoria', 'Fernández');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Victoria y me gusta conocer gente nueva!', 80, 3.6009, -84.3024);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallkoala85bbed', 'zdravko.scheele882e@example.com', 'ac800699bdf654a62fad9ab3dc16ba2fe68fb40cf54b27d11e96ed395f754bf7', 'Zdravko', 'Scheele');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1999-12-08', 'Hola, soy Zdravko y me gusta conocer gente nueva!', -35.4031, -109.6765, 'https://randomuser.me/api/portraits/men/94.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyfrog754', 'william.steward@example.com', 'b6998c5a5e8f5937503c821c6563d204fa49dd079b241d12a3b865b15af6fee6', 'William', 'Steward');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy William y me gusta conocer gente nueva!', 68, 60.4366, -10.4755);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownmouse9797c3', 'sacha.caron858e@example.com', '847589e13d2376263d65710e4f230297cf575f632e722ec8e1c54e86e9147381', 'Sacha', 'Caron');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1980-02-09', 'Hola, soy Sacha y me gusta conocer gente nueva!', 32.7777, -15.0277, 'https://randomuser.me/api/portraits/men/33.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverpeacock422', 'lissy.strunk@example.com', '93722a04fa35a4daf711970c7bc4ad6a66eb690236929f5449e3323db268d610', 'Lissy', 'Strunk');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Lissy y me gusta conocer gente nueva!', 95, 24.8675, 86.2425);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackpanda863ffc', 'lester.coleman4a7c@example.com', '34357b18abddea1874221b1f062f80fe3e11b6abd11fe80b171738893003b24c', 'Lester', 'Coleman');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2001-02-15', 'Hola, soy Lester y me gusta conocer gente nueva!', -46.7727, 20.3973, 'https://randomuser.me/api/portraits/men/67.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organickoala724', 'floyd.stewart@example.com', 'e656f6cd1caedec309d0616246cfdcbc2c7cccfdd858440e0b47335d94001aab', 'Floyd', 'Stewart');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Floyd y me gusta conocer gente nueva!', 97, -39.6403, 21.2565);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenpanda6cbc2', 'henrike.grunberg4334@example.com', '48faf589cbad0aa47802da41f11b6ba24ef771975b4d64dfd69cc06bba836249', 'Henrike', 'Grünberg');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1982-07-19', 'Hola, soy Henrike y me gusta conocer gente nueva!', 72.6132, 106.8858, 'https://randomuser.me/api/portraits/women/1.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenwolf841', 'timothee.barbier@example.com', '4eb41a2a9dfe70722ee4671a6d1fcc6921c26cc8bcb54e5632f5e7d740352940', 'Timothee', 'Barbier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Timothee y me gusta conocer gente nueva!', 4, 64.8136, -178.3827);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicpeaco102a', 'gustav.krulle8da@example.com', 'fc98ddf5b129cb3d65154b0468d00188a342d24e322de605285e3b1f5b74bf7f', 'Gustav', 'Krull');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1989-12-26', 'Hola, soy Gustav y me gusta conocer gente nueva!', 20.6717, -62.6997, 'https://randomuser.me/api/portraits/men/58.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigswan331', 'noah.perez@example.com', 'c8206bdbdb7666ed3d86532bb7700f5b1574fa0e71794d4e15eb497d833bfbd7', 'Noah', 'Perez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Noah y me gusta conocer gente nueva!', 38, -18.6999, 155.8563);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplelion5507f5', 'noam.brun308e@example.com', '8286ee4ea8f54f0276bcd4a125de6fd38a58534eebe24df396f05febeee3a91a', 'Noam', 'Brun');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1989-01-14', 'Hola, soy Noam y me gusta conocer gente nueva!', 65.9704, 150.8602, 'https://randomuser.me/api/portraits/men/2.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowswan849', 'ursula.block@example.com', 'a8cd7e237c89657111ed3f61bb04a7385e7d4328ac48587d2e5876b67063de31', 'Ursula', 'Block');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Ursula y me gusta conocer gente nueva!', 60, 20.4422, 24.4240);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigfrog10907b7', 'milagros.rojas60f8@example.com', 'a4985e5ebeaa5ef0f5fbeab600e9eb193ba2cff20923be1a77a7a468ac70d90e', 'Milagros', 'Rojas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1976-07-09', 'Hola, soy Milagros y me gusta conocer gente nueva!', 38.3281, 175.4734, 'https://randomuser.me/api/portraits/women/73.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazytiger952', 'maxence.vincent@example.com', '793a84a351bd364d2f0323b67b39407711e54bc4748c439fb32734538ef8dd15', 'Maxence', 'Vincent');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Maxence y me gusta conocer gente nueva!', 89, 70.2561, 99.0067);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverduck454a7f', 'fatima.gil6f1e@example.com', '7001a6ad95a6eb9448fd1aa58cf5ad4d9ef130778d5ac21d547ef9087eccc75b', 'Fátima', 'Gil');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1980-08-20', 'Hola, soy Fátima y me gusta conocer gente nueva!', -65.9828, 48.3354, 'https://randomuser.me/api/portraits/women/67.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinysnake864', 'angel.alvarez@example.com', '22ea282ecfa5c6d2d953358b80707161a867e5208924e61f95d8dab2d4942139', 'Angel', 'Alvarez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Angel y me gusta conocer gente nueva!', 77, 58.4626, 63.0472);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyfish4263151', 'melody.richard1f05@example.com', '0c6347f2a56013eb2d6f816a619d88e314d4ed0a8f0e3e72ff60b2a76f7aafcc', 'Mélody', 'Richard');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1978-05-25', 'Hola, soy Mélody y me gusta conocer gente nueva!', 16.6076, -96.3648, 'https://randomuser.me/api/portraits/women/82.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadkoala646', 'leslie.garrett@example.com', 'f0af91a7df72644cb34b0ea65582f7b902cd9630df4cc6626590e6cf386dc357', 'Leslie', 'Garrett');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Leslie y me gusta conocer gente nueva!', 93, -51.1256, -177.9692);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluefish4222c42', 'jackson.gardnere24c@example.com', '2ae362226789f60cd68bac34360d177213feb7d395a6bec0e9e12267314345b6', 'Jackson', 'Gardner');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1986-12-24', 'Hola, soy Jackson y me gusta conocer gente nueva!', -25.2053, 6.6103, 'https://randomuser.me/api/portraits/men/22.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulfish953', 'enzo.david@example.com', 'befb90274c7db469f79d9d4b4d54788127121dc5d457282099226adc743f2d92', 'Enzo', 'David');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Enzo y me gusta conocer gente nueva!', 43, -16.1472, 161.7794);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavysnake856942', 'ron.murphy1a16@example.com', '65304dac3823069673aa9d3b90dcb9f44938e2d12f58509addc915d08922b64b', 'Ron', 'Murphy');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1981-04-02', 'Hola, soy Ron y me gusta conocer gente nueva!', -62.8404, -99.8545, 'https://randomuser.me/api/portraits/men/73.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangefrog749', 'oscar.lozano@example.com', 'fb640606a2e763d088e78d5bb15940f39182c45bba9878c9561af2204b1c6d40', 'Oscar', 'Lozano');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Oscar y me gusta conocer gente nueva!', 53, -7.0032, 11.7637);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greengorilla752a', 'elia.lacroixf4dd@example.com', '61bffea9215f65164ad18b45aff1436c0c165d0d5dd2087ef61b4232ba6d2c1a', 'Elia', 'Lacroix');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1993-09-30', 'Hola, soy Elia y me gusta conocer gente nueva!', -52.0977, -145.9069, 'https://randomuser.me/api/portraits/women/50.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happybird755', 'maelyne.denis@example.com', 'd4595ee7d9bca0d6c0726ec3209a1d6153a6d32bfb0bd26c2e1fd4b2b91789ea', 'Maëlyne', 'Denis');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Maëlyne y me gusta conocer gente nueva!', 75, 79.6690, -21.1920);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigelephant5c1c6', 'joel.medina3f09@example.com', 'fb2b9bb163acf7e3ad50dd8d950b56ba0065d96aedb36ffcaa87dc44b9000f2a', 'Joel', 'Medina');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1975-05-22', 'Hola, soy Joel y me gusta conocer gente nueva!', -28.515, -126.9841, 'https://randomuser.me/api/portraits/men/83.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigbird403', 'antonio.leon@example.com', '5f16795c54ab7de419edf8e9c6da6065f7dd448f122fcbc9815c67daa566ba8e', 'Antonio', 'León');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Antonio y me gusta conocer gente nueva!', 49, 8.0955, -92.8045);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverbutter5f01', 'victor.roux2fee@example.com', '89102c5116c37daa55d86342ce2c47d35b1bc2ed407509732d940ea2901befbc', 'Victor', 'Roux');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1995-02-07', 'Hola, soy Victor y me gusta conocer gente nueva!', 26.6063, -151.7969, 'https://randomuser.me/api/portraits/men/72.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadwolf752', 'inmaculada.rubio@example.com', 'c9ae5a10ae8824d79d22c3e571ef302f5368e51afa1f551b374f06cbbd682410', 'Inmaculada', 'Rubio');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Inmaculada y me gusta conocer gente nueva!', 82, -13.2693, -44.3970);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldensnake3d3aa', 'constance.jacobsb205@example.com', '7c9e7c1494b2684ab7c19d6aff737e460fa9e98d5a234da1310c97ddf5691834', 'Constance', 'Jacobs');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1977-09-21', 'Hola, soy Constance y me gusta conocer gente nueva!', -84.8447, 42.799, 'https://randomuser.me/api/portraits/women/91.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyleopard438', 'minna.kraemer@example.com', '49ee5d7a4358b1688d64564be9ae68f2d6cc5ed615723da2aeb074c14feffaa4', 'Minna', 'Kraemer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Minna y me gusta conocer gente nueva!', 7, 2.6099, -95.7514);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplelion29feaf', 'monica.herrerac994@example.com', '38a0963a6364b09ad867aa9a66c6d009673c21e182015461da236ec361877f77', 'Mónica', 'Herrera');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1989-03-10', 'Hola, soy Mónica y me gusta conocer gente nueva!', -71.8817, 100.2528, 'https://randomuser.me/api/portraits/women/71.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldencat128', 'timothee.bonnet@example.com', '2ce62ac0f4f8fef6c69806a364e68810a75dc51b4e2e1155ce6170331e3fc9ef', 'Timothee', 'Bonnet');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Timothee y me gusta conocer gente nueva!', 39, 57.9714, -84.2739);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blueelephant429c', 'loic.picard2195@example.com', 'ab6fffc55e083569a7ed9e0ad1a7ce6e4e93ffdc0eba5445f1b8d2fcfb220369', 'Loïc', 'Picard');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1990-09-04', 'Hola, soy Loïc y me gusta conocer gente nueva!', -34.2271, -36.4138, 'https://randomuser.me/api/portraits/men/92.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangemeercat862', 'vicenta.cabrera@example.com', 'd92e06b325d24423dd187a0101924107ace8b367379b12c2b8608ddf843cf435', 'Vicenta', 'Cabrera');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Vicenta y me gusta conocer gente nueva!', 6, -76.8989, 95.1838);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazybird175e474', 'heike.reimercb28@example.com', '31f7a65e315586ac198bd798b6629ce4903d0899476d5741a9f32e2e521b6a66', 'Heike', 'Reimer');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1990-01-27', 'Hola, soy Heike y me gusta conocer gente nueva!', 28.472, 89.9257, 'https://randomuser.me/api/portraits/women/37.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishrabbit870', 'encarnacion.herrero@example.com', '617034c22db68a3a6529ae910d1dc5aa5cda6230d177340bc94f66e9740bb480', 'Encarnación', 'Herrero');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Encarnación y me gusta conocer gente nueva!', 36, -63.8427, 169.5608);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackladybugd9e1', 'cristobal.gutierrez2856@example.com', '1219929bd7c1c9f41265f9b466be9f4bf449ee2142b8691a85067baafc698d39', 'Cristóbal', 'Gutiérrez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1989-02-02', 'Hola, soy Cristóbal y me gusta conocer gente nueva!', 84.3874, -120.012, 'https://randomuser.me/api/portraits/men/0.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrymouse369', 'carol.hudson@example.com', 'e81dfe69841ad2f7b5790b63e998f0febaf3b29acd732881975130761b98e2c7', 'Carol', 'Hudson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Carol y me gusta conocer gente nueva!', 69, 34.1405, 114.9995);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazypeacockb31d', 'ken.freeman0311@example.com', '11353194bbff01263cfc2213cb6a4ace3db8f809223d26dc1f65ba865f186e32', 'Ken', 'Freeman');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1990-11-05', 'Hola, soy Ken y me gusta conocer gente nueva!', 24.2368, 150.99, 'https://randomuser.me/api/portraits/men/14.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicmeercat959', 'edgar.masson@example.com', 'a0132bd0487e889f18a50ba8bd17644fafdb37e5fcf23515b8815eb451f20c10', 'Edgar', 'Masson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Edgar y me gusta conocer gente nueva!', 15, 84.2887, -24.6097);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitecat430ed5a', 'louis.lucas8371@example.com', 'fef31a40a8e0eec69e0ed37b3a9d087ea4cecf9d9099ac80fcd566058ab454b1', 'Louis', 'Lucas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1975-05-03', 'Hola, soy Louis y me gusta conocer gente nueva!', 40.4863, 32.2585, 'https://randomuser.me/api/portraits/men/44.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallfish662', 'lauren.reyes@example.com', '16e5f60f207a1a0073451c35a9d315d17fdc17d7fab66449b00cdfaadc8b249e', 'Lauren', 'Reyes');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Lauren y me gusta conocer gente nueva!', 91, 38.1858, 112.8891);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluebutterfl28a3', 'connor.turner5a67@example.com', '887d814b066634a8b8ba0b65c506b5352df0e23a5c9ea98628e463cdc392dbc6', 'Connor', 'Turner');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2004-01-11', 'Hola, soy Connor y me gusta conocer gente nueva!', -69.3398, 91.7193, 'https://randomuser.me/api/portraits/men/8.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverfrog920', 'matthieu.gauthier@example.com', 'f2e9a23ac36c4b227b16387b4e0d37793e9459f3912942069981886d5bffe90e', 'Matthieu', 'Gauthier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Matthieu y me gusta conocer gente nueva!', 56, 6.2039, 100.3800);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinymeercat61e02', 'olav.heiden3a81@example.com', 'b4472cf9e37c221a956bbcde136b681f6e49402258993cf22f910f18d07e7382', 'Olav', 'Heiden');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1997-09-29', 'Hola, soy Olav y me gusta conocer gente nueva!', 81.1445, -48.6619, 'https://randomuser.me/api/portraits/women/77.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redwolf761', 'jamie.gilbert@example.com', '198e2e06d664ea92fee6c743fe1ef98f9d28666ed15d730349e2f1268708bdfd', 'Jamie', 'Gilbert');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Jamie y me gusta conocer gente nueva!', 69, -23.3206, 48.3810);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangeladybu086d', 'soline.garnier3856@example.com', '8f8472a2f6ec348bfc7577a035c7f34a04c62f0c757b54687e1175236dcf393b', 'Soline', 'Garnier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1995-10-06', 'Hola, soy Soline y me gusta conocer gente nueva!', 20.8613, 170.7662, 'https://randomuser.me/api/portraits/women/12.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greengoose309', 'edit.anton@example.com', 'c857d09db23e6822e3600bc06ad8d58f92ed62bc8efd81c753f77048662cb97d', 'Edit', 'Anton');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Edit y me gusta conocer gente nueva!', 2, -63.3296, 15.4157);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenmeercac171', 'flora.bellmann2e38@example.com', '4e0227879fc12b66dc2571615a5466cb7bd2582efe1c00d888e35aa0cc254089', 'Flora', 'Bellmann');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1988-11-09', 'Hola, soy Flora y me gusta conocer gente nueva!', 51.8782, 8.1791, 'https://randomuser.me/api/portraits/women/30.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadlion675', 'maelyne.guerin@example.com', '2d8f65dd1823032650f1686443c0659e646d63907bb25ffd73383ea070bd76ec', 'Maëlyne', 'Guerin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Maëlyne y me gusta conocer gente nueva!', 2, -81.6102, 133.9013);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('browndog61011bc', 'kent.webb6fcb@example.com', 'a10089eeb0bd6b43905befa8a6382ab245c0243437d73b340c2594b93c420ca8', 'Kent', 'Webb');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1999-06-24', 'Hola, soy Kent y me gusta conocer gente nueva!', 17.9911, -141.4683, 'https://randomuser.me/api/portraits/men/78.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazybear286', 'silja.dehn@example.com', 'b769a6983b42d565e79bb4f3f534623453f301d39784e57804a649a67ea05327', 'Silja', 'Dehn');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Silja y me gusta conocer gente nueva!', 16, -30.3127, -25.0331);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyrabbit19a608', 'barb.macraece62@example.com', '392e98bd37203b489ec2d73030efddd156949035a1dffede8c328ad3e9a69c22', 'Barb', 'Macrae');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1983-05-15', 'Hola, soy Barb y me gusta conocer gente nueva!', -20.2575, -36.8219, 'https://randomuser.me/api/portraits/women/92.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitesnake590', 'fanny.francois@example.com', 'db418e6299b87ea285cf659c1b131726eb93dcaab8b544a0a15d9137c29708d8', 'Fanny', 'Francois');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Fanny y me gusta conocer gente nueva!', 0, -81.7402, -129.6846);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackmeercatca6b', 'elsa.klee00d2@example.com', '7187f0675eb3827939741acf7342ba78836ecec21a31ecf3f34a55309d3bee8a', 'Elsa', 'Klee');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1998-10-08', 'Hola, soy Elsa y me gusta conocer gente nueva!', 5.7877, 118.0396, 'https://randomuser.me/api/portraits/women/49.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happypeacock415', 'eddie.weaver@example.com', 'b0120ab459558f30fb7d0d98d4bd29a8131505f13eaa4b584ec91244d09cbde2', 'Eddie', 'Weaver');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Eddie y me gusta conocer gente nueva!', 90, -77.5806, 70.0152);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinysnake1898c43', 'alyssa.legalle328@example.com', '73bd4486e69489d3bf9c723cd0cad950d82cfd5b0e9a1070be934c2e11f2e685', 'Alyssa', 'Le Gall');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1999-10-09', 'Hola, soy Alyssa y me gusta conocer gente nueva!', 60.6194, -82.4305, 'https://randomuser.me/api/portraits/women/39.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownfish362', 'marie.gronau@example.com', 'd97b2a20a6daca8842a9e744663aeda131aad3e78ae7a9774560b2c5d76b1578', 'Marie', 'Gronau');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Marie y me gusta conocer gente nueva!', 19, 55.4498, 127.0374);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulbut502c', 'nora.harris0562@example.com', '1cc9ffadf620e6e34a907b17ab26ad2fe33a756c3d6b572d5c180cc821cf025c', 'Nora', 'Harris');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2006-02-17', 'Hola, soy Nora y me gusta conocer gente nueva!', -63.6694, -97.6343, 'https://randomuser.me/api/portraits/women/3.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinydog436', 'michelle.hoffman@example.com', 'e0e3a2b6471d044a53a7757994b51dd33c6b3ec90e1aca21cebc8e2ae79d6d9b', 'Michelle', 'Hoffman');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Michelle y me gusta conocer gente nueva!', 50, 45.3629, -160.1097);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishkoal1738', 'josefa.mora84a8@example.com', '7401b1cd29cd6dab9e4f5146a51b87921a5a2c6c33182b72c9fe28460980fab0', 'Josefa', 'Mora');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1998-06-15', 'Hola, soy Josefa y me gusta conocer gente nueva!', -34.8894, 39.9798, 'https://randomuser.me/api/portraits/women/10.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazylion719', 'pedro.rieke@example.com', 'cf929d06a4e69002b7b2d3fd991a129969aa5545c6c855f9efc2f17b4e7e3128', 'Pedro', 'Rieke');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Pedro y me gusta conocer gente nueva!', 72, 78.0086, 93.6458);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldentiger962a1', 'aitor.perez3477@example.com', '88b5141a508d2efb1a74df9b8a9d62745e779e72467932395f965f14b3aa1c6b', 'Aitor', 'Pérez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1988-04-15', 'Hola, soy Aitor y me gusta conocer gente nueva!', -78.155, -8.4874, 'https://randomuser.me/api/portraits/men/12.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackwolf710', 'joseph.pena@example.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Joseph', 'Pena');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Joseph y me gusta conocer gente nueva!', 3, 69.1674, 37.4244);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulleo86bd', 'mary.fuller7c8f@example.com', '4ffd117e39940730ef4fa0a228ff97ed53507d6916400cbecdcb592761add990', 'Mary', 'Fuller');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1990-03-08', 'Hola, soy Mary y me gusta conocer gente nueva!', -82.5222, -100.3514, 'https://randomuser.me/api/portraits/women/38.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigwolf584', 'vanessa.graves@example.com', 'ac9d5be2874a08ebbcc0df6c36331952d07173e42b31248cc232154002a0833a', 'Vanessa', 'Graves');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Vanessa y me gusta conocer gente nueva!', 99, -11.4644, -175.2852);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadsnake8426051', 'jaime.santanad80e@example.com', '4e686af7bdcc5ae005a247624fd8c7283257c2514f6b3ad2ff5d4cb6d95196e6', 'Jaime', 'Santana');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1978-10-30', 'Hola, soy Jaime y me gusta conocer gente nueva!', 9.1871, 100.0619, 'https://randomuser.me/api/portraits/men/33.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicgoose589', 'juan.rogers@example.com', '8dccea5217902053b636f0e105c590eb30db4280b8a7a51806110f7ff7b5177e', 'Juan', 'Rogers');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Juan y me gusta conocer gente nueva!', 56, -75.8437, 100.1932);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryduck26538a1', 'samantha.willisa78a@example.com', '9e88b067408182d0bd525120e9ba2607e19b0dfa17b48582d2d405fc52dc4a1a', 'Samantha', 'Willis');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1990-11-20', 'Hola, soy Samantha y me gusta conocer gente nueva!', 81.1711, -143.012, 'https://randomuser.me/api/portraits/women/31.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenpeacock406', 'natalia.aguilar@example.com', '6f931093b5e93819d2daf5b5a30d440377cfcfbb680e0c4dd6c2f2acad2d4e92', 'Natalia', 'Aguilar');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Natalia y me gusta conocer gente nueva!', 54, -2.5406, -160.5200);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplefish37e7c6', 'karen.weidmann6624@example.com', '3bed2cb3a3acf7b6a8ef408420cc682d5520e26976d354254f528c965612054f', 'Karen', 'Weidmann');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1982-12-01', 'Hola, soy Karen y me gusta conocer gente nueva!', -78.3612, 105.3192, 'https://randomuser.me/api/portraits/women/18.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallelephant237', 'eve.menard@example.com', '617034c22db68a3a6529ae910d1dc5aa5cda6230d177340bc94f66e9740bb480', 'Eve', 'Menard');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Eve y me gusta conocer gente nueva!', 3, 53.9942, -102.6822);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicsnake0bfa', 'paul.massonca56@example.com', 'f6d89d3dfb434569af1a9e14f364c95f604031d458ab795bec8ccf8fb2906c0f', 'Paul', 'Masson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2001-08-30', 'Hola, soy Paul y me gusta conocer gente nueva!', -30.2954, 110.394, 'https://randomuser.me/api/portraits/men/31.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangegorilla354', 'lynn.holland@example.com', 'fe0266155513993bff683fc20f734de0a36b8ae2a5e7d9b2dc0d061a06366237', 'Lynn', 'Holland');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Lynn y me gusta conocer gente nueva!', 9, 5.7621, -14.1283);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackgorilla3b08', 'maxwell.freeman4c25@example.com', '33e9f8a4d7f1e87025250a318275f8f84482fe613b861380c790de019658b74e', 'Maxwell', 'Freeman');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2005-03-15', 'Hola, soy Maxwell y me gusta conocer gente nueva!', -67.6038, 1.8379, 'https://randomuser.me/api/portraits/men/82.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigpanda880', 'leroy.griffin@example.com', '3ba8d02b16fd2a01c1a8ba1a1f036d7ce386ed953696fa57331c2ac48a80b255', 'Leroy', 'Griffin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Leroy y me gusta conocer gente nueva!', 92, -73.4160, 16.8939);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenladybucf56', 'sergio.newman28ec@example.com', '71be92cbdfe91357146afad81827a981ec58f5a3e69e9bd4527acd74b1927938', 'Sergio', 'Newman');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1977-02-13', 'Hola, soy Sergio y me gusta conocer gente nueva!', 50.123, 46.9699, 'https://randomuser.me/api/portraits/men/10.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallfish574', 'marc.gomez@example.com', '7d305fd473f327e1003df77ace8f3b706642217773cbba93ceea8ddf4cab3c4e', 'Marc', 'Gómez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Marc y me gusta conocer gente nueva!', 0, 68.2527, -88.5883);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadmeercat667fba', 'belen.diez3a66@example.com', '7400ec1250e1475bb7d0a01aa73e2763b470ce88f64e314a7f05372b34299176', 'Belén', 'Diez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2005-11-01', 'Hola, soy Belén y me gusta conocer gente nueva!', -87.6422, -86.4979, 'https://randomuser.me/api/portraits/women/81.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryostrich640', 'cody.bailey@example.com', '3445ca3ead20cec97a285cc0c3b00a931248da7173f27efbfa4de27a9ae1c544', 'Cody', 'Bailey');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Cody y me gusta conocer gente nueva!', 64, -22.3481, -172.9760);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenfrog49deb2', 'johnny.gonzalez1049@example.com', '5da6a98ce54ca941f343a07ec10fa1b9001c2e518e1a7a5f65e572b60a2175af', 'Johnny', 'Gonzalez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1984-03-12', 'Hola, soy Johnny y me gusta conocer gente nueva!', 42.3436, 140.7052, 'https://randomuser.me/api/portraits/men/12.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicbear309', 'julia.garrido@example.com', 'e8e1d31153ed13398722ad3764117711baada729a2ae51ef105da814536b48ed', 'Julia', 'Garrido');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Julia y me gusta conocer gente nueva!', 45, 12.2568, -133.1953);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplepanda8fdc7', 'josefina.navarrod924@example.com', '0b4bd77cec705cf5df016344c0fc673fb3c2240078e6af572b2c5c6fa76114af', 'Josefina', 'Navarro');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2000-02-24', 'Hola, soy Josefina y me gusta conocer gente nueva!', 39.4352, -89.6348, 'https://randomuser.me/api/portraits/women/90.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyostrich581', 'sarina.holler@example.com', 'e9a63a4eb15738ae85cd416221c8fcc4ccc0018fac91335b42eaa016c76e87f9', 'Sarina', 'Höller');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Sarina y me gusta conocer gente nueva!', 68, 34.1420, 124.2975);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldencat369ab9a', 'milagros.diez675c@example.com', '55579b557896d0ce1764c47fed644f9b35f58bad620674af23f356d80ed0c503', 'Milagros', 'Diez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1980-07-30', 'Hola, soy Milagros y me gusta conocer gente nueva!', -34.0979, -122.9011, 'https://randomuser.me/api/portraits/women/59.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happysnake203', 'salvador.mason@example.com', '33c5ebbb01d608c254b3b12413bdb03e46c12797e591770ccf20f5e2819929b2', 'Salvador', 'Mason');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Salvador y me gusta conocer gente nueva!', 44, 81.3551, -1.1289);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowbird66783f', 'volkhard.siepmanndc6a@example.com', 'bc020a35b7f9cb1382e7b534c68e3c531d849b119bf14f75ddead6cc45c3ccc1', 'Volkhard', 'Siepmann');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2002-10-13', 'Hola, soy Volkhard y me gusta conocer gente nueva!', -60.8206, 8.0526, 'https://randomuser.me/api/portraits/men/11.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyladybug632', 'anna.cortes@example.com', '99a068115036b15533037fd29b16ce8ccb08107d38e6b199b508b94434483db3', 'Anna', 'Cortes');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Anna y me gusta conocer gente nueva!', 60, 51.1618, 117.7349);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicladyba755', 'romane.dufourc7f4@example.com', '57f0e30b29126a4866ff1ba8da6f62d104007d322e40ddbdeee93c8a4a771f78', 'Romane', 'Dufour');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2001-05-18', 'Hola, soy Romane y me gusta conocer gente nueva!', 14.7418, 49.3212, 'https://randomuser.me/api/portraits/women/59.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangerabbit396', 'santiago.castillo@example.com', '79bfb0e2ba76b9d447606ddbcc494834f05a4c11deb052e74b49ea307a3c5bcd', 'Santiago', 'Castillo');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Santiago y me gusta conocer gente nueva!', 84, -29.1762, -123.0183);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadmeercat12e424', 'hector.simsda00@example.com', '4c940ea0356e5be464daedec7435902a9a8cf68d31a3c0dcfe8cfcc2e997e0b3', 'Hector', 'Sims');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1980-07-14', 'Hola, soy Hector y me gusta conocer gente nueva!', 86.6734, 15.3607, 'https://randomuser.me/api/portraits/men/81.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownbear203', 'alba.soto@example.com', '6cb51aee46136232e04652b4db51fcc1b951b81b3640014631414a02a30a5e9f', 'Alba', 'Soto');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Alba y me gusta conocer gente nueva!', 56, 4.8229, -4.8562);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicbear30858', 'axelle.guillot1e39@example.com', 'b4e78f1caf9341674cb2b6c02e683b8e4b1fa5a495cc30bc7246f8658fadeffe', 'Axelle', 'Guillot');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2003-09-18', 'Hola, soy Axelle y me gusta conocer gente nueva!', -42.915, 33.9508, 'https://randomuser.me/api/portraits/women/81.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluebird480', 'carmelo.alvarez@example.com', '46d86146774497af0aa4959c0777932a52de8b79f6babec58d58a4a0d8d5d68e', 'Carmelo', 'Álvarez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Carmelo y me gusta conocer gente nueva!', 72, 18.2188, -93.1068);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitesnake71026e', 'danilo.hilldf1c@example.com', '611af5bd77e314ca5df610a252c298626ed56ce19580150ef813b2ab28816102', 'Danilo', 'Hill');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2003-07-15', 'Hola, soy Danilo y me gusta conocer gente nueva!', -73.3615, -131.0442, 'https://randomuser.me/api/portraits/men/17.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyduck328', 'swantje.runge@example.com', '27a0113e9ce8bfd5ba29c172f6ea84f16fd3086b3fc0065e72d6101c016433aa', 'Swantje', 'Runge');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Swantje y me gusta conocer gente nueva!', 36, -13.2439, -159.8172);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryswan875f115', 'marius.rouxb07d@example.com', '8230de55977af18c6d0cd63db0d260cf5fbdf791ff79743060889968c53b0bd5', 'Marius', 'Roux');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1993-08-17', 'Hola, soy Marius y me gusta conocer gente nueva!', 16.8853, 91.8466, 'https://randomuser.me/api/portraits/men/31.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplebutterfly258', 'nicolas.molina@example.com', 'b8510932dad3ddf0fc34661a0caf6674e5c0d672e3930c6a736424d4df0e8016', 'Nicolas', 'Molina');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Nicolas y me gusta conocer gente nueva!', 10, -59.1693, 84.2258);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrywolf6392f95', 'thais.noelfcb8@example.com', '0188eaa432b3f6d6630f9daaf63ec361f32af168dfc8c21a38b7879b1ad71bac', 'Thaïs', 'Noel');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1996-05-24', 'Hola, soy Thaïs y me gusta conocer gente nueva!', 24.6286, -70.6896, 'https://randomuser.me/api/portraits/women/27.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackbird944', 'soledad.mora@example.com', '554c07a8809dc232861c323f5df0e114272963b780415622b1541ddf47604993', 'Soledad', 'Mora');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Soledad y me gusta conocer gente nueva!', 4, -80.0543, 16.0565);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redladybug355de6', 'gina.wallacec8e0@example.com', '9274d49c27b7583a60a06420b820077e38c6ad785f6df54b667d42aa9a5b325c', 'Gina', 'Wallace');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1987-04-10', 'Hola, soy Gina y me gusta conocer gente nueva!', -61.9779, 70.5621, 'https://randomuser.me/api/portraits/women/24.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowdog525', 'cassandra.bonnet@example.com', '87eba76e7f3164534045ba922e7770fb58bbd14ad732bbf5ba6f11cc56989e6e', 'Cassandra', 'Bonnet');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Cassandra y me gusta conocer gente nueva!', 30, 50.8160, 40.3061);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulmou09fa', 'kylie.gordon2656@example.com', 'c7c1319276e936c8d64f1d5ed80cd8a0cf54e6dea7b0125533eb4163e03a2c11', 'Kylie', 'Gordon');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1985-04-12', 'Hola, soy Kylie y me gusta conocer gente nueva!', -30.8578, 34.3081, 'https://randomuser.me/api/portraits/women/78.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplelion129', 'victoria.thomas@example.com', '48e99e083427951b44520d7543f4705c5dd6d0ed010c99f3f12fca92b15bb53a', 'Victoria', 'Thomas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Victoria y me gusta conocer gente nueva!', 33, 44.9339, -76.3703);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavylion7893323', 'debra.hortonb117@example.com', '06430f0d6a4605c6bf1aaf577b6dd9a6eaefc65d93c9875d363284304bac1b55', 'Debra', 'Horton');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1995-08-15', 'Hola, soy Debra y me gusta conocer gente nueva!', -26.0467, -67.5873, 'https://randomuser.me/api/portraits/women/83.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplemouse596', 'clinton.fleming@example.com', 'dd01aa418b1e4ea72b0c7d2997e14305ca5357606df48349c6847a392f1b0600', 'Clinton', 'Fleming');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Clinton y me gusta conocer gente nueva!', 71, 22.5229, -98.9210);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishkoale66b', 'vicky.vargas0da5@example.com', '571ceddcae178dcc2cbe40c51342a0853f819b426c334606a1a555f919d1a7b2', 'Vicky', 'Vargas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1998-01-22', 'Hola, soy Vicky y me gusta conocer gente nueva!', 78.191, -45.252, 'https://randomuser.me/api/portraits/women/11.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangefish933', 'traude.windisch@example.com', '1b001706a418bdfca35361355c643b7918572b8f9b7503f3043a6e23b45dce52', 'Traude', 'Windisch');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Traude y me gusta conocer gente nueva!', 29, -25.1837, -135.2761);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulducb78e', 'klaus.blume86b7@example.com', '5846d60018319b9e79700f11a3e826117b1bc6d3fd974c7348b38e9d671816c0', 'Klaus', 'Blume');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1998-07-13', 'Hola, soy Klaus y me gusta conocer gente nueva!', -7.5089, 82.8645, 'https://randomuser.me/api/portraits/men/86.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownleopard555', 'ruben.mahler@example.com', 'ac3180d2bc33069c4914922d14c2e58dcf765d6881a2d8cf7037d854b1085c43', 'Ruben', 'Mahler');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Ruben y me gusta conocer gente nueva!', 63, -50.4453, 1.6604);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyfrog2334737', 'izzie.cruzf6f6@example.com', '04e9c0db87e7eebbf8123dae64d169c85540d588a38b4f9f3fbc255c7c6c65a9', 'Izzie', 'Cruz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1991-03-23', 'Hola, soy Izzie y me gusta conocer gente nueva!', -32.1577, -102.9623, 'https://randomuser.me/api/portraits/women/38.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyelephant222', 'sergio.ferrer@example.com', 'edc1b708e1eeecb09405cbf16b4b795e32f89256c4054ef5f070d1dacac05521', 'Sergio', 'Ferrer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Sergio y me gusta conocer gente nueva!', 42, -89.3365, -88.6687);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyleopardbd39', 'andrea.fleuryb1db@example.com', 'c549addc80367e17fd46b5b6a094ee7f9958d5c92fba35f519e64c5a4304dde6', 'Andréa', 'Fleury');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1980-02-14', 'Hola, soy Andréa y me gusta conocer gente nueva!', 14.2728, -81.5599, 'https://randomuser.me/api/portraits/women/4.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('biggorilla326', 'mario.fernandez@example.com', '6def291378ec54715653340f91d2f1eb632090f69786e63cc9d12bf545762a2f', 'Mario', 'Fernández');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Mario y me gusta conocer gente nueva!', 7, 57.0328, -30.4238);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpleelephab698', 'cleo.duval8c38@example.com', '840cfaddfed15e5449b2dcba2e1d1bf5598a2892ea0cdaec63a8fddabec9ec99', 'Cléo', 'Duval');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2001-06-23', 'Hola, soy Cléo y me gusta conocer gente nueva!', -84.7459, -135.3305, 'https://randomuser.me/api/portraits/men/54.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangerabbit230', 'rudolf.fett@example.com', '8bd3ae2dfab4b3d9d1cfc9b60caefbdb4cd8328c2a9ea02630b5d1bfe5c96f89', 'Rudolf', 'Fett');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Rudolf y me gusta conocer gente nueva!', 31, 11.0648, -45.3539);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenmeercat9d1b', 'alexander.elliottb887@example.com', '8b5d7649d443334e3a9b1dd80704d4838db6578ace1d3d72cd0541dd289ee069', 'Alexander', 'Elliott');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2006-03-12', 'Hola, soy Alexander y me gusta conocer gente nueva!', 43.6771, -47.9527, 'https://randomuser.me/api/portraits/men/22.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplelion122', 'amelia.bertrand@example.com', '13d249f2cb4127b40cfa757866850278793f814ded3c587fe5889e889a7a9f6c', 'Amelia', 'Bertrand');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Amelia y me gusta conocer gente nueva!', 9, 43.3215, -101.6034);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitesnake895d98', 'silvia.benitez5054@example.com', '06d92f17a33b28585d90927b2226c4bd8eb0985ffdc41036b2e6cf6106289181', 'Silvia', 'Benítez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1994-03-17', 'Hola, soy Silvia y me gusta conocer gente nueva!', 24.7896, 66.5149, 'https://randomuser.me/api/portraits/women/5.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangemouse388', 'vivan.nichols@example.com', '1433d68859090304120ab33c5523485492a24de68464810b770a5957b6d64ca1', 'Vivan', 'Nichols');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Vivan y me gusta conocer gente nueva!', 46, 83.2710, 131.1673);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happymeercat7359', 'olga.delgado605c@example.com', 'd782fbdb1c4cc093df74c833b8ac7baeba7c01369c7309c21ae0bb6947d73ca2', 'Olga', 'Delgado');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1976-01-23', 'Hola, soy Olga y me gusta conocer gente nueva!', -8.7614, -34.9994, 'https://randomuser.me/api/portraits/women/36.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulswan522', 'jade.adam@example.com', '660e63d5d80a2c4d12c967c4b5bebd608dd85713d85ab911168feb29f037de23', 'Jade', 'Adam');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Jade y me gusta conocer gente nueva!', 69, 88.5178, -178.4007);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitemeercat9667', 'colleen.smithfb3b@example.com', '6ce53691b126808d3745d72b9016384ef0a174004dc9d3ab151e3c82da186ba5', 'Colleen', 'Smith');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2000-12-02', 'Hola, soy Colleen y me gusta conocer gente nueva!', 35.9796, 161.56, 'https://randomuser.me/api/portraits/women/3.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangeelephant768', 'phil.grant@example.com', '7ac41e467f19c3ec005067395cfd6aedcd98d02bb758a475382a60c64b92e7bf', 'Phil', 'Grant');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Phil y me gusta conocer gente nueva!', 48, 27.8926, -164.1383);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyfish4900f58', 'peggy.casperbbe6@example.com', 'e86da1244e289dd2a57686851996dc138aac82ca675ea0b9fd2a33ec62d5fa49', 'Peggy', 'Casper');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1996-07-26', 'Hola, soy Peggy y me gusta conocer gente nueva!', 64.4174, -160.5187, 'https://randomuser.me/api/portraits/women/77.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldentiger254', 'alexander.caldwell@example.com', '0bc851d8e8861b20da271d23994b9bc2604785313d3369acd3a2f8121b97be61', 'Alexander', 'Caldwell');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Alexander y me gusta conocer gente nueva!', 94, 61.4270, 87.8835);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigduck4425769', 'lloyd.young540c@example.com', '95f33aca87239c2179260855dcb4ff289127a76e5f728833cd1b4c42149f95fc', 'Lloyd', 'Young');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1986-05-01', 'Hola, soy Lloyd y me gusta conocer gente nueva!', -78.5582, 2.8928, 'https://randomuser.me/api/portraits/men/50.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazypanda193', 'hansjurgen.lau@example.com', '5493694a6e340e018bde9ba59cba04c37711d3ec97f47fde8c9968689e598132', 'Hansjürgen', 'Lau');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Hansjürgen y me gusta conocer gente nueva!', 83, 44.8579, -26.6404);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazypeacock63ee5', 'blanca.diazf3dc@example.com', 'b9505f3c64cdb4c7a685a2861f53e967a42984cc6391c77af0bdae8f36a3310a', 'Blanca', 'Diaz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2003-05-11', 'Hola, soy Blanca y me gusta conocer gente nueva!', 65.3991, 133.7549, 'https://randomuser.me/api/portraits/women/36.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryelephant846', 'reimer.weinrich@example.com', '44de9b7b036b9b8d28f364fa364b76b7af64d9e0b9efe17d7536033772a04871', 'Reimer', 'Weinrich');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Reimer y me gusta conocer gente nueva!', 5, 5.9188, 152.4005);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenzebra6bfae', 'joana.spielmann7586@example.com', 'c40727c66d04b725818d4579040bcc69d5cfd9b430889a1af92f02e2cdb1bde2', 'Joana', 'Spielmann');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1982-12-15', 'Hola, soy Joana y me gusta conocer gente nueva!', -66.0885, -118.5471, 'https://randomuser.me/api/portraits/women/93.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverbutterfly228', 'zbigniew.nehls@example.com', '88328d3ea3b80fec7811162a3cc220efbece527139157de27966a7f68a7cc580', 'Zbigniew', 'Nehls');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Zbigniew y me gusta conocer gente nueva!', 89, -52.0965, 51.8289);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silversnake1961d', 'ricky.griffinab5c@example.com', 'ba27444a56b473225c5ca7aa0b24853f7b18d006a7a185c5587d77ee7931301c', 'Ricky', 'Griffin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1979-03-14', 'Hola, soy Ricky y me gusta conocer gente nueva!', 18.6951, 63.255, 'https://randomuser.me/api/portraits/men/63.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowgoose665', 'freddie.cunningham@example.com', 'cc2fc13a49e7f0a2a4d70d95ff9a8a32a32850f361e5091a7d0827afa76391e5', 'Freddie', 'Cunningham');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Freddie y me gusta conocer gente nueva!', 8, -70.8633, 130.8419);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishlioncdaa', 'gesa.stormcc57@example.com', '6d69b8820ecfbc73d1d178a770d727ff0faa06481c50d4df22312f02f9101fbd', 'Gesa', 'Storm');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2006-08-27', 'Hola, soy Gesa y me gusta conocer gente nueva!', -67.2739, 136.429, 'https://randomuser.me/api/portraits/women/36.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadpeacock629', 'jeanette.reynolds@example.com', '652607e181622fd24a788d3128a697e40530dc11af62d36fcd89214388bb5898', 'Jeanette', 'Reynolds');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Jeanette y me gusta conocer gente nueva!', 56, -18.3227, 4.6889);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangezebra487ad', 'christian.vicenteafe5@example.com', '3b03fb24a09b786227b3718c3050e257a767a93f794ae6675b9f838c60354e64', 'Christian', 'Vicente');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1994-01-06', 'Hola, soy Christian y me gusta conocer gente nueva!', -53.6119, 15.8964, 'https://randomuser.me/api/portraits/men/23.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluezebra912', 'beverley.stanley@example.com', '534064cfa2ab0cd31c8c21464a1f95f29794457d707472afbab70d02e0266110', 'Beverley', 'Stanley');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Beverley y me gusta conocer gente nueva!', 83, 85.8027, 55.7164);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicpeaco1235', 'tanja.bauerlef50d@example.com', 'd6c5201664349757dfd1fec7624a71d50bb4299f993ff4d9e284e8cdad8e563f', 'Tanja', 'Bäuerle');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1983-09-14', 'Hola, soy Tanja y me gusta conocer gente nueva!', -35.6366, -43.0602, 'https://randomuser.me/api/portraits/women/2.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyostrich503', 'ayse.ruhl@example.com', '65ef5c0a2693179c203283f66015f04929c1279fcadbf006a82e8fef52d4eb83', 'Ayse', 'Rühl');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Ayse y me gusta conocer gente nueva!', 81, 55.7766, -17.1798);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackwolf193a545', 'chester.kuhn6084@example.com', '6ca5cab77e702c787b4c14b3d3bf26bad43da606be6eed04ab0b9720120ae081', 'Chester', 'Kuhn');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1987-07-28', 'Hola, soy Chester y me gusta conocer gente nueva!', -22.29, -46.395, 'https://randomuser.me/api/portraits/men/33.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenmeercat445', 'vanesa.garcia@example.com', '52518386cc33022de894fa0af047bd62666a63c2a6a6e86650e26955058c5acf', 'Vanesa', 'García');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Vanesa y me gusta conocer gente nueva!', 78, 74.4107, -125.8368);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyfish42806f0', 'francisca.moyaf4bb@example.com', '90b69be848db91f56c1d97e22fab15b529a69928f536e8ef15f55eea7eb4182c', 'Francisca', 'Moya');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1995-02-08', 'Hola, soy Francisca y me gusta conocer gente nueva!', 32.9507, -77.7538, 'https://randomuser.me/api/portraits/women/62.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitefrog607', 'xavier.munoz@example.com', 'e9b71991b7f947a3467fff8aeb5f6944a34cb9c5f9ab9e605411dd3655190c6c', 'Xavier', 'Muñoz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Xavier y me gusta conocer gente nueva!', 25, 80.6067, 4.4987);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplemeerca36ba', 'angela.fernandezc4ff@example.com', '28ca48ae89e86fd2d4ba5510c187bdd832f89c6cdc40651585b7df677117a45a', 'Angela', 'Fernandez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1978-10-01', 'Hola, soy Angela y me gusta conocer gente nueva!', -41.5992, -131.8333, 'https://randomuser.me/api/portraits/women/84.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blacksnake866', 'alberto.guerrero@example.com', 'de2497ccd699b51eca535d86c2ea9f53a820318c0580dadb7bce2944cbdd9a99', 'Alberto', 'Guerrero');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Alberto y me gusta conocer gente nueva!', 53, -53.4810, 120.4801);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpledog731b2be', 'maddison.hopkins52f9@example.com', '07f5937c9760f50867a78fa68982b1096cec0798448abf9395cd778fcded6f8d', 'Maddison', 'Hopkins');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1987-02-04', 'Hola, soy Maddison y me gusta conocer gente nueva!', 22.5301, 175.0799, 'https://randomuser.me/api/portraits/women/28.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greendog466', 'brent.harris@example.com', '767b0acef329a6d38de505b4237ce83953855ab2e6f9af11e8184c1940326c3a', 'Brent', 'Harris');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Brent y me gusta conocer gente nueva!', 63, 2.1227, -112.1893);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenbutter6dc6', 'leandre.fleury9d94@example.com', 'ca01a484fdadd80a6fb61c29b4efec11f2f3bd0f0e531ee34d9e58a360bf707a', 'Léandre', 'Fleury');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2003-10-01', 'Hola, soy Léandre y me gusta conocer gente nueva!', 6.6722, 70.0494, 'https://randomuser.me/api/portraits/men/41.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackzebra567', 'karl-friedrich.schwanke@example.com', '87f97f8c3484294c58e102897a96b260fd768fe9cb5bbd36413711f5ad30d656', 'Karl-Friedrich', 'Schwanke');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Karl-Friedrich y me gusta conocer gente nueva!', 100, -19.2730, -155.4021);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyelephan1d94', 'ariane.birknerf05d@example.com', '0ce2d4c7087733c06b1087b28db95e114d7caeb515b841c6cdec8960cf884654', 'Ariane', 'Birkner');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1994-08-15', 'Hola, soy Ariane y me gusta conocer gente nueva!', 24.6913, 68.333, 'https://randomuser.me/api/portraits/women/61.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallmeercat934', 'vanessa.hudson@example.com', '934a11e602682e862b4b4d1f881ae8da1e097e3f6964bd780e5bb1fb798a6fdd', 'Vanessa', 'Hudson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Vanessa y me gusta conocer gente nueva!', 9, -63.2744, -12.4637);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organickoalad63b', 'hans-erich.feldfff1@example.com', 'c013d16a335e2e40edf7d91d2c1f48930e52f3b76a5347010ed25a2334cee872', 'Hans-Erich', 'Feld');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1984-10-15', 'Hola, soy Hans-Erich y me gusta conocer gente nueva!', 70.7818, -70.0449, 'https://randomuser.me/api/portraits/men/52.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigzebra630', 'lauren.nguyen@example.com', '992345f21b57d68f497b9c5dbf837e060eaf2d8a4894f3f98c0b64de2b13006d', 'Lauren', 'Nguyen');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Lauren y me gusta conocer gente nueva!', 19, 68.6054, 168.8949);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blueduck6671a78', 'jim.hanson4171@example.com', '4697c20f8a70fcad6323e007d553cfe05d4433f81be70884ea3b4834b147f4c1', 'Jim', 'Hanson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1977-10-01', 'Hola, soy Jim y me gusta conocer gente nueva!', -86.6601, -122.69, 'https://randomuser.me/api/portraits/men/47.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitepeacock717', 'amanda.silva@example.com', '4a71c27904b98b02b8bfc39ccb066093ab9028270771f5cb43ba26b3d24f679e', 'Amanda', 'Silva');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Amanda y me gusta conocer gente nueva!', 98, -10.0581, 50.2097);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulduc8931', 'cassandra.campbell4187@example.com', 'd334cbac4bb3f242dfe5e11a656333345ce05c8409bc347be201f2447e14b480', 'Cassandra', 'Campbell');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1989-10-12', 'Hola, soy Cassandra y me gusta conocer gente nueva!', -83.9516, 156.0537, 'https://randomuser.me/api/portraits/women/7.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whiteleopard206', 'shaun.welch@example.com', '993b97603778a944ff00c86775aeb4c852a6deae031dbee58206dc3ae1e3242c', 'Shaun', 'Welch');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Shaun y me gusta conocer gente nueva!', 58, 74.0179, 147.5940);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazydog5381e36', 'anto.volk2c40@example.com', '2a2487917723f91a42b734ad2ec6a302e93b025aa6e2f8f40814ffa35c2b668c', 'Anto', 'Volk');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2002-03-23', 'Hola, soy Anto y me gusta conocer gente nueva!', -67.4779, 78.743, 'https://randomuser.me/api/portraits/men/54.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redgoose580', 'magdalena.vargas@example.com', 'ef74385116d34838bfff626124bd5f35786e40b6c57ebd85e14ef4dd5cae1d4c', 'Magdalena', 'Vargas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Magdalena y me gusta conocer gente nueva!', 54, 87.0795, -125.4626);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadbutterfly3f42', 'julia.white43b7@example.com', '32783cef30bc23d9549623aa48aa8556346d78bd3ca604f277d63d6e573e8ce0', 'Julia', 'White');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1981-07-05', 'Hola, soy Julia y me gusta conocer gente nueva!', -49.2602, 172.742, 'https://randomuser.me/api/portraits/women/1.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenswan229', 'anne.reid@example.com', '7dcfa8078e2c5e3d5d33573c115531f28dbc45afa4df8acd78751d5f9d730fe9', 'Anne', 'Reid');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Anne y me gusta conocer gente nueva!', 29, -35.0395, -128.7695);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowladybu1d6d', 'horst-peter.fehr86eb@example.com', 'c7647006fa89ebe136b7b96bd4d4ee2e37e58d267fc615f0d3309c63a5559039', 'Horst-Peter', 'Fehr');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1981-09-26', 'Hola, soy Horst-Peter y me gusta conocer gente nueva!', -4.4072, 67.269, 'https://randomuser.me/api/portraits/men/32.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallbutterfly263', 'noah.richards@example.com', 'ae448ac86c4e8e4dec645729708ef41873ae79c6dff84eff73360989487f08e5', 'Noah', 'Richards');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Noah y me gusta conocer gente nueva!', 31, 84.2766, -148.7789);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplesnake9dde6', 'ivan.cabrera91b9@example.com', 'afe431f2f73e4931eca6007dcfd04c6c5546b49ee4167a157afadc96fd5da8b2', 'Iván', 'Cabrera');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2001-08-15', 'Hola, soy Iván y me gusta conocer gente nueva!', -41.4021, -139.0687, 'https://randomuser.me/api/portraits/men/96.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadbird391', 'jean.legrand@example.com', '47ca2eb2d9674f1afa0e3eb9b2cbad67b47c7ee174b62a5259a06a87fbeed9bf', 'Jean', 'Legrand');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Jean y me gusta conocer gente nueva!', 99, -78.5917, -55.9004);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluefrog1483360', 'ramon.fernandez608b@example.com', 'c6c2307ac025abfed680cb646bc38ca3c3d6e02662a0f2faa143dcff22268a49', 'Ramon', 'Fernández');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1983-04-23', 'Hola, soy Ramon y me gusta conocer gente nueva!', 56.7428, -37.21, 'https://randomuser.me/api/portraits/men/43.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenostrich814', 'janet.laskowski@example.com', 'e4b8d11548bc9d5ab6f8755394cf574c225048cf8233a8ef92e59720c2f452f7', 'Janet', 'Laskowski');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Janet y me gusta conocer gente nueva!', 69, 78.5282, -12.1039);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangeladybucbb1', 'nathanael.moulina85e@example.com', '05c08a8470f37cfad6b30fda4ed573bb8446fb0405701f8c2e263a6fa63b3b23', 'Nathanaël', 'Moulin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1999-05-28', 'Hola, soy Nathanaël y me gusta conocer gente nueva!', 62.3442, -112.4418, 'https://randomuser.me/api/portraits/men/54.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smalldog905', 'mariano.jimenez@example.com', '2ab248f36c5237774d9e16e682c39dab8e747f144cfcfbcaf54755103036abe7', 'Mariano', 'Jiménez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Mariano y me gusta conocer gente nueva!', 26, -20.9750, -68.1753);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyfish565e022', 'alfonso.saez3fa2@example.com', '367728b04ad7c2ff9151c2ea9eecd94d2aa37486eaaa62f5167e0e2cb120439f', 'Alfonso', 'Sáez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1986-09-30', 'Hola, soy Alfonso y me gusta conocer gente nueva!', 40.574, 160.8681, 'https://randomuser.me/api/portraits/men/81.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluezebra899', 'selene.fournier@example.com', 'e86940f1161a9f79a84677c49613a1718840abbc63c205d1b85c6fb7707ba717', 'Sélène', 'Fournier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Sélène y me gusta conocer gente nueva!', 39, 8.5302, -114.9922);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazymeercat8f2f', 'cassandra.guillotc9c4@example.com', '58f87e265d97de141076d2e770459f51f20b32112139a0f7dc27b7d7803465db', 'Cassandra', 'Guillot');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2003-10-04', 'Hola, soy Cassandra y me gusta conocer gente nueva!', -10.6402, 150.5501, 'https://randomuser.me/api/portraits/women/39.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyladybug934', 'nelli.wulf@example.com', '21665ca201d4070f6fcc99b84aa1e55ae49e7b47069a24ed524da86413381b23', 'Nelli', 'Wulf');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Nelli y me gusta conocer gente nueva!', 67, 12.6147, -178.8985);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyleopard314f', 'jamie.porterf279@example.com', '8fe26efbd6c39984f6538ba14968a881925d02fc3ca58fd5b3caa63a4c310f17', 'Jamie', 'Porter');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1999-12-03', 'Hola, soy Jamie y me gusta conocer gente nueva!', 43.1822, 178.3989, 'https://randomuser.me/api/portraits/men/43.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitemeercat618', 'lily.burton@example.com', 'd7a9ead0b15cd7c8f3ba0d573530ad05b70052080825dda30744c9c7f44e07dc', 'Lily', 'Burton');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Lily y me gusta conocer gente nueva!', 91, 54.4949, 40.4344);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluedog492fa3f', 'diego.molina819c@example.com', '106b086224a4d945eae25f7be3805a931a873270326dd868b0e41f71ee9fff72', 'Diego', 'Molina');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1998-12-29', 'Hola, soy Diego y me gusta conocer gente nueva!', 56.7326, 65.7661, 'https://randomuser.me/api/portraits/men/26.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadelephant885', 'jar.owens@example.com', 'e226306f3f87b8f3f73a51521b0c74d7fb5837c4f1f790f99c0a239c9fe5250e', 'Jar', 'Owens');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Jar y me gusta conocer gente nueva!', 57, -77.4230, 64.3126);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyleopard49c60', 'julie.fleury24fd@example.com', '613bcee5ec761d59757a01e63d8bc1be5293e6f05225dcddbaf825f86173318d', 'Julie', 'Fleury');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1999-10-27', 'Hola, soy Julie y me gusta conocer gente nueva!', 35.6429, -37.2166, 'https://randomuser.me/api/portraits/women/1.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazygorilla170', 'pablo.vargas@example.com', 'f168ccdd91548c5a8c871bd4b9b757c5e889a1672e774bddef4a2714759a7a8f', 'Pablo', 'Vargas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Pablo y me gusta conocer gente nueva!', 8, 27.0247, -143.7009);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluewolf4218eb6', 'gabriel.saezb76b@example.com', 'd7c8fbed35270bfd99ac98384e756124b9e4c87fc9f57381f14a9ed70d43a3cb', 'Gabriel', 'Sáez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1990-03-31', 'Hola, soy Gabriel y me gusta conocer gente nueva!', 68.271, 168.8539, 'https://randomuser.me/api/portraits/men/9.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackcat104', 'rachel.peters@example.com', 'ed872309250a9f1fe84330f0093758a4c7bc1d9bf7b4a3fc39f61aea4b3af867', 'Rachel', 'Peters');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Rachel y me gusta conocer gente nueva!', 7, -54.4260, -167.7653);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenlion784b040', 'aleksandra.erlerc6fb@example.com', '8c585378513f5f7a2e1456ee54042605fdb890392becefadd2ab180fd02fb341', 'Aleksandra', 'Erler');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2006-09-21', 'Hola, soy Aleksandra y me gusta conocer gente nueva!', -4.7701, -132.6992, 'https://randomuser.me/api/portraits/women/64.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallelephant224', 'emmy.david@example.com', '9a380c788b413913dfc4cad4654e120869d1c0b8e76e2821117b691ff4a86ba3', 'Emmy', 'David');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Emmy y me gusta conocer gente nueva!', 27, 48.9489, -66.4378);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownwolf9110fb0', 'vicente.rodriguezeea7@example.com', '127ee625c38029527531c7cc2394e91a0c978dfc57f3472627be1a7fb0171d1e', 'Vicente', 'Rodríguez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2006-03-13', 'Hola, soy Vicente y me gusta conocer gente nueva!', 73.0292, -87.8013, 'https://randomuser.me/api/portraits/men/31.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishgoose776', 'rafael.arnold@example.com', '9dc184d076c1e6e550514b4364e21dc30609f6f1eca29358b02ba563c55fb992', 'Rafael', 'Arnold');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Rafael y me gusta conocer gente nueva!', 63, -37.9115, 45.0117);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverbird864bdf', 'belen.marin0fb0@example.com', '6cb7c3f534e7ed68d9ba681b58643dee51f6cc765d50c04f2820421ae03c983f', 'Belén', 'Marín');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1988-01-22', 'Hola, soy Belén y me gusta conocer gente nueva!', 28.6486, 41.8869, 'https://randomuser.me/api/portraits/women/79.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavypanda989', 'bobbie.kennedy@example.com', 'daf4814562fe9714fbfc8dc958c8e5dba31d352e9dfb8d225e41add4e71a9e0a', 'Bobbie', 'Kennedy');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Bobbie y me gusta conocer gente nueva!', 92, -37.0040, -114.6170);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigpeacock55b759', 'billie.curtis3870@example.com', '7405e3ef4da7fd778b4ce109a90d176e0957190dff8097a380b62b1e362d9c51', 'Billie', 'Curtis');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1981-11-11', 'Hola, soy Billie y me gusta conocer gente nueva!', 32.4455, 117.5297, 'https://randomuser.me/api/portraits/women/90.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulostrich637', 'lauren.stanley@example.com', '98c1eb4ee93476743763878fcb96a25fbc9a175074d64004779ecb5242f645e6', 'Lauren', 'Stanley');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Lauren y me gusta conocer gente nueva!', 70, -40.8147, 71.9825);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicpanda762e', 'lea.robin0f0f@example.com', '47acf82a48cfa5c340ea536cdd66c75ef85eb8d3fcff468fc7c8abcaceb15ed0', 'Léa', 'Robin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1999-04-29', 'Hola, soy Léa y me gusta conocer gente nueva!', -19.1023, -88.4459, 'https://randomuser.me/api/portraits/women/90.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadelephant966', 'carolyn.rogers@example.com', '710c3906ca8b54f86c9e020d989792d03b9a0d8904d7b57b3f57e74ab1746625', 'Carolyn', 'Rogers');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Carolyn y me gusta conocer gente nueva!', 35, 21.0951, 102.6081);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redtiger984e755', 'luke.brooks5659@example.com', '3e34b5dc434bcf3186f089d362691cfac1b17231601f2f402dc79015be878d83', 'Luke', 'Brooks');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1993-01-31', 'Hola, soy Luke y me gusta conocer gente nueva!', -10.5951, -153.3539, 'https://randomuser.me/api/portraits/men/81.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigtiger369', 'soledad.saez@example.com', 'c7647006fa89ebe136b7b96bd4d4ee2e37e58d267fc615f0d3309c63a5559039', 'Soledad', 'Sáez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Soledad y me gusta conocer gente nueva!', 75, 46.7995, 119.2797);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackladybug5ad2', 'mario.brown1992@example.com', 'fcc2f4047467806543e2197c32a737aa745c889f162884cbbaced3c2b4bd48a1', 'Mario', 'Brown');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2000-10-11', 'Hola, soy Mario y me gusta conocer gente nueva!', 0.4084, -136.7527, 'https://randomuser.me/api/portraits/men/22.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackostrich558', 'mike.kuhn@example.com', 'd2fa0e68a5824ca58e1a49314a4f395ba10e7eac10d8481653f6940227b412c4', 'Mike', 'Kuhn');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Mike y me gusta conocer gente nueva!', 75, 35.2054, -171.4044);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangebird42a3d8', 'maxime.pierre026c@example.com', '3331186e700623e40c5b91dffd2effee214f5e1623113d705a6faae75e9193df', 'Maxime', 'Pierre');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1992-02-24', 'Hola, soy Maxime y me gusta conocer gente nueva!', -29.3537, -7.6537, 'https://randomuser.me/api/portraits/men/13.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigladybug602', 'paul-gerhard.bolz@example.com', 'b64866d9d481181a9b3cd74f1323d7e35cd0ba87b48945ac92c1619827694fd2', 'Paul-Gerhard', 'Bolz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Paul-Gerhard y me gusta conocer gente nueva!', 60, -53.6963, -125.1753);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrykoala9370c5', 'pierre.lucas696c@example.com', 'cf2351e92bc39fb3de9c14a0acfad546f13cf40edb176382d3896c41c8a876c1', 'Pierre', 'Lucas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1996-04-07', 'Hola, soy Pierre y me gusta conocer gente nueva!', -83.0217, -61.5012, 'https://randomuser.me/api/portraits/men/6.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazykoala621', 'sven.hoppner@example.com', 'ca1d3d4d877cb32cda87cbd7dbce34823a5bc29554055b2d7ab8f3e67556144b', 'Sven', 'Höppner');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Sven y me gusta conocer gente nueva!', 75, -54.6291, 49.7801);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackostrich2164', 'sandra.jacobsb7c7@example.com', 'c550c2f4a0d4fd8c16293e0ab094b22605cc84f7e77ba9ef40df516d8df0fbc6', 'Sandra', 'Jacobs');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1987-04-23', 'Hola, soy Sandra y me gusta conocer gente nueva!', 48.3062, 118.5594, 'https://randomuser.me/api/portraits/women/49.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadgoose435', 'olivia.lucas@example.com', 'b42aedc25c137632cb251c6834fc8f5e1457a078e8dab85960dbe8b011e547d5', 'Olivia', 'Lucas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Olivia y me gusta conocer gente nueva!', 48, 3.9837, 165.4908);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happybird2628c3c', 'dianne.hudson13d4@example.com', '609a9020414880accc484b0d8fd5082e2799aa828d83dfa37a1ed5f77d50861a', 'Dianne', 'Hudson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1976-05-30', 'Hola, soy Dianne y me gusta conocer gente nueva!', 31.0813, -97.0988, 'https://randomuser.me/api/portraits/women/29.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallbird950', 'edeltraut.melchior@example.com', '97a22fa048ba039c7b0ba574b61caf4546eee22b0049b2df0f0b26b3ce7e70ee', 'Edeltraut', 'Melchior');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Edeltraut y me gusta conocer gente nueva!', 5, -23.0884, -96.0116);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluemeercat9fb03', 'rosemarie.michel8452@example.com', '1ff3a3c1830a1531cde661cc90ff6f2b7ec3c68c017fe051dc4500dc5fec99c4', 'Rosemarie', 'Michel');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1999-06-17', 'Hola, soy Rosemarie y me gusta conocer gente nueva!', -0.5479, 173.8911, 'https://randomuser.me/api/portraits/women/43.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavymouse426', 'francis.brauer@example.com', 'ce635c4eabff5e4f56dba8fb1e39ca235530aa2b6b18533eef1af3862016c577', 'Francis', 'Bräuer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Francis y me gusta conocer gente nueva!', 53, 70.2385, 175.3867);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinybutterfl948e', 'louise.barbier8b26@example.com', '8a4262979b06fa58a105b926c7f6def0a0cd3b70b4c5321f06792879053b4366', 'Louise', 'Barbier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2001-05-01', 'Hola, soy Louise y me gusta conocer gente nueva!', 85.126, 46.7185, 'https://randomuser.me/api/portraits/women/40.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinylion471', 'benjamin.sanchez@example.com', '046b79f495da73e1f696602c80d167a81f62fdc0864bee8dd44d0b228f7ce5d8', 'Benjamin', 'Sanchez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Benjamin y me gusta conocer gente nueva!', 0, -52.4778, 79.8779);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whiteduck311002e', 'darlene.tucker9c67@example.com', '74f7fd1cf08b145c5859b9f402422440c0ddd4a459b584f23e51f2dbfe17380f', 'Darlene', 'Tucker');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1986-09-30', 'Hola, soy Darlene y me gusta conocer gente nueva!', -60.9011, 15.6195, 'https://randomuser.me/api/portraits/women/86.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinygoose689', 'marine.dupuis@example.com', 'eb172d9dba811d29fdf3c2bd694c6b5fbac12a25a1eb5d4e6ba67aea875e8b92', 'Marine', 'Dupuis');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Marine y me gusta conocer gente nueva!', 42, -52.6347, 128.4255);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazysnake54bcfa', 'rolf-dieter.scheu3fef@example.com', 'bfe7aed882c372f401be8b849c503547d9872088e4ad361d71babd34123bf51b', 'Rolf-Dieter', 'Scheu');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1989-04-08', 'Hola, soy Rolf-Dieter y me gusta conocer gente nueva!', 31.4289, -80.5311, 'https://randomuser.me/api/portraits/men/41.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackgoose166', 'anna.kelley@example.com', '15830f493c714309a282f596af26224493a4243024368ca97437ce0a58e255a3', 'Anna', 'Kelley');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Anna y me gusta conocer gente nueva!', 59, 7.0093, 97.1539);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicrabbi5cef', 'othmar.schlosser6a04@example.com', '1c188a6d76a7ed718a468997804ee69fd73e2a5cbb286687cd0739681a47db95', 'Othmar', 'Schlosser');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1977-04-06', 'Hola, soy Othmar y me gusta conocer gente nueva!', 68.0116, -165.2871, 'https://randomuser.me/api/portraits/men/47.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadkoala886', 'jeanne.deschamps@example.com', 'aaaccad5920635c14a62a30b9a6aa7b80579346e05000e56bbd0fd489086c09d', 'Jeanne', 'Deschamps');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Jeanne y me gusta conocer gente nueva!', 51, 7.1049, 141.8161);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadbear9875f64', 'perry.rodriquez4c83@example.com', 'e936fa73c6e351f3a6097d818a149f72f21bb5f902482e58719f28154557d7d5', 'Perry', 'Rodriquez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1985-02-07', 'Hola, soy Perry y me gusta conocer gente nueva!', 47.485, 38.081, 'https://randomuser.me/api/portraits/men/4.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownladybug603', 'elise.garnier@example.com', 'ee7cd3962ea25933955f44f7c8e31005420e0a4a087c1906664730e1d57e8140', 'Elise', 'Garnier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Elise y me gusta conocer gente nueva!', 40, -80.9380, -9.9013);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redmouse8837c37', 'gerard.ludwig4e99@example.com', 'dd5a13788c80cf1003e233f8ffdd541705121742e922aee2d2214ba877bc3551', 'Gerard', 'Ludwig');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1998-09-22', 'Hola, soy Gerard y me gusta conocer gente nueva!', 32.6702, 69.3977, 'https://randomuser.me/api/portraits/men/10.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangewolf567', 'agnes.dreher@example.com', 'b62a51a45f7cdef7a0aad9fb7be7e693908c140a6379b43049ba1cca333c52b6', 'Agnes', 'Dreher');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Agnes y me gusta conocer gente nueva!', 35, 32.1535, -86.3177);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitebear40968e0', 'urban.andresen10dc@example.com', '982d3cec0c8e060d5b7175d368c2eb3171c291a20c97f83e29b386275174f4dc', 'Urban', 'Andresen');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1990-10-22', 'Hola, soy Urban y me gusta conocer gente nueva!', 86.4424, -109.7886, 'https://randomuser.me/api/portraits/men/32.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowduck721', 'william.medina@example.com', 'b8262e86e0bcadfc8e03ef6d51999137d78774cdae980fe12d78bdc9943d75a6', 'William', 'Medina');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy William y me gusta conocer gente nueva!', 89, -30.7770, -109.0749);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigbutterflyf278', 'fernando.prietoa6b6@example.com', '62d7a6b1211d627650e2bf0c869b69b564e2cd74290ae1dd78ae4b5e20b0cfe7', 'Fernando', 'Prieto');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1982-09-27', 'Hola, soy Fernando y me gusta conocer gente nueva!', -45.4574, -76.0828, 'https://randomuser.me/api/portraits/men/38.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadlion200', 'larry.carpenter@example.com', '0ddf8cbefa6ed1a5d0c71ea559734bcd2c6261bd3ae34cfba7a007859cb366e5', 'Larry', 'Carpenter');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Larry y me gusta conocer gente nueva!', 13, -55.8280, -45.4444);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organiclion545ca', 'claire.oehler6250@example.com', 'd22f4e0f2779f1044467cfda393d04e6fce1111e1520a7fa41a8a9d8baa3c017', 'Claire', 'Oehler');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1976-11-26', 'Hola, soy Claire y me gusta conocer gente nueva!', -6.9274, -78.8749, 'https://randomuser.me/api/portraits/women/13.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluegoose459', 'sonia.torres@example.com', 'f0da7cf69a74f344e114ecdc553aea62abd4d299468a96ae40ec8de321fe6bee', 'Sonia', 'Torres');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Sonia y me gusta conocer gente nueva!', 17, -83.5243, -105.7627);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicmouseb202', 'ingeburg.ostermeiere727@example.com', '28fbf9617c161595d4892702d5909144f3d6702d5010fefbb9e46b8721ea7fb0', 'Ingeburg', 'Ostermeier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1994-09-11', 'Hola, soy Ingeburg y me gusta conocer gente nueva!', -55.8948, 109.5054, 'https://randomuser.me/api/portraits/women/13.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluemeercat107', 'jean.phillips@example.com', '0f20a0190d87a4c4659060f79fec24fb0bef76808950c6b8fd4b52daf7fc23d5', 'Jean', 'Phillips');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Jean y me gusta conocer gente nueva!', 63, 47.4491, -64.2359);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenduck485839f', 'elisa.lefebvre5c2e@example.com', '1bc3201a9f24a2fe48f634f90d406aaf6cbf5e36e292870ecba98d74b065ee1b', 'Elisa', 'Lefebvre');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1998-07-13', 'Hola, soy Elisa y me gusta conocer gente nueva!', -42.532, 43.9079, 'https://randomuser.me/api/portraits/women/56.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyrabbit413', 'margarita.castillo@example.com', 'ef3ff703d7565ab5215cdbe043858f2b8a0415b2b35dd17a3da1354f86009b98', 'Margarita', 'Castillo');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Margarita y me gusta conocer gente nueva!', 11, 30.7829, -27.7318);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackbear57976e2', 'andres.sanchezfa95@example.com', 'fe2592b42a727e977f055947385b709cc82b16b9a87f88c6abf3900d65d0cdc3', 'Andrés', 'Sánchez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1989-07-15', 'Hola, soy Andrés y me gusta conocer gente nueva!', -60.8115, -104.6673, 'https://randomuser.me/api/portraits/men/23.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishfish647', 'penny.stanley@example.com', 'b7059a7ac907cd5965ebf254ec216d1d1cb58eb0205162d4c7ebd062cc893a5b', 'Penny', 'Stanley');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Penny y me gusta conocer gente nueva!', 44, 18.6044, 137.6412);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowrabbitf77f', 'oskar.weigertf1bc@example.com', '1e672dccc8cb80a9010872572f0ca44ac15678d37fe1053b7f53ee137ed11200', 'Oskar', 'Weigert');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1975-03-22', 'Hola, soy Oskar y me gusta conocer gente nueva!', -30.8188, 80.9208, 'https://randomuser.me/api/portraits/men/14.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyswan763', 'rayan.jean@example.com', 'd93244e7b08131ef10eda16a0717627450cf0e51d1ca713c41d301a51b9a6e54', 'Rayan', 'Jean');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Rayan y me gusta conocer gente nueva!', 8, 26.4619, -72.8662);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicfrog2e975', 'mathias.reyb157@example.com', '906db3f0fbd4678fac45d2d53f014cb4869656c7ee378f717dc439304fea5ee9', 'Mathias', 'Rey');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1987-10-22', 'Hola, soy Mathias y me gusta conocer gente nueva!', -85.6287, 3.349, 'https://randomuser.me/api/portraits/men/44.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyleopard770', 'mathilde.colin@example.com', 'd22f4e0f2779f1044467cfda393d04e6fce1111e1520a7fa41a8a9d8baa3c017', 'Mathilde', 'Colin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Mathilde y me gusta conocer gente nueva!', 68, -51.0045, -135.2253);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldensnake5cba3', 'lou.andre94e4@example.com', '742639f0f3442e8ffc6072d19d0588437c604e37e2eb6b7d6ff54b588b07364e', 'Lou', 'Andre');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2005-05-27', 'Hola, soy Lou y me gusta conocer gente nueva!', 5.6351, -127.7929, 'https://randomuser.me/api/portraits/women/3.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplebird125', 'rabea.nitzsche@example.com', '8031bbbd1844733fe20c945d1a115f675d19e81f58e58f756c059f3eb2667036', 'Rabea', 'Nitzsche');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Rabea y me gusta conocer gente nueva!', 29, 78.0477, 81.5503);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangeladybu9001', 'maelys.guillot5ae5@example.com', '630471bc17c69d0bb5c0b2a31b8faf762b907eb27fba3204a0f15695d8f804b4', 'Maëlys', 'Guillot');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1995-11-03', 'Hola, soy Maëlys y me gusta conocer gente nueva!', 34.3331, 53.3333, 'https://randomuser.me/api/portraits/women/76.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicdog561', 'ferenc.mengel@example.com', '4b125ec99a74470517f9f51ac1a70eafa3dbd1ddd4bae409fe59a98ed720a3a4', 'Ferenc', 'Mengel');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Ferenc y me gusta conocer gente nueva!', 96, -68.7816, -0.9608);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowwolf461786', 'flavie.adameb51@example.com', 'ebf1eee550e1decd319d641155cfd344c68bc24bafcc3f5fa0c650f9645f6892', 'Flavie', 'Adam');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2004-09-07', 'Hola, soy Flavie y me gusta conocer gente nueva!', 68.9332, -15.9239, 'https://randomuser.me/api/portraits/women/72.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyswan969', 'olivia.matthews@example.com', '12ea12eace7d655f471ce55e34f89b1b77a3d9d05a445ca82877dd2235beaa51', 'Olivia', 'Matthews');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Olivia y me gusta conocer gente nueva!', 10, -19.3339, -8.5285);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverbutterec44', 'tamara.ahlers7016@example.com', '0b2319dc1ccf78038936020d8eeef539ed8a6485fc6b9eb7826225a5276393b2', 'Tamara', 'Ahlers');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1996-12-19', 'Hola, soy Tamara y me gusta conocer gente nueva!', 86.1598, -156.2912, 'https://randomuser.me/api/portraits/women/61.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazypanda171', 'katie.bryant@example.com', '1c44b30147d12c47c354230f6bd99bb17657e3d5bf616ac5408dcbf28e83fdb8', 'Katie', 'Bryant');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Katie y me gusta conocer gente nueva!', 45, 89.0709, -62.5149);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenelepha8dcb', 'loic.rodriguezd8eb@example.com', 'ba736bded891aff9275b327d9534c9ef933d1f9d9d422500d95fa91a1524f459', 'Loïc', 'Rodriguez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1979-07-11', 'Hola, soy Loïc y me gusta conocer gente nueva!', 2.1003, 44.5172, 'https://randomuser.me/api/portraits/men/46.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyrabbit878', 'amanda.homann@example.com', '8cde0d2561817e9b8d659213b79bb3ceb17d7be5f2d8553e0f626c6aaf70545c', 'Amanda', 'Homann');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Amanda y me gusta conocer gente nueva!', 43, 66.2169, -133.8330);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulduc40c1', 'valentin.crespod2a6@example.com', '81a83544cf93c245178cbc1620030f1123f435af867c79d87135983c52ab39d9', 'Valentín', 'Crespo');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1995-04-14', 'Hola, soy Valentín y me gusta conocer gente nueva!', -13.0027, 167.7728, 'https://randomuser.me/api/portraits/men/56.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallcat959', 'hans-friedrich.lang@example.com', '3fd30542fe3f61b14bd4a4b2dc0b6fb30fa6f63ebce52dd1778aaa8c4dc02cff', 'Hans-Friedrich', 'Lang');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Hans-Friedrich y me gusta conocer gente nueva!', 63, -3.0668, -15.5385);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownelephane8c3', 'line.dasilva6bd5@example.com', '64382a27e115c395467e383e836bf3b959ae25fdca7a1f52537089879d0f2f25', 'Line', 'Da Silva');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1990-01-20', 'Hola, soy Line y me gusta conocer gente nueva!', -71.3492, -29.3095, 'https://randomuser.me/api/portraits/women/64.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowlion131', 'silvia.ortiz@example.com', '234d6d31ecb9d31204f97fa13cf7c5af2dd45a1bdb862311e3ac259e98e8f796', 'Silvia', 'Ortiz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Silvia y me gusta conocer gente nueva!', 7, 79.8367, 13.8685);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigbutterfly2c0a', 'natalia.nietoae17@example.com', '7f2774b22f2ce1d0100fd552618dcedd6588ad4ea016659d9c5e11d8b71728db', 'Natalia', 'Nieto');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1998-03-20', 'Hola, soy Natalia y me gusta conocer gente nueva!', 30.9252, 106.3133, 'https://randomuser.me/api/portraits/women/50.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitepeacock807', 'hugo.nikolaus@example.com', '3d7eb3d3dab17ee509a6911e0feb928eb46e956adcada792493614bfb97a7a9c', 'Hugo', 'Nikolaus');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Hugo y me gusta conocer gente nueva!', 97, 60.8549, -117.6719);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greensnake4043da', 'aurora.reyes93b2@example.com', 'f4714bc14ee3d38786b379bda4a646eb03f478623d76033b3605e1244a5a2773', 'Aurora', 'Reyes');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2002-04-16', 'Hola, soy Aurora y me gusta conocer gente nueva!', -8.6232, 25.4688, 'https://randomuser.me/api/portraits/women/65.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldengoose827', 'floyd.collins@example.com', '4c96f214fb33ae6b30760f5741284a07dfe5a30d3872fbf18139a6b1fb0fc0fd', 'Floyd', 'Collins');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Floyd y me gusta conocer gente nueva!', 99, -25.7366, 104.6626);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blueduck737d674', 'brooklyn.thomas2140@example.com', 'b0c5f417a5a9c8af7e19cfb341d9fad0869baa9d473652fcba4ae5a872db6b30', 'Brooklyn', 'Thomas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1985-05-12', 'Hola, soy Brooklyn y me gusta conocer gente nueva!', -57.8089, 173.0299, 'https://randomuser.me/api/portraits/women/92.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redpanda420', 'alexander.kennedy@example.com', '1c22f26ac4d48e559798c29665ef2eeea067b849eabc4e6c609de04294c5e348', 'Alexander', 'Kennedy');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Alexander y me gusta conocer gente nueva!', 25, -81.2451, -146.5070);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigleopard736fc2', 'vivian.stoltea0ff@example.com', '20f759a1625250532102c726b8477079a46255459abf22831d96337df61f8baa', 'Vivian', 'Stolte');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2005-02-16', 'Hola, soy Vivian y me gusta conocer gente nueva!', -34.2371, -108.5345, 'https://randomuser.me/api/portraits/women/64.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyleopard531', 'travis.oliver@example.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Travis', 'Oliver');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Travis y me gusta conocer gente nueva!', 51, -33.5526, 123.8346);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplebear28352b', 'constance.behr1814@example.com', 'd704d0ba3a2cb075b50c2a96417ecb1461afa259a543d83a3f23e2d6f87ba2ce', 'Constance', 'Behr');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1978-12-01', 'Hola, soy Constance y me gusta conocer gente nueva!', 19.2084, -107.5382, 'https://randomuser.me/api/portraits/women/65.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazykoala944', 'ernest.wheeler@example.com', 'b91136286b50c5be49bd3fdbd00648a98aded623894ebd9debdaa91ad844ca5c', 'Ernest', 'Wheeler');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Ernest y me gusta conocer gente nueva!', 14, 23.5867, -29.0595);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happydog95456af', 'sandra.mendezd039@example.com', '8472638c24e61364a5cfbe3bb146f22058212be6aedd4fea0c78e27aa30d2ebc', 'Sandra', 'Méndez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1984-09-16', 'Hola, soy Sandra y me gusta conocer gente nueva!', 67.1088, 27.4103, 'https://randomuser.me/api/portraits/women/4.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownkoala184', 'alexandre.mercier@example.com', 'ca6b23df9fe4e527f9fcf325ed75ae92891ab54475e4f818dbca3be78a546d3a', 'Alexandre', 'Mercier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Alexandre y me gusta conocer gente nueva!', 89, 16.7686, -130.1533);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulsna8b22', 'carla.santiago93dd@example.com', '0a14a1797925f8b61d010574c110617ee9bce8918da92c2187b9d02b68a792ba', 'Carla', 'Santiago');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2000-11-23', 'Hola, soy Carla y me gusta conocer gente nueva!', -16.9172, 174.626, 'https://randomuser.me/api/portraits/women/45.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silversnake751', 'axelle.lacroix@example.com', '588d2c1d1f23963e1647ea4fb720eec44b113b82d057156b970e96df9a1be810', 'Axelle', 'Lacroix');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Axelle y me gusta conocer gente nueva!', 32, -36.8437, 92.3034);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangewolf838dd6', 'bernice.williamsona92c@example.com', '01df2cc6fa6f8098a687eb5c5ad5f4186bffcd18f75f87fba9735daede10108c', 'Bernice', 'Williamson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1985-04-20', 'Hola, soy Bernice y me gusta conocer gente nueva!', -53.3288, 122.9796, 'https://randomuser.me/api/portraits/women/90.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallrabbit666', 'aurora.alonso@example.com', 'fabf822884002cf6bf0fcef64b54392598ee4389a22ae539e0cf7bbcf25f34e2', 'Aurora', 'Alonso');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Aurora y me gusta conocer gente nueva!', 59, -70.7786, 69.7162);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redbutterfly719b', 'lily.lecomtee36e@example.com', 'cadc62047f58dce349fe916385c2b3802c37490b02bc2135b298253d8f17b6f7', 'Lily', 'Lecomte');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1985-11-25', 'Hola, soy Lily y me gusta conocer gente nueva!', -53.3995, 131.4508, 'https://randomuser.me/api/portraits/women/58.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryleopard319', 'sam.henry@example.com', '013ec4e1175f04bb390b9a3d8339ad998fc15fefc7c4c9fd41d29ca4ecabaac2', 'Sam', 'Henry');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Sam y me gusta conocer gente nueva!', 27, -34.9189, -4.9993);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazypanda411072', 'ljubica.felber7966@example.com', 'd09710023003ed91f4ceba910c0e3b956855238e43750b4ea3947fdf5ad11e0c', 'Ljubica', 'Felber');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1989-04-30', 'Hola, soy Ljubica y me gusta conocer gente nueva!', -17.1329, -100.7789, 'https://randomuser.me/api/portraits/women/13.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('browntiger205', 'johan.meyer@example.com', '90a7578caf8760be75c2b36f8b110073e494adf0a3264e624874098ed93acbab', 'Johan', 'Meyer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Johan y me gusta conocer gente nueva!', 20, -34.5602, 80.5941);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazysnake756def', 'lucille.curtis41cd@example.com', '3e30da3972953c020ac40149f6ef4d25d1c28c8b9ea58e68bdd236716cdc932e', 'Lucille', 'Curtis');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1999-10-03', 'Hola, soy Lucille y me gusta conocer gente nueva!', 70.9458, 10.2222, 'https://randomuser.me/api/portraits/women/17.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverbird545', 'enora.blanc@example.com', 'c0d2856b74d0df05b9d4456b177950351bd88e98b77f12574dfb7a911acee0d0', 'Enora', 'Blanc');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Enora y me gusta conocer gente nueva!', 27, -72.4066, 88.7932);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happymeercat5bec', 'eugenia.alvarez947c@example.com', '0d0c417ba77ab8709375ea1c10c4bbb29d79860aaef7c222fd262dc4a19d0bd2', 'Eugenia', 'Álvarez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1988-10-25', 'Hola, soy Eugenia y me gusta conocer gente nueva!', -51.3187, -103.8235, 'https://randomuser.me/api/portraits/women/4.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadgorilla702', 'diego.mora@example.com', 'e8a434aefc8b73e5c87a9d445893e02c784c59b0993ea38cfe663b7666860de0', 'Diego', 'Mora');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Diego y me gusta conocer gente nueva!', 15, -38.4552, 158.5665);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('biggorilla619b76', 'joseph.russell59c9@example.com', '9200f647267d36cd5ec7fc2c747aa3d3130ffe37195e229a96ca09a0beda23c4', 'Joseph', 'Russell');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1979-01-07', 'Hola, soy Joseph y me gusta conocer gente nueva!', -6.6337, -99.3931, 'https://randomuser.me/api/portraits/men/9.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenrabbit216', 'purificacion.alvarez@example.com', '28c47cc606ad0783b8f419df71ec4ca60ab6eb09fe53e469fe5862925551ff15', 'Purificación', 'Álvarez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Purificación y me gusta conocer gente nueva!', 83, 17.8869, 3.8411);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicbutte120e', 'anthony.garniercf63@example.com', '1b6d6d8b061bfd142b6f12e7d1bc1dc3f68ce57a1b2e4b5dce1f7d376ae2161d', 'Anthony', 'Garnier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1995-09-11', 'Hola, soy Anthony y me gusta conocer gente nueva!', -48.3867, -150.0433, 'https://randomuser.me/api/portraits/men/99.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happytiger547', 'line.francois@example.com', '0f068c4fa50e2febe2add8a3024f47d0bb20ec7902e7f409840971ec0bd1eb3b', 'Line', 'Francois');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Line y me gusta conocer gente nueva!', 65, -50.5052, 23.6871);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallladybug64e9', 'kyle.georgead7d@example.com', '81f315850e64fd88ef903f081e8d96ccd12e29874ee5a4b008e47f8b124b4122', 'Kyle', 'George');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1988-07-10', 'Hola, soy Kyle y me gusta conocer gente nueva!', 24.8352, -67.1735, 'https://randomuser.me/api/portraits/men/12.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluepeacock216', 'fernando.jimenez@example.com', 'b7933ed6180d9e2895a9d2df885e2a8b92e998a3c16297581f5b8698daacf492', 'Fernando', 'Jiménez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Fernando y me gusta conocer gente nueva!', 97, -15.1918, 38.0169);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinywolf684e5ff', 'danny.williams24f5@example.com', 'd8198efa3604d164853468608c55efa148bc56e3564d5a30232bf98b8ab43aeb', 'Danny', 'Williams');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1980-10-23', 'Hola, soy Danny y me gusta conocer gente nueva!', 56.2937, -132.7268, 'https://randomuser.me/api/portraits/men/68.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownfrog460', 'titouan.renard@example.com', 'eeac7816005ff0bde67004b95a5563844d60901f3db3baaafc62ac4e850e08de', 'Titouan', 'Renard');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Titouan y me gusta conocer gente nueva!', 57, 58.1171, -102.8973);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigmeercat716aec', 'claire.legallf7ab@example.com', 'ec450786e26a5154173545c402bcc03b20e2e0477d6086fa632a55c85bdcdd83', 'Claire', 'Le Gall');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1978-11-30', 'Hola, soy Claire y me gusta conocer gente nueva!', -50.2293, 32.2689, 'https://randomuser.me/api/portraits/women/59.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazysnake166', 'soan.mathieu@example.com', 'f59ac0828b9a32293b348e398a0efd342b1e4377a687f3a9055ee2871dff35e4', 'Soan', 'Mathieu');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Soan y me gusta conocer gente nueva!', 73, -80.9897, -44.8307);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallbear973fc57', 'myrtle.ray6f7f@example.com', '93c6b09e0fc292a99a2d60d862f484b66c8709f78fd3a30ceaec6422a2197824', 'Myrtle', 'Ray');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1986-08-12', 'Hola, soy Myrtle y me gusta conocer gente nueva!', -74.9371, -163.686, 'https://randomuser.me/api/portraits/women/8.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadbird745', 'elena.dufour@example.com', 'befd812b4e37a441cacaa4d020568564278728d7361024b194c11c08af7ada2c', 'Eléna', 'Dufour');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Eléna y me gusta conocer gente nueva!', 49, -14.7821, 76.9608);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyrabbit1aac4', 'isaac.ortiz1b68@example.com', 'abd8cfba151826bb7bf3de57387e9653e9d7f54d61e2e107213b3add4383cf91', 'Isaac', 'Ortiz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2002-06-29', 'Hola, soy Isaac y me gusta conocer gente nueva!', 55.7472, -177.3405, 'https://randomuser.me/api/portraits/men/4.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyfish828', 'gerwin.schwalbe@example.com', '89a179b380e3dd6caa18d544b6803e13f62ff0f8ab3a633ceb4fac71b2856f53', 'Gerwin', 'Schwalbe');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Gerwin y me gusta conocer gente nueva!', 60, 39.6102, 10.0975);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinytiger872f168', 'celia.crespo93a5@example.com', 'af3b7a26bddd5de85f59064ba3533a078aef0c8402b6e5533fd70b9c5820b0eb', 'Celia', 'Crespo');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1995-08-12', 'Hola, soy Celia y me gusta conocer gente nueva!', -69.0584, -161.9918, 'https://randomuser.me/api/portraits/women/81.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenbird818', 'mae.robin@example.com', '376805920e55765119c1da5f3924aab0393fb8fd3c0163cecc50cfb9383976e3', 'Mae', 'Robin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Mae y me gusta conocer gente nueva!', 55, 37.9060, 2.7663);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenmouse54db1', 'otmar.riekeca2b@example.com', '705133eab07d15b18a0e4938c8f389d202f2178e59b1790c5ec38179a5182c53', 'Otmar', 'Rieke');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1987-06-22', 'Hola, soy Otmar y me gusta conocer gente nueva!', 40.8439, 97.0853, 'https://randomuser.me/api/portraits/men/86.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplekoala421', 'josep.pena@example.com', 'e566be22896be151f664a7a1594d2eb47f785ca2da82623eb21dc61182431254', 'Josep', 'Peña');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Josep y me gusta conocer gente nueva!', 34, 4.5348, -126.2097);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadpanda573a52a', 'alicia.bourgeois3a71@example.com', '26429a356b1d25b7d57c0f9a6d5fed8a290cb42374185887dcd2874548df0779', 'Alicia', 'Bourgeois');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1998-11-16', 'Hola, soy Alicia y me gusta conocer gente nueva!', -63.1426, 4.6637, 'https://randomuser.me/api/portraits/women/92.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazywolf238', 'juan.sanz@example.com', '4e5aa69abae351334eed8431e02b51275cfcd3cb31bc544887544eb6a9d2e155', 'Juan', 'Sanz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Juan y me gusta conocer gente nueva!', 90, 66.2249, -150.4654);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallbird11515b2', 'monika.galle66d5@example.com', '049da3907b7944180337a37b58dd4dd6970ae1d6cc610b1b4d92caaa2a6f18b3', 'Monika', 'Galle');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1988-01-12', 'Hola, soy Monika y me gusta conocer gente nueva!', 28.5581, -172.248, 'https://randomuser.me/api/portraits/women/71.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blueladybug795', 'alban.lambert@example.com', 'fff54945efa0b4034ef0fc2edefdc6ca0d20c218c501e1abc39ff5dd4db5eef6', 'Alban', 'Lambert');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Alban y me gusta conocer gente nueva!', 23, 42.7385, -9.3051);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplebutter8a40', 'milagros.jimenez79c0@example.com', 'd18cfcd69ebecfb239b732f63e8cab7944fd816520e2714e8d2eb0d1d74d7c97', 'Milagros', 'Jiménez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1996-07-09', 'Hola, soy Milagros y me gusta conocer gente nueva!', -82.7067, 114.7208, 'https://randomuser.me/api/portraits/women/49.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownduck145', 'laly.carpentier@example.com', 'fe384adb7e67d54e973c65b0174e3de5d8288e483958da561d39c98ddb1cc5d4', 'Laly', 'Carpentier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Laly y me gusta conocer gente nueva!', 80, -76.1006, 63.2555);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverbear304032', 'mirjam.koenencea9@example.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'Mirjam', 'Koenen');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1996-03-23', 'Hola, soy Mirjam y me gusta conocer gente nueva!', -47.7947, -141.4512, 'https://randomuser.me/api/portraits/women/64.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicsnake223', 'herbert.johnston@example.com', '496aca80e4d8f29fb8e8cd816c3afb48d3f103970b3a2ee1600c08ca67326dee', 'Herbert', 'Johnston');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Herbert y me gusta conocer gente nueva!', 31, -5.3600, -153.7344);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadfrog2140a24', 'rayan.mercier8915@example.com', '26d61718bbdfe43a086223bfb740483d12001f4e935b64d206310f89107e3f83', 'Rayan', 'Mercier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1981-12-20', 'Hola, soy Rayan y me gusta conocer gente nueva!', 88.6857, -4.9147, 'https://randomuser.me/api/portraits/men/33.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluegoose831', 'phillip.ryan@example.com', '6422b12d9831df965e5257212752e652ec76571b3901f4cbc165be46cc00c6c3', 'Phillip', 'Ryan');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Phillip y me gusta conocer gente nueva!', 20, -61.2652, -44.6316);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackduck8070fce', 'irmgard.mezger52a6@example.com', 'd22f4e0f2779f1044467cfda393d04e6fce1111e1520a7fa41a8a9d8baa3c017', 'Irmgard', 'Mezger');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1975-04-03', 'Hola, soy Irmgard y me gusta conocer gente nueva!', 79.657, 111.1416, 'https://randomuser.me/api/portraits/women/10.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinysnake314', 'alvin.matthews@example.com', 'da38a069467b80b184ec911adceb85ebf1beebd22cc4d2a590fbf222994efd85', 'Alvin', 'Matthews');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Alvin y me gusta conocer gente nueva!', 30, -59.4397, 52.3981);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigzebra4059f0b', 'margaux.massonb0c4@example.com', 'ac1a1c7143cb2199eb400993a5db42bc2f6d98f6769bb696d04b48d84c68a56f', 'Margaux', 'Masson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2006-09-25', 'Hola, soy Margaux y me gusta conocer gente nueva!', -70.8448, 89.036, 'https://randomuser.me/api/portraits/women/96.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulfrog544', 'lukas.clement@example.com', '35439e40a0dcce876f9885ccba67769b4b3f021659ebfe7cd6b38261c848811e', 'Lukas', 'Clement');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Lukas y me gusta conocer gente nueva!', 98, 16.4747, 6.0125);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitepanda68dfe7', 'sarah.gregoryffc2@example.com', 'aeebad4a796fcc2e15dc4c6061b45ed9b373f26adfc798ca7d2d8cc58182718e', 'Sarah', 'Gregory');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1978-03-25', 'Hola, soy Sarah y me gusta conocer gente nueva!', -32.6886, -84.265, 'https://randomuser.me/api/portraits/women/22.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyelephant410', 'candice.lacroix@example.com', '1fd94f4fbeab10e8f9a4432118d60bbcfdfd1214a99c553fdcd4afe01566c6e0', 'Candice', 'Lacroix');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Candice y me gusta conocer gente nueva!', 53, 44.4440, -59.9885);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smalldog59347c6', 'vanessa.duncan7378@example.com', '7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8', 'Vanessa', 'Duncan');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1984-05-17', 'Hola, soy Vanessa y me gusta conocer gente nueva!', -41.0319, -104.1294, 'https://randomuser.me/api/portraits/women/53.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownmouse301', 'nicolas.rodriguez@example.com', '7b508dace774f8adc1b121c1812b740904be6dfd37e3b5e3579bc81fbf6f5553', 'Nicolas', 'Rodríguez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Nicolas y me gusta conocer gente nueva!', 39, -78.6013, -65.6962);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('biglion533375d', 'viola.flemminga7c0@example.com', '7c12db546b50a55fc5f3af0a5c5106d8d7f1df09e55ed4d533cd48e71d48d892', 'Viola', 'Flemming');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1990-12-28', 'Hola, soy Viola y me gusta conocer gente nueva!', 79.0262, 115.829, 'https://randomuser.me/api/portraits/women/59.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulzebra898', 'pearl.hanson@example.com', '4928cddea529a569d729ac6815cb331974f4380bfe9394838ff51a683db30689', 'Pearl', 'Hanson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Pearl y me gusta conocer gente nueva!', 15, -68.3661, -142.5416);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulpanc1cd', 'elia.menard8113@example.com', '444a1ca77fbee3fcab5f2d93942e04b9ea97cd89a0e01dbb44220275e1a7dd3e', 'Elia', 'Menard');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1975-07-08', 'Hola, soy Elia y me gusta conocer gente nueva!', 20.823, 30.4337, 'https://randomuser.me/api/portraits/women/91.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowcat975', 'lylou.adam@example.com', '7e27f3f14e6b7c3500b5fd65627d9f3eadcd7b283b23b3bd994e3f9c70895711', 'Lylou', 'Adam');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Lylou y me gusta conocer gente nueva!', 36, -27.3064, -50.0549);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulpanb93f', 'sophia.leclercq61cd@example.com', 'ba29297b6c4f8486cb3f92f5ff09f93ca5e16ceb198d9b5e159aa0ca47f94033', 'Sophia', 'Leclercq');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1992-09-30', 'Hola, soy Sophia y me gusta conocer gente nueva!', -87.9337, 114.2565, 'https://randomuser.me/api/portraits/women/12.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitemouse996', 'kayla.fox@example.com', 'af16847054594066cb5dcf501ed219d6ec043688bd7a1d1beef984b09de0b134', 'Kayla', 'Fox');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Kayla y me gusta conocer gente nueva!', 57, -64.7927, -162.3873);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whiteduck136b055', 'britney.weaverb199@example.com', '04aa39fcb509e7842f0bd5b135b6181b0b57c8a74422838362f430351fc364f2', 'Britney', 'Weaver');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1998-06-10', 'Hola, soy Britney y me gusta conocer gente nueva!', -81.7633, 170.7267, 'https://randomuser.me/api/portraits/women/78.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrymeercat982', 'ricardo.baker@example.com', '9ebf9b5978e6d486b0a66423715469b0e96f4b04c23d5061ec6c69bb29813a3b', 'Ricardo', 'Baker');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Ricardo y me gusta conocer gente nueva!', 21, -71.2037, 116.1741);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenelepha890b', 'ingeburg.staab61c0@example.com', '7954d6463914386775169f7d0fe01ca17da7084e25a6b67466a0cf367527af9c', 'Ingeburg', 'Staab');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1976-06-04', 'Hola, soy Ingeburg y me gusta conocer gente nueva!', -42.0418, -154.6503, 'https://randomuser.me/api/portraits/women/49.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazytiger828', 'naomi.garnier@example.com', '000e02e40e441be798211aaf86d037bacd3dedbc8a6318ca5f9a5c72ad52ffbe', 'Naomi', 'Garnier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Naomi y me gusta conocer gente nueva!', 20, 44.2266, -119.4017);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishgori7a2e', 'marius.carpentier15f2@example.com', 'e5263ae7e98c0b6e2a089017ef0d314d4c613f9377a6025bd73c852c8c25bfe0', 'Marius', 'Carpentier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1978-01-02', 'Hola, soy Marius y me gusta conocer gente nueva!', 51.4057, -140.4479, 'https://randomuser.me/api/portraits/men/80.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifullion419', 'gabin.rey@example.com', '4681a3a86dfcca71269b095f9832cca24bd83895667c82d95f137bc1bb31ef1f', 'Gabin', 'Rey');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Gabin y me gusta conocer gente nueva!', 66, 43.2893, -144.9719);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluebear196ca73', 'augustin.boyerbeb4@example.com', '976c49391de9909cda71c0b17f580f9e9c58b6264516ce8466ebd10c24caf0a2', 'Augustin', 'Boyer');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1983-12-16', 'Hola, soy Augustin y me gusta conocer gente nueva!', -89.7901, -149.9738, 'https://randomuser.me/api/portraits/men/76.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinybear387', 'karen.simmons@example.com', '26c1d062cc7a60c3d55fe2df1797d9e361054a08ddb979a09093549ca157ca86', 'Karen', 'Simmons');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Karen y me gusta conocer gente nueva!', 12, -66.5932, 131.6898);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluegorilla22b76', 'david.jean2a3f@example.com', '38de90475bb334fb3dea5d54f250500aba60fe2c6158115d342b06bcb46e39bf', 'David', 'Jean');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2005-08-24', 'Hola, soy David y me gusta conocer gente nueva!', -56.1394, 143.6793, 'https://randomuser.me/api/portraits/men/26.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicpanda152', 'remy.picard@example.com', '402eed114f0a583fb72bce76196539c9a25688cc8840c7fa44d54f811ac5ea32', 'Rémy', 'Picard');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Rémy y me gusta conocer gente nueva!', 55, -88.2200, 106.7238);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverswan49e6ce', 'jenny.weckere0b7@example.com', '19706b9b7cde7d294853e6b9cca8e6aaf7187bdfce75cf19aa891b1573daa28c', 'Jenny', 'Wecker');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2000-03-08', 'Hola, soy Jenny y me gusta conocer gente nueva!', 8.8323, 24.9966, 'https://randomuser.me/api/portraits/women/3.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigswan588', 'shane.schmidt@example.com', '5d1db4ea494bfbabd6e089b55b184d34973f90a20ad9229a2592158e9d9c7b6a', 'Shane', 'Schmidt');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Shane y me gusta conocer gente nueva!', 24, 17.5753, -82.3635);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrybird4197718', 'ines.garciaf9a7@example.com', '03aaef0fd45d47ee37afee60b41f0a80010f58f95d3d34e9b7dc253c8558bf2a', 'Inés', 'García');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1989-06-26', 'Hola, soy Inés y me gusta conocer gente nueva!', -41.8309, -151.7385, 'https://randomuser.me/api/portraits/women/51.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulkoala900', 'luis.dunn@example.com', '3d9da0471c648d3cc834e068ae09d5043a70ea06795b50f478f0a8fa84e75a31', 'Luis', 'Dunn');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Luis y me gusta conocer gente nueva!', 52, -69.1161, 121.0659);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyrabbit6429e', 'kathy.castro233d@example.com', '49a25f9feefaffecad0fcd30c50dc9331cff8b55ece53def6285c09e17e6f5d7', 'Kathy', 'Castro');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1981-07-04', 'Hola, soy Kathy y me gusta conocer gente nueva!', 19.2707, 48.7263, 'https://randomuser.me/api/portraits/women/17.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowduck974', 'josep.dominguez@example.com', '8bddf4c0f769a0125ce2a2a0c6464bbd8fb9a679acc1ace032a7d08b0c7a5b5b', 'Josep', 'Domínguez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Josep y me gusta conocer gente nueva!', 78, 89.9488, -29.4277);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyduck38920e2', 'iker.alonso9625@example.com', '9af211329b2fc82e5efe906062c730082819b23fe8394bc435e0b1bf0458eb54', 'Iker', 'Alonso');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2000-08-11', 'Hola, soy Iker y me gusta conocer gente nueva!', -73.6111, -139.607, 'https://randomuser.me/api/portraits/men/53.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrygorilla319', 'vassilios.rick@example.com', '3786488b6f8ef36db49b93f33ea84ed8358a963c362d30764c319d4a34eaf4ba', 'Vassilios', 'Rick');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Vassilios y me gusta conocer gente nueva!', 26, -14.9534, -53.2959);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavygorillab203', 'cesar.nuneza8bc@example.com', 'f078209dfece953500ee03333012e3c8ada6c36df35a053f00031becab3cf620', 'Cesar', 'Núñez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1986-07-17', 'Hola, soy Cesar y me gusta conocer gente nueva!', 33.1451, 68.7975, 'https://randomuser.me/api/portraits/men/17.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazybear842', 'emilie.schweizer@example.com', 'a1c2fb75a75ab8d81fd005016c77a9556d4d3e55bd0a670ee4330814e3031301', 'Emilie', 'Schweizer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Emilie y me gusta conocer gente nueva!', 13, -81.9439, 78.6355);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redpanda389ead3', 'montserrat.parra88ec@example.com', '00154761637ca746c354a6d9cfbf1da1a92e79afa6bb127bb8a1c434e9c73170', 'Montserrat', 'Parra');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1994-07-08', 'Hola, soy Montserrat y me gusta conocer gente nueva!', -65.7826, -22.8066, 'https://randomuser.me/api/portraits/women/3.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenfrog984', 'kenneth.montgomery@example.com', 'd40c2dff70173c510ea314132fd2e7938750c692f0a99644b8ffcad5ffc5b8e4', 'Kenneth', 'Montgomery');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Kenneth y me gusta conocer gente nueva!', 61, -36.0407, 43.8532);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadtiger7073fd9', 'rose.lawson9156@example.com', '8dadf41ace77edb63e91704b1a1ec79f1ce8f2e80300fdb51bd3bf59eac770aa', 'Rose', 'Lawson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2005-10-31', 'Hola, soy Rose y me gusta conocer gente nueva!', -46.5927, -156.8259, 'https://randomuser.me/api/portraits/women/89.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazykoala502', 'alessio.morel@example.com', '66a7a5807c3130eb2d0b55bb260a6a001b9d62095c94b753cbb215f3e4f099e1', 'Alessio', 'Morel');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Alessio y me gusta conocer gente nueva!', 66, -31.0704, 112.9873);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackzebra902369', 'bastien.lerouxc837@example.com', '3631428badf3a7b0dff8223c4d2bc13eba642c8d82fa6ea3e0242667238d8bdc', 'Bastien', 'Leroux');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1998-03-10', 'Hola, soy Bastien y me gusta conocer gente nueva!', 18.9233, -117.2748, 'https://randomuser.me/api/portraits/men/24.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplefish246', 'gloria.stevens@example.com', 'd70f6838cce70ead390fb1f1d7055aa93171b72ff492f8c9e5b082134b58504c', 'Gloria', 'Stevens');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Gloria y me gusta conocer gente nueva!', 16, -32.8641, -54.1135);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplebird6603b3', 'maelya.barbier42ee@example.com', 'db1a60bbff220d0910f017477df18cb7cd90892722985ac91dbfdaa1c955220f', 'Maelya', 'Barbier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1993-09-25', 'Hola, soy Maelya y me gusta conocer gente nueva!', -46.1061, 86.5277, 'https://randomuser.me/api/portraits/women/87.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitekoala401', 'candice.roger@example.com', '94aec9fbed989ece189a7e172c9cf41669050495152bc4c1dbf2a38d7fd85627', 'Candice', 'Roger');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Candice y me gusta conocer gente nueva!', 94, 5.8718, -162.5633);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallsnake86a2ee', 'ronald.jablonskiba50@example.com', 'ad6da8a17847823f0b901ea9dba3e1100982cb0b4befe1ace7df5afdf0bbbc4c', 'Ronald', 'Jablonski');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1980-05-01', 'Hola, soy Ronald y me gusta conocer gente nueva!', -7.3019, 169.0664, 'https://randomuser.me/api/portraits/men/73.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicgorilla940', 'alex.collins@example.com', '5b39bfccb1447d4aae30e7a4fb0f4ba37e79ea96ec54b5ba7223979a15e4d0ae', 'Alex', 'Collins');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Alex y me gusta conocer gente nueva!', 52, -2.8601, 88.6537);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happymouse3900f6', 'winfried.endresdcf1@example.com', '2d2370db2447ff8cf4f3accd68c85aa119a9c893effd200a9b69176e9fc5eb98', 'Winfried', 'Endres');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2000-04-11', 'Hola, soy Winfried y me gusta conocer gente nueva!', -38.9548, -31.9566, 'https://randomuser.me/api/portraits/men/18.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifultiger204', 'samuel.hernandez@example.com', '02983856320b180ca3332cff530e4942f51b9eb9c0f58b806df6c4897148b687', 'Samuel', 'Hernández');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Samuel y me gusta conocer gente nueva!', 1, 4.1905, 39.7090);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyzebra8981bb7', 'jessie.lopeza649@example.com', '91e9240f415223982edc345532630710e94a7f52cd5f48f5ee1afc555078f0ab', 'Jessie', 'Lopez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2005-03-24', 'Hola, soy Jessie y me gusta conocer gente nueva!', 20.7113, -166.5646, 'https://randomuser.me/api/portraits/men/71.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happylion820', 'alex.guillot@example.com', '4b02e0c6135a5924521217d4b679493c2a717aa57fcb56760d51f7b2aea7abda', 'Alex', 'Guillot');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Alex y me gusta conocer gente nueva!', 43, -41.4961, 147.3678);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadladybug48ed0f', 'alexia.dubois8a0f@example.com', '1dbfed665657cb4bc80d72d7e2625bab7590466aab7a1a2bd76f80422fd0b4bf', 'Alexia', 'Dubois');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1989-10-24', 'Hola, soy Alexia y me gusta conocer gente nueva!', -57.9052, 36.2303, 'https://randomuser.me/api/portraits/women/40.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadswan188', 'lore.schnelle@example.com', '7d69277374ab81b076deac5d8492b65219e6a5a8cd9b595bac68a1025e80aa12', 'Lore', 'Schnelle');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Lore y me gusta conocer gente nueva!', 15, -89.6575, -78.7188);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazypanda638bc8e', 'ottfried.wulffe89@example.com', 'ad7a5714b614323c7efeb890f08c18a33474441c88efaf694a411e07a206e18d', 'Ottfried', 'Wulf');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1997-03-02', 'Hola, soy Ottfried y me gusta conocer gente nueva!', 71.0755, -124.2288, 'https://randomuser.me/api/portraits/men/48.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowbutterfly635', 'juan.webb@example.com', '4ee3679892e6ac5a5b513eba7fd529d363d7a96508421c5dbd44b01b349cf514', 'Juan', 'Webb');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Juan y me gusta conocer gente nueva!', 90, 62.7381, -116.5194);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('reddog297fde2', 'kelly.austinc4ed@example.com', '42ef841dc27fe0b5aa2d06bd31308bb63a59cdcddcbcddd917248349d22020a3', 'Kelly', 'Austin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1986-06-08', 'Hola, soy Kelly y me gusta conocer gente nueva!', 75.3796, 138.7225, 'https://randomuser.me/api/portraits/women/75.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenfrog131', 'esperanza.martin@example.com', '1b0b7e51ee5d8e25cc87c83d5b4fbe933d91e1a70f7ee27d98be29c348b04950', 'Esperanza', 'Martin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Esperanza y me gusta conocer gente nueva!', 59, 52.8358, 12.2799);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whiteostrichdfe0', 'cameron.spencere044@example.com', '37b5fecebce720fddf3581eb8afc6f4300f5b5fc91432214883fb732a4ca8cb4', 'Cameron', 'Spencer');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1998-12-15', 'Hola, soy Cameron y me gusta conocer gente nueva!', 44.0834, 98.8996, 'https://randomuser.me/api/portraits/men/96.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenpeacock825', 'rachel.fernandez@example.com', '1b365a4dfc8a9d9d77b27e0e07614e4001bb2e0ffb38676277f9155a082913c0', 'Rachel', 'Fernandez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Rachel y me gusta conocer gente nueva!', 99, -46.8784, -24.9324);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitepeacockd331', 'raquel.mora6458@example.com', 'ecbfb23a44dd829d9bbdc57a50e2ebdc0711b65810bb513b81a4def46b7a1380', 'Raquel', 'Mora');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1982-11-21', 'Hola, soy Raquel y me gusta conocer gente nueva!', -56.2179, 34.7098, 'https://randomuser.me/api/portraits/women/88.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blacksnake575', 'gottlieb.engelbrecht@example.com', '7975b4132aaa77d75069a5d2ab3c501413eb91d11d046815158103d5628d7405', 'Gottlieb', 'Engelbrecht');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Gottlieb y me gusta conocer gente nueva!', 74, 54.8612, -93.5124);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackcat8344c5d', 'shawn.richards2307@example.com', '6826b5fb2e3f645347c2e52a379f93737a6017892eedf7825a4c91718e68db98', 'Shawn', 'Richards');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1993-05-05', 'Hola, soy Shawn y me gusta conocer gente nueva!', -29.3399, 145.6723, 'https://randomuser.me/api/portraits/men/39.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazybutterfly475', 'eugenio.aguilar@example.com', '29196e6cc036a16176b5f06ac52dd61310cd93aff283bb74f9367b0ea0030ec2', 'Eugenio', 'Aguilar');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Eugenio y me gusta conocer gente nueva!', 40, 35.7068, 81.0546);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownmeercate27f', 'sara.laurent40a6@example.com', 'c6cb50e7eea0df1fd3eaf52ada2358f5423afd7c0b5ee2395231a9b3208ffcaf', 'Sara', 'Laurent');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2001-01-24', 'Hola, soy Sara y me gusta conocer gente nueva!', -44.618, -122.9075, 'https://randomuser.me/api/portraits/women/28.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyduck386', 'gertrud.kopf@example.com', '9b550d15e298bd082ff0378694e05688e79f6a710a600ec00b834e8b15d6f6e4', 'Gertrud', 'Kopf');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Gertrud y me gusta conocer gente nueva!', 80, -61.3530, -146.1901);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyduck43939fb', 'mila.martin1fe9@example.com', '2b5d2ba5803e6fe3a2bc08b5f3965f47a92918a9c44b8090618d5d5a2876cf8c', 'Mila', 'Martin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1993-08-19', 'Hola, soy Mila y me gusta conocer gente nueva!', 33.0336, 43.8405, 'https://randomuser.me/api/portraits/women/57.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyladybug660', 'soan.lemaire@example.com', '573018e4d8bf6e21a2d40e1b602f5a44309c4b918c02185bcd42f1e08f0041c8', 'Soan', 'Lemaire');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Soan y me gusta conocer gente nueva!', 79, -87.0634, -31.9156);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadelephant6fbca', 'inaya.michel1da6@example.com', 'ac9fce49ac6263ad3ab6491bcc77a8f6485b0e1ac8289c0ddba2ce450e40d748', 'Inaya', 'Michel');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2005-05-17', 'Hola, soy Inaya y me gusta conocer gente nueva!', -1.228, -144.5525, 'https://randomuser.me/api/portraits/women/32.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackbutterfly809', 'marshall.wright@example.com', '521141b8141c44f8e248ad5b5b39ec119c411ac37f669e822c144a78d5ec411e', 'Marshall', 'Wright');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Marshall y me gusta conocer gente nueva!', 58, -45.5753, -82.6690);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldengorill299b', 'lesa.gray2f0c@example.com', '48800d0081f2655da75ff2fb5f57495eeedb62d3e0d8ff9f9ed900fbb13e8464', 'Lesa', 'Gray');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2003-03-07', 'Hola, soy Lesa y me gusta conocer gente nueva!', -3.9157, 158.6254, 'https://randomuser.me/api/portraits/women/62.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangedog807', 'alois.perrin@example.com', '6382deaf1f5dc6e792b76db4a4a7bf2ba468884e000b25e7928e621e27fb23cb', 'Aloïs', 'Perrin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Aloïs y me gusta conocer gente nueva!', 63, -30.1624, -134.5887);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulwolc419', 'fernando.lopeze9dd@example.com', 'bc033c3cb6abd2f5568157bc1bd47ac1157bee5e2ccf3a4a69db082241177b59', 'Fernando', 'López');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1986-06-09', 'Hola, soy Fernando y me gusta conocer gente nueva!', 63.6, 57.7738, 'https://randomuser.me/api/portraits/men/13.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishzebra637', 'clyde.jimenez@example.com', '8ae9853763a9d41063c4d698cfd1231b7646873d6f61c6ae1d73fd103b04f941', 'Clyde', 'Jimenez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Clyde y me gusta conocer gente nueva!', 55, -29.7033, 55.3041);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrylion46054e0', 'rosita.munchf985@example.com', 'fadb17cf87563cf5093084b8df099551fce3452a17f3e31b6439a4c874c9ff0e', 'Rosita', 'Münch');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1980-04-29', 'Hola, soy Rosita y me gusta conocer gente nueva!', -13.3061, 164.2059, 'https://randomuser.me/api/portraits/women/63.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyrabbit390', 'kent.henderson@example.com', '01cf9f56a3003b2184c49820f5d4dcf35a113455d9f8b1bc4550bca5c6e78ef1', 'Kent', 'Henderson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Kent y me gusta conocer gente nueva!', 0, -41.6315, 117.6282);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazybird378a54f', 'concepcion.reyes5a3c@example.com', 'd3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9', 'Concepción', 'Reyes');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2001-06-02', 'Hola, soy Concepción y me gusta conocer gente nueva!', 6.2459, -57.2482, 'https://randomuser.me/api/portraits/women/68.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplewolf814', 'titouan.meunier@example.com', 'a96361ebfd8c958bdde74f1340104fdfef552202c6c327db0114c69ed3711267', 'Titouan', 'Meunier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Titouan y me gusta conocer gente nueva!', 28, -10.6410, -7.3558);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happykoala84f07e', 'leonard.morinda09@example.com', 'ac13a8b534df4a28d0fbbbb64cff909b5b1e8faddb4e5ea57bb8a642ce998f66', 'Léonard', 'Morin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1978-07-22', 'Hola, soy Léonard y me gusta conocer gente nueva!', -75.6764, -75.3826, 'https://randomuser.me/api/portraits/men/74.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishdog542', 'stella.guillaume@example.com', 'a80b568a237f50391d2f1f97beaf99564e33d2e1c8a2e5cac21ceda701570312', 'Stella', 'Guillaume');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Stella y me gusta conocer gente nueva!', 83, -24.1453, 161.2099);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenzebra8685b1', 'sarah.bertrand5a07@example.com', 'bc020a35b7f9cb1382e7b534c68e3c531d849b119bf14f75ddead6cc45c3ccc1', 'Sarah', 'Bertrand');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1995-12-20', 'Hola, soy Sarah y me gusta conocer gente nueva!', 9.6307, -96.7021, 'https://randomuser.me/api/portraits/women/19.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackmouse421', 'ana.aguilar@example.com', 'fa340114498cfb0f5dfedaf79ddcf3af3e3211a852438d087a77c1a4af98c42e', 'Ana', 'Aguilar');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Ana y me gusta conocer gente nueva!', 55, -83.4045, 72.5477);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulbead4c9', 'juan.snyder3896@example.com', 'a2242ead55c94c3deb7cf2340bfef9d5bcaca22dfe66e646745ee4371c633fc8', 'Juan', 'Snyder');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1982-02-19', 'Hola, soy Juan y me gusta conocer gente nueva!', -44.1081, 150.7152, 'https://randomuser.me/api/portraits/men/64.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulfrog635', 'isabelle.little@example.com', 'e656f6cd1caedec309d0616246cfdcbc2c7cccfdd858440e0b47335d94001aab', 'Isabelle', 'Little');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Isabelle y me gusta conocer gente nueva!', 83, -82.6795, -96.4011);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinytiger738fba6', 'william.olivier6723@example.com', '2413fb3709b05939f04cf2e92f7d0897fc2596f9ad0b8a9ea855c7bfebaae892', 'William', 'Olivier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2006-09-03', 'Hola, soy William y me gusta conocer gente nueva!', 39.2932, 78.1279, 'https://randomuser.me/api/portraits/men/66.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulelephant506', 'leane.guerin@example.com', 'a78f19952edd18bf02b3c9eb704b088e2120941d6acb22f6f795c42796e60252', 'Léane', 'Guerin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Léane y me gusta conocer gente nueva!', 11, -27.4415, 159.7760);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrywolf880c933', 'axelle.gaillard7025@example.com', 'd6710296dc34ea4ab634a6ff665c15228d5338ece04ae9c7c66f39cbd02859d2', 'Axelle', 'Gaillard');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1983-02-26', 'Hola, soy Axelle y me gusta conocer gente nueva!', 43.7779, -168.5827, 'https://randomuser.me/api/portraits/women/19.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinylion499', 'reiner.walther@example.com', '594b1159d6adf3dee2866b34415fad4e41d62019f0f92d1f6b590f12210f2c6a', 'Reiner', 'Walther');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Reiner y me gusta conocer gente nueva!', 27, -17.8271, -59.4831);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowgoose8d578', 'luz.herrera7df7@example.com', '15acfdc75fdb88851487238cd8442c5ecc8e0c31868ce9f52a4e2361ba899f2f', 'Luz', 'Herrera');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2004-09-23', 'Hola, soy Luz y me gusta conocer gente nueva!', 73.0118, 163.992, 'https://randomuser.me/api/portraits/women/56.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicpeacock674', 'nils.faure@example.com', '5e608d7beca7513cab18e6a396ea894f2c5466379dcc1e3888cc23d685aea600', 'Nils', 'Faure');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Nils y me gusta conocer gente nueva!', 35, 14.7591, -171.4002);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicostri8b84', 'roberta.nichols7610@example.com', '90300752de7525528b368d0995a226fe6613004cc41e31bd664a7437f10599a8', 'Roberta', 'Nichols');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1990-03-16', 'Hola, soy Roberta y me gusta conocer gente nueva!', -76.6489, 81.8398, 'https://randomuser.me/api/portraits/women/28.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenleopard331', 'lucas.roman@example.com', '3abdae75474b462a562c568bb6df620ff7d53edab8cd23747872597081e55145', 'Lucas', 'Román');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Lucas y me gusta conocer gente nueva!', 51, -61.5443, -54.1980);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverlion929d2f', 'livia.lefevre67b4@example.com', '6177321eac992341d1ad0823a07e76bfc4ee6909db120e377ea303fdc216756c', 'Livia', 'Lefevre');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1976-09-07', 'Hola, soy Livia y me gusta conocer gente nueva!', -12.922, -76.0565, 'https://randomuser.me/api/portraits/women/22.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greengoose819', 'oceane.thomas@example.com', 'c43fb05de4d8a9a0a442824f677d9753397cdd29cd123404e434bc457256b6d2', 'Océane', 'Thomas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Océane y me gusta conocer gente nueva!', 97, 51.0961, 155.3872);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redwolf428ac4c', 'cassandra.andersone66e@example.com', '25d635c647506ddb36d60816e25ca098795fe29246e71ab59dc2ab8d303ec49a', 'Cassandra', 'Anderson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1977-12-21', 'Hola, soy Cassandra y me gusta conocer gente nueva!', -15.8793, -124.4065, 'https://randomuser.me/api/portraits/women/3.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackbear868', 'thilo.franke@example.com', 'ecc4873a1694eb0de0b33d68f0df091d6816127c1422266399700d02599a8628', 'Thilo', 'Franke');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Thilo y me gusta conocer gente nueva!', 87, -54.9667, -55.7965);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluewolf8219a58', 'lonnie.nicholsd6ed@example.com', 'a2a52f3eba927ee4e451df164d0c2e0e42bef8c04713d493140f50620696a789', 'Lonnie', 'Nichols');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2004-09-24', 'Hola, soy Lonnie y me gusta conocer gente nueva!', -80.4184, -176.6518, 'https://randomuser.me/api/portraits/men/19.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigkoala854', 'amandine.dupont@example.com', 'e358e2e3781477fc07883cfc26e10cc0a4d8641c061cf7a613d8d9a9f9e34651', 'Amandine', 'Dupont');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Amandine y me gusta conocer gente nueva!', 94, 60.6914, -60.7213);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redgoose21291cc', 'kayla.holland344f@example.com', 'fe4f74e910a5d6f3386bbbbb3409f050b100c7778381d6ecf5c58b1efe9ee715', 'Kayla', 'Holland');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1985-03-02', 'Hola, soy Kayla y me gusta conocer gente nueva!', -1.3595, 146.1847, 'https://randomuser.me/api/portraits/women/66.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigcat213', 'joy.cole@example.com', 'cc0b8a95a883bc0b5f64a536de42349e0ce0673918a3c446255ddc8354887140', 'Joy', 'Cole');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Joy y me gusta conocer gente nueva!', 25, -80.7402, 58.9267);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulost0760', 'ellen.gilbertc780@example.com', '75f2e8dd89577620c6a5a7f910ca860942dd65b6008042398b7ae18dc3985bea', 'Ellen', 'Gilbert');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1997-08-14', 'Hola, soy Ellen y me gusta conocer gente nueva!', 32.7961, -91.0672, 'https://randomuser.me/api/portraits/women/22.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavybutterfly638', 'sergio.porter@example.com', 'e4b8d11548bc9d5ab6f8755394cf574c225048cf8233a8ef92e59720c2f452f7', 'Sergio', 'Porter');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Sergio y me gusta conocer gente nueva!', 97, -25.2810, 167.8404);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavywolf906ae4b', 'rachel.gray30fe@example.com', '908aec4512d80ff4fefb1970899091e9de8e734b36b8fdb7678e77dc092f6959', 'Rachel', 'Gray');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2004-08-06', 'Hola, soy Rachel y me gusta conocer gente nueva!', 40.165, -161.7007, 'https://randomuser.me/api/portraits/women/17.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyleopard752', 'elke.lowe@example.com', '0b26a3f52b8acd1ae7ddae8571a361890cd89d8cc2e9f71d85174aadef2bb116', 'Elke', 'Löwe');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Elke y me gusta conocer gente nueva!', 95, -69.8480, 129.2263);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverduck25c40c', 'benito.delgado66db@example.com', '1ebb068bded764aa39bf2ff3c18260b506535cf6c165e33282b7b8c85edeaf9e', 'Benito', 'Delgado');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1996-02-05', 'Hola, soy Benito y me gusta conocer gente nueva!', 47.3454, 79.2442, 'https://randomuser.me/api/portraits/men/3.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenbear329', 'julia.gonzalez@example.com', '8b876e57eb73367d6b042548f7ec0c47f189b97e32af815b4cff1a0471d40c8b', 'Julia', 'González');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Julia y me gusta conocer gente nueva!', 50, 24.9170, -140.6296);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavysnake8177f5', 'sophia.vasqueze12e@example.com', '6e48a35e9a36e1405dad7fb5311090f02680182bc8c323738542e4abfa8d5c20', 'Sophia', 'Vasquez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1995-08-24', 'Hola, soy Sophia y me gusta conocer gente nueva!', 25.1812, -61.6153, 'https://randomuser.me/api/portraits/women/67.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyostrich597', 'phoebe.thomas@example.com', 'a7a8a3d9836180a0cdfd51c30239a40f087c9713e7d759b8b565c9e559ad806a', 'Phoebe', 'Thomas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Phoebe y me gusta conocer gente nueva!', 74, 87.8289, 81.7403);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigmouse907d123', 'josep.floresbac1@example.com', '2867f306661f287eb6d35ce40322fcd1399ae33741a0b516837a43a49fb24895', 'Josep', 'Flores');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1976-08-25', 'Hola, soy Josep y me gusta conocer gente nueva!', 37.2602, 53.6221, 'https://randomuser.me/api/portraits/men/64.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallsnake524', 'adam.murray@example.com', '8c649a8f85f3d89d4eba2cf885e7f9273c9672b73eaf3ce43c5ea038ca648f0f', 'Adam', 'Murray');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Adam y me gusta conocer gente nueva!', 44, 8.4708, 60.9979);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadbear280ac1e', 'veronica.gutierrez9771@example.com', '851d49d3087657e971533b2fd8b28be2ff490c34411c2e3cd2b400fe66f3a3c3', 'Verónica', 'Gutiérrez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1995-07-13', 'Hola, soy Verónica y me gusta conocer gente nueva!', -30.1042, -178.7508, 'https://randomuser.me/api/portraits/women/15.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvermouse978', 'ortrud.zobel@example.com', '5668e7edcd8a3ef87b00fb57c11eaaa9f8a9067cff7fd9ff95c5a6ef7dee0cfb', 'Ortrud', 'Zobel');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Ortrud y me gusta conocer gente nueva!', 50, -17.7224, 21.0130);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpleostric3dae', 'scarlett.frazierd1a8@example.com', 'c87f42bd454c031b875b76c76b0412feb4649fe67a17cc9bde2c2f31a74fbaf4', 'Scarlett', 'Frazier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2005-12-03', 'Hola, soy Scarlett y me gusta conocer gente nueva!', -68.4716, -23.432, 'https://randomuser.me/api/portraits/women/72.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyzebra157', 'clifford.hayes@example.com', 'b83c588da0c6931625f42e0948054a3ade722bfd02c27816305742ed7390ac6c', 'Clifford', 'Hayes');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Clifford y me gusta conocer gente nueva!', 6, -73.9016, 6.1313);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvertiger400a2', 'enola.dupuis1e84@example.com', '8a066a46c4489bb5d9ba6e6dd51661d33ea4891b4a20ea59349dbee48e1d8da6', 'Enola', 'Dupuis');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1993-06-01', 'Hola, soy Enola y me gusta conocer gente nueva!', -66.9298, -153.2425, 'https://randomuser.me/api/portraits/women/83.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangerabbit843', 'yvonne.bocker@example.com', 'ed19097781f5578ce4cb69700f315ef10ea969c97584531e8d5d8ba32268c2af', 'Yvonne', 'Böcker');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Yvonne y me gusta conocer gente nueva!', 13, 43.4823, 139.1636);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownlion701414c', 'arturo.monteroc6f2@example.com', '8e9177ca98ef097a826950fce977e0477e592b9f1473d1a4a9fa2a83c441d8f2', 'Arturo', 'Montero');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1993-05-13', 'Hola, soy Arturo y me gusta conocer gente nueva!', -50.989, 176.3371, 'https://randomuser.me/api/portraits/men/96.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitepanda137', 'josefa.martinez@example.com', '9058aa3ff37e12d036accd5f135329e6f0457c6fb086a3e8af06181861d6e9d7', 'Josefa', 'Martínez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Josefa y me gusta conocer gente nueva!', 31, 43.1150, -148.8676);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyfrog255158d', 'donna.matthews41ac@example.com', 'd2fa0e68a5824ca58e1a49314a4f395ba10e7eac10d8481653f6940227b412c4', 'Donna', 'Matthews');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2001-05-17', 'Hola, soy Donna y me gusta conocer gente nueva!', 72.1155, -137.6923, 'https://randomuser.me/api/portraits/women/48.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishswan566', 'ilona.gurtler@example.com', 'b186ba1f53366ec267460b1543996b1b05b912d951c36bf6fb6ca0f145923555', 'Ilona', 'Gürtler');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Ilona y me gusta conocer gente nueva!', 66, 74.1947, -65.6324);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownbear4080b7e', 'isabel.calvoc00e@example.com', '405e6e0273215dab5aa088d765d9883727f078fbc89dd6fef0723476eb26d3d9', 'Isabel', 'Calvo');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1978-03-07', 'Hola, soy Isabel y me gusta conocer gente nueva!', -74.9871, -87.4705, 'https://randomuser.me/api/portraits/women/55.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishgorilla248', 'evan.curtis@example.com', '706358289b679b065abd3992a1415adf0885e0e8edd4f5a9dfbafd1f2a0035f9', 'Evan', 'Curtis');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Evan y me gusta conocer gente nueva!', 59, -24.5389, -39.9757);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigleopard64953a', 'rosalia.thelene159@example.com', 'fffc563b0002130a9502f9e89eceae8558291e4100dd95cdf5e86c37d2214ae2', 'Rosalia', 'Thelen');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1991-01-08', 'Hola, soy Rosalia y me gusta conocer gente nueva!', 78.527, 65.4357, 'https://randomuser.me/api/portraits/women/57.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinymouse578', 'mae.peterson@example.com', '42ef841dc27fe0b5aa2d06bd31308bb63a59cdcddcbcddd917248349d22020a3', 'Mae', 'Peterson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Mae y me gusta conocer gente nueva!', 68, -55.5640, 168.7997);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownzebra48f79f', 'noam.gauthier2749@example.com', '0a05d7b27cc7a2b1ca704adcbd1d6e3ab2c19ece000586f03bceeabf24547e43', 'Noam', 'Gauthier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1999-08-30', 'Hola, soy Noam y me gusta conocer gente nueva!', -74.3037, 24.3111, 'https://randomuser.me/api/portraits/men/55.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyrabbit857', 'julian.esteban@example.com', '9ce8db922a8f4a7abd859adee70bd8b7a63321265487da54cf4bed6a69eb3e1b', 'Julián', 'Esteban');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Julián y me gusta conocer gente nueva!', 13, -40.7032, 41.1582);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyfish921bb3e', 'loris.lemairef0ac@example.com', 'bb21cd8328ef5bba967600cbdd307b879f53bac572b90810cd60098a2b0d01af', 'Loris', 'Lemaire');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1988-05-30', 'Hola, soy Loris y me gusta conocer gente nueva!', -70.9884, 168.7492, 'https://randomuser.me/api/portraits/men/5.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigmeercat867', 'teo.laurent@example.com', 'ec71f5c39a2cf0280c4d1236079e0f7402c8b58ef370ae8a5a999c09b5665bf5', 'Téo', 'Laurent');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Téo y me gusta conocer gente nueva!', 28, 2.8960, -56.7699);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organiceleph11eb', 'gauthier.colina504@example.com', '888df25ae35772424a560c7152a1de794440e0ea5cfee62828333a456a506e05', 'Gauthier', 'Colin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1995-04-11', 'Hola, soy Gauthier y me gusta conocer gente nueva!', -79.9316, 74.127, 'https://randomuser.me/api/portraits/men/66.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicrabbit197', 'angie.newman@example.com', '0e481e2667c3ae2f17a2c8107c67b22b2c296b2c550070c84050dc644a92cae5', 'Angie', 'Newman');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Angie y me gusta conocer gente nueva!', 29, 28.6060, 85.0921);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluefish5813609', 'derek.howard345f@example.com', '0d45f5fd462b8c70bffb10021ac1bcff3f58f29b1faf7568595095427d42812c', 'Derek', 'Howard');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1981-10-28', 'Hola, soy Derek y me gusta conocer gente nueva!', 33.1159, 147.6688, 'https://randomuser.me/api/portraits/men/52.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverduck158', 'jennie.fisher@example.com', 'ff7386f91eb664845af53682fced7c6e0a7e67bf7aaae83e6c79606cd95c317e', 'Jennie', 'Fisher');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Jennie y me gusta conocer gente nueva!', 66, 1.1582, 2.5683);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadduck4162edd', 'carmen.ariasd6c4@example.com', 'be78e93242a0374425c7ad95e9cf06f569bd3d5c3bd0c062287bb6e0ea632925', 'Carmen', 'Arias');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1996-10-27', 'Hola, soy Carmen y me gusta conocer gente nueva!', 30.0826, -155.2982, 'https://randomuser.me/api/portraits/women/36.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackcat286', 'alois.berger@example.com', 'daaad6e5604e8e17bd9f108d91e26afe6281dac8fda0091040a7a6d7bd9b43b5', 'Aloïs', 'Berger');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Aloïs y me gusta conocer gente nueva!', 98, -55.8256, 72.5244);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadzebra9249d41', 'jo.wade0e0a@example.com', 'aa304b5d1d724b004084cbbda0c148aaadafd171bd6c5c519e42292ef18696f8', 'Jo', 'Wade');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1991-12-29', 'Hola, soy Jo y me gusta conocer gente nueva!', -39.9136, -51.842, 'https://randomuser.me/api/portraits/women/86.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverswan300', 'hugo.dumas@example.com', '1bb216aee0416326c3924074dd98efb82d073f7686c64322a407c0e05de53b15', 'Hugo', 'Dumas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Hugo y me gusta conocer gente nueva!', 49, 62.3494, 76.3927);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackgorilla0a25', 'julien.bonnet69a2@example.com', '26787dd2f72cc993706ee8209c6c8b2e77b8b6c7bbc8d168550dcfc1c8b28818', 'Julien', 'Bonnet');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2005-09-24', 'Hola, soy Julien y me gusta conocer gente nueva!', 58.9938, -126.6356, 'https://randomuser.me/api/portraits/men/87.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulfrog131', 'wendy.wheeler@example.com', 'cc8321d6375c494d043fdd0260f21bc0ec51dacc9f6abb7f909cdcd3041b78bf', 'Wendy', 'Wheeler');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Wendy y me gusta conocer gente nueva!', 91, 83.9495, 142.1905);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownpeacocka80c', 'nieves.morab359@example.com', 'c0814c71ab990bc04fe2fcc232df05322e8e9964fa79cc6ff36be31099096225', 'Nieves', 'Mora');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1980-08-03', 'Hola, soy Nieves y me gusta conocer gente nueva!', -29.5659, -117.3141, 'https://randomuser.me/api/portraits/women/46.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blacksnake405', 'daniel.pabst@example.com', '25ba25a573a67c20e6c6530edeaa9a263b74cf0ba2658f5a8ec4c3a253dad77e', 'Daniel', 'Pabst');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Daniel y me gusta conocer gente nueva!', 89, -72.9389, 79.9908);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpleladybuc981', 'antoine.olivier4bb5@example.com', 'f6ad9187c3c4ba42fbbf9c341864d77cd7463aceeda5ddd491b31ffc80442e2b', 'Antoine', 'Olivier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1996-04-04', 'Hola, soy Antoine y me gusta conocer gente nueva!', 41.3534, 143.2938, 'https://randomuser.me/api/portraits/men/7.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happytiger281', 'jennifer.hawkins@example.com', '3749ad2680c15aade0095cc3072736e551fc5ba89ace5bcbb61549db931bee26', 'Jennifer', 'Hawkins');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Jennifer y me gusta conocer gente nueva!', 86, -7.6683, 176.1245);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenpanda7a84b', 'mohamed.diez8e19@example.com', '3deaf968b56510d8421b122f7b401eb2e4616bf1388fd9098b7d63f072441089', 'Mohamed', 'Diez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1980-07-11', 'Hola, soy Mohamed y me gusta conocer gente nueva!', 60.0749, 132.6258, 'https://randomuser.me/api/portraits/men/61.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldentiger791', 'claude.wilson@example.com', '4ccd7412330594b4dccb7af06be1094f3c8f4b0675acf8cd73a3c5882298d4ec', 'Claude', 'Wilson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Claude y me gusta conocer gente nueva!', 96, -1.2222, -122.7613);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifullad9713', 'sherry.prescott5233@example.com', 'cd24c9092810dc38e0e1776f9328e1f53a73067100937e3e2521e12969fc19fb', 'Sherry', 'Prescott');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1994-06-25', 'Hola, soy Sherry y me gusta conocer gente nueva!', 64.9359, -58.833, 'https://randomuser.me/api/portraits/women/79.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluezebra513', 'arron.jimenez@example.com', 'f44b7e30470bbf28871de3873a55b67990840158ee529629db3f03eda0319b5d', 'Arron', 'Jimenez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Arron y me gusta conocer gente nueva!', 48, 30.3750, 44.3905);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrypeacocke3ce', 'travis.danielse107@example.com', '68d6641ff9421a6a305e56d4f1f79c1d426c977a1bcd3cadcd0d337ee4a6d323', 'Travis', 'Daniels');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2004-03-20', 'Hola, soy Travis y me gusta conocer gente nueva!', -15.5264, -14.3236, 'https://randomuser.me/api/portraits/men/15.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluepanda380', 'lylou.richard@example.com', '9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c', 'Lylou', 'Richard');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Lylou y me gusta conocer gente nueva!', 78, -64.7580, 101.4524);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownzebra95d97f', 'vadim.kirschner21e7@example.com', '20f3765880a5c269b747e1e906054a4b4a3a991259f1e16b5dde4742cec2319a', 'Vadim', 'Kirschner');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2004-08-29', 'Hola, soy Vadim y me gusta conocer gente nueva!', 12.7354, 105.5699, 'https://randomuser.me/api/portraits/men/4.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smalllion680', 'diane.pierre@example.com', '27cac5503836765cd10751d27ab4a6e17d7a80d4c948430a5a81513973f9b51e', 'Diane', 'Pierre');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Diane y me gusta conocer gente nueva!', 39, -6.6295, -136.3098);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrymouse12ffd4', 'nathan.flores69c0@example.com', 'd653ea2cd46dc85c83f98c41afcc4457a66cfcff22983401824282c783934d78', 'Nathan', 'Flores');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2003-03-14', 'Hola, soy Nathan y me gusta conocer gente nueva!', -54.5527, -171.9352, 'https://randomuser.me/api/portraits/men/42.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigbear549', 'h.-dieter.schuhmann@example.com', '433453e9984c904b6dc38d2537a6a45257d4040060f4407458212ad3c976e6b2', 'H.-Dieter', 'Schuhmann');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy H.-Dieter y me gusta conocer gente nueva!', 95, -51.6919, 97.9703);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverwolf6460c6', 'olga.cano9026@example.com', '3c9d411f67bbdd7fdf25697c9fb9d62946ceb33f7667b594b0d53da9b89a547b', 'Olga', 'Cano');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1985-04-04', 'Hola, soy Olga y me gusta conocer gente nueva!', 10.2232, 146.7356, 'https://randomuser.me/api/portraits/women/5.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redmeercat637', 'annette.mcdonalid@example.com', 'df835dcf8d6c492c3d340604b9e58d8603d98cd5f90e754a3a85cf174488e17d', 'Annette', 'Mcdonalid');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Annette y me gusta conocer gente nueva!', 78, 13.3378, 144.2856);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicsnakecbbe', 'russell.castillo15a2@example.com', 'fad68de0366cdcbbba040891fd694529cce0a154f4e55bdc8d334c4df2b5735c', 'Russell', 'Castillo');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2000-09-27', 'Hola, soy Russell y me gusta conocer gente nueva!', -36.744, 139.9783, 'https://randomuser.me/api/portraits/men/39.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowtiger460', 'terrence.burke@example.com', 'b64608345c88e3e506318d8cce5cdf6682dd52433cca7abf29491b358011cbf1', 'Terrence', 'Burke');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Terrence y me gusta conocer gente nueva!', 60, -72.2794, 73.9393);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavypanda21ef8c', 'heloise.meunier26e3@example.com', '06fa1d3460055a9d49eb90c01e48d616d6c9f1b1ac8011253f0d4ba7e1c30d33', 'Héloïse', 'Meunier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1977-04-12', 'Hola, soy Héloïse y me gusta conocer gente nueva!', 30.5786, 147.2109, 'https://randomuser.me/api/portraits/women/25.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyzebra385', 'joerg.steininger@example.com', 'a5d2ae286d0d9e45c0621a6fc7c18119940dd737baa8d794e6af357d2136a7a1', 'Joerg', 'Steininger');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Joerg y me gusta conocer gente nueva!', 38, 40.6589, -1.8841);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greengorilla0cbd', 'luisa.gonzalez6bc4@example.com', 'a7996bbcd2b449e77e67eec4d2b0ba8872fbd9069dedf52ff2d8d06e12df9cd3', 'Luisa', 'González');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2005-06-22', 'Hola, soy Luisa y me gusta conocer gente nueva!', -38.6091, -137.8488, 'https://randomuser.me/api/portraits/women/83.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulbutterfly235', 'melvin.richards@example.com', '575e500ddb529cc2e5b14dd6e7feb389a8b6e0d7c2b162b6bf31831c64d23592', 'Melvin', 'Richards');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Melvin y me gusta conocer gente nueva!', 65, 33.6042, 112.4189);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowlion458f29', 'vera.rollbd8a@example.com', '650e077f4dc2bf2d8219bbc441ccd17172cff0eb667df0a33e944f0cf52373a5', 'Vera', 'Roll');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1975-06-02', 'Hola, soy Vera y me gusta conocer gente nueva!', -29.4277, 160.4421, 'https://randomuser.me/api/portraits/women/20.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happycat737', 'salvador.douglas@example.com', '72f4be89d6ebab1496e21e38bcd7c8ca0a68928af3081ad7dff87e772eb350c2', 'Salvador', 'Douglas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Salvador y me gusta conocer gente nueva!', 63, 62.7854, -90.9371);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazysnake617605', 'marie.legalleb28@example.com', '721c9525ade2ea8903d343ef25cf68b9bf4ab0aad56bb7b01fbe48d09bc7fcf4', 'Marie', 'Le Gall');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1995-04-25', 'Hola, soy Marie y me gusta conocer gente nueva!', 33.5291, -107.6132, 'https://randomuser.me/api/portraits/women/86.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangewolf718', 'justine.buck@example.com', '06b29e8f04a486cb28a9e7dabb4de6a4eb57f884403aabc6312771d6a5247843', 'Justine', 'Buck');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Justine y me gusta conocer gente nueva!', 96, 9.7092, -95.0873);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silversnake1e0e6', 'britney.jenkinsd00a@example.com', '8e66a7a836a8de2c49d566a63b42e835a7456f5af99af29a8b773654ca8f5b35', 'Britney', 'Jenkins');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1982-11-06', 'Hola, soy Britney y me gusta conocer gente nueva!', 15.4043, 0.1551, 'https://randomuser.me/api/portraits/women/22.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallduck902', 'maelys.lefebvre@example.com', '83006a438f94daf3a7dd9c7b27f70c15e443c0ca55d58fcdfa76899ae466b455', 'Maëlys', 'Lefebvre');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Maëlys y me gusta conocer gente nueva!', 17, 82.2263, 13.2740);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happygoose38902a', 'rose.philippe90a7@example.com', '000e02e40e441be798211aaf86d037bacd3dedbc8a6318ca5f9a5c72ad52ffbe', 'Rose', 'Philippe');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1985-11-14', 'Hola, soy Rose y me gusta conocer gente nueva!', 65.1091, 72.9428, 'https://randomuser.me/api/portraits/women/81.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitemouse407', 'kristin.watkins@example.com', 'b1e529831a5e84db16679213514d2ca91747a445fbe1a72fd9f766422af648bf', 'Kristin', 'Watkins');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Kristin y me gusta conocer gente nueva!', 30, -41.0412, -144.1413);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluecat858a68f', 'marina.romero998a@example.com', '58fc07e995e1e6088dadc87755b86214336d2f7736aba12b345cc3f168a5365f', 'Marina', 'Romero');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1989-02-03', 'Hola, soy Marina y me gusta conocer gente nueva!', -54.3457, 16.9689, 'https://randomuser.me/api/portraits/women/58.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangegoose226', 'hans-heinrich.kloss@example.com', 'f968b6a56647cf5b791f3c6d77073a8c385202034a85692417f328493fbe1c72', 'Hans-Heinrich', 'Kloß');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Hans-Heinrich y me gusta conocer gente nueva!', 93, 63.8373, -175.5739);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadrabbit683fa4a', 'gavin.vasquez7beb@example.com', '8c244b370747c1930a4e0967254778ddbb69f6a409e62beebe5f92191a09a3a1', 'Gavin', 'Vasquez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1983-02-10', 'Hola, soy Gavin y me gusta conocer gente nueva!', -88.2938, 4.9699, 'https://randomuser.me/api/portraits/men/18.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicgoose217', 'alexandra.mcdonalid@example.com', '4b16e7e231bd44df8675066552a00f25dcb2d65d9aa46ac4c8dfd8f18f93b89d', 'Alexandra', 'Mcdonalid');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Alexandra y me gusta conocer gente nueva!', 32, 43.9337, 172.1298);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smalltiger165a67', 'landon.clarke3804@example.com', 'b6234d2ea0d6022be63db80d7b80e221097fe4a469dc44febcd2a9241effdeba', 'Landon', 'Clarke');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1991-03-19', 'Hola, soy Landon y me gusta conocer gente nueva!', 27.6306, -72.5249, 'https://randomuser.me/api/portraits/men/57.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrysnake306', 'juan.campos@example.com', '791ee309d1637cd3a826027d4b3aa7dbd9a86539f04e0a6003fef403d221426e', 'Juan', 'Campos');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Juan y me gusta conocer gente nueva!', 21, 72.7551, -91.9397);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazypanda7092042', 'adriana.liese2284@example.com', 'fcc8f1a7e291a1904e5a39debf3a8d41b6fcb9a13cf3bfd9bd60a43adfbd4fe6', 'Adriana', 'Liese');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1985-09-13', 'Hola, soy Adriana y me gusta conocer gente nueva!', 47.5389, 158.4642, 'https://randomuser.me/api/portraits/women/79.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenbutterfly959', 'axel.roche@example.com', 'b983e26b1409ccf1698fa1cc5bc80caa873ada20c1f79fe46ef919aa44072fc8', 'Axel', 'Roche');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Axel y me gusta conocer gente nueva!', 9, 20.9118, -68.7461);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplesnake33632', 'lukas.roussel0cb7@example.com', '9151c861ccd74f0c14b83796c20412f44608d8a5bde892904b673f94acea09ee', 'Lukas', 'Roussel');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1983-11-06', 'Hola, soy Lukas y me gusta conocer gente nueva!', -5.4737, -171.8104, 'https://randomuser.me/api/portraits/men/57.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenfish549', 'blake.hanson@example.com', 'ce23b71ee8b2a7fc0ddf09fb3865546ff47f6241554ecbe4ab9d95550be9ec30', 'Blake', 'Hanson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Blake y me gusta conocer gente nueva!', 80, 86.4079, -69.6043);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happylion566a4ca', 'hector.stewart0456@example.com', '6bdb262b0201799aefb0ae4116c6fb88f549425e30cd85a7f75a06be246751cf', 'Hector', 'Stewart');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2003-12-17', 'Hola, soy Hector y me gusta conocer gente nueva!', -49.6535, -133.719, 'https://randomuser.me/api/portraits/men/32.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenleopard239', 'liselotte.mayer@example.com', 'df4b1086ed85d4c9d62ad32a6855a5373c2a862ce4124b808b6598f4fb726013', 'Liselotte', 'Mayer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Liselotte y me gusta conocer gente nueva!', 93, 63.2116, -104.3126);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulducc35a', 'celia.vargasd249@example.com', '6ed8919ce20490a5e3ad8630a4fab69475297abd07db73918dd5f36fcfaeb11b', 'Celia', 'Vargas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2001-11-25', 'Hola, soy Celia y me gusta conocer gente nueva!', -39.4692, -27.8084, 'https://randomuser.me/api/portraits/women/51.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryzebra505', 'sarah.herrera@example.com', '13cc358c604102b8449c47603475881c635e9cb112c6e4e6cf1c0e867c29a1ee', 'Sarah', 'Herrera');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Sarah y me gusta conocer gente nueva!', 55, 62.1722, -41.6550);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitemouse51927d', 'louanne.bourgeoisa357@example.com', '90aa3d6e463557c122eadb71b5b0d7a5b485e5eb975b473d76e442446611a831', 'Louanne', 'Bourgeois');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1996-04-16', 'Hola, soy Louanne y me gusta conocer gente nueva!', -50.2124, 102.9613, 'https://randomuser.me/api/portraits/women/44.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadgorilla552', 'torsten.tonn@example.com', 'd9da0b2c7a7bf2f65cf8924837d3cd741e3d64abbbcc5cdbe167ab4f26ca2bfa', 'Torsten', 'Tonn');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Torsten y me gusta conocer gente nueva!', 66, -21.1521, 105.7996);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackostrich6b03', 'brooke.stevensbfd4@example.com', '54af2a2960e582263c45971cdd40da4ae31ede1db5395629d910f056479de12d', 'Brooke', 'Stevens');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1991-09-14', 'Hola, soy Brooke y me gusta conocer gente nueva!', -37.6327, 161.7406, 'https://randomuser.me/api/portraits/women/55.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrypeacock191', 'jerome.ryan@example.com', '333fd8874248459f54c93690b8a8563f85d5df3ad354931774e8be15eb5e862a', 'Jerome', 'Ryan');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Jerome y me gusta conocer gente nueva!', 3, 47.8574, 62.7102);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluebird8906164', 'harald.schwenke2650@example.com', 'bb59c48559a866d2169115860634793e9ecd6bfe9584599af7cf55d8f4bdf742', 'Harald', 'Schwenke');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1997-05-30', 'Hola, soy Harald y me gusta conocer gente nueva!', -31.9611, 10.7486, 'https://randomuser.me/api/portraits/men/57.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvergorilla458', 'corentin.gautier@example.com', 'bd129e2f86fb0e20588d31322d84b99ad7af68c3087a063d94f25e69b656fa7e', 'Corentin', 'Gautier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Corentin y me gusta conocer gente nueva!', 56, 35.5802, -117.9988);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenswan264b8f1', 'christian.montero1541@example.com', 'fffc1b1c24a3bc9772dc86c9e6e55886e5f7a65b378727031d04e39902c0a735', 'Christian', 'Montero');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1992-11-30', 'Hola, soy Christian y me gusta conocer gente nueva!', -67.5371, -120.8875, 'https://randomuser.me/api/portraits/men/62.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazywolf789', 'eloise.renard@example.com', '7d69277374ab81b076deac5d8492b65219e6a5a8cd9b595bac68a1025e80aa12', 'Eloïse', 'Renard');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Eloïse y me gusta conocer gente nueva!', 72, -21.5582, 23.1574);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallfrog206684b', 'lucie.gonzalez5590@example.com', '7be4264421b825721e046f06e6d58d735e3fb4a17b1efb21ab07131ca34496d6', 'Lucie', 'Gonzalez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1976-11-06', 'Hola, soy Lucie y me gusta conocer gente nueva!', -89.1226, 148.7787, 'https://randomuser.me/api/portraits/women/44.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenlion366', 'linda.henderson@example.com', 'd979885447a413abb6d606a5d0f45c3b7809e6fde2c83f0df3426f1fc9bfed97', 'Linda', 'Henderson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Linda y me gusta conocer gente nueva!', 75, -68.2681, -20.0418);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigpanda960724c', 'sonke.kleinerte5a9@example.com', '44fef9ae98127511825d5cb74157007b7f53d2b6f706411eab1932ef5833d6dd', 'Sönke', 'Kleinert');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2000-07-21', 'Hola, soy Sönke y me gusta conocer gente nueva!', 62.2694, -88.5178, 'https://randomuser.me/api/portraits/men/67.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownrabbit559', 'helge.hempel@example.com', '73c654b1cf677851b9bfb917f29cc64986bd9eea75bb0c0767778318f231b0e8', 'Helge', 'Hempel');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Helge y me gusta conocer gente nueva!', 12, -29.0081, 67.6672);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryfrog5227807', 'jonah.wegner2058@example.com', 'd0a32ecf89f3c0ce7965aa5cc7d9790b34789bd87da255d4cbef49e0bc58c1b5', 'Jonah', 'Wegner');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1977-07-21', 'Hola, soy Jonah y me gusta conocer gente nueva!', 12.2356, 179.1051, 'https://randomuser.me/api/portraits/men/59.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowgorilla239', 'sebastian.mahr@example.com', '7937c8915fa6b530407bc78f3ea7e2de8a6f06bcac020513bf141f3eea661b44', 'Sebastian', 'Mahr');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Sebastian y me gusta conocer gente nueva!', 91, -78.3498, 65.7368);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitepeacock2557', 'kenzi.shaw011c@example.com', 'd1775cdbcf90d7864101da3f728d64ef357441361dc31db4d6d62cf3e34c3656', 'Kenzi', 'Shaw');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1981-02-05', 'Hola, soy Kenzi y me gusta conocer gente nueva!', 42.7071, -148.1704, 'https://randomuser.me/api/portraits/women/76.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryladybug767', 'nina.erb@example.com', 'cbdbbf13daa108f92e105133ac24fce67e563884b5c10a18f5853232a06efe88', 'Nina', 'Erb');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Nina y me gusta conocer gente nueva!', 28, 79.8440, -7.3511);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishzebr7855', 'diether.neubauer80c5@example.com', '4f0d9e5f2d159c8bd63247f9470d09f15e1ff431cb88d5a101df49c4c01882e6', 'Diether', 'Neubauer');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1995-01-29', 'Hola, soy Diether y me gusta conocer gente nueva!', -15.6031, 15.4458, 'https://randomuser.me/api/portraits/men/69.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazycat788', 'lidia.esteban@example.com', '251a2ef40ef49231cfa9b9b548d424c71ef2dc2e56b4a006f233a423085aa718', 'Lidia', 'Esteban');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Lidia y me gusta conocer gente nueva!', 26, 69.9995, -97.2315);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvergorill93fa', 'purificacion.sanzb103@example.com', 'f5d36c673cea1d80af3d33404d506e0c3e7aeaa0b8c1a21e085fa3caa8928b3b', 'Purificación', 'Sanz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1976-08-06', 'Hola, soy Purificación y me gusta conocer gente nueva!', -9.0658, -73.966, 'https://randomuser.me/api/portraits/women/43.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigleopard143', 'undine.kress@example.com', '3f08d8fadb4b67fb056623565edbbc2c788091d78fd24cbc473fce3043ce3473', 'Undine', 'Kress');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Undine y me gusta conocer gente nueva!', 66, -9.8915, -172.9785);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallwolf3013c7a', 'armand.bergerf281@example.com', 'e8d44050873dba865aa7c170ab4cce64d90839a34dcfd6cf71d14e0205443b1b', 'Armand', 'Berger');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1987-12-29', 'Hola, soy Armand y me gusta conocer gente nueva!', -84.3777, -170.5727, 'https://randomuser.me/api/portraits/men/70.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redduck687', 'ronald.fernandez@example.com', 'fee5861463a2d43deeebb159cc3aaeaaa4a4f4507b625d365076890e208a01c3', 'Ronald', 'Fernandez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Ronald y me gusta conocer gente nueva!', 30, 21.2149, -152.8734);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavygorilla1b90', 'lyna.fournier2d51@example.com', 'b64608345c88e3e506318d8cce5cdf6682dd52433cca7abf29491b358011cbf1', 'Lyna', 'Fournier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1989-06-12', 'Hola, soy Lyna y me gusta conocer gente nueva!', -49.3089, -165.4602, 'https://randomuser.me/api/portraits/women/75.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyrabbit535', 'josep.vidal@example.com', 'c314d9dc739577d53b765b0b1391fdd580b9c92a02626edec25f9c6dbd657b59', 'Josep', 'Vidal');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Josep y me gusta conocer gente nueva!', 87, 88.2735, -81.6161);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallsnake26060c', 'gwendolyn.bryantd778@example.com', '217974f51a9cde7e2d8fcf0ebfa31ccba6d1d07992d0697f62cff338075677e0', 'Gwendolyn', 'Bryant');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1991-09-18', 'Hola, soy Gwendolyn y me gusta conocer gente nueva!', -15.35, -90.4388, 'https://randomuser.me/api/portraits/women/56.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryfrog904', 'frank.hanson@example.com', '41d42da01baa7b1fb1b8b926b294e7ae31920596e176f81dc2701a1d65b887fa', 'Frank', 'Hanson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Frank y me gusta conocer gente nueva!', 9, -63.5624, -17.2715);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvertiger40f0a', 'eleanor.simmonsf7e3@example.com', 'cc2585df74ecdb8b43e3d9f1f793ee9ccd21d617a49e8e5698cb5e052c453dac', 'Eleanor', 'Simmons');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1982-02-06', 'Hola, soy Eleanor y me gusta conocer gente nueva!', 11.5179, 104.9634, 'https://randomuser.me/api/portraits/women/89.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadsnake157', 'elizabeth.russell@example.com', '110812f67fa1e1f0117f6f3d70241c1a42a7b07711a93c2477cc516d9042f9db', 'Elizabeth', 'Russell');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Elizabeth y me gusta conocer gente nueva!', 26, -21.6807, 59.4250);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenlion142b0ba', 'jesus.duranc2ee@example.com', '36e6abf7ccb469f72d9b2ced171d6f62181e1f82eef6af8e36a3603a464c1248', 'Jesús', 'Duran');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1980-05-14', 'Hola, soy Jesús y me gusta conocer gente nueva!', -65.3134, -144.0909, 'https://randomuser.me/api/portraits/women/1.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicfish721', 'sandro.janson@example.com', '6bab3007f56e2a9175ff1222c2654ddcd08fa7981a1ddc42f1d95cfbd80ede47', 'Sandro', 'Janson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Sandro y me gusta conocer gente nueva!', 23, -25.7649, -157.6580);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redbutterfly32dd', 'hakan.seeligera886@example.com', 'eb1ac1615f9e8c1c2f1e9ad7715176cc72868ecc3c13d235acae8de92f3c9524', 'Hakan', 'Seeliger');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1993-01-27', 'Hola, soy Hakan y me gusta conocer gente nueva!', 64.1358, -144.835, 'https://randomuser.me/api/portraits/men/0.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpleswan494', 'victoria.campos@example.com', 'cd24c9092810dc38e0e1776f9328e1f53a73067100937e3e2521e12969fc19fb', 'Victoria', 'Campos');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Victoria y me gusta conocer gente nueva!', 29, -81.2464, 146.0389);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyladybug2597a', 'rhonda.robertsadfc@example.com', '5db6c5772473e0b01be451fe33c85f128fd1e6ab33c9519a13b177b0a2fd8d54', 'Rhonda', 'Roberts');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1999-10-27', 'Hola, soy Rhonda y me gusta conocer gente nueva!', -27.4343, -114.7556, 'https://randomuser.me/api/portraits/women/15.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitebird279', 'yolanda.walker@example.com', 'd7d5dcc369426e2e5f8dcb89af4308b0daed6e55910d53395ce38bd6dd1a9456', 'Yolanda', 'Walker');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Yolanda y me gusta conocer gente nueva!', 87, -7.5736, -0.0870);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangeleopard077', 'yolanda.cortes9b96@example.com', 'ecc4873a1694eb0de0b33d68f0df091d6816127c1422266399700d02599a8628', 'Yolanda', 'Cortes');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2003-06-19', 'Hola, soy Yolanda y me gusta conocer gente nueva!', 55.9574, -107.9827, 'https://randomuser.me/api/portraits/women/56.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyswan779', 'franzjosef.meister@example.com', 'd618fb157a4b382e92fcd4a830c5fa8adef45a809543c524f7904e38f867dac8', 'Franz Josef', 'Meister');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Franz Josef y me gusta conocer gente nueva!', 75, -57.4895, 13.7614);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryswan745c2e6', 'anne.degen6bc2@example.com', 'd93244e7b08131ef10eda16a0717627450cf0e51d1ca713c41d301a51b9a6e54', 'Änne', 'Degen');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2001-06-03', 'Hola, soy Änne y me gusta conocer gente nueva!', -65.6, -128.7573, 'https://randomuser.me/api/portraits/women/65.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvergorilla494', 'victoire.guerin@example.com', 'e2e733ddd9dd5bd8a16b3bfb6029ec3dbb5db1cad48487e19de81fe49bd672c5', 'Victoire', 'Guerin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Victoire y me gusta conocer gente nueva!', 62, -82.1661, -93.9353);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenladybu8473', 'trinidad.alonso53c7@example.com', 'a4985e5ebeaa5ef0f5fbeab600e9eb193ba2cff20923be1a77a7a468ac70d90e', 'Trinidad', 'Alonso');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1998-10-28', 'Hola, soy Trinidad y me gusta conocer gente nueva!', 39.3365, 169.6883, 'https://randomuser.me/api/portraits/women/38.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyduck746', 'jeremiah.garza@example.com', '1e7c2c0a2491e1858b2f55e1ab0423976f719f8a40a756d66d0f2d145cf4ace4', 'Jeremiah', 'Garza');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Jeremiah y me gusta conocer gente nueva!', 52, 66.0434, 175.6393);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishcat90b6b', 'herwig.hausnerfdca@example.com', 'dfef5e53f9848472560a3e680a310d097ecc75919740646df38d31cab7aa07ac', 'Herwig', 'Hausner');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1993-08-21', 'Hola, soy Herwig y me gusta conocer gente nueva!', 47.9949, 61.7197, 'https://randomuser.me/api/portraits/men/85.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvergoose501', 'emma.roche@example.com', '6448904534ab4c2741455dcf1927a7fe6c932c5008e587b2c0f7f43c75f0e41e', 'Emma', 'Roche');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Emma y me gusta conocer gente nueva!', 27, 81.6741, 146.9258);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenduck3304eb1', 'line.duboiscd9a@example.com', '04b2b4ea2f66b8e32f47597cf3384b7e81d9b84b28c0fbbaf5587f24b68dbf5e', 'Line', 'Dubois');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2006-05-03', 'Hola, soy Line y me gusta conocer gente nueva!', 17.4038, 132.7513, 'https://randomuser.me/api/portraits/women/81.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrygorilla859', 'rosario.ramos@example.com', '59cea62bbdfb4dc0ccac8a9b92f35bf8b4d96762871626956217907c09fc035b', 'Rosario', 'Ramos');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Rosario y me gusta conocer gente nueva!', 38, 27.8175, 103.0174);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackpeacockd18c', 'luz.sanz29b8@example.com', 'c33378f6784b0c2ea3b1db5f6f091dbface67d393dca85f127ada457b41e7e3a', 'Luz', 'Sanz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2004-06-23', 'Hola, soy Luz y me gusta conocer gente nueva!', 76.5371, -31.775, 'https://randomuser.me/api/portraits/women/74.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvergoose371', 'louanne.caron@example.com', '72059e4ae63a5e1fd696c8817d6ec88d89f9c9bb05ba8cc90a99a35654516986', 'Louanne', 'Caron');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Louanne y me gusta conocer gente nueva!', 79, 88.3505, 89.5036);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenlion98031f', 'anna.duvala2f6@example.com', '3583e2784d4accd7b12ddebc153b0dacb41db7e947a5736a58230a3f03935eb1', 'Anna', 'Duval');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1989-07-25', 'Hola, soy Anna y me gusta conocer gente nueva!', -48.7254, 45.223, 'https://randomuser.me/api/portraits/women/62.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadrabbit391', 'clifford.gutierrez@example.com', 'e560f6cb8384862b7c6768ebd40f2d8f4fa52b3ab407398a463a8b7b04297b2d', 'Clifford', 'Gutierrez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Clifford y me gusta conocer gente nueva!', 25, 78.5373, 122.3015);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryswan9175b69', 'lorenzo.chevalier3658@example.com', 'c7647006fa89ebe136b7b96bd4d4ee2e37e58d267fc615f0d3309c63a5559039', 'Lorenzo', 'Chevalier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1998-06-20', 'Hola, soy Lorenzo y me gusta conocer gente nueva!', 42.0757, -72.7128, 'https://randomuser.me/api/portraits/men/10.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenmeercat327', 'leon.brunet@example.com', 'bdc1e182d3b5e3b3e9bce4fcd579671ac7ce8ddcc577714a90677565f60ec9e0', 'Léon', 'Brunet');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Léon y me gusta conocer gente nueva!', 64, -52.3009, -27.9707);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigpeacock58eaff', 'clifton.burton55ad@example.com', '14443a5cf76b1f9490f462edfc733251fe07dd5093b6275309f19b7b665b4e5b', 'Clifton', 'Burton');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1981-02-09', 'Hola, soy Clifton y me gusta conocer gente nueva!', 7.6426, 124.1969, 'https://randomuser.me/api/portraits/men/12.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverbear176', 'tessa.lemaire@example.com', '433453e9984c904b6dc38d2537a6a45257d4040060f4407458212ad3c976e6b2', 'Tessa', 'Lemaire');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Tessa y me gusta conocer gente nueva!', 46, 63.0732, -36.6528);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyelephan6491', 'gavin.peck1cbc@example.com', '781e1ba88473ef026d6d0ce6b0bd391d9952a9f2f526d6a4b796a083ed19e698', 'Gavin', 'Peck');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1988-07-16', 'Hola, soy Gavin y me gusta conocer gente nueva!', 26.6616, 143.6961, 'https://randomuser.me/api/portraits/men/99.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicpeacock339', 'rick.grant@example.com', '1fcc8fda7ef16ba59418cbfdb874927938e52ab32195518fab72167f3f48ec9f', 'Rick', 'Grant');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Rick y me gusta conocer gente nueva!', 49, -44.1766, 45.7730);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitegorillaa74c', 'jose.vega66b8@example.com', '6d594f4cca0d699cb0316849c24387b8c6c8bba8443230698ff87c2f234d54c9', 'José', 'Vega');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2002-10-04', 'Hola, soy José y me gusta conocer gente nueva!', 28.3314, 123.1577, 'https://randomuser.me/api/portraits/women/77.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenwolf532', 'inmaculada.soler@example.com', '1dbfed665657cb4bc80d72d7e2625bab7590466aab7a1a2bd76f80422fd0b4bf', 'Inmaculada', 'Soler');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Inmaculada y me gusta conocer gente nueva!', 0, -45.8911, -69.6809);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenbutterfef4e', 'gwendolyn.lucas48fd@example.com', 'e32e2774939d77f03ee6e90d3c97bf0b912e588da1850b2a484ba13a712fd829', 'Gwendolyn', 'Lucas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1984-05-30', 'Hola, soy Gwendolyn y me gusta conocer gente nueva!', -75.1234, -179.3952, 'https://randomuser.me/api/portraits/women/29.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangemouse153', 'emilio.velasco@example.com', '11e9420772d2c61294766d5a4549880480786d1af1a8712adbeaa6a81159fa83', 'Emilio', 'Velasco');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Emilio y me gusta conocer gente nueva!', 95, -85.2856, -48.3875);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenmouse893660', 'heather.pearson7f4f@example.com', 'd436f5f7265e988443a70c61c935ceaed32743d812119d17fc7dd78cfd9255c4', 'Heather', 'Pearson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2005-06-24', 'Hola, soy Heather y me gusta conocer gente nueva!', 32.0814, -55.0502, 'https://randomuser.me/api/portraits/women/96.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverswan762', 'alice.gauthier@example.com', '0782cb514029008de13d7e71aa1662c310b08d0d0abb29b3220466c0f3b08c1f', 'Alice', 'Gauthier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Alice y me gusta conocer gente nueva!', 10, -50.9707, 41.2764);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organiccat57275b', 'hans-theo.marquardt35c5@example.com', '33dc0ba86008f4434bd43d050df9022209367483c1eef5280b25da861c32f6ad', 'Hans-Theo', 'Marquardt');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2005-06-19', 'Hola, soy Hans-Theo y me gusta conocer gente nueva!', -23.0628, 10.7169, 'https://randomuser.me/api/portraits/men/6.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryfish196', 'javier.vazquez@example.com', '800ad6207fe609eac8f8522fc0e0ab414f70e863fd95cc831116a4d83690acbe', 'Javier', 'Vázquez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Javier y me gusta conocer gente nueva!', 83, 16.2573, 130.3942);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyelephan48f0', 'kaitlin.morales2707@example.com', 'df63fcdf296407efc1a102fe0b233721a96935d5a901b5b7e9029c0bc028fd8e', 'Kaitlin', 'Morales');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1986-06-06', 'Hola, soy Kaitlin y me gusta conocer gente nueva!', -74.9237, 160.6211, 'https://randomuser.me/api/portraits/women/25.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulkoala947', 'abigail.berry@example.com', '1f1c5b2fad778434024f1537986346927917f4755a6e7d3fd91f22653b7c3132', 'Abigail', 'Berry');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Abigail y me gusta conocer gente nueva!', 59, 33.7840, -171.9529);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryfish152d4ab', 'belen.rojasce9e@example.com', 'aae5570e24fceb160ad89022cc4ecf8f225aefb7cbe196c5758acc46a486b0e2', 'Belén', 'Rojas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1984-08-27', 'Hola, soy Belén y me gusta conocer gente nueva!', 62.2892, 67.6389, 'https://randomuser.me/api/portraits/women/16.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazydog467', 'mario.carroll@example.com', '082c71c3ac0f7d08248e9a25ee9f83dc3e68814a226b7749c53ad52087be9afa', 'Mario', 'Carroll');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Mario y me gusta conocer gente nueva!', 63, -33.6995, 18.9135);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitegorilla5505', 'lou.laurenta607@example.com', '0139bc5debaaa4b84e9341efb6ffa3e470f45a084742310e8f0b63ea83380168', 'Lou', 'Laurent');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2001-06-15', 'Hola, soy Lou y me gusta conocer gente nueva!', -36.5094, 38.468, 'https://randomuser.me/api/portraits/women/36.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigleopard564', 'carina.tamm@example.com', '2558a34d4d20964ca1d272ab26ccce9511d880579593cd4c9e01ab91ed00f325', 'Carina', 'Tamm');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Carina y me gusta conocer gente nueva!', 44, 13.1593, 167.0306);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazymouse774d59', 'lilou.olivier39a3@example.com', '9d7fd6a32018eb55f4fb6fc06949b683003e5a04b0721932a32ed785aec22372', 'Lilou', 'Olivier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1999-05-03', 'Hola, soy Lilou y me gusta conocer gente nueva!', -51.5823, -3.742, 'https://randomuser.me/api/portraits/women/0.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishostrich562', 'deanna.herrera@example.com', '6382deaf1f5dc6e792b76db4a4a7bf2ba468884e000b25e7928e621e27fb23cb', 'Deanna', 'Herrera');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Deanna y me gusta conocer gente nueva!', 28, 6.7211, 0.4178);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryzebra441de5', 'sophie.martin55f2@example.com', '8028fa2ee1328603ede76823df73c43d62978921b76dd6123570721deec68b92', 'Sophie', 'Martin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1989-12-29', 'Hola, soy Sophie y me gusta conocer gente nueva!', -73.391, -26.1925, 'https://randomuser.me/api/portraits/women/66.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluewolf274', 'florian.nguyen@example.com', '2a79be6a5deb17eb3973b3e1872623682287731df936d313f7c8b0e4a336e958', 'Florian', 'Nguyen');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Florian y me gusta conocer gente nueva!', 79, 43.5088, -116.7855);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redelephant8be98', 'eline.morinb01b@example.com', '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', 'Eline', 'Morin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2002-04-24', 'Hola, soy Eline y me gusta conocer gente nueva!', -70.4184, -127.743, 'https://randomuser.me/api/portraits/women/46.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenostrich361', 'sacha.dufour@example.com', '6201eb4dccc956cc4fa3a78dca0c2888177ec52efd48f125df214f046eb43138', 'Sacha', 'Dufour');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Sacha y me gusta conocer gente nueva!', 69, 35.9088, -158.9435);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('browngoose184393', 'oscar.barrettcc12@example.com', '3deaf968b56510d8421b122f7b401eb2e4616bf1388fd9098b7d63f072441089', 'Oscar', 'Barrett');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1992-09-25', 'Hola, soy Oscar y me gusta conocer gente nueva!', -11.4947, 58.3278, 'https://randomuser.me/api/portraits/men/78.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whiteswan667', 'maelya.arnaud@example.com', '96ee59df0b588d3d0c2402e6bf6f51403e94332a6da5924c3a087f92659aa44e', 'Maelya', 'Arnaud');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Maelya y me gusta conocer gente nueva!', 13, -35.7147, -68.5269);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishostr20fc', 'abbie.myers99cc@example.com', 'e473b9cc7a35a203853a785dac017b4c81366433476a8ca96eabd870c9d8e94a', 'Abbie', 'Myers');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2005-03-23', 'Hola, soy Abbie y me gusta conocer gente nueva!', 61.8037, -4.9537, 'https://randomuser.me/api/portraits/women/35.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicostrich826', 'krin.mitchelle@example.com', 'd3e1185155d15bf9deb0e2233cac0dd2fe175cfef6a93137c95994a8f0911ecd', 'Krin', 'Mitchelle');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Krin y me gusta conocer gente nueva!', 80, 82.4015, 141.6411);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackostrich33bf', 'uwe.grill1391@example.com', '5330e8f20aac22d5c299072da2a36dd4945ff1eaa409442215c1c15492ffb2bc', 'Uwe', 'Grill');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1994-12-28', 'Hola, soy Uwe y me gusta conocer gente nueva!', -84.1732, 151.1822, 'https://randomuser.me/api/portraits/men/31.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazywolf220', 'julie.pauli@example.com', '9ddcab3ac3610db0f0304fee83297946ced6c9c8a2b0032e7d85329a74de65e7', 'Julie', 'Pauli');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Julie y me gusta conocer gente nueva!', 64, 58.4001, -167.4187);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenmouse73cc7c', 'horst-dieter.daniel9fff@example.com', 'c5e80ac8d1e88db988a45af63d10fc1855193794f399efd4a0e592e35ed9e21c', 'Horst-Dieter', 'Daniel');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1979-06-17', 'Hola, soy Horst-Dieter y me gusta conocer gente nueva!', -18.9909, 42.3412, 'https://randomuser.me/api/portraits/men/83.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowmouse509', 'hugo.navarro@example.com', '811eb81b9d11d65a36c53c3ebdb738ee303403cb79d781ccf4b40764e0a9d12a', 'Hugo', 'Navarro');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Hugo y me gusta conocer gente nueva!', 48, -3.8188, 146.1693);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenostrich924d', 'nelson.morrison1f72@example.com', '494414ded24da13c451b13b424928821351c78fce49f93d9e1b55f102790c206', 'Nelson', 'Morrison');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1978-12-10', 'Hola, soy Nelson y me gusta conocer gente nueva!', -63.8277, -131.6116, 'https://randomuser.me/api/portraits/men/31.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallmeercat643', 'xavier.fuentes@example.com', '4726a1bce9706083939a56b88b657a4c6fe83d9ae0543889df2938517ed1e4f5', 'Xavier', 'Fuentes');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Xavier y me gusta conocer gente nueva!', 7, -66.4664, 49.9193);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackgoose9388b1', 'magrit.sasse4d9f@example.com', 'e5c2ed9c375f3ba8609bef4d646d6eafed55c5693d310ae515cda391e85ef9ab', 'Magrit', 'Sasse');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2005-09-04', 'Hola, soy Magrit y me gusta conocer gente nueva!', 21.1801, -140.5638, 'https://randomuser.me/api/portraits/women/57.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyleopard274', 'freia.jungmann@example.com', '19e58efc7f71d3ec0bd46d451e84674f072ccc74c3128f4f017e6981d4e92543', 'Freia', 'Jungmann');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Freia y me gusta conocer gente nueva!', 32, -0.6124, -52.9153);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishleop4dbf', 'friedemann.patzer4bbc@example.com', '12202602cb02931020b31530020ddef3673940c3ab69adedb473e8c766a7dcb7', 'Friedemann', 'Patzer');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1997-05-24', 'Hola, soy Friedemann y me gusta conocer gente nueva!', -72.9134, 145.4786, 'https://randomuser.me/api/portraits/men/45.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishgoose561', 'veronica.ramos@example.com', '3ac14fcfc2867544dcc68a7ffba96759581269395bd34d9bd5c3e5993d499548', 'Verónica', 'Ramos');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Verónica y me gusta conocer gente nueva!', 17, 47.4657, -131.3195);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greensnake20b73f', 'zoe.nicolas3191@example.com', '62eab5829d0fe041ad1ff8a85e450f8cb96276475d447f0ea27f6d5c164e8f45', 'Zoé', 'Nicolas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1987-05-21', 'Hola, soy Zoé y me gusta conocer gente nueva!', 65.2549, -48.5247, 'https://randomuser.me/api/portraits/women/26.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicmeercat873', 'katherine.brewer@example.com', 'f338f4c08c4eb9a62331c60091e0f301da3a8fe4b1466c2ee8b8461c82d6e0dc', 'Katherine', 'Brewer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Katherine y me gusta conocer gente nueva!', 70, 41.2272, 168.9365);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverfrog494a54', 'nicholas.simmons7c1f@example.com', 'b68bb7a4d58c3964b240b50cbe1e4ade3f4aa54a02c19ef1866bb5d0534d0c95', 'Nicholas', 'Simmons');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1982-11-02', 'Hola, soy Nicholas y me gusta conocer gente nueva!', -64.732, -27.9085, 'https://randomuser.me/api/portraits/men/68.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowbear542', 'albert.walker@example.com', '7c8159dd2e49a576176f5461ea9d8919abdfd0ed4e29e2b4c1c7b98a8060bf40', 'Albert', 'Walker');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Albert y me gusta conocer gente nueva!', 96, 61.1417, -179.3928);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplezebra2a30c', 'meline.denis5868@example.com', '99a77c8602a90163d7a121e6c57ad233daabc34e5ceaa02983d70a7291370d28', 'Méline', 'Denis');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1997-12-21', 'Hola, soy Méline y me gusta conocer gente nueva!', -63.5407, -101.3882, 'https://randomuser.me/api/portraits/women/35.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallmeercat450', 'murat.bechtold@example.com', 'fff54945efa0b4034ef0fc2edefdc6ca0d20c218c501e1abc39ff5dd4db5eef6', 'Murat', 'Bechtold');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Murat y me gusta conocer gente nueva!', 50, -43.2380, 1.2254);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownladybuge638', 'dave.foster658d@example.com', '0b04bad57d3b2c6f3736b7cb584f403ecf625cc31c0ad21e19e05a537304e969', 'Dave', 'Foster');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2005-08-19', 'Hola, soy Dave y me gusta conocer gente nueva!', -50.2824, 129.5004, 'https://randomuser.me/api/portraits/men/59.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazygorilla540', 'zlatko.schlesinger@example.com', '0281c104ff8e659f95c814a834ddcdd84ec7a0baa1852c0441d505859bda0e5c', 'Zlatko', 'Schlesinger');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Zlatko y me gusta conocer gente nueva!', 71, -87.0734, -135.7464);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplewolf744784', 'maya.roger2f36@example.com', '28274b3b335a20014c0cfbeb93d60d76c79efe057a891638ceae7209b10b0598', 'Maya', 'Roger');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1985-12-04', 'Hola, soy Maya y me gusta conocer gente nueva!', -53.6399, -44.3512, 'https://randomuser.me/api/portraits/women/35.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackgoose233', 'colleen.peck@example.com', '3c66157844fa8ce7e9b67b0022383d7709ba2b30f8306d3c9b2eceb2cd91e4dc', 'Colleen', 'Peck');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Colleen y me gusta conocer gente nueva!', 72, 21.3348, 113.4596);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenladybug0458', 'hunter.riverad72c@example.com', '6ebf3c8d63ef6b217bcee69e31f77f3634bbbef1346de27e229c17122974e27b', 'Hunter', 'Rivera');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1989-11-21', 'Hola, soy Hunter y me gusta conocer gente nueva!', -31.6662, -87.3143, 'https://randomuser.me/api/portraits/men/28.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redpeacock151', 'sara.gonzalez@example.com', 'c81532d2356ad39e88cad7c107cb6dbc5820b51d31a3af9eb7c7020830505006', 'Sara', 'Gonzalez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Sara y me gusta conocer gente nueva!', 24, 14.7636, 34.3295);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavywolf740f98a', 'martin.guillotd5a5@example.com', 'e111a1ef7daa8597240eda0ad482ba99ad09b4f84c093bde80063a23fff2cfde', 'Martin', 'Guillot');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1978-10-04', 'Hola, soy Martin y me gusta conocer gente nueva!', 87.1718, 25.2554, 'https://randomuser.me/api/portraits/men/5.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenladybug581', 'aiden.holt@example.com', '823e291431cff346861d254b6919a7f81aae326620bcab48baf225b77521cfc8', 'Aiden', 'Holt');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Aiden y me gusta conocer gente nueva!', 5, -58.3318, 155.2661);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicbuttee92e', 'nieves.gonzalez4937@example.com', 'efa1f375d76194fa51a3556a97e641e61685f914d446979da50a551a4333ffd7', 'Nieves', 'González');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1981-07-05', 'Hola, soy Nieves y me gusta conocer gente nueva!', -46.9971, 118.8087, 'https://randomuser.me/api/portraits/women/65.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvergorilla485', 'lylou.nicolas@example.com', '04e77bf8f95cb3e1a36a59d1e93857c411930db646b46c218a0352e432023cf2', 'Lylou', 'Nicolas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Lylou y me gusta conocer gente nueva!', 55, -4.1983, 155.1055);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicduck2e435', 'antonia.serranofb16@example.com', '8f53dd914ced58d84b4d816958f1442f59387ce7eadb03fa6aed193a512b2e5f', 'Antonia', 'Serrano');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1990-03-06', 'Hola, soy Antonia y me gusta conocer gente nueva!', -27.0077, -28.8254, 'https://randomuser.me/api/portraits/women/72.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownrabbit862', 'sonia.santana@example.com', 'f684da3ce7d63cde5292faedeb5e86cfb5f4002bd27a895028ea6c54ac7f6ae4', 'Sonia', 'Santana');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Sonia y me gusta conocer gente nueva!', 33, 82.1331, -39.5216);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpledog6134241', 'jo.ortize054@example.com', '45d25abffe8c792d74d30346429b5bc244b815eeb378a9c38395f7a466cf6894', 'Jo', 'Ortiz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2003-08-13', 'Hola, soy Jo y me gusta conocer gente nueva!', 39.0886, -174.737, 'https://randomuser.me/api/portraits/women/20.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redkoala859', 'hanna.henderson@example.com', '3b9d8298f1b5086d012618feebb2da1a394357c1dab7523443c9f6a743c4c84d', 'Hanna', 'Henderson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Hanna y me gusta conocer gente nueva!', 92, -64.1133, 106.0259);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazykoala8080e7', 'kiara.gautiercedc@example.com', '8e9498bf9ee96ee667bc610f4b50df7282f70114ee1b08c018f4e2f619c36754', 'Kiara', 'Gautier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1983-07-25', 'Hola, soy Kiara y me gusta conocer gente nueva!', 0.6861, 55.8243, 'https://randomuser.me/api/portraits/women/66.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverpanda160', 'sophie.schmitt@example.com', '4b25923a4f31b83195ceb0d160e0a1a6d1556b5a2cd4c582ff40aa0498ae1578', 'Sophie', 'Schmitt');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Sophie y me gusta conocer gente nueva!', 69, 39.4310, 148.4449);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicpeacoa0e5', 'joann.martinez1dc8@example.com', '5846d60018319b9e79700f11a3e826117b1bc6d3fd974c7348b38e9d671816c0', 'Joann', 'Martinez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2003-04-27', 'Hola, soy Joann y me gusta conocer gente nueva!', -87.6474, -144.9311, 'https://randomuser.me/api/portraits/women/96.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangepeacock812', 'keith.ford@example.com', 'bd9dc5f78dac9fad83a604327bf29bf368b8921f8cedfb3d3673efbe1f4eb449', 'Keith', 'Ford');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Keith y me gusta conocer gente nueva!', 56, 84.0381, -160.8572);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redfish257781a', 'owen.mathieua88f@example.com', '653fbb8e581542e136e234719e818be2e58720274fc169a11d3107681116c482', 'Owen', 'Mathieu');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2004-04-25', 'Hola, soy Owen y me gusta conocer gente nueva!', -6.16, 132.2198, 'https://randomuser.me/api/portraits/men/68.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryduck602', 'maria-theresia.bothe@example.com', '5771742f0ab142bcf6defd21acfdba5539e62633afb3ccaf7b9931ae1367e9e5', 'Maria-Theresia', 'Bothe');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Maria-Theresia y me gusta conocer gente nueva!', 35, 61.6559, 105.3923);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackostrich996d', 'wolfhard.pfaff8a1d@example.com', '0f48868342614a8b80d760eb91ee51ae8c777f8140baf40a8c4060c2ad2cefd6', 'Wolfhard', 'Pfaff');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1976-01-18', 'Hola, soy Wolfhard y me gusta conocer gente nueva!', -34.0846, -27.2614, 'https://randomuser.me/api/portraits/men/48.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadfish239', 'romeo.dupuis@example.com', 'be74ff939e5b0726657bb372b4a3b63e844f93cdd444f6d72bb7019c2de7c896', 'Roméo', 'Dupuis');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Roméo y me gusta conocer gente nueva!', 61, -53.3070, 126.6610);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowrabbit4887', 'todd.andrews2da5@example.com', 'f0fd52e74857e4e8cf2dba8cf46befa7f6283264a7b28b3725c80718c59b32bd', 'Todd', 'Andrews');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1992-04-14', 'Hola, soy Todd y me gusta conocer gente nueva!', -52.7164, -31.9362, 'https://randomuser.me/api/portraits/men/93.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigpanda630', 'rosemary.sims@example.com', 'dca13388cd38b5da22c8ac48d374a045af2c9a10d78bceba787d92a521cc1ccf', 'Rosemary', 'Sims');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Rosemary y me gusta conocer gente nueva!', 2, -78.9596, -12.1168);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangebear975c7b', 'soren.louis92c3@example.com', 'f9de8545cac4782227db7303c8ee243f62f5cbc3eddc5583ab8376f8d4004bb4', 'Soren', 'Louis');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2000-10-15', 'Hola, soy Soren y me gusta conocer gente nueva!', -24.9407, -15.4383, 'https://randomuser.me/api/portraits/men/36.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyduck467', 'anneli.trautwein@example.com', '8cb6279a8e1b12a9677497cc5c71e90337f2dfad637b35a9d1be0b0668a85f06', 'Anneli', 'Trautwein');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Anneli y me gusta conocer gente nueva!', 76, -26.9881, 131.6905);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadelephant745e7', 'fatima.calvob181@example.com', '74c36c4a08ea059991b69cacd127de6fdd7e13025d69b170031ba34e2d8f5c91', 'Fátima', 'Calvo');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1999-11-01', 'Hola, soy Fátima y me gusta conocer gente nueva!', -50.8891, -165.3255, 'https://randomuser.me/api/portraits/women/88.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blacktiger446', 'louella.jenkins@example.com', 'f4f3c8a1bcc0e5da9836d04f23754baba54f107ef4d2d67eeb5326c5ac74c28d', 'Louella', 'Jenkins');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Louella y me gusta conocer gente nueva!', 59, 86.0412, 159.9059);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redsnake34516de', 'esteban.gallego04db@example.com', '679b3fe58ea4b7378c418d79dbe3e89efb352ae7ea58f293a356e6c38e20f1f1', 'Esteban', 'Gallego');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2006-10-28', 'Hola, soy Esteban y me gusta conocer gente nueva!', 43.5262, -131.2969, 'https://randomuser.me/api/portraits/men/24.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadgorilla636', 'metin.klinkhammer@example.com', '2348f998744212575d85959674f9607ab26f67708a917157472832386337c904', 'Metin', 'Klinkhammer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Metin y me gusta conocer gente nueva!', 13, -34.9352, -100.5525);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadostrich211ae5', 'esther.jonesa9f0@example.com', 'ff6668c9c0541301b18b3da3be4f719151eb0f873f3b74dbb036ee00434cee0f', 'Esther', 'Jones');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1997-10-10', 'Hola, soy Esther y me gusta conocer gente nueva!', -12.9258, 72.5416, 'https://randomuser.me/api/portraits/women/25.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownsnake959', 'crystal.pena@example.com', 'b16f173eaf978090de28e9d135fc2e0ceb64a7b8dc35e726ee544e61e9bbf470', 'Crystal', 'Pena');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Crystal y me gusta conocer gente nueva!', 52, 82.7303, -99.7620);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrygoose795f18', 'celestin.leroux0f55@example.com', 'e5c2ed9c375f3ba8609bef4d646d6eafed55c5693d310ae515cda391e85ef9ab', 'Célestin', 'Leroux');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1980-06-30', 'Hola, soy Célestin y me gusta conocer gente nueva!', -9.7921, 31.1781, 'https://randomuser.me/api/portraits/men/7.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownduck462', 'birgid.kuhne@example.com', 'd5948e71d76097cbaa54d55ae21efaa228c882f2e720bad05828765c5f5995ab', 'Birgid', 'Kühne');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Birgid y me gusta conocer gente nueva!', 18, 8.0214, 72.3266);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryelephan9fb9', 'sheryl.petersoncdaa@example.com', '98f4270f09c07130b91985c80ab067e3f09d61f24636eb30784634aea6958a69', 'Sheryl', 'Peterson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1978-07-25', 'Hola, soy Sheryl y me gusta conocer gente nueva!', -15.9682, -144.1061, 'https://randomuser.me/api/portraits/women/13.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyduck994', 'martha.perry@example.com', 'bccae4ce7be65100a8472740c829b76610a653a6816a7b88c7f7def8ae8e9b0c', 'Martha', 'Perry');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Martha y me gusta conocer gente nueva!', 90, 67.8041, 120.8865);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenostrich7721', 'keith.jenkins9026@example.com', '46497eba130c2f1b626942d5e45257bdb042d8871bb4785ae93b5155e9c0a137', 'Keith', 'Jenkins');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1978-04-16', 'Hola, soy Keith y me gusta conocer gente nueva!', 12.39, -115.3815, 'https://randomuser.me/api/portraits/men/21.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greendog287', 'kaitlin.palmer@example.com', 'ae0facccf0a3723adefbdfe700c097b6c843dbfd06e5cd325602ec13b2361f8b', 'Kaitlin', 'Palmer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Kaitlin y me gusta conocer gente nueva!', 69, 35.9417, -157.6298);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulmou6a0a', 'ortrud.uhrigc3b1@example.com', 'f44c7a0904e47fc88ed2f773c03dfb0c4e9000e6c7dbddf79ba217e8d083504b', 'Ortrud', 'Uhrig');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2001-04-21', 'Hola, soy Ortrud y me gusta conocer gente nueva!', 52.7822, 113.7416, 'https://randomuser.me/api/portraits/women/77.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulleopard811', 'ana.mathieu@example.com', '9a105749cfcbac2e07d7640697861f62dfcc7c02bc24519e9c287431bc493f9d', 'Ana', 'Mathieu');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Ana y me gusta conocer gente nueva!', 14, 6.9436, -97.1965);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitebear145f346', 'tracy.rayf7e6@example.com', 'c5c4bad89ee44b4da0321344964f145dd3023fc1ab0d9c2473e2716b788481ae', 'Tracy', 'Ray');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2001-10-29', 'Hola, soy Tracy y me gusta conocer gente nueva!', 88.1028, -25.2424, 'https://randomuser.me/api/portraits/women/40.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadrabbit570', 'barb.hopkins@example.com', '79648183530ff7c5bd27b9d110fb17980272a0cfb0c37e31350ed61bcf0d96b7', 'Barb', 'Hopkins');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Barb y me gusta conocer gente nueva!', 94, -89.6112, 5.7835);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redostrich770d5b', 'lillian.halee99d@example.com', 'dc845de6967eb622c20902c423f63a869a8770209623f262db949a80f149c1c2', 'Lillian', 'Hale');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1993-05-04', 'Hola, soy Lillian y me gusta conocer gente nueva!', 26.8787, 0.0765, 'https://randomuser.me/api/portraits/women/39.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadbear393', 'julian.rodriguez@example.com', '196c562cb5e78e8cb10c66466868ca8b40ad7b029d8ecef850b717cebe055eb5', 'Julian', 'Rodriguez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Julian y me gusta conocer gente nueva!', 4, -70.5578, 42.7998);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverfish252b81', 'nieves.cabrera7d2f@example.com', '28f6155150517676afdef5e125740b054ca6e8e3655fcfc4d294ecd240654392', 'Nieves', 'Cabrera');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2005-08-10', 'Hola, soy Nieves y me gusta conocer gente nueva!', 14.0188, 161.851, 'https://randomuser.me/api/portraits/women/47.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverladybug898', 'edouard.roy@example.com', '01227d53f02c8c9120b86a3390972dcb019d6500cbe962c01224b3622dc8f02f', 'Edouard', 'Roy');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Edouard y me gusta conocer gente nueva!', 42, 72.5261, -92.9104);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazygorilla22517', 'arianna.henry04ce@example.com', '08234c948b5a00f9d33f57f120e68cfe627abf576decb1f8f9bc95cb2114e990', 'Arianna', 'Henry');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2005-04-07', 'Hola, soy Arianna y me gusta conocer gente nueva!', 14.2076, 67.0257, 'https://randomuser.me/api/portraits/women/15.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavylion537', 'lyam.bertrand@example.com', '44ff7b02c80d38b26dd6aa31d9470aed81b32e10331a3c994fb1a9945fd847ba', 'Lyam', 'Bertrand');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Lyam y me gusta conocer gente nueva!', 51, -4.1609, -159.5327);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitegoose923d81', 'martha.douglas930f@example.com', '2fe70f8fab887c96dd0abb620572088ea2a5435ef9fe82d635b553af88e55896', 'Martha', 'Douglas');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1996-12-30', 'Hola, soy Martha y me gusta conocer gente nueva!', 75.1656, 139.4979, 'https://randomuser.me/api/portraits/women/74.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigladybug761', 'rosie.mcdonalid@example.com', '7d45f0863f53cf495d56e3a3f7c95913ab30129cd202d937c0c17f8362b33708', 'Rosie', 'Mcdonalid');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Rosie y me gusta conocer gente nueva!', 83, -55.8368, 30.8181);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinymeercat26117', 'ottfried.koch5c4f@example.com', '943c3eeb252dbd176df2295566dad51a65ddc81165de0df9873a4ae9f7bf09bd', 'Ottfried', 'Koch');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2000-11-05', 'Hola, soy Ottfried y me gusta conocer gente nueva!', -48.521, -92.382, 'https://randomuser.me/api/portraits/men/66.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happygoose174', 'noelia.fuentes@example.com', 'ed7002b439e9ac845f22357d822bac1444730fbdb6016d3ec9432297b9ec9f73', 'Noelia', 'Fuentes');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Noelia y me gusta conocer gente nueva!', 25, -34.2296, 132.9090);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpletiger572a6', 'louna.petit57ee@example.com', 'cbc17ed4ed1a11325ad72a09d8176094bf9e6c4577819490f3b62f81084e83c9', 'Louna', 'Petit');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1985-05-26', 'Hola, soy Louna y me gusta conocer gente nueva!', 87.7155, 152.4128, 'https://randomuser.me/api/portraits/women/10.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishfish402', 'miriam.parra@example.com', 'cb3167835a0a33485798af52e07e534e71b2a8ab91e64f65c3b87c55f7ab7e2f', 'Miriam', 'Parra');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Miriam y me gusta conocer gente nueva!', 31, -27.3267, 79.3377);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallgorilla7f1d', 'ralph.nau8850@example.com', 'bfe0a8205d1917c9f1097aee9ea4f150d33d8e4527152c1ac435aad767293fe1', 'Ralph', 'Nau');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1991-07-26', 'Hola, soy Ralph y me gusta conocer gente nueva!', -53.0219, 161.7907, 'https://randomuser.me/api/portraits/men/81.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whiteswan855', 'cesar.ramirez@example.com', '1f58b1e965af65127ac83fca0a4daff741d74d4fe07f143bc44d46ebeb34ecf0', 'Cesar', 'Ramírez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Cesar y me gusta conocer gente nueva!', 90, 27.6250, -65.2501);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallelephan0245', 'ken.caldwell58ae@example.com', '030ad17f79e246d20db265cb6d4014c44a6070405c2ba7f735b7ef87a7f09dd0', 'Ken', 'Caldwell');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1978-02-15', 'Hola, soy Ken y me gusta conocer gente nueva!', -33.156, 108.7695, 'https://randomuser.me/api/portraits/men/26.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavybear120', 'dimitrios.schuttler@example.com', 'd42a05fa6dfc18236d887aee59df3574ef5cd76114e0c2b14ae6d10b45ab6515', 'Dimitrios', 'Schüttler');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Dimitrios y me gusta conocer gente nueva!', 72, 2.0363, -136.4279);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organiclion2b992', 'aurelien.dupont1941@example.com', 'bdc1e182d3b5e3b3e9bce4fcd579671ac7ce8ddcc577714a90677565f60ec9e0', 'Aurélien', 'Dupont');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1996-02-26', 'Hola, soy Aurélien y me gusta conocer gente nueva!', 74.2032, 132.9169, 'https://randomuser.me/api/portraits/men/0.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavycat426', 'constantin.scheller@example.com', 'f1dc9647b26d25cef5b49911870a44986a5e755724dec32a416cf80c9bd383ed', 'Constantin', 'Scheller');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Constantin y me gusta conocer gente nueva!', 80, 85.4157, -69.1325);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyduck8603d24', 'carolyn.hayes687f@example.com', 'c83e25bd6aa0b4f5c9e3105c9c16b1d0be837f31a069246b4811c3e8e059a213', 'Carolyn', 'Hayes');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1997-10-14', 'Hola, soy Carolyn y me gusta conocer gente nueva!', -57.3051, 88.356, 'https://randomuser.me/api/portraits/women/82.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happykoala907', 'katarina.spengler@example.com', '4007d46292298e83da10d0763d95d5139fe0c157148d0587aa912170414ccba6', 'Katarina', 'Spengler');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Katarina y me gusta conocer gente nueva!', 31, -13.7237, -5.7467);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangegoose3d3fb', 'elmer.bradley91c6@example.com', '3612420d8c3b21092784353eb724c26649a4144fc989cce3181712985d376cf9', 'Elmer', 'Bradley');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1980-09-21', 'Hola, soy Elmer y me gusta conocer gente nueva!', 78.5679, 5.9973, 'https://randomuser.me/api/portraits/men/79.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greengorilla391', 'barry.rhodes@example.com', '0a51ea4d84400704b8b7bca0cdb9e5ab7bb7b75b87bebb8a1b9e1b898a5895bb', 'Barry', 'Rhodes');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Barry y me gusta conocer gente nueva!', 47, -76.5504, 49.3136);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinypeacock3cceb', 'vicki.wallace020c@example.com', '446acc36bce9a33c2e19f0205c0a94b8a35955814b560532b0ecefbf90a6d055', 'Vicki', 'Wallace');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1985-12-13', 'Hola, soy Vicki y me gusta conocer gente nueva!', -65.1104, 39.17, 'https://randomuser.me/api/portraits/women/32.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangeswan991', 'georgios.lind@example.com', 'd461db619066bf79fdaaeabd94633bb4e0c1f1ffbd5251f3fdb6a90f62549749', 'Georgios', 'Lind');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Georgios y me gusta conocer gente nueva!', 22, 68.4679, 93.4020);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplecat45830bc', 'dean.ray173b@example.com', '44da1b8a8189d583a58d1f4a65966905772888efc147a8db6a56292990144ca0', 'Dean', 'Ray');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2004-05-05', 'Hola, soy Dean y me gusta conocer gente nueva!', 58.0253, 134.9358, 'https://randomuser.me/api/portraits/men/65.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadgorilla869', 'alice.alvarez@example.com', 'cd3ebf2708df4d4c6cdb3d90e5e7456c6bc080c03e8cd4573a31671d15adff94', 'Alice', 'Alvarez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Alice y me gusta conocer gente nueva!', 71, 2.7695, 112.7089);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownrabbit21e32', 'luka.rohrbach3ad2@example.com', '680dce633db1189eb1158aad579df2ce0ad72a0571ccfeeaa5f79092ea6cb729', 'Luka', 'Rohrbach');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1989-09-04', 'Hola, soy Luka y me gusta conocer gente nueva!', -53.9953, -137.7648, 'https://randomuser.me/api/portraits/men/41.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicfrog170', 'hans-heinrich.raupach@example.com', '8f5c570f55dd7921c9861e941be98a9492991d1a862d05283f6ddad56c891cca', 'Hans-Heinrich', 'Raupach');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Hans-Heinrich y me gusta conocer gente nueva!', 91, 75.8733, 13.2941);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulleo47ac', 'aribert.schwerdtfegerd093@example.com', 'f3fe5a51a2be8c6dc715028858fcba82ee021be7687e4f95b45086b8ffb1a23f', 'Aribert', 'Schwerdtfeger');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1998-11-10', 'Hola, soy Aribert y me gusta conocer gente nueva!', 52.4036, -31.1932, 'https://randomuser.me/api/portraits/men/96.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenostrich464', 'inaya.rodriguez@example.com', '498946ae91785990b2b9675b8bb3bd159f56f9d77977986894f097b6f1ffbace', 'Inaya', 'Rodriguez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Inaya y me gusta conocer gente nueva!', 94, -51.2169, -80.0792);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazywolf2064326', 'melvin.shelton6180@example.com', 'a1edfc930ac08f267a53dfd890d30ea2b668a326b51397124a4e16ee6b27c41f', 'Melvin', 'Shelton');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1989-06-28', 'Hola, soy Melvin y me gusta conocer gente nueva!', -12.1815, 177.307, 'https://randomuser.me/api/portraits/men/2.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpleladybug857', 'melvin.pearson@example.com', '67e50b6f080a86a0fe8ad918933c482989c9d91394ccfa45a859c69bc4a6112c', 'Melvin', 'Pearson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Melvin y me gusta conocer gente nueva!', 76, -57.6738, 85.2616);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishpand1777', 'victoria.dominguezddfb@example.com', 'fadb17cf87563cf5093084b8df099551fce3452a17f3e31b6439a4c874c9ff0e', 'Victoria', 'Domínguez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1997-05-30', 'Hola, soy Victoria y me gusta conocer gente nueva!', -21.5926, -119.8371, 'https://randomuser.me/api/portraits/women/32.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyrabbit302', 'vanessa.reed@example.com', '81e1c7698c14721fb4d63abbe797ae0984b7be7b1569ee0899b2c4ecdd89ef7a', 'Vanessa', 'Reed');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Vanessa y me gusta conocer gente nueva!', 39, 76.5239, -15.6021);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishostrcd67', 'betty.dierkesa7fa@example.com', '94a9c6fd83039f5d9bb820a93ceb099ba1e74817124f81adaf38df9d34c7e5ef', 'Betty', 'Dierkes');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1988-10-31', 'Hola, soy Betty y me gusta conocer gente nueva!', -84.1271, -120.2859, 'https://randomuser.me/api/portraits/women/82.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('biggoose565', 'vicky.lewis@example.com', '9028983a555ab64650a80e31f44e6bdd57bc7ef1aa437575040bbc9dfdb1353d', 'Vicky', 'Lewis');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Vicky y me gusta conocer gente nueva!', 71, 71.3561, -62.9486);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadkoala5583529', 'cristian.cruzd5f3@example.com', '8dfe4b3e06719fcb3d457ba75420ae124e9261b8a2ffab9b02b6ed488036561d', 'Cristian', 'Cruz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2001-10-19', 'Hola, soy Cristian y me gusta conocer gente nueva!', 13.6073, 60.6132, 'https://randomuser.me/api/portraits/men/36.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyzebra577', 'leo.nicolas@example.com', '02ce0980eec9ba736c5ae669614179a00e2bdf15fb078dbbf9dc354757593775', 'Léo', 'Nicolas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Léo y me gusta conocer gente nueva!', 44, 77.1306, 78.7753);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicsnake88c9', 'leana.bernard9bac@example.com', 'd316bbd564cba50794b11be234ee1648c490de3d8015848aee08ff3b778894ca', 'Leana', 'Bernard');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1981-12-03', 'Hola, soy Leana y me gusta conocer gente nueva!', 12.8156, 170.0884, 'https://randomuser.me/api/portraits/women/94.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenelephant185', 'francisco.palmer@example.com', '6abd21d065d8cc0f4b3f25a5695a455d7906a17cb2198839849fb1647c47c01e', 'Francisco', 'Palmer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Francisco y me gusta conocer gente nueva!', 99, -52.2332, 91.0969);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blacklion43961c2', 'victoire.robert76d3@example.com', '715dc8493c36579a5b116995100f635e3572fdf8703e708ef1a08d943b36774e', 'Victoire', 'Robert');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1995-12-15', 'Hola, soy Victoire y me gusta conocer gente nueva!', -60.9166, -119.7598, 'https://randomuser.me/api/portraits/women/71.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangemeercat662', 'evan.cunningham@example.com', '79b08f317051d4afc37ff26005772c7545aa741ae9f1e1a59754cbe807756754', 'Evan', 'Cunningham');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Evan y me gusta conocer gente nueva!', 54, 48.8392, -166.1414);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whiteleopard632a', 'lauren.fox67fd@example.com', 'b983e26b1409ccf1698fa1cc5bc80caa873ada20c1f79fe46ef919aa44072fc8', 'Lauren', 'Fox');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1994-05-10', 'Hola, soy Lauren y me gusta conocer gente nueva!', 6.9621, -119.2359, 'https://randomuser.me/api/portraits/women/21.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadkoala274', 'carla.perez@example.com', 'f98407019f8c4af6fbb6c9dd39c6fc88ed31c41709afc3b758fd9928fd75c42b', 'Carla', 'Pérez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Carla y me gusta conocer gente nueva!', 17, -16.8768, -78.0500);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenelephanbd57', 'marius.deschamps21c2@example.com', 'bcd8af9004d8b5d24647b3f3cd5759fc8d3dc72a5c3fe932d97be2960d57b0e2', 'Marius', 'Deschamps');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1991-01-22', 'Hola, soy Marius y me gusta conocer gente nueva!', 17.3369, 133.3662, 'https://randomuser.me/api/portraits/men/95.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplesnake523', 'ava.sanchez@example.com', 'a0978d4c311943296edb1ff2ec69ed5f30155554e650f49f3efc484dc22170a1', 'Ava', 'Sanchez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Ava y me gusta conocer gente nueva!', 67, -70.5630, -172.7108);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazybutterflcb67', 'silke.ehretb675@example.com', '82451d3cc87c1ab4fdf9025bf0134ca574422a802c4a3543b5f80ecf0db3b166', 'Silke', 'Ehret');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2000-03-10', 'Hola, soy Silke y me gusta conocer gente nueva!', -46.2024, -15.8267, 'https://randomuser.me/api/portraits/women/35.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldendog134', 'johnni.harrison@example.com', '07b1b32a84a2f392495428206f84fc536151a48d175d91bbe8ff75f12e7890c9', 'Johnni', 'Harrison');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Johnni y me gusta conocer gente nueva!', 75, -80.6773, -62.6797);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigladybug1557e6', 'lourdes.munoz2c31@example.com', '9166432cbb7c24632d9c091e8a9bbc747858146a0e772eebb226d21e37126bab', 'Lourdes', 'Muñoz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1983-09-15', 'Hola, soy Lourdes y me gusta conocer gente nueva!', 17.2897, -48.4431, 'https://randomuser.me/api/portraits/women/73.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishladybug131', 'antonin.garnier@example.com', '98ffa21907a013f442798b8cc32ebb505e40e23f156c7c84b2d435554d9f12bc', 'Antonin', 'Garnier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Antonin y me gusta conocer gente nueva!', 28, 58.6636, 56.0768);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulsnaaf6d', 'gerti.bohnke760c@example.com', 'c1df611335a1674c8ef8462f2eb2e54ac755a0d580b20383cf88542f0d900baa', 'Gerti', 'Böhnke');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1975-03-11', 'Hola, soy Gerti y me gusta conocer gente nueva!', -66.6217, 52.555, 'https://randomuser.me/api/portraits/women/37.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishrabbit368', 'armando.may@example.com', '4b25923a4f31b83195ceb0d160e0a1a6d1556b5a2cd4c582ff40aa0498ae1578', 'Armando', 'May');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Armando y me gusta conocer gente nueva!', 10, 43.8317, -135.7984);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazykoala21f071', 'lino.arnaud0ad0@example.com', '9477cd7760a4e106c2ea95b4f8b246afb36c42df466ab9325bc3b5ccb0c09e3f', 'Lino', 'Arnaud');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2003-07-03', 'Hola, soy Lino y me gusta conocer gente nueva!', -79.4358, 167.9643, 'https://randomuser.me/api/portraits/men/98.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazypanda597', 'donna.day@example.com', 'aa300fb004a5d73d7fa7da3f2452867d4698693e7deb0486f11f72755d8e8ea9', 'Donna', 'Day');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Donna y me gusta conocer gente nueva!', 16, 54.9397, -18.6095);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greencat468fa87', 'veronica.campos4d56@example.com', 'c304ab9c07e27e49d2ae4a20349e405078429001167657728cb55f2db8a96e6f', 'Verónica', 'Campos');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1991-10-04', 'Hola, soy Verónica y me gusta conocer gente nueva!', -42.7001, 89.0657, 'https://randomuser.me/api/portraits/women/17.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('biglion301', 'barbara.george@example.com', 'f168ccdd91548c5a8c871bd4b9b757c5e889a1672e774bddef4a2714759a7a8f', 'Barbara', 'George');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Barbara y me gusta conocer gente nueva!', 49, -11.6459, 37.5526);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluemouse6213654', 'augusta.reschkeabf5@example.com', '3e6078c8113a01138e0d1128f5763fede882e25ffae19e8012240e1084c174a2', 'Augusta', 'Reschke');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1998-05-29', 'Hola, soy Augusta y me gusta conocer gente nueva!', 3.8143, -152.507, 'https://randomuser.me/api/portraits/women/22.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organiccat511', 'celia.jean@example.com', '15065d771f7c8746bd30c125f9bb68a5ec7a84fccd7f0a82b38e760f39521c05', 'Célia', 'Jean');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Célia y me gusta conocer gente nueva!', 92, 88.0741, 14.0854);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackladybug0c81', 'solene.charles43ab@example.com', '3b6dc2fe604d23d364a00bc0866da68b6afbf32296e74138c0c9cf08dcb9a4ae', 'Solène', 'Charles');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1989-05-01', 'Hola, soy Solène y me gusta conocer gente nueva!', 21.6538, -57.1896, 'https://randomuser.me/api/portraits/women/21.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitepeacock537', 'fred.watson@example.com', '9323dd6786ebcbf3ac87357cc78ba1abfda6cf5e55cd01097b90d4a286cac90e', 'Fred', 'Watson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Fred y me gusta conocer gente nueva!', 62, 16.0100, -4.3678);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicwolf85a87', 'kitty.henrye19b@example.com', '80ab45e31f0ac0b5f367b4e57d864611d31434059d6541a55e366645a9ceec4e', 'Kitty', 'Henry');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1977-03-29', 'Hola, soy Kitty y me gusta conocer gente nueva!', 81.9597, 112.5639, 'https://randomuser.me/api/portraits/women/58.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowlion564', 'timothee.leclerc@example.com', '54986d595e3e8c4b0258170055aab128b4e51ef86abadf53270221c7d41c19b5', 'Timothee', 'Leclerc');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Timothee y me gusta conocer gente nueva!', 0, 76.0261, 90.8998);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigduck411e0cc', 'dolores.hidalgodcc9@example.com', '8452d9f61c15f9e79ed9626a5c24ad171198d1a4ca180816b5a852aa18a71371', 'Dolores', 'Hidalgo');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1999-08-20', 'Hola, soy Dolores y me gusta conocer gente nueva!', 84.9141, 13.6861, 'https://randomuser.me/api/portraits/women/74.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicostrich416', 'jeremiah.stephens@example.com', 'eb754f7512ef99ebf6d031b1355b496c0ecec0f08bcd1f6d7a790a5a8264be0c', 'Jeremiah', 'Stephens');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Jeremiah y me gusta conocer gente nueva!', 38, 55.7668, -136.8862);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadduck1944864', 'zoe.francois5c45@example.com', 'a1f95e4f6e5e4d17aafbe143c1357c9923e0854d74938aa75e89e836ef1ce077', 'Zoé', 'Francois');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2001-03-25', 'Hola, soy Zoé y me gusta conocer gente nueva!', 88.1315, 1.7446, 'https://randomuser.me/api/portraits/women/23.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownbird655', 'julia.kim@example.com', '0f9c00b3f38f964ee172095f50e53fe9b9e01bd0e1a9f750d877bd26a84ffe18', 'Julia', 'Kim');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Julia y me gusta conocer gente nueva!', 99, -87.7849, -58.9869);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadwolf1878a93', 'lou.dufour6267@example.com', 'ca46a3f7dabfcc476e496bf8b5100d6091734186c6cdd1c50d132ff61e0f4b7c', 'Lou', 'Dufour');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2004-07-21', 'Hola, soy Lou y me gusta conocer gente nueva!', -13.6623, -148.698, 'https://randomuser.me/api/portraits/women/10.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyrabbit615', 'hanae.aubert@example.com', 'b37b8c0394e0257d333fe93d5ad1d44e1ad947f8f24ff5ee8ae15a6ce2f272ac', 'Hanaé', 'Aubert');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Hanaé y me gusta conocer gente nueva!', 70, 66.2020, -37.3907);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinypeacock6eb3f', 'britta.eilers2b89@example.com', '3ad87d480554432e8fb02589a49bb9553150c357b12c2fa70c40e9f36edd03f4', 'Britta', 'Eilers');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1995-04-06', 'Hola, soy Britta y me gusta conocer gente nueva!', -49.3272, -82.4639, 'https://randomuser.me/api/portraits/women/93.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowrabbit424', 'silvia.cano@example.com', '0bc26e0941de568a4e56061688bbad799ffe3d6e53437a071c2436aac119230d', 'Silvia', 'Cano');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Silvia y me gusta conocer gente nueva!', 8, 64.2328, -177.7193);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadbird23908aa', 'joel.warrena944@example.com', '1c4bba2c9841c310159fcdca086040b738abdb6da3e46093e82450b35d98c89f', 'Joel', 'Warren');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2001-04-20', 'Hola, soy Joel y me gusta conocer gente nueva!', -88.8138, -152.556, 'https://randomuser.me/api/portraits/men/1.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavybird603', 'emilia.martin@example.com', '9f0638fd60feedbc1a5dced8234040d707c084bd75ddd2efb9154dbc220894bb', 'Emilia', 'Martin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Emilia y me gusta conocer gente nueva!', 83, -13.0593, -23.5076);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryostrich18b6', 'marie.brown1abd@example.com', '5dd52596b1ac068f8dcf355706800972a711cdfe45a91c6641f2587ceb70b958', 'Marie', 'Brown');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1982-05-27', 'Hola, soy Marie y me gusta conocer gente nueva!', -85.023, -97.8697, 'https://randomuser.me/api/portraits/women/41.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownsnake895', 'montserrat.navarro@example.com', 'ef83ad02ddf4d480a68a1f57062ee88c6cdef2ea717013fd6b787424ec72e482', 'Montserrat', 'Navarro');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Montserrat y me gusta conocer gente nueva!', 64, 9.1146, -52.4437);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyduck600bc25', 'luisa.ortiz4c2e@example.com', '9a733d49c5df58f3b82810033d2418f67dc49705fb022e1e9f4c5d20937d83d3', 'Luisa', 'Ortiz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1982-09-20', 'Hola, soy Luisa y me gusta conocer gente nueva!', 40.4363, 117.0027, 'https://randomuser.me/api/portraits/women/15.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishcat878', 'angeles.pena@example.com', 'e91b7ee99879d20aa114201d3f605019f5043929719f02abfd76b99276ed884b', 'Ángeles', 'Peña');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Ángeles y me gusta conocer gente nueva!', 10, 47.3802, -96.4876);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenelephanb055', 'louis.taylor2094@example.com', '594b1159d6adf3dee2866b34415fad4e41d62019f0f92d1f6b590f12210f2c6a', 'Louis', 'Taylor');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1997-07-18', 'Hola, soy Louis y me gusta conocer gente nueva!', 51.9568, -66.2519, 'https://randomuser.me/api/portraits/men/97.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenelephant715', 'mercedes.cruz@example.com', '000c285457fc971f862a79b786476c78812c8897063c6fa9c045f579a3b2d63f', 'Mercedes', 'Cruz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Mercedes y me gusta conocer gente nueva!', 5, 20.9685, 139.9692);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicostri18cf', 'melissa.fletcherad31@example.com', 'cc2585df74ecdb8b43e3d9f1f793ee9ccd21d617a49e8e5698cb5e052c453dac', 'Melissa', 'Fletcher');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2005-12-16', 'Hola, soy Melissa y me gusta conocer gente nueva!', 60.3195, -146.9901, 'https://randomuser.me/api/portraits/women/15.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenmouse586', 'gavin.bowman@example.com', 'e4d6dc0f6e2842e950ae809a86e90456285822d9d350ccc4dae596e0a724d7a3', 'Gavin', 'Bowman');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Gavin y me gusta conocer gente nueva!', 83, 33.8889, 176.2062);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazypanda78059d7', 'leon.fontai53e2@example.com', '4eb7ef52a0e1337a674211b8ebd5709a92871d0f31e813d791cdd83ac56ff706', 'Léon', 'Fontai');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1990-07-06', 'Hola, soy Léon y me gusta conocer gente nueva!', 79.2787, -111.7341, 'https://randomuser.me/api/portraits/men/10.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenwolf349', 'ilija.weil@example.com', 'bc236a8abd26671b4cb71310f98c56a3222e3a13ae51af5ab59d38ffca2ec90a', 'Ilija', 'Weil');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Ilija y me gusta conocer gente nueva!', 8, -68.8136, -169.3755);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenfish5822132', 'gene.mitchellefc30@example.com', 'ddf23c1d9fc212aed27ea02623b51bc3a83a703a3b70a669dc81e353f3cdab22', 'Gene', 'Mitchelle');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1978-07-09', 'Hola, soy Gene y me gusta conocer gente nueva!', -65.8967, 29.9014, 'https://randomuser.me/api/portraits/men/91.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redladybug275', 'ryan.morel@example.com', 'd1de890e17658eecf046b00d7863a3c2511ea2522bb4aa4db419003ce31adf16', 'Ryan', 'Morel');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Ryan y me gusta conocer gente nueva!', 71, -67.7723, -93.8992);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowduck993a29', 'sandro.mariebc5d@example.com', 'f400a2bf1f5aaf6a34e92b2eed8b2abdfde20e6e863ab2f235337a21e62738b5', 'Sandro', 'Marie');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1986-05-08', 'Hola, soy Sandro y me gusta conocer gente nueva!', -50.5927, -163.5812, 'https://randomuser.me/api/portraits/men/9.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownostrich294', 'rafael.rojas@example.com', 'bcac371b54f59945a14aa49e2e408e5d6e4dbc59387f5d8cfc6b015d40d5bb02', 'Rafael', 'Rojas');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Rafael y me gusta conocer gente nueva!', 76, -79.4565, 5.8982);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blueswan617cbed', 'abel.guillaume7af7@example.com', '7aee5b5dbb9e781589946f9087eb09e4a880d57e5d52441daaf7d49f9c2e629f', 'Abel', 'Guillaume');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2000-11-09', 'Hola, soy Abel y me gusta conocer gente nueva!', 63.1585, -72.5958, 'https://randomuser.me/api/portraits/men/14.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitesnake270', 'santiago.moya@example.com', '99c2bb3e7c93dd54a206c77388ee09708e39db1a6f544ff6887612495bce3920', 'Santiago', 'Moya');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Santiago y me gusta conocer gente nueva!', 78, -77.6143, 160.6632);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigswan6940cc8', 'angel.perezd13e@example.com', '8984228f3b9ff2df3b627963e07f457e69153a8bcba49e048ee42f4676cc6f71', 'Ángel', 'Pérez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2001-09-18', 'Hola, soy Ángel y me gusta conocer gente nueva!', -6.2124, -140.9666, 'https://randomuser.me/api/portraits/men/99.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazybear737', 'mateo.laurent@example.com', '5302acc68a1e82688d1e8fd5872b46ea23284127964d5e037f9083e3d734573a', 'Matéo', 'Laurent');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Matéo y me gusta conocer gente nueva!', 48, -80.9795, 114.8964);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownkoala6171e1', 'berthold.martin4e02@example.com', 'e12bba8d5c4a1ad3213381926a06c6d406b24900c4aca2c7fbfe9a8ddf12a3e8', 'Berthold', 'Martin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1999-07-04', 'Hola, soy Berthold y me gusta conocer gente nueva!', -40.5551, -151.4549, 'https://randomuser.me/api/portraits/men/88.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvermeercat810', 'sara.bryant@example.com', '36d4427ab0ae7d0f50bbf999dab58cbd73d6542a24273a48797fee0e9e01cec0', 'Sara', 'Bryant');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Sara y me gusta conocer gente nueva!', 17, 52.4378, 169.1492);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happykoala133bed', 'nino.lemaire9346@example.com', '594b1159d6adf3dee2866b34415fad4e41d62019f0f92d1f6b590f12210f2c6a', 'Nino', 'Lemaire');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1978-09-16', 'Hola, soy Nino y me gusta conocer gente nueva!', 53.0378, 138.9643, 'https://randomuser.me/api/portraits/men/7.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishfrog425', 'maelya.richard@example.com', '6089854c94ca5454b76be6752c562901a985f64c9a946f62976aeab593b83161', 'Maelya', 'Richard');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Maelya y me gusta conocer gente nueva!', 12, -83.5379, 60.2487);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whiteleopardeb47', 'tracy.holt7384@example.com', 'd2f129dd306d1d7a43fcfe047ef0dbb28275f5ed65f4636a28e2cae37b81d095', 'Tracy', 'Holt');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1991-10-04', 'Hola, soy Tracy y me gusta conocer gente nueva!', 48.6378, -93.4247, 'https://randomuser.me/api/portraits/men/6.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redzebra333', 'martin.nunez@example.com', '6f87c55c427281bedff941e77a227fdb7bd9c0cdc8074a9fc88f79105d991e19', 'Martín', 'Núñez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Martín y me gusta conocer gente nueva!', 12, -37.3620, 40.8476);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happybear33219f0', 'miriam.carrasco0391@example.com', '42883de235c26da7b7727177d4a1f7cc727acea1dba4641520322e5080f255b9', 'Miriam', 'Carrasco');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1992-12-04', 'Hola, soy Miriam y me gusta conocer gente nueva!', 40.4166, 2.4118, 'https://randomuser.me/api/portraits/women/5.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluelion600', 'mechthild.wunder@example.com', 'b59eb2cdfa9210fb20513f1d07289d11b6e6002c2e1b54053ad8ff051da1ab3e', 'Mechthild', 'Wunder');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Mechthild y me gusta conocer gente nueva!', 6, -53.0138, -70.8624);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangemouse68e1a', 'lorraine.lambert5aad@example.com', 'a154d0b155ed5bd13be11317ca122f2944805a41aa08aaed8ff820f42260f0ff', 'Lorraine', 'Lambert');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1986-08-12', 'Hola, soy Lorraine y me gusta conocer gente nueva!', 82.9123, 86.9275, 'https://randomuser.me/api/portraits/women/80.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazygorilla845', 'samira.merker@example.com', '8ddeaa4152e7c59f2240ce6716fed058771ed72efa6cfd991dae35ce7464610a', 'Samira', 'Merker');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Samira y me gusta conocer gente nueva!', 27, 42.5453, 159.6743);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownpanda418b12', 'bella.mason806d@example.com', 'df4b1086ed85d4c9d62ad32a6855a5373c2a862ce4124b808b6598f4fb726013', 'Bella', 'Mason');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1980-11-24', 'Hola, soy Bella y me gusta conocer gente nueva!', -49.4299, -130.6567, 'https://randomuser.me/api/portraits/women/4.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplecat657', 'joy.holt@example.com', '70b5bdb210f523e8260aedd5cf84fc9c684aa93ede98669204b715dd4289efda', 'Joy', 'Holt');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Joy y me gusta conocer gente nueva!', 8, -80.9600, -70.2954);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazydog80231a2', 'gertraude.thormann2f21@example.com', '248b3b8bfa4dd9d85123b89dcdaf29540718991d7f8f9148e4c4308ae6dae1e1', 'Gertraude', 'Thormann');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1988-11-13', 'Hola, soy Gertraude y me gusta conocer gente nueva!', -72.3645, 32.2257, 'https://randomuser.me/api/portraits/women/19.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyduck586', 'liam.moreno@example.com', '57eb5aedb42b638bbf6c7c7fc40416a238ab7edb082ac90ae8b30fa95a96c33b', 'Liam', 'Moreno');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Liam y me gusta conocer gente nueva!', 0, 37.8318, 123.4232);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazyostrich412a2', 'stanley.dunnd06a@example.com', 'b4def8217cadae26d4da633fd2a4e58e326cbb5d570afdc3989484da07af3579', 'Stanley', 'Dunn');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '2006-05-15', 'Hola, soy Stanley y me gusta conocer gente nueva!', 14.4728, 139.4389, 'https://randomuser.me/api/portraits/men/65.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownelephant109', 'franca.papke@example.com', '3e9df2cb288efe7a21cc992d70d29fc1de1b04306d5ad3ab4378713381657b7c', 'Franca', 'Papke');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Franca y me gusta conocer gente nueva!', 83, 83.4457, 69.3574);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicduck1fd23', 'marceau.muller0f0a@example.com', 'e7bf78c94f618255197e53b92692a68e8a36c861e78c7151fbbc9f515e16ef78', 'Marceau', 'Muller');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1981-10-30', 'Hola, soy Marceau y me gusta conocer gente nueva!', -25.345, 115.2135, 'https://randomuser.me/api/portraits/men/88.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenrabbit756', 'ana.gilbert@example.com', '845845ec9e847a2c03a6f556fcd2530ab92714c23606afed0e85d51751679465', 'Ana', 'Gilbert');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Ana y me gusta conocer gente nueva!', 35, 40.9933, -17.2360);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrypeacockbd22', 'sarah.cooper8fd9@example.com', '9e456f26807c93ec5a495efd82c1938addaa115ab37f624d6af5e7cd212ece3a', 'Sarah', 'Cooper');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2005-02-23', 'Hola, soy Sarah y me gusta conocer gente nueva!', -19.6621, -108.8642, 'https://randomuser.me/api/portraits/women/40.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redbutterfly469', 'darren.robinson@example.com', '0282d9b79f42c74c1550b20ff2dd16aafc3fe5d8ae9a00b2f66996d0ae882775', 'Darren', 'Robinson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Darren y me gusta conocer gente nueva!', 1, -70.9522, -149.1079);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishgoosf379', 'myrtle.king6ef7@example.com', '8a741d2f635ef2b4be6ada535c9029049aaee447e9126ea9c6ae7e2e5c134492', 'Myrtle', 'King');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1976-03-29', 'Hola, soy Myrtle y me gusta conocer gente nueva!', -47.4183, 89.1675, 'https://randomuser.me/api/portraits/women/75.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenkoala383', 'abel.andre@example.com', '9c15e816069946fbd20bed0935dd9d8e34d64034d657a2b852f8b66ad91af5b6', 'Abel', 'Andre');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Abel y me gusta conocer gente nueva!', 16, -88.9038, 42.7719);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluepeacock1e4de', 'hailey.alexander25f2@example.com', '6227328ed265fc5922635087f207af3d743344cf16b552afaa04cb584b8eb9b9', 'Hailey', 'Alexander');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1984-05-12', 'Hola, soy Hailey y me gusta conocer gente nueva!', -15.2402, -47.9961, 'https://randomuser.me/api/portraits/women/35.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulduck620', 'eggert.wendler@example.com', '577f54f8f8648285cd5e2be078f3a67a453a365c236448fa59cf7d6920f8fed1', 'Eggert', 'Wendler');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Eggert y me gusta conocer gente nueva!', 21, 68.9144, 164.2725);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigsnake1467b2a', 'yasmin.priebe0cef@example.com', '3c6252b4d95b89290f1a05d679bc3899b686657837f3c75ae699a9e0bff80da5', 'Yasmin', 'Priebe');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2002-11-10', 'Hola, soy Yasmin y me gusta conocer gente nueva!', -13.3994, -99.6057, 'https://randomuser.me/api/portraits/women/22.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitemeercat793', 'amparo.munoz@example.com', '7d445240c97cb8b39b22030981d77679608f91c7a4000e41a1794cde953a1846', 'Amparo', 'Muñoz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Amparo y me gusta conocer gente nueva!', 32, -68.8049, -110.2280);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinypanda899a31c', 'oscar.cox1f23@example.com', 'b10c94bd8ae38a2a37365b6d81c4ae1e121cccbcc233c8bdb4238eee7e85e657', 'Oscar', 'Cox');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2002-07-29', 'Hola, soy Oscar y me gusta conocer gente nueva!', -56.7088, 138.7744, 'https://randomuser.me/api/portraits/men/12.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackfish267', 'encarnacion.soto@example.com', 'd45ec3b2bc7e9d583a4c46e3a07e96bb84ad7628dabbcda73b8da150c8615ac6', 'Encarnación', 'Soto');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Encarnación y me gusta conocer gente nueva!', 9, 66.4903, 110.3433);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrypanda679db3', 'vicente.martin4157@example.com', '2fdae8f4af69dec69db47f81e904a64cf38e870636f4ec90b9dbbf24d9678497', 'Vicente', 'Martin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2006-05-03', 'Hola, soy Vicente y me gusta conocer gente nueva!', 57.9944, -38.6197, 'https://randomuser.me/api/portraits/men/26.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenlion336', 'rene.neal@example.com', '1801b094021884d7a92756d712748c8e26fc67e2bf98e60913bdbebca6ed751c', 'Rene', 'Neal');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Rene y me gusta conocer gente nueva!', 72, 86.3443, -137.8971);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redbird6098a4f', 'annedore.gabriel35ae@example.com', '054e3b308708370ea029dc2ebd1646c498d59d7203c9e1a44cf0484df98e581a', 'Annedore', 'Gabriel');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2002-05-17', 'Hola, soy Annedore y me gusta conocer gente nueva!', 30.6138, -38.0229, 'https://randomuser.me/api/portraits/women/93.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulzebra691', 'cordula.steinbrecher@example.com', '2d4795b5a4b00eb38d1a1db9a90ffd8c8ba2e407b4e51f4271c1e4821064b04b', 'Cordula', 'Steinbrecher');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Cordula y me gusta conocer gente nueva!', 81, 41.3718, -39.8516);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowelepha32b7', 'tess.blanchard0d5b@example.com', '8bb0cf6eb9b17d0f7d22b456f121257dc1254e1f01665370476383ea776df414', 'Tess', 'Blanchard');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2003-08-28', 'Hola, soy Tess y me gusta conocer gente nueva!', -34.7058, 76.0341, 'https://randomuser.me/api/portraits/women/3.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavykoala365', 'elisa.ruiz@example.com', '0cbd443a1d704e64a6da13d567496765c20361a18138b526257b5da4336a3fb5', 'Elisa', 'Ruiz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Elisa y me gusta conocer gente nueva!', 50, 52.9952, -172.7839);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicladyb1504', 'louis.hudsone46a@example.com', 'a2c0ee127bba12eefa2a1991f8a0b2c1167b7905d9afe661d1841db9b18242ac', 'Louis', 'Hudson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2004-01-30', 'Hola, soy Louis y me gusta conocer gente nueva!', -24.345, -174.9226, 'https://randomuser.me/api/portraits/men/12.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowgorilla622', 'alfredo.dean@example.com', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'Alfredo', 'Dean');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Alfredo y me gusta conocer gente nueva!', 9, -6.9467, 129.1668);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvercat6919367', 'harriet.eiflera501@example.com', '1cb542228c76558789d114d3cb273a75850cca54ec3ee9a41100f2dc56ee561e', 'Harriet', 'Eifler');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1996-12-30', 'Hola, soy Harriet y me gusta conocer gente nueva!', 22.2097, 163.9873, 'https://randomuser.me/api/portraits/women/65.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('reddog938', 'suzanne.lowe@example.com', 'e2bc512240e4b9aeb3c695f3d9f29385fb87b759fa3141421d5d298c3fd1d1b7', 'Suzanne', 'Lowe');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Suzanne y me gusta conocer gente nueva!', 25, -57.7917, 90.3547);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrybear583ac99', 'barbara.thielcf86@example.com', '2e6887c8745b28fce2e729491ab7e4c63b527baf8c76a649f277623af34be211', 'Barbara', 'Thiel');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2001-10-21', 'Hola, soy Barbara y me gusta conocer gente nueva!', -63.8252, -93.7053, 'https://randomuser.me/api/portraits/women/93.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpledog382', 'mattie.boyd@example.com', '018fa96a44715c90bf93be148069cb28dd45d398f2cc75aa1565311f6e55d174', 'Mattie', 'Boyd');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Mattie y me gusta conocer gente nueva!', 35, -85.2136, 89.8098);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('browncat1112c23', 'noelia.fuentes77f8@example.com', 'cda3c373f19f1c5114f0f6ece4762cab9c78dd494191d19252e1ef5f4342a146', 'Noelia', 'Fuentes');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1977-08-15', 'Hola, soy Noelia y me gusta conocer gente nueva!', 12.0263, 6.7567, 'https://randomuser.me/api/portraits/women/88.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishmeercat624', 'eberhardt.thum@example.com', '89ab530ac44400011621a38306c61e50c6f7d067932f341b9e4d00e0f827bd63', 'Eberhardt', 'Thum');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Eberhardt y me gusta conocer gente nueva!', 91, 54.5845, -136.8177);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenfish870da1d', 'jerome.kuhn838f@example.com', '1855f8fe0e94e2f8a0b09707b3159acc0be5a9f6bb1b8fc0c2e75b662398e050', 'Jerome', 'Kuhn');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1993-03-26', 'Hola, soy Jerome y me gusta conocer gente nueva!', -68.7624, 62.6167, 'https://randomuser.me/api/portraits/men/91.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishpanda154', 'fernando.soler@example.com', 'a0db3f3822e7cd1a95a3e797e95138a5cb7625bfe5238cdd42a29d3072562c0a', 'Fernando', 'Soler');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Fernando y me gusta conocer gente nueva!', 17, 40.2275, -32.0985);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blacktiger277aaf', 'liam.holt3a2d@example.com', '1ce10b381ee4798b8c630429d0320641e950374cb76cba6c8abec071a42c5571', 'Liam', 'Holt');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1987-03-10', 'Hola, soy Liam y me gusta conocer gente nueva!', -1.5444, 144.0296, 'https://randomuser.me/api/portraits/men/76.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluelion110', 'clyde.pearson@example.com', '2fdd995c4800afce6e0fda2585bd522b06d7631972cbddd72cd3033a79cdf37e', 'Clyde', 'Pearson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Clyde y me gusta conocer gente nueva!', 5, -30.3645, 59.1765);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallsnake15c6ca', 'cornelia.gutzeitd9a7@example.com', '6f8860eb5103a16b917146f9cbf21aa00fe7d2291b1aad7f4fe83a6db71688cf', 'Cornelia', 'Gutzeit');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1975-04-24', 'Hola, soy Cornelia y me gusta conocer gente nueva!', 9.0243, -84.7667, 'https://randomuser.me/api/portraits/women/84.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownmouse202', 'rayan.mathieu@example.com', '742b27454919b5e1b2e834033f639088fc207c45a05b00635ec148a25939b6e9', 'Rayan', 'Mathieu');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Rayan y me gusta conocer gente nueva!', 13, -55.1494, -22.4491);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluefish908ee79', 'daniel.bravo7951@example.com', '057ba03d6c44104863dc7361fe4578965d1887360f90a0895882e58a6248fc86', 'Daniel', 'Bravo');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1984-02-05', 'Hola, soy Daniel y me gusta conocer gente nueva!', -66.0, -143.5047, 'https://randomuser.me/api/portraits/men/25.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverleopard299', 'ritthy.turner@example.com', '6b8990da20ed50ce50b888058f9069f60ed9a6eaf9a2067c4e522add9aa25d0e', 'Ritthy', 'Turner');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Ritthy y me gusta conocer gente nueva!', 71, -30.2574, 168.5992);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallladybug9d2b', 'noemie.aubert952c@example.com', '7b1291e7ed8a6f3e8aa82ce5a4176a5b1877b17e7cb62f638ac6fdddd8ecfe11', 'Noemie', 'Aubert');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1980-05-30', 'Hola, soy Noemie y me gusta conocer gente nueva!', -4.4553, 10.222, 'https://randomuser.me/api/portraits/women/5.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigswan900', 'angel.mills@example.com', '4991c47202960c5755d6886af261b0d8f6ccc929551d867a6f557a9353d4f1c5', 'Angel', 'Mills');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Angel y me gusta conocer gente nueva!', 35, -31.3568, -80.1683);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadcat8904f0d', 'anna.renauda1fd@example.com', 'ff36e0c700a2a71dccf56e8db5d4355902add8ae5ba7b4ce233e61092d0d189a', 'Anna', 'Renaud');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1980-02-27', 'Hola, soy Anna y me gusta conocer gente nueva!', -61.5633, 105.5383, 'https://randomuser.me/api/portraits/women/87.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldencat247', 'ugo.berger@example.com', '2a424875a8475a99175f543fa6fc65964e53e87efc161f7b1f9e370efe6ddd16', 'Ugo', 'Berger');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Ugo y me gusta conocer gente nueva!', 27, 84.0751, 154.9564);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryswan404a234', 'enrique.austin6533@example.com', '166cfb0e8bff35f92abb8a9a90df45610ac02af4990d740adae6cb00bc16e2f9', 'Enrique', 'Austin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1989-08-20', 'Hola, soy Enrique y me gusta conocer gente nueva!', -35.501, 98.4594, 'https://randomuser.me/api/portraits/men/8.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigwolf369', 'sherry.torres@example.com', 'dd4cb9cf52f0a9f1529c3b994274c8ab304b6b9f21ac69403a46f639fd026b1a', 'Sherry', 'Torres');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Sherry y me gusta conocer gente nueva!', 94, -27.1203, -56.8966);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackdog6150d80', 'allie.petersa248@example.com', 'a48b63d4e2da811d9912670e44e9b6923e4b566dda9c82639f762d95abc22501', 'Allie', 'Peters');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1991-02-13', 'Hola, soy Allie y me gusta conocer gente nueva!', -38.8398, -9.8841, 'https://randomuser.me/api/portraits/women/69.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangebear525', 'ian.ortiz@example.com', '9a7ec836ce6dbced6836f0a6a8f49bd454d067101fd33dc14cc06c9f321d0ba6', 'Ian', 'Ortiz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Ian y me gusta conocer gente nueva!', 14, -46.2579, 54.6622);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenrabbit8b491', 'monica.vega00c2@example.com', '42ce1e72d529cfe94e9ee314ff1512cd57a6fc0a8fa80d8c57b68a3ed2aa047f', 'Mónica', 'Vega');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1997-01-02', 'Hola, soy Mónica y me gusta conocer gente nueva!', -75.4223, -159.0323, 'https://randomuser.me/api/portraits/women/48.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulfish204', 'howard.holt@example.com', 'bcc070fa512eb7da7307b5dc52af4dc8bad1a3ca27bcdcdaffc953acf618857a', 'Howard', 'Holt');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Howard y me gusta conocer gente nueva!', 89, -23.2797, -54.8025);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenswan59648b2', 'donna.rhodes8b64@example.com', '26205d66c217a123c72d1e2bccd0536a12c39d65b085c224c4bbd0c75fcb3634', 'Donna', 'Rhodes');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1990-10-14', 'Hola, soy Donna y me gusta conocer gente nueva!', 70.5318, -21.1095, 'https://randomuser.me/api/portraits/women/25.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenostrich201', 'douglas.carlson@example.com', 'da454b02b4700b1f5dc5f9de972a531934ccb666cd00ed832fe6a36ece8b9ec3', 'Douglas', 'Carlson');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Douglas y me gusta conocer gente nueva!', 94, -15.6237, 96.3235);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrybear326d6a1', 'zoe.ray363d@example.com', 'bdc9fc73f65aece77761e33bcb3bc5571a2d06d8185d5f403f0442dffb0c3cf3', 'Zoe', 'Ray');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1985-01-12', 'Hola, soy Zoe y me gusta conocer gente nueva!', 69.0587, -28.715, 'https://randomuser.me/api/portraits/women/19.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazypanda114', 'carlos.alonso@example.com', '6973fd7e86117c9f67498b947695cbfea303db7a2e8b8e3ec785532708855188', 'Carlos', 'Alonso');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Carlos y me gusta conocer gente nueva!', 70, 17.7072, 107.6760);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redbutterflye87c', 'maelys.laurent5fb4@example.com', 'cb3167835a0a33485798af52e07e534e71b2a8ab91e64f65c3b87c55f7ab7e2f', 'Maëlys', 'Laurent');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2006-08-31', 'Hola, soy Maëlys y me gusta conocer gente nueva!', 66.9881, 59.2452, 'https://randomuser.me/api/portraits/women/53.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happykoala875', 'olga.duran@example.com', '1dc0c13f4de4bff5c12a9553baf183d5a860ac85b5b6ad52784dd5f926c17d58', 'Olga', 'Duran');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Olga y me gusta conocer gente nueva!', 39, 32.1644, -32.7318);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavycat9708109', 'maxime.schmittf1ad@example.com', '3445ca3ead20cec97a285cc0c3b00a931248da7173f27efbfa4de27a9ae1c544', 'Maxime', 'Schmitt');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2005-02-16', 'Hola, soy Maxime y me gusta conocer gente nueva!', -15.77, -160.7304, 'https://randomuser.me/api/portraits/men/31.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenmeercat759', 'uwe.pongratz@example.com', '46437ab18a6657040b4535297ff247b20c535c02263713f88b6a9e17484f1f3f', 'Uwe', 'Pongratz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Uwe y me gusta conocer gente nueva!', 62, 83.6603, 96.9644);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenostricda4d', 'marsha.fuller3125@example.com', '13c7d14e12cdab630e5b9b295bbefd7e9cfe6f52a97647cca5370750ab5b3b7f', 'Marsha', 'Fuller');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1989-05-18', 'Hola, soy Marsha y me gusta conocer gente nueva!', -57.4843, 41.4769, 'https://randomuser.me/api/portraits/women/82.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpleelephant450', 'beatriz.lorenzo@example.com', 'afac327e73694e68c02f5c62f3bc0bcf0f239744ff12921e781487a0f9b3d5d0', 'Beatriz', 'Lorenzo');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Beatriz y me gusta conocer gente nueva!', 42, 82.2178, 78.5470);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redgorilla70a39a', 'matt.carrollcc88@example.com', '20e09e434912381a1c6b13d77536d6786742fc5a11639eba8faae8fada86bfd7', 'Matt', 'Carroll');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1975-08-25', 'Hola, soy Matt y me gusta conocer gente nueva!', -11.0384, 126.6718, 'https://randomuser.me/api/portraits/men/93.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangefish511', 'eveline.liese@example.com', 'eb953fd6e066c352c95c5d21ddc8610406836e6caa464803d2e695fd4e4eaabb', 'Eveline', 'Liese');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Eveline y me gusta conocer gente nueva!', 53, 20.7214, -108.8657);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangeduck601056', 'michaele.hilpert1572@example.com', '0985b889a1fe4f4e1fb925061ac6fb2247f10875f5fcbe63eec2ab55ed68970e', 'Michaele', 'Hilpert');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1977-03-31', 'Hola, soy Michaele y me gusta conocer gente nueva!', -9.3585, 0.8714, 'https://randomuser.me/api/portraits/women/73.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazygoose197', 'mathys.rey@example.com', '680dce633db1189eb1158aad579df2ce0ad72a0571ccfeeaa5f79092ea6cb729', 'Mathys', 'Rey');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Mathys y me gusta conocer gente nueva!', 3, 51.9148, 36.1341);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinypeacock24d39', 'ricky.pricebb3b@example.com', '32c4feed996880bc92a062dc476f9b8cdb2596a989f2cc5246e9cef605bd5c78', 'Ricky', 'Price');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1988-05-13', 'Hola, soy Ricky y me gusta conocer gente nueva!', -37.0045, 66.1641, 'https://randomuser.me/api/portraits/men/74.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplecat851', 'liesbeth.ostermann@example.com', 'a05571c258b84f60a7f0b9c1feb0566261ed082945cac8cb39c3d90226379af0', 'Liesbeth', 'Ostermann');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Liesbeth y me gusta conocer gente nueva!', 19, -37.4904, -91.5972);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happydog2419300', 'brandon.howell80ff@example.com', '9e88b067408182d0bd525120e9ba2607e19b0dfa17b48582d2d405fc52dc4a1a', 'Brandon', 'Howell');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1988-04-10', 'Hola, soy Brandon y me gusta conocer gente nueva!', 18.599, 137.5766, 'https://randomuser.me/api/portraits/men/29.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyostrich923', 'janusz.mehlhorn@example.com', 'b040d4d30e09d538f55f92f7d29947b7a7902174d0ee031e7cd5cba037796483', 'Janusz', 'Mehlhorn');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Janusz y me gusta conocer gente nueva!', 44, 80.2007, -139.0125);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplefish968466', 'gilbert.newmancaac@example.com', 'dccc5d01dabcd1c0b9fa89c91e7f4bde603121ee0172b4ff394e6bb30d295e41', 'Gilbert', 'Newman');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1997-11-15', 'Hola, soy Gilbert y me gusta conocer gente nueva!', 41.1467, 70.3179, 'https://randomuser.me/api/portraits/men/6.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallbear319', 'jose.martin@example.com', '1b34942add2c85bbca6a87ba114b9ffb1c92f1a6fde8bec4ebd98a4dd18d74a7', 'José', 'Martin');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy José y me gusta conocer gente nueva!', 64, -69.4804, 50.2149);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverduck975cf2', 'alice.allen4389@example.com', '0b7d75c068ed5165be960279e7dacd2e900d50cbae19b654d02efc5b0fa68ee8', 'Alice', 'Allen');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1976-11-14', 'Hola, soy Alice y me gusta conocer gente nueva!', 57.0465, -112.2249, 'https://randomuser.me/api/portraits/women/84.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happytiger914', 'neil.fuller@example.com', '60bffa20b02813481ce58a667e003f28f40a1baaf047ca7016cdcc857c3bc167', 'Neil', 'Fuller');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Neil y me gusta conocer gente nueva!', 59, 55.7647, -0.1442);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulbir6037', 'carl.montgomerycf72@example.com', 'd1fe0b3c9056a1d41dcdb0b7aedbc5ed3ff6f3993580a621032b61df265a90a9', 'Carl', 'Montgomery');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1976-04-17', 'Hola, soy Carl y me gusta conocer gente nueva!', 8.3463, -130.9224, 'https://randomuser.me/api/portraits/men/26.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownelephant597', 'nikola.lohr@example.com', '784ba7f84648847e1eb6d3ee266b356e474bb14c808d055667ada615a95fc839', 'Nikola', 'Löhr');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Nikola y me gusta conocer gente nueva!', 23, 41.0274, -81.3166);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplelion10b493', 'aaron.brooks58c3@example.com', '09053dbc39a10cab79b0c0d5b1bb2793cad99291245ea4c0fcb953cffb7bb644', 'Aaron', 'Brooks');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2001-05-14', 'Hola, soy Aaron y me gusta conocer gente nueva!', -11.1305, -16.6256, 'https://randomuser.me/api/portraits/men/56.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulduck899', 'cilli.boller@example.com', '12e1d34b00a928b8cebb6a5f739f656b339c0e9d2f4507148a5b1afdadd634d0', 'Cilli', 'Boller');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Cilli y me gusta conocer gente nueva!', 28, 51.7633, -60.1566);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blacklion4553686', 'terrance.lewis8925@example.com', '5ac14a0fe6eb7f49f401491907b2f3e2bfb9d3fe7d0014a40844446f5cc31f4f', 'Terrance', 'Lewis');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1996-01-10', 'Hola, soy Terrance y me gusta conocer gente nueva!', -78.589, 95.3446, 'https://randomuser.me/api/portraits/men/16.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinysnake760', 'roland.stephens@example.com', '46b6f0ae97088f7259ea1daf97deba6535971584da62c71874287406b980fd79', 'Roland', 'Stephens');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Roland y me gusta conocer gente nueva!', 93, -68.7780, -77.3192);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenlion5631bc', 'laura.walker9e77@example.com', 'b3d4cd641cbb8123b7e269854e9fccde3a3722e891a1d1e90a51768b3000eafe', 'Laura', 'Walker');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2002-06-23', 'Hola, soy Laura y me gusta conocer gente nueva!', 33.8997, 124.6688, 'https://randomuser.me/api/portraits/women/4.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigmouse570', 'xander.mitchell@example.com', '2d120fbc1b9f1ce8578a9db83fc2fdd1d2ae49311de479c9d10f579c813e294e', 'Xander', 'Mitchell');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Xander y me gusta conocer gente nueva!', 24, -50.2979, 145.4781);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazybird62642bc', 'anatole.lefevreb10c@example.com', 'afb47e00531153e93808589e43d02c11f6398c5bc877f7924cebca8211c8dd18', 'Anatole', 'Lefevre');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1980-07-02', 'Hola, soy Anatole y me gusta conocer gente nueva!', -74.0264, 113.8932, 'https://randomuser.me/api/portraits/men/59.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redpeacock586', 'marine.duval@example.com', 'fb4e71f75b173583843c5dbb5604c53025493bc66bd5dbf2dd59968f37e01bfb', 'Marine', 'Duval');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Marine y me gusta conocer gente nueva!', 37, 36.7647, -97.4287);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluepeacock42453', 'hubert.schanze43a@example.com', '522ce7057fd0523adcd6672db24bb671d09d1ffa2f1e7c97c13e6c68ae6fcb13', 'Hubert', 'Schanz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2000-08-01', 'Hola, soy Hubert y me gusta conocer gente nueva!', -62.5033, -87.8173, 'https://randomuser.me/api/portraits/men/58.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplegoose538', 'tommy.fleming@example.com', 'e1823098f42ea75f05e3d2a576a14ecd4e002f8892ad3ae5ce02bd6aa13105f5', 'Tommy', 'Fleming');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Tommy y me gusta conocer gente nueva!', 58, 31.6789, -144.4826);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blueswan189d36c', 'wesley.price33ac@example.com', '82fe26c04749cb12e13ea775b8d16a28e4cac1cc508c635f4639115ed8446029', 'Wesley', 'Price');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2000-07-16', 'Hola, soy Wesley y me gusta conocer gente nueva!', 5.855, 2.8008, 'https://randomuser.me/api/portraits/men/79.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadduck424', 'maxine.richards@example.com', '5aa7ae42bb3078ad03a392a9bfb9cfecec614c64c2ca83da298ede69430e574d', 'Maxine', 'Richards');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Maxine y me gusta conocer gente nueva!', 80, 53.5853, 173.4834);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulfro3125', 'hans-wolfgang.moogf2ac@example.com', 'e8032604447171cc6e65cfb98ff38ccbf9f5f9113e0cb63060533ed86ad0032e', 'Hans-Wolfgang', 'Moog');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1975-08-09', 'Hola, soy Hans-Wolfgang y me gusta conocer gente nueva!', 89.8424, -134.298, 'https://randomuser.me/api/portraits/men/23.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smalldog378', 'jimmie.dean@example.com', '5fdb63561d5d9a409280a050f72f914e0568096bca53bffd83faf3ff242bfa67', 'Jimmie', 'Dean');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Jimmie y me gusta conocer gente nueva!', 91, -3.5811, -124.3482);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organicbird73f98', 'gauthier.rollanddfe1@example.com', 'e11d8cb94b54e0a2fd0e780f93dd51837fd39bf0c9b86f21e760d02a8550ddf7', 'Gauthier', 'Rolland');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1991-04-16', 'Hola, soy Gauthier y me gusta conocer gente nueva!', 60.2635, 96.8025, 'https://randomuser.me/api/portraits/men/4.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigswan494', 'alicia.vidal@example.com', '0c081477c9bcc99ed2f0b1449dcb034db402ab44c5a73faf01e75303a31f3a64', 'Alicia', 'Vidal');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Alicia y me gusta conocer gente nueva!', 61, -68.7193, 109.8595);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrykoala41d49d', 'sophia.brownedfa@example.com', 'e8d44050873dba865aa7c170ab4cce64d90839a34dcfd6cf71d14e0205443b1b', 'Sophia', 'Brown');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1993-04-27', 'Hola, soy Sophia y me gusta conocer gente nueva!', 53.6265, -37.6398, 'https://randomuser.me/api/portraits/women/61.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowfish155', 'paul.garcia@example.com', '79eebb1dfa182ee126fd005418dad7f9f3f4af1f3a183bb1a9e5a887e6b2c757', 'Paul', 'Garcia');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Paul y me gusta conocer gente nueva!', 1, -41.6656, 82.7517);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazydog58269f3', 'hatice.mittmannf580@example.com', 'e6af2c200c735e292fb4eb7a1eb9f90cc59e4ebfba72d5ef7df18e72ddc60149', 'Hatice', 'Mittmann');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '2001-12-27', 'Hola, soy Hatice y me gusta conocer gente nueva!', -28.6136, 120.6813, 'https://randomuser.me/api/portraits/women/25.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinylion970', 'loris.renaud@example.com', '8417659f46b5b43b2bb9396f794ab19728546f699babdb914d97bc5adcb9f528', 'Loris', 'Renaud');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Loris y me gusta conocer gente nueva!', 38, 19.6117, -139.3573);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallfish590d163', 'maelia.lecomtefa46@example.com', '4b29228fc720429159f62f43a6375b783b4c96b7aa7ee409461e9b2ae15aba87', 'Maëlia', 'Lecomte');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1999-11-20', 'Hola, soy Maëlia y me gusta conocer gente nueva!', 87.8416, -172.7401, 'https://randomuser.me/api/portraits/women/89.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavygorilla253', 'avery.torres@example.com', '02023546b4039abe3b9f355c23dafd9119570f301a024e2fd2ff3186ae54060c', 'Avery', 'Torres');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Avery y me gusta conocer gente nueva!', 47, -35.0740, 136.1295);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrykoala149754', 'raphael.bertrand97a1@example.com', '018cc3e8b4c3be5cc91f05ebb741aecc787e03aeb45a41fc9f7c8114dff5f542', 'Raphaël', 'Bertrand');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1980-03-07', 'Hola, soy Raphaël y me gusta conocer gente nueva!', -9.811, 17.2179, 'https://randomuser.me/api/portraits/men/19.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavypeacock842', 'rafael.diaz@example.com', '82fdc9ea323c41a1d4c6598a3e168be73beb644d7e47199b1136d085955ac25f', 'Rafael', 'Diaz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Rafael y me gusta conocer gente nueva!', 71, -3.7845, 155.6049);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluecat1679821', 'tracy.porter03f7@example.com', '18c3bc28bde14691d7ce2a9657d9e93d205c224fc084b733e5190ee9fd2a80bc', 'Tracy', 'Porter');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '2000-02-23', 'Hola, soy Tracy y me gusta conocer gente nueva!', 89.2281, -118.1373, 'https://randomuser.me/api/portraits/women/49.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinykoala519', 'elsa.leclerc@example.com', '8549b94cd6a9d2e5bc79a8394775334d0cf0030f1a99f610dc0b6fc745da0931', 'Elsa', 'Leclerc');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Elsa y me gusta conocer gente nueva!', 10, 33.6217, 5.3428);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigrabbit481a983', 'josefina.serrano524b@example.com', '6def291378ec54715653340f91d2f1eb632090f69786e63cc9d12bf545762a2f', 'Josefina', 'Serrano');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2005-04-16', 'Hola, soy Josefina y me gusta conocer gente nueva!', 62.9517, -139.1821, 'https://randomuser.me/api/portraits/women/36.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happyrabbit117', 'gerhard.reineke@example.com', 'ffad923c7afc100d1155fb4de849a025a9b725ffe7995bc33af8a091f60c5d68', 'Gerhard', 'Reineke');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Gerhard y me gusta conocer gente nueva!', 55, 85.9163, 157.0600);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitegoose8031ce', 'jeffery.ford9c46@example.com', '431cd8c8d5abe5cb5944b0889b32482d85772fbb98987b10fbb7f17110757350', 'Jeffery', 'Ford');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1996-11-29', 'Hola, soy Jeffery y me gusta conocer gente nueva!', 38.4327, -150.4698, 'https://randomuser.me/api/portraits/men/44.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplefrog325', 'berenice.gerard@example.com', '3ed1f621d7a2b5e2f1772c7f5324cbea691e079891f43a10d7ffa6ff4175b82f', 'Bérénice', 'Gerard');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Bérénice y me gusta conocer gente nueva!', 81, 64.0689, 68.0494);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldenleopar2f27', 'tiago.louis38a4@example.com', '6fc0f94e9e236188fa08793341af92b1b214780047f67bb0220d304632f43b84', 'Tiago', 'Louis');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1978-03-08', 'Hola, soy Tiago y me gusta conocer gente nueva!', -70.4429, 128.0591, 'https://randomuser.me/api/portraits/men/12.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangeostrich982', 'jo.schaffrath@example.com', '59ae856cd788d0f57e39fdd66d421ba930cd89be4682de3aa36c22a2021a710d', 'Jo', 'Schaffrath');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Jo y me gusta conocer gente nueva!', 8, 66.2824, 21.9551);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplezebra83a2e', 'luz.romero2191@example.com', '69e36568cd8b4659389b9fcfbe1167547f6421e78168bfb439dada2ffddb0146', 'Luz', 'Romero');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2002-05-30', 'Hola, soy Luz y me gusta conocer gente nueva!', 29.9577, 87.9267, 'https://randomuser.me/api/portraits/women/72.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyduck131', 'leroy.newman@example.com', 'cb9e263e341e0f4fed15db8866a0b7f3777617d7ea80a2873d7959c3806c94f4', 'Leroy', 'Newman');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Leroy y me gusta conocer gente nueva!', 23, -52.6558, -83.9907);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happytiger66a96b', 'christian.poschlf466@example.com', 'e17ae4d0819d74dbba749389e4b1a8a5856113b39629a8d93ab976cc5fd72a3c', 'Christian', 'Pöschl');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1982-07-15', 'Hola, soy Christian y me gusta conocer gente nueva!', -67.3653, 115.4311, 'https://randomuser.me/api/portraits/men/19.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluegorilla846', 'alex.fontai@example.com', '2e0a7d656b3ea40966222c72d373f5d0aea6a99daa46fdb149e1846ede060801', 'Alex', 'Fontai');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Alex y me gusta conocer gente nueva!', 65, -50.4535, -40.7670);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigbird127d629', 'alexandra.gerardf58b@example.com', '6abd21d065d8cc0f4b3f25a5695a455d7906a17cb2198839849fb1647c47c01e', 'Alexandra', 'Gerard');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1989-09-10', 'Hola, soy Alexandra y me gusta conocer gente nueva!', -32.8687, 97.0894, 'https://randomuser.me/api/portraits/women/24.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrycat168', 'lena.fleury@example.com', '23bea2a87a029e9721107fd2a4b03655b84a6fd7e92a015f1bc3a2aeffac209d', 'Lena', 'Fleury');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Lena y me gusta conocer gente nueva!', 63, 2.1071, -90.3419);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulpan15c5', 'lukas.gaillarde21f@example.com', 'a4987577c74bb7ea62d9e59e8b6b287dba7253408a8bd36a7372915109ad047f', 'Lukas', 'Gaillard');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1995-10-22', 'Hola, soy Lukas y me gusta conocer gente nueva!', -12.8128, -88.8688, 'https://randomuser.me/api/portraits/men/68.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavypeacock750', 'vicente.ramirez@example.com', '0829103205fbe7963996bfacbaeaab326bb8eded5bd97e9b677f7c05fbe44b5b', 'Vicente', 'Ramírez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Vicente y me gusta conocer gente nueva!', 47, -88.3605, 163.2640);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazymeercat36f8', 'thomas.morin91a9@example.com', 'e7bf78c94f618255197e53b92692a68e8a36c861e78c7151fbbc9f515e16ef78', 'Thomas', 'Morin');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2005-10-31', 'Hola, soy Thomas y me gusta conocer gente nueva!', -20.5528, -80.6642, 'https://randomuser.me/api/portraits/men/77.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redleopard972', 'fernando.aguilar@example.com', '24e0f0ae0ed7bf630f6e09cd94877bbe94720dac0ed81ec9bb94fd1567e8b6f8', 'Fernando', 'Aguilar');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Fernando y me gusta conocer gente nueva!', 73, 19.1030, -34.0221);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrywolf992edca', 'jacob.lewis3dc9@example.com', '09825fb3ec43d949dbfd13f09612323367b64c75f94810b171060262adbc1d3a', 'Jacob', 'Lewis');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1997-11-05', 'Hola, soy Jacob y me gusta conocer gente nueva!', 49.7062, 89.8103, 'https://randomuser.me/api/portraits/men/68.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redwolf501', 'heinfried.kretschmann@example.com', '2a2318eee11eab3b61d86dc45f04a061adc043f0c8b31dd851e3fdc1e64302bb', 'Heinfried', 'Kretschmann');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Heinfried y me gusta conocer gente nueva!', 64, 25.8971, -117.2572);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverbear99d6ca', 'carla.kammeraf3b@example.com', 'bdc1e182d3b5e3b3e9bce4fcd579671ac7ce8ddcc577714a90677565f60ec9e0', 'Carla', 'Kammer');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1999-03-07', 'Hola, soy Carla y me gusta conocer gente nueva!', -31.7395, -50.8104, 'https://randomuser.me/api/portraits/women/90.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyostrich346', 'lisa.lambert@example.com', 'c40e36253c9be87e0101822f8c195ae3d4b330f3fdbc2af637ef5b9b38fd0a3c', 'Lisa', 'Lambert');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Lisa y me gusta conocer gente nueva!', 71, -5.6542, 175.3978);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('whitedog189f965', 'daniela.sanz49b9@example.com', '48ad81490af41eee63d59c9b6cbd7f3975adc6be26ececb9a7f3904e6aa1e31b', 'Daniela', 'Sanz');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1994-04-02', 'Hola, soy Daniela y me gusta conocer gente nueva!', -32.248, -92.9174, 'https://randomuser.me/api/portraits/women/87.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluebutterfly361', 'shelly.ross@example.com', 'a30a997579a6d8733555003b7cc698864186fb708731dfdcd14c5e0a22a945e9', 'Shelly', 'Ross');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Shelly y me gusta conocer gente nueva!', 90, -76.0459, -137.2937);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrykoala6675a2', 'aurelien.noelbdd3@example.com', 'bca3a752cdb7fe21b332445fec700612e31c5aadd8411c341db8106f2e9df145', 'Aurélien', 'Noel');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '2004-07-25', 'Hola, soy Aurélien y me gusta conocer gente nueva!', 32.4139, -85.6895, 'https://randomuser.me/api/portraits/men/3.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulleopard423', 'aleksandar.koop@example.com', '7bc0ee8330e4bb4c7bc0fdfb995c7e1bc2ea1cc5a741eaa988a0b3018f78f8be', 'Aleksandar', 'Koop');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Aleksandar y me gusta conocer gente nueva!', 73, -86.0373, -90.0911);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyostrich54293', 'felipe.gomez409c@example.com', 'bba9e6c09ec086e27f4f740b21f94101e8f04ac1c2db3ff516840fd386152c33', 'Felipe', 'Gómez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1986-10-25', 'Hola, soy Felipe y me gusta conocer gente nueva!', -59.6059, -111.4146, 'https://randomuser.me/api/portraits/men/2.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigbear356', 'sabri.stegemann@example.com', 'd277670919a94ba361be1887d39852c3f31d7eed817343cbb70fcd8910841f86', 'Sabri', 'Stegemann');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Sabri y me gusta conocer gente nueva!', 55, 73.6244, 38.2068);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallpeacock8908', 'leokadia.mittmann4785@example.com', 'be37e56f6f6a7dfb95952a780b9be2b3b465e468c56307c143a745c3a7c681e0', 'Leokadia', 'Mittmann');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1986-02-14', 'Hola, soy Leokadia y me gusta conocer gente nueva!', 76.9549, 22.6452, 'https://randomuser.me/api/portraits/women/17.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazymeercat514', 'emy.marchand@example.com', 'b1ed6d99814162a3aac906bc6019a7086339a39d8e474f372ce482943a09cc80', 'Emy', 'Marchand');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Emy y me gusta conocer gente nueva!', 43, 13.9666, -173.3646);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishzebr16a6', 'maddison.mcdonalid7ee3@example.com', '9894ff89e36803ddc06d6c7a169292e29a0a9e018f309869024a6c7521e672db', 'Maddison', 'Mcdonalid');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1975-10-18', 'Hola, soy Maddison y me gusta conocer gente nueva!', -52.4429, 42.9595, 'https://randomuser.me/api/portraits/women/68.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greensnake963', 'pascale.rosenbaum@example.com', '91dfa44406bfe5bca8a072ca92eb3876177d1597eb1c92b66bd97367537bafcc', 'Pascale', 'Rosenbaum');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Pascale y me gusta conocer gente nueva!', 50, -56.0899, -151.9372);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happybird99577dd', 'blanca.alvarez0c7a@example.com', '6cbcf42824e37b42397f743f852806ce04a9e63119ad00a0c9e5c2b081adc62f', 'Blanca', 'Álvarez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2000-09-14', 'Hola, soy Blanca y me gusta conocer gente nueva!', -5.0963, 110.7348, 'https://randomuser.me/api/portraits/women/7.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishpanda360', 'sinaida.neuner@example.com', '0c3ba4a48996d5f173458774a77a35a22724430959d877195a99a96eaa32a10b', 'Sinaida', 'Neuner');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Sinaida y me gusta conocer gente nueva!', 95, -5.5909, 38.1930);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greengorillaea39', 'edouard.renard9c23@example.com', '7954d6463914386775169f7d0fe01ca17da7084e25a6b67466a0cf367527af9c', 'Edouard', 'Renard');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1984-06-19', 'Hola, soy Edouard y me gusta conocer gente nueva!', -52.3741, 154.4926, 'https://randomuser.me/api/portraits/men/14.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangerabbit964', 'daniela.duran@example.com', '26787dd2f72cc993706ee8209c6c8b2e77b8b6c7bbc8d168550dcfc1c8b28818', 'Daniela', 'Duran');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Daniela y me gusta conocer gente nueva!', 9, 37.1171, -131.6673);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazyzebra11e1c1', 'lou.francoisba9f@example.com', '5e0176c9d2070a5a2a22bf74b4abed303654690d58d64221ccbd022af827abc4', 'Lou', 'Francois');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2000-04-18', 'Hola, soy Lou y me gusta conocer gente nueva!', -46.8937, -36.3532, 'https://randomuser.me/api/portraits/women/18.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackmeercat232', 'lucia.marquez@example.com', '37ba3881108bf3e48180350246c5959b9481633d0cb1d8694fb141dc74e5fe79', 'Lucia', 'Márquez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Lucia y me gusta conocer gente nueva!', 95, -84.2504, -33.3077);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazylion526b032', 'leona.brooksf35a@example.com', 'b7367edaa7bb675764606b5a9343e09ee90242ce419eabfca14c7c7325e550f6', 'Leona', 'Brooks');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1991-05-01', 'Hola, soy Leona y me gusta conocer gente nueva!', -57.1517, 142.7965, 'https://randomuser.me/api/portraits/women/84.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverduck167', 'eric.kelly@example.com', '2a7a52ef951a2a60412e2ece5cf45af86c8c1c295f8038fd6d96339e7e311764', 'Eric', 'Kelly');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Eric y me gusta conocer gente nueva!', 26, -75.8146, 24.8057);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifullad5fb3', 'nicholas.hicks21d5@example.com', 'a7a45ea923c6229b341e2d21ff8fde3a4ca180f38c920a479dcfb7679389841b', 'Nicholas', 'Hicks');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2005-03-18', 'Hola, soy Nicholas y me gusta conocer gente nueva!', 23.7474, 41.0223, 'https://randomuser.me/api/portraits/men/61.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowsnake468', 'joy.roberts@example.com', '1534cf2af76ecd84b803010b700287c00446599c68e8d81befa9c569f03e64dd', 'Joy', 'Roberts');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Joy y me gusta conocer gente nueva!', 76, 2.3851, 121.5807);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrygorillad962', 'monica.hudsonef52@example.com', '45e8f3d947cf74cea9a04e7172c768a99b3c43862b48bc2f4dad348c63a3a409', 'Monica', 'Hudson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1995-03-16', 'Hola, soy Monica y me gusta conocer gente nueva!', -72.5416, 2.4784, 'https://randomuser.me/api/portraits/women/67.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryfrog187', 'luz.gallego@example.com', '5b720147b6918dfc19baa0d7767cab75b76e17998837d04af43f2f3463c5350f', 'Luz', 'Gallego');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Luz y me gusta conocer gente nueva!', 70, -86.4974, 92.9935);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigpanda863e776', 'freddy.christiansen6771@example.com', 'ecaf69bb4b06f3f9f249c6ed835af7d9825493fe03e146535916323148be9607', 'Freddy', 'Christiansen');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1989-03-23', 'Hola, soy Freddy y me gusta conocer gente nueva!', -34.0884, -41.2536, 'https://randomuser.me/api/portraits/men/35.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinypeacock109', 'herman.pena@example.com', '6cf615d5bcaac778352a8f1f3360d23f02f34ec182e259897fd6ce485d7870d4', 'Herman', 'Pena');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Herman y me gusta conocer gente nueva!', 94, 67.8330, 31.1288);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrybutterf6376', 'wolf-dietrich.kuhner9a51@example.com', '1f556d48301bae699b81d0a36e8e8aee3a079475acbdd94c99ba9c6162593634', 'Wolf-Dietrich', 'Kühner');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1989-07-22', 'Hola, soy Wolf-Dietrich y me gusta conocer gente nueva!', -20.6696, 179.8891, 'https://randomuser.me/api/portraits/men/84.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('redladybug630', 'joaquin.pena@example.com', '923361a07cc6fffe687fce5d5caaa092103442c5b69c2541d8168a67badd1301', 'Joaquin', 'Peña');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Joaquin y me gusta conocer gente nueva!', 80, -12.7344, -29.6003);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadzebra920fc7f', 'karl-ernst.mitschkeb921@example.com', 'eab2f490657fe42bf20ed90aa348707122be885743f44f5158f059c17e6d1c4c', 'Karl-Ernst', 'Mitschke');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1985-03-02', 'Hola, soy Karl-Ernst y me gusta conocer gente nueva!', 10.9632, -116.7152, 'https://randomuser.me/api/portraits/men/5.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangelion661', 'trinidad.carrasco@example.com', '1443b0215715d16d2edd70428eae588e2dc1b9a710f573e4f8b132f5a6e64fce', 'Trinidad', 'Carrasco');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Trinidad y me gusta conocer gente nueva!', 88, 5.4041, -150.8796);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluekoala403331f', 'claudia.gutierrez6220@example.com', '97e66fa85fc7a65803533fd9b8ef1d654a7f6e2e16e325aa3164112ad1fc9e50', 'Claudia', 'Gutiérrez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1996-08-06', 'Hola, soy Claudia y me gusta conocer gente nueva!', -16.7632, 153.8621, 'https://randomuser.me/api/portraits/women/85.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishdog245', 'julio.vicente@example.com', '8b9b28baf5f711d6490548a84f7fee1a591d9557891122fda745c6a9cde8a226', 'Julio', 'Vicente');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Julio y me gusta conocer gente nueva!', 68, -35.0484, -39.8098);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinygorilla59fd4', 'lucas.herreraf905@example.com', '21dfc18dd04cd6a356e2f1e36e8285bc060a5d589d3ac707e56ac9654903b589', 'Lucas', 'Herrera');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2002-06-07', 'Hola, soy Lucas y me gusta conocer gente nueva!', 73.0803, 142.3566, 'https://randomuser.me/api/portraits/men/78.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organiccat581', 'angeles.alonso@example.com', '845845ec9e847a2c03a6f556fcd2530ab92714c23606afed0e85d51751679465', 'Ángeles', 'Alonso');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Ángeles y me gusta conocer gente nueva!', 77, -4.9937, 28.9154);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownbird9391987', 'victor.molinaeaeb@example.com', '492441706d00d4c5b22b540f2a4d3ced21ea1344c93bd3bbecd292a0e2adcbdd', 'Víctor', 'Molina');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1980-01-12', 'Hola, soy Víctor y me gusta conocer gente nueva!', -71.7718, 138.4076, 'https://randomuser.me/api/portraits/men/18.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('crazysnake879', 'daryl.hicks@example.com', '541f42d7542b70062fa430bfccac434186c0c1bb433b45b6f1b76e6f46d4cb60', 'Daryl', 'Hicks');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Daryl y me gusta conocer gente nueva!', 82, -78.8492, 114.9212);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('beautifulduc3f0e', 'louanne.olivier1905@example.com', '288971671685b8da56623362c82e1ead68186c5150a35e3b35b5ef74cd7ceebc', 'Louanne', 'Olivier');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2004-07-22', 'Hola, soy Louanne y me gusta conocer gente nueva!', 27.5585, 75.7426, 'https://randomuser.me/api/portraits/women/53.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greencat299', 'trinidad.mora@example.com', 'ea3d7d28fd6e362047d6424bc9229093f3a54ed7d92b36f0d2858c70ed8d7005', 'Trinidad', 'Mora');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Trinidad y me gusta conocer gente nueva!', 18, 46.3931, -110.2481);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinybutterfl5960', 'francisca.moya4cf3@example.com', '81c52b4457b4966544ec582f4e1e6d2e72ec7091ebe68172b2d4dc634998719c', 'Francisca', 'Moya');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1980-06-19', 'Hola, soy Francisca y me gusta conocer gente nueva!', -5.8355, -0.5329, 'https://randomuser.me/api/portraits/women/55.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallswan499', 'frankie.schmidt@example.com', 'b34161dfe9ded5ce0ab680af5781524607e5c48fed7a8ba6763141335dc0d82e', 'Frankie', 'Schmidt');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Frankie y me gusta conocer gente nueva!', 64, 55.6427, 123.4224);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyostrich020a', 'roberto.martinez7548@example.com', '5afb1fa015d65a839bbefa17687ef62bd5aced975b57f062ffe7da874b9f61e5', 'Roberto', 'Martínez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1981-11-13', 'Hola, soy Roberto y me gusta conocer gente nueva!', 75.4374, -70.8405, 'https://randomuser.me/api/portraits/men/75.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenwolf773', 'justine.perez@example.com', '1b60eb2c637e75142ebb7f039cb8f7358b55c6517c8eb2cc1e90fa719424a52b', 'Justine', 'Perez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Justine y me gusta conocer gente nueva!', 94, 80.9777, -61.1821);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackkoala27b3fd', 'grace.hawkins358b@example.com', '0199311728be829918c18b5f1486d315ba690ed58b69b4c8236a16416130bcd2', 'Grace', 'Hawkins');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1980-12-22', 'Hola, soy Grace y me gusta conocer gente nueva!', -25.2863, 27.3251, 'https://randomuser.me/api/portraits/women/89.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silverkoala428', 'rayan.garnier@example.com', 'b32914cd620087fa50645bbba8268fc3bc9d92aeb427bc6b985477b9b4a65830', 'Rayan', 'Garnier');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Rayan y me gusta conocer gente nueva!', 81, 4.2621, 150.3312);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazygorilla53001', 'sebastian.deane466@example.com', '525eca1d5089dbdcbb6700d910c5e0bc23fbaa23ee026c0e224c2b45490e5f29', 'Sebastian', 'Dean');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1983-08-28', 'Hola, soy Sebastian y me gusta conocer gente nueva!', 0.7799, -48.4325, 'https://randomuser.me/api/portraits/men/70.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallelephant681', 'roger.murray@example.com', '74ba7e49e963635164033eb502fb4d47ad7b0ee662a7e0370a0ea0c66659ef88', 'Roger', 'Murray');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Roger y me gusta conocer gente nueva!', 97, 78.0076, 159.1165);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallmouse74fe4c', 'molly.graham1e6c@example.com', 'fff54945efa0b4034ef0fc2edefdc6ca0d20c218c501e1abc39ff5dd4db5eef6', 'Molly', 'Graham');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '1985-04-03', 'Hola, soy Molly y me gusta conocer gente nueva!', -34.4348, -155.8278, 'https://randomuser.me/api/portraits/women/90.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowfrog874', 'louane.guillot@example.com', '6899cafd8fe080dd152799167960e7645d317720617dbd1f8078f7099d390918', 'Louane', 'Guillot');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Louane y me gusta conocer gente nueva!', 3, 49.9664, -37.5338);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpleswan48f605', 'victoria.schmidtaa40@example.com', 'b4b101f4b6a45841fd826b707f5934975e5fa99bfdb6ceeab8bd99e109af2fae', 'Victoria', 'Schmidt');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1987-03-14', 'Hola, soy Victoria y me gusta conocer gente nueva!', -71.0583, -68.4788, 'https://randomuser.me/api/portraits/women/91.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smallbutterfly501', 'hans-martin.stotz@example.com', 'edc254af2701b950236d95fff251d7a765a6f20df5cd93c917f11ac6d98814e2', 'Hans-Martin', 'Stotz');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Hans-Martin y me gusta conocer gente nueva!', 97, -49.0020, 13.0130);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinyfish9801c81', 'nils.marchanda329@example.com', '8ee33cb1612204b475c92b4157cca81efba5a934a91eda766ddb6a1cdc89f346', 'Nils', 'Marchand');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1997-06-02', 'Hola, soy Nils y me gusta conocer gente nueva!', -55.3212, -20.5194, 'https://randomuser.me/api/portraits/men/96.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('organictiger763', 'line.adam@example.com', '40903c59d19feef1d67c455499304c194ebdec82df78790c3ceaac92bd1d84be', 'Line', 'Adam');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Line y me gusta conocer gente nueva!', 46, -74.1981, 83.8917);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyswan699ecf0', 'branko.heinig736d@example.com', '20896337b687f1027170e4f14904ff2eeece80fc4b66d20b1a9f699f604bbdac', 'Branko', 'Heinig');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1991-05-24', 'Hola, soy Branko y me gusta conocer gente nueva!', 84.6948, -132.9808, 'https://randomuser.me/api/portraits/men/60.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('silvergorilla391', 'ursel.freudenberg@example.com', 'b3fa55f98fcfcaf6a15a7c4eb7cdd1b593693d3fef2fb7aec3b6768fd7c6a4ce', 'Ursel', 'Freudenberg');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Ursel y me gusta conocer gente nueva!', 67, -39.9797, 98.1251);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavybear6525c5c', 'judith.bailey85e8@example.com', 'a6761ccff1191f3ee53acada4f7965241538511ef6eb52d37974507ab5a9023e', 'Judith', 'Bailey');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1992-12-07', 'Hola, soy Judith y me gusta conocer gente nueva!', -75.8349, 63.1777, 'https://randomuser.me/api/portraits/women/60.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('happysnake286', 'alvaro.diez@example.com', 'e4d693d24e646cb7878426225d90d2607fd40e2e7c82f4cf8246b2cc3e0decb8', 'Álvaro', 'Diez');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Álvaro y me gusta conocer gente nueva!', 49, 83.8387, 109.7871);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavybutterf6897', 'kim.holmes2f84@example.com', '73740548d223792c35f0e1df5a5c543221786947281313a06fcf872af283816e', 'Kim', 'Holmes');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1990-07-18', 'Hola, soy Kim y me gusta conocer gente nueva!', 79.4668, 15.2066, 'https://randomuser.me/api/portraits/women/69.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purplebear834', 'oscar.foster@example.com', '8ae9853763a9d41063c4d698cfd1231b7646873d6f61c6ae1d73fd103b04f941', 'Oscar', 'Foster');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Oscar y me gusta conocer gente nueva!', 97, -6.0317, 87.4302);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('goldengorill6876', 'roy.mehneraf35@example.com', '3bdcdc469bf1e4961d4b5053b537bbf5209d22e10e6f6a9ad3c5934c91e8d9e9', 'Roy', 'Mehner');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1989-10-18', 'Hola, soy Roy y me gusta conocer gente nueva!', 37.5136, 8.0413, 'https://randomuser.me/api/portraits/men/42.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('tinysnake507', 'lucy.wade@example.com', 'bf6bcae946299d56d3c4551fcf751142f27da40856c1336f5b4f07de919ba80f', 'Lucy', 'Wade');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'heterosexual', 'Hola, soy Lucy y me gusta conocer gente nueva!', 37, 45.0651, 122.3426);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('purpledog410b3b9', 'siegrun.ahrens7ba6@example.com', '5184a1cdb19a3bc3d64573002c3672095bc434254c2e53ccfba0a4801bb3a882', 'Siegrun', 'Ahrens');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1991-07-19', 'Hola, soy Siegrun y me gusta conocer gente nueva!', -33.6673, 43.5102, 'https://randomuser.me/api/portraits/women/22.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyladybug876', 'theodore.hawkins@example.com', '8ee9938e4b960a50540f1ca9299facc5a5f342d0848b402c322fd14592e4bc32', 'Theodore', 'Hawkins');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Theodore y me gusta conocer gente nueva!', 5, -76.9906, 164.8931);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greenbird551e766', 'eckhart.imhofe324@example.com', '79648183530ff7c5bd27b9d110fb17980272a0cfb0c37e31350ed61bcf0d96b7', 'Eckhart', 'Imhof');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1979-05-09', 'Hola, soy Eckhart y me gusta conocer gente nueva!', -43.0634, 112.0561, 'https://randomuser.me/api/portraits/men/58.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadlion537', 'karla.kienle@example.com', 'f74fc122ff882a4fb82b72d8f48c164c4afea0d5d789351720ccc141da54194c', 'Karla', 'Kienle');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Karla y me gusta conocer gente nueva!', 60, -46.0776, 23.9627);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blackostrichb09c', 'nicolas.gallego7785@example.com', 'b0f1fcecfcc082c55c391313a629b625d696c4bb5360ef76a90ed44475d5ab4e', 'Nicolas', 'Gallego');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1975-11-10', 'Hola, soy Nicolas y me gusta conocer gente nueva!', -79.2561, -119.2715, 'https://randomuser.me/api/portraits/men/78.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazykoala810', 'kristin.kelly@example.com', '6051c9461b4d52add5b7178b3cd16294899a4e70c33f2c9b747083d38648785b', 'Kristin', 'Kelly');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Kristin y me gusta conocer gente nueva!', 97, -45.8821, 99.2921);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadelephant8c4ea', 'seth.perkins8153@example.com', 'a459891617d735655dcfed3e37db66fa07f0175866ebf35f9de8ccc59c0840bb', 'Seth', 'Perkins');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1991-11-18', 'Hola, soy Seth y me gusta conocer gente nueva!', -88.4441, -143.311, 'https://randomuser.me/api/portraits/men/74.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('blueelephant144', 'jimmie.bell@example.com', '69d4211f8999a5de44911f2b7fccb31dcc4b225d6f04eaaa2381a182b1a32b45', 'Jimmie', 'Bell');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'homosexual', 'Hola, soy Jimmie y me gusta conocer gente nueva!', 48, 87.0625, -39.6533);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrytiger34ac82', 'susanna.davidsonfba7@example.com', 'c2afdd38565b01f278bc8a5513cd8354840fec53de25dd45af4d23d6939abe8a', 'Susanna', 'Davidson');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1979-06-08', 'Hola, soy Susanna y me gusta conocer gente nueva!', 19.3096, -71.0792, 'https://randomuser.me/api/portraits/women/13.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigtiger740', 'samir.gentner@example.com', 'd6627d040cd79d6f6843ef39994bd931c9bf0e4d925db3e629b4f53204fbbd96', 'Samir', 'Gentner');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Samir y me gusta conocer gente nueva!', 22, -1.4001, -32.8330);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('orangefish47843c', 'erika.castroe61d@example.com', '3f8d40ad6a1d0038b8c334303fe06e70df25a1b78220855f6acc3aec951ffb3b', 'Erika', 'Castro');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'homosexual', '1976-01-05', 'Hola, soy Erika y me gusta conocer gente nueva!', -63.3523, 156.2545, 'https://randomuser.me/api/portraits/women/6.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigsnake844', 'phoebe.garcia@example.com', 'd522dac10004460120fb1a81a9ae8684a7d03524450cad97c9d687abc90d6f14', 'Phoebe', 'Garcia');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Phoebe y me gusta conocer gente nueva!', 10, -35.8334, 175.3346);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishzebr7851', 'matheo.perez67df@example.com', '379a2ec73e44293b8e5e93587d54484008f352f489c0b7b845cbfa634486aa51', 'Mathéo', 'Perez');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1999-02-07', 'Hola, soy Mathéo y me gusta conocer gente nueva!', 11.8799, -72.9866, 'https://randomuser.me/api/portraits/men/80.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('heavyduck194', 'meik.holzwarth@example.com', '3b6e7f348f4e23fa349e42cad746a6efab3383219a773d15e38cd34931fb6fc8', 'Meik', 'Holzwarth');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Meik y me gusta conocer gente nueva!', 85, 26.4008, 178.2138);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('smalltiger331971', 'jordi.moreno0659@example.com', '40a85d705de4f99101f6463a304a4db17395530d1277043a03c51af3ddda2016', 'Jordi', 'Moreno');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1977-01-10', 'Hola, soy Jordi y me gusta conocer gente nueva!', 76.901, -121.1434, 'https://randomuser.me/api/portraits/men/83.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('ticklishelephant395', 'marie.matthias@example.com', 'af53f8538d061374803e05584bbf8ae888af1aa88952c1da2579fee63a39ff30', 'Marie', 'Matthias');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Marie y me gusta conocer gente nueva!', 81, 50.3463, 68.9716);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bigelephant948e8', 'adam.lordd3e6@example.com', '42be22c266603b34e0931de4d85a66ac830546d63afbb777a1a623e8e376ae35', 'Adam', 'Lord');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '2006-05-07', 'Hola, soy Adam y me gusta conocer gente nueva!', 36.8747, 67.7454, 'https://randomuser.me/api/portraits/men/54.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('bluebutterfly117', 'francisco.ferrer@example.com', '2322d03565a46ece1e31e5ef0d5f79f5a0ee0dc96ff666e52948e52e0298850e', 'Francisco', 'Ferrer');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'bisexual', 'Hola, soy Francisco y me gusta conocer gente nueva!', 70, -79.0385, -23.9767);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('greencat2575ea0', 'johan.clementb738@example.com', '74fca0325b5fdb3a34badb40a2581cfbd5344187e8d3432952a5abc0929c1246', 'Johan', 'Clement');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'homosexual', '1978-12-11', 'Hola, soy Johan y me gusta conocer gente nueva!', 66.4717, 43.7817, 'https://randomuser.me/api/portraits/men/60.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownduck973', 'pascal.schottler@example.com', '5792d2981981be5a2677cd353db6f55cd9d2779570061ae8d86176635b3cc745', 'Pascal', 'Schöttler');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Pascal y me gusta conocer gente nueva!', 57, -81.4122, -169.4304);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('yellowladybuf0da', 'friedericke.kohl1b73@example.com', '13809668fb436386706f67dcb052ed584a04ba16a8c02a17d66d34c30fceda21', 'Friedericke', 'Kohl');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'heterosexual', '1991-08-31', 'Hola, soy Friedericke y me gusta conocer gente nueva!', -15.763, 99.6615, 'https://randomuser.me/api/portraits/women/8.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('brownduck557', 'irma.kennedy@example.com', '0c08d7b9b45c0753aed44e5395aedb56cd4856c02b7ffc409d4a24d3c729db3c', 'Irma', 'Kennedy');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'bisexual', 'Hola, soy Irma y me gusta conocer gente nueva!', 67, 59.6315, 19.0010);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadmeercat90d782', 'elena.clement57d0@example.com', '14bbfb46cb710ab5cf477269d856fc79d4d5b31cfbe466a37a43b1537e0693a4', 'Eléna', 'Clement');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'female', 'bisexual', '2003-02-11', 'Hola, soy Eléna y me gusta conocer gente nueva!', -36.3702, 3.8116, 'https://randomuser.me/api/portraits/women/25.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angryfish881', 'margret.kayser@example.com', '1c44b30147d12c47c354230f6bd99bb17657e3d5bf616ac5408dcbf28e83fdb8', 'Margret', 'Kayser');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'female', 'homosexual', 'Hola, soy Margret y me gusta conocer gente nueva!', 91, -47.5155, -32.2376);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('sadduck3128add', 'heinfried.hildebrand8302@example.com', 'df6b07176a9b17cc4c9afc257bd404732e7d09b76436c7890f7b7be14e579794', 'Heinfried', 'Hildebrand');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'bisexual', '1986-07-24', 'Hola, soy Heinfried y me gusta conocer gente nueva!', -70.9984, 134.0482, 'https://randomuser.me/api/portraits/men/42.jpg');
 
-INSERT INTO users (username, email, password, first_name, last_name) VALUES ('angrykoala998', 'blake.marshall@example.com', 'ffa7e158c8727f00251c8ac562714b6885c0c73962f7997b2c1faaec86d1ac43', 'Blake', 'Marshall');
-INSERT INTO profiles (user_id, gender, sexual_orientation, bio, fame_rating, latitude, longitude) VALUES (LASTVAL(), 'male', 'heterosexual', 'Hola, soy Blake y me gusta conocer gente nueva!', 98, -39.0243, 130.3883);
+INSERT INTO users (username, email, password, first_name, last_name) VALUES ('lazybear448a8b0', 'jessie.parkerbec8@example.com', 'ea0df5beff12699fbf204c7fa7f7951f12f2dd57d7d0456dfc9fa4d3c0a0e1b1', 'Jessie', 'Parker');
+INSERT INTO profiles (user_id, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) VALUES (LASTVAL(), 'male', 'heterosexual', '1985-10-07', 'Hola, soy Jessie y me gusta conocer gente nueva!', -68.1834, 150.6639, 'https://randomuser.me/api/portraits/men/84.jpg');
 
 -- Datos insertados correctamente
