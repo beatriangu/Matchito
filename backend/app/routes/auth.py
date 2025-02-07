@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 import psycopg2
-from utils.db import get_db_connection
-from utils.security import hash_password, check_password
+from app.utils.db import get_db_connection
+from app.utils.security import hash_password, check_password
 import os
 import smtplib
 from email.mime.text import MIMEText
@@ -26,14 +26,17 @@ def register():
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute("INSERT INTO users (username, email, password, first_name, last_name) VALUES (%s, %s, %s, %s, %s) RETURNING id",
-                    (username, email, hashed_password, first_name, last_name))
+        cur.execute(
+            "INSERT INTO users (username, email, password, first_name, last_name) VALUES (%s, %s, %s, %s, %s) RETURNING id",
+            (username, email, hashed_password, first_name, last_name)
+        )
         user_id = cur.fetchone()[0]
         conn.commit()
         cur.close()
         conn.close()
         return jsonify({"message": "Usuario registrado con éxito", "user_id": user_id}), 201
     except psycopg2.IntegrityError:
+        conn.rollback()  # Evita que la conexión quede bloqueada
         return jsonify({"error": "El usuario o el email ya existen"}), 400
 
 @auth_bp.route('/login', methods=['POST'])
@@ -65,6 +68,7 @@ def forgot_password():
     email = data.get("email")
 
     try:
+        # Verificamos si el usuario existe
         conn = get_db_connection()
         cur = conn.cursor()
         cur.execute("SELECT id, username FROM users WHERE email = %s", (email,))
@@ -76,6 +80,18 @@ def forgot_password():
             return jsonify({"error": "Email no encontrado"}), 404
 
         reset_code = os.urandom(4).hex().upper()  # Genera un código aleatorio
+
+        # Guardar el código de recuperación en la base de datos
+        try:
+            conn = get_db_connection()
+            cur = conn.cursor()
+            cur.execute("UPDATE users SET reset_code = %s WHERE email = %s", (reset_code, email))
+            conn.commit()
+            cur.close()
+            conn.close()
+        except Exception as e:
+            return jsonify({"error": "Error al guardar el código de recuperación"}), 500
+
         send_email(email, reset_code)
 
         return jsonify({"message": "Código de recuperación enviado", "reset_code": reset_code}), 200
@@ -105,3 +121,4 @@ def send_email(to_email, reset_code):
         server.quit()
     except Exception as e:
         print("Error enviando el correo:", e)
+

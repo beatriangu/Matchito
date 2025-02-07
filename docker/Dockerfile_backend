@@ -7,11 +7,12 @@ WORKDIR /app
 # Instalar dependencias del sistema necesarias para psycopg2
 RUN apt-get update && apt-get install -y gcc && rm -rf /var/lib/apt/lists/*
 
-# Copiar los archivos del backend al contenedor
-COPY backend /app
+# Copiar los archivos del backend dentro del contenedor
+COPY . /app
 
 # Instalar dependencias de Python
-RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir --force-reinstall -r requirements.txt
 
 # Exponer el puerto en el que Flask correrá
 EXPOSE 5000
@@ -19,9 +20,12 @@ EXPOSE 5000
 # Definir variables de entorno para Flask
 ENV FLASK_APP=run.py
 ENV FLASK_ENV=${FLASK_ENV}
+ENV PYTHONPATH=/app
 
 # Ejecutar Flask con Python
-CMD ["python", "-m", "run"]
+CMD ["python", "run.py"]
+
+
 
 
 
