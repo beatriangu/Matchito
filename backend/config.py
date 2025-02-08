@@ -1,8 +1,11 @@
 import os
+from dotenv import load_dotenv
+
+# Cargar variables desde .env
+load_dotenv()
 
 class Config:
-    # Configuración general
-    SECRET_KEY = os.getenv('SECRET_KEY', 'supersecretkey')
+    SECRET_KEY = os.getenv('SECRET_KEY', 'supersecretkey')  # Ahora sí debería cargar correctamente
     FLASK_ENV = os.getenv('FLASK_ENV', 'development')
 
     # Configuración de la base de datos sin SQLAlchemy

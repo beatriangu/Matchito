@@ -1,13 +1,18 @@
-# Usamos la imagen oficial de Nginx
 FROM nginx:latest
 
-# Copiar la configuración personalizada de Nginx
-COPY default.conf /etc/nginx/conf.d/default.conf
+# Eliminar la configuración por defecto para evitar conflictos
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copiar la configuración personalizada desde el directorio "nginx" en el contexto de build
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # Exponer el puerto 80
 EXPOSE 80
 
-# Iniciar Nginx
+# Iniciar Nginx en primer plano
 CMD ["nginx", "-g", "daemon off;"]
+
+
+
 
 

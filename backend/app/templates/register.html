@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+Match@ - Register
+{% endblock %}
+
+{% block content %}
+<div class="main-content text-center">
+    <h1 class="display-4 text-white mb-4">Register to Match@</h1>
+    <form id="registerForm" action="{{ url_for('users.register_user') }}" method="POST" style="width: 100%; max-width: 400px;" autocomplete="off">
+        <!-- Campo para el nombre -->
+        <div class="mb-3">
+            <input type="text" class="form-control" name="first_name" placeholder="First Name" required autocomplete="off">
+        </div>
+
+        <!-- Campo para el apellido -->
+        <div class="mb-3">
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name" required autocomplete="off">
+        </div>
+
+        <!-- Campo para el nombre de usuario -->
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" placeholder="Username" required autocomplete="off">
+        </div>
+
+        <!-- Campo para el correo electrónico -->
+        <div class="mb-3">
+            <input type="email" class="form-control" name="email" placeholder="Email" required autocomplete="off">
+        </div>
+
+        <!-- Campo para la contraseña -->
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required autocomplete="new-password">
+        </div>
+
+        <!-- Campo para confirmar la contraseña -->
+        <div class="mb-3">
+            <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required autocomplete="new-password">
+        </div>
+
+        <!-- Botón de envío -->
+        <button type="submit" class="btn btn-primary w-100">Register</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var form = document.getElementById("registerForm");
+    form.addEventListener("submit", function(event) {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirm_password").value;
+        if (password !== confirmPassword) {
+            event.preventDefault();
+            alert("Las contraseñas no coinciden. Por favor, revisa los datos.");
+        }
+    });
+});
+</script>
+{% endblock %}
+
+
+
+
+
+
+

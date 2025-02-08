@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Browse Profiles{% endblock %}
+
+{% block content %}
+<div class="background">
+    <img src="{{ url_for('static', filename='images/profiles_background.jpg') }}" alt="Profiles Background">
+</div>
+
+<div class="container">
+    <h1>Discover New Matches</h1>
+
+    {% for profile in profiles %}
+    <div class="profile-card">
+        <img src="{{ profile.profile_picture }}" alt="Profile Picture">
+        <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
+        <p><strong>Age:</strong> {{ profile.age }}</p>
+        <p><strong>Location:</strong> {{ profile.location }}</p>
+        <p><strong>Interests:</strong> {{ profile.interests }}</p>
+
+        <!-- Actions: Like, Chat, Block, Report -->
+        <div class="actions">
+            <button class="like-btn" onclick="sendLike({{ profile.user_id }})">❤️ Like</button>
+            {% if profile.mutual_like %}
+            <a href="{{ url_for('chat.start_chat', user_id=profile.user_id) }}" class="chat-btn">💬 Chat</a>
+            {% endif %}
+            <button class="block-btn" onclick="blockUser({{ profile.user_id }})">🚫 Block</button>
+            <button class="report-btn" onclick="reportUser({{ profile.user_id }})">⚠️ Report</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}404 - Page Not Found{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-column justify-content-center align-items-center vh-100" 
+     style="background-image: url('{{ url_for('static', filename='images/404_background.jpg') }}'); background-size: cover; background-position: center;">
+  <div class="bg-dark bg-opacity-50 p-4 rounded text-center">
+    <h1 class="text-white mb-3">Oops! Page Not Found</h1>
+    <p class="text-white">The page you are looking for doesn’t exist or has been moved.</p>
+    <a href="{{ url_for('root') }}" class="btn btn-primary mt-3">Return Home</a>
+  </div>
+</div>
+{% endblock %}

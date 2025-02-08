@@ -1,53 +1,65 @@
+# version: "3.8"
 
 services:
-  backend:
-    build:
-      context: ../backend
-      dockerfile: ../docker/Dockerfile_backend
-    container_name: matchito_backend
-    restart: always
-    ports:
-      - "5000:5000"
-    depends_on:
-      - postgres_db
-    env_file:
-      - ../.env
-    volumes:
-      - ../backend:/app
-
-  postgres_db:
+  database:
     image: postgres:15
     container_name: matchito_db
     restart: always
-    env_file:
-      - ../.env
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_USER: bea
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: matchito_db
     volumes:
-      - pgdata:/var/lib/postgresql/data
-      - ../database/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ../database/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - matchito_network
 
-  adminer:
-    image: adminer
-    container_name: matchito_adminer
+  backend:
+    build:
+      context: ..            # Directorio raíz del proyecto
+      dockerfile: docker/Dockerfile  # Dockerfile del backend ubicado en docker/
+    container_name: matchito_backend
     restart: always
+    depends_on:
+      - database
     ports:
-      - "8081:8080"
+      - "5000:5000"
+    environment:
+      FLASK_ENV: development
+      SECRET_KEY: "a6c2381256f8e41991013cdc9875daa1895f010b4ed74998d07afecfee825c52"
+    networks:
+      - matchito_network
 
   nginx:
     build:
-      context: ../nginx
-      dockerfile: ../docker/Dockerfile_nginx
+      context: ..                        # Directorio raíz del proyecto (incluye la carpeta nginx)
+      dockerfile: docker/Dockerfile_nginx  # Dockerfile de Nginx ubicado en docker/
     container_name: matchito_nginx
     restart: always
-    ports:
-      - "8080:80"
     depends_on:
       - backend
+    ports:
+      - "8080:80"
+    volumes:
+      - ../nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - matchito_network
+
+networks:
+  matchito_network:
+    driver: bridge
 
 volumes:
-  pgdata:
+  pg_data:
+
+
+
+
+
+
+
 
 
 

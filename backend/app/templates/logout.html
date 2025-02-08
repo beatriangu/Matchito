@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Logout - Matcha{% endblock %}
+
+{% block content %}
+<div class="main-content text-center">
+    <h1 class="display-4 text-white mb-4">Logout</h1>
+
+    {% if message %}
+      <div class="alert alert-success">
+          {{ message }}
+      </div>
+    {% else %}
+      <div class="alert alert-info">
+          You have been logged out successfully.
+      </div>
+    {% endif %}
+
+    <a href="{{ url_for('users.home') }}" class="btn btn-primary mt-3">Do you want to try again?</a>
+</div>
+{% endblock %}
+
+
+
+
+
+
+

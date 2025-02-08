@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="container py-4 mx-auto" style="background-image: url('{{ url_for('static', filename='images/edit_profile_background.jpg') }}'); background-size: cover; background-position: center; border-radius: 8px;">
+    <h2 class="text-white text-center mb-4">Edit Your Profile</h2>
+    <form action="{{ url_for('profiles.edit_profile') }}" method="POST" class="mx-auto" style="max-width: 600px;" autocomplete="off">
+        <!-- CSRF Token (Flask-WTF inserts it automatically) -->
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            <label for="first_name" class="form-label text-white">First Name</label>
+            <input type="text" id="first_name" name="first_name" class="form-control" value="{{ profile.first_name }}" placeholder="Enter your first name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="last_name" class="form-label text-white">Last Name</label>
+            <input type="text" id="last_name" name="last_name" class="form-control" value="{{ profile.last_name }}" placeholder="Enter your last name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="gender" class="form-label text-white">Gender</label>
+            <select id="gender" name="gender" class="form-select" required>
+                <option value="">Select Gender</option>
+                <option value="Male" {% if profile.gender == 'Male' %}selected{% endif %}>Male</option>
+                <option value="Female" {% if profile.gender == 'Female' %}selected{% endif %}>Female</option>
+                <option value="Other" {% if profile.gender == 'Other' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="sexual_preferences" class="form-label text-white">Sexual Preferences</label>
+            <select id="sexual_preferences" name="sexual_preferences" class="form-select" required>
+                <option value="">Select Preference</option>
+                <option value="Men" {% if profile.sexual_preferences == 'Men' %}selected{% endif %}>Men</option>
+                <option value="Women" {% if profile.sexual_preferences == 'Women' %}selected{% endif %}>Women</option>
+                <option value="Both" {% if profile.sexual_preferences == 'Both' %}selected{% endif %}>Both</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="biography" class="form-label text-white">Biography</label>
+            <textarea id="biography" name="biography" rows="5" class="form-control" placeholder="Write a short biography...">{{ profile.biography }}</textarea>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mt-3 w-100">Save Changes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+
+
+
+
+

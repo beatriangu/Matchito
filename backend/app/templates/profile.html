@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Your Profile - Matcha{% endblock %}
+
+{% block content %}
+<div class="main-content text-center">
+    <h1 class="display-4 text-white mb-4">Your Profile</h1>
+
+    {# Mostrar mensajes flash, si los hay #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert-container">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} text-center">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('users.profile') }}" method="POST" style="width: 100%; max-width: 400px;" autocomplete="off">
+        <!-- Campo para el nombre -->
+        <div class="mb-3">
+            <input 
+                type="text" 
+                class="form-control" 
+                name="first_name" 
+                placeholder="First Name" 
+                value="{{ profile.first_name }}"
+                required 
+                autocomplete="off">
+        </div>
+
+        <!-- Campo para el apellido -->
+        <div class="mb-3">
+            <input 
+                type="text" 
+                class="form-control" 
+                name="last_name" 
+                placeholder="Last Name" 
+                value="{{ profile.last_name }}"
+                required 
+                autocomplete="off">
+        </div>
+
+        <!-- Género -->
+        <div class="mb-3">
+            <select class="form-select" name="gender" required>
+                <option value="" disabled>Select Gender</option>
+                <option value="male" {% if profile.gender == 'male' %}selected{% endif %}>Male</option>
+                <option value="female" {% if profile.gender == 'female' %}selected{% endif %}>Female</option>
+                <option value="non-binary" {% if profile.gender == 'non-binary' %}selected{% endif %}>Non-binary</option>
+                <option value="other" {% if profile.gender == 'other' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+
+        <!-- Campo para el correo electrónico -->
+        <div class="mb-3">
+            <input 
+                type="email" 
+                class="form-control" 
+                name="email" 
+                placeholder="Email" 
+                value="{{ profile.email }}"
+                required 
+                autocomplete="off">
+        </div>
+
+        <!-- Campo para la biografía -->
+        <div class="mb-3">
+            <textarea 
+                class="form-control" 
+                name="biography" 
+                placeholder="Biography">{{ profile.biography }}</textarea>
+        </div>
+
+        {# Sección de perfil: muestra el nombre y la imagen de perfil #}
+        <div class="profile-section mb-3">
+            <h2 class="h4">{{ profile.first_name }} {{ profile.last_name }}</h2>
+            <div class="profile-picture mb-3">
+                <img 
+                    src="{{ url_for('static', filename=profile.profile_picture) }}" 
+                    alt="Profile Picture" 
+                    class="img-thumbnail" 
+                    style="width: 200px; height: 200px;">
+            </div>
+        </div>
+
+        <!-- Intereses -->
+        <div class="mb-3">
+            <input 
+                type="text" 
+                class="form-control" 
+                name="interests" 
+                placeholder="Interests (comma-separated)" 
+                value="{{ profile.interests | join(', ') }}">
+        </div>
+
+        <!-- Ubicación -->
+        <div class="mb-3">
+            <input 
+                type="text" 
+                class="form-control" 
+                name="location" 
+                placeholder="Location" 
+                value="{{ profile.location }}">
+        </div>
+
+        <!-- Botón de envío -->
+        <button type="submit" class="btn btn-primary w-100">Save</button>
+    </form>
+</div>
+{% endblock %}
+
+
+
