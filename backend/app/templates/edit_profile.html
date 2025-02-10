@@ -1,12 +1,24 @@
 {% extends "base.html" %}
+{% set background_image = url_for('static', filename='images/edit_profile_background.jpg') %}
 
-{% block title %}Edit Profile{% endblock %}
+{% block title %}Edit Profile - Matcha{% endblock %}
 
 {% block content %}
-<div class="container py-4 mx-auto" style="background-image: url('{{ url_for('static', filename='images/edit_profile_background.jpg') }}'); background-size: cover; background-position: center; border-radius: 8px;">
+<div class="container py-4 mx-auto" style="border-radius: 8px;">
     <h2 class="text-white text-center mb-4">Edit Your Profile</h2>
+    
+    {# Mostrar mensajes flash, si los hay #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert-container">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} text-center">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
     <form action="{{ url_for('profiles.edit_profile') }}" method="POST" class="mx-auto" style="max-width: 600px;" autocomplete="off">
-        <!-- CSRF Token (Flask-WTF inserts it automatically) -->
         {{ form.hidden_tag() }}
 
         <div class="mb-3">
@@ -50,6 +62,7 @@
     </form>
 </div>
 {% endblock %}
+
 
 
 

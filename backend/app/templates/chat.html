@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% set background_image = url_for('static', filename='images/chat_background.jpg') %}
 
 {% block title %}Chat{% endblock %}
 
 {% block content %}
-<div class="container py-4" style="background-image: url('{{ url_for('static', filename='images/chat_background.jpg') }}'); background-size: cover; background-position: center; padding: 30px; border-radius: 8px;">
+<div class="container py-4" style="padding: 30px; border-radius: 8px; background-color: rgba(0,0,0,0.5);">
     <h2 class="text-white text-center mb-4">Chat with {{ other_user.username }}</h2>
 
     <!-- Chat messages -->
@@ -27,4 +28,5 @@
     </form>
 </div>
 {% endblock %}
+
 

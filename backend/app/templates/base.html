@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Matcha{% endblock %}</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,14 +14,17 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
   <style>
-    /* Estilos inline (puedes moverlos a un archivo CSS si prefieres) */
-    body {
-      background: url("{{ background_image or url_for('static', filename='images/default_background.jpg') }}") no-repeat center center fixed;
-      background-size: cover;
-      min-height: 100vh;
+    /* Aseguramos que html y body ocupen el 100% de la altura y se dispongan en columna */
+    html, body {
+      height: 100%;
       margin: 0;
       display: flex;
       flex-direction: column;
+    }
+    body {
+      /* Se utiliza la variable background_image; si no se define, se usa home_background.jpg */
+      background: url("{{ background_image or url_for('static', filename='images/home_background.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
       font-family: Arial, sans-serif;
     }
     .main-content {
@@ -32,15 +38,6 @@
       gap: 20px;
       max-width: 800px;
       margin: 0 auto;
-    }
-    .notifications {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 10px;
-      border-radius: 5px;
-      display: none;
     }
     footer {
       text-align: center;
@@ -63,7 +60,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{ url_for('home') }}">Matcha</a>
+      <a class="navbar-brand" href="{{ url_for('auth.home') }}">Matcha</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -71,14 +68,11 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link {% if request.endpoint == 'home' %}active{% endif %}" href="{{ url_for('home') }}">🏠 Home</a>
+            <a class="nav-link {% if request.endpoint == 'auth.home' %}active{% endif %}" href="{{ url_for('auth.home') }}">🏠 Home</a>
           </li>
           {% if session.get('user_id') %}
             <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'profiles.view_profile' %}active{% endif %}" href="{{ url_for('profiles.view_profile') }}">👤 Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'users.all_profiles' %}active{% endif %}" href="{{ url_for('users.all_profiles') }}">💑 Browse Profiles</a>
+              <a class="nav-link {% if request.endpoint == 'profiles.get_profile' %}active{% endif %}" href="{{ url_for('profiles.get_profile') }}">👤 Profile</a>
             </li>
             <li class="nav-item">
               <a class="nav-link {% if request.endpoint == 'notifications.view_notifications' %}active{% endif %}" href="{{ url_for('notifications.view_notifications') }}">
@@ -86,17 +80,14 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'chat.view_chats' %}active{% endif %}" href="{{ url_for('chat.view_chats') }}">💬 Chats</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'users.logout_user' %}active{% endif %}" href="{{ url_for('users.logout_user') }}">🚪 Logout</a>
+              <a class="nav-link {% if request.endpoint == 'auth.logout' %}active{% endif %}" href="{{ url_for('auth.logout') }}">🚪 Logout</a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'users.register_user' %}active{% endif %}" href="{{ url_for('users.register_user') }}">📝 Register</a>
+              <a class="nav-link {% if request.endpoint == 'auth.register' %}active{% endif %}" href="{{ url_for('auth.register') }}">📝 Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'users.login_user' %}active{% endif %}" href="{{ url_for('users.login_user') }}">🔑 Login</a>
+              <a class="nav-link {% if request.endpoint == 'auth.login' %}active{% endif %}" href="{{ url_for('auth.login') }}">🔑 Login</a>
             </li>
           {% endif %}
         </ul>
@@ -105,7 +96,7 @@
   </nav>
 
   <!-- Notifications -->
-  <div id="notifications" class="notifications">
+  <div id="notifications" class="notifications" style="display: none; position: fixed; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.9); padding: 10px; border-radius: 5px;">
     <p>You have new notifications!</p>
   </div>
 
@@ -119,9 +110,9 @@
     <p>&copy; {{ current_year }} Matcha. All rights reserved.</p>
   </footer>
 
-  <!-- Bootstrap JS Bundle -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-  
+
   <!-- Custom JS for notifications -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -139,8 +130,11 @@
         .catch(error => console.error("⚠️ Failed to load notifications:", error));
     });
   </script>
+  {% block scripts %}{% endblock %}
 </body>
 </html>
+
+
 
 
 

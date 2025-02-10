@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template, redirect, url_for
 from app.utils.db import get_db_connection
 from flask import g
 
@@ -6,7 +6,7 @@ profiles_bp = Blueprint("profiles", __name__)
 
 def get_user_id_from_request():
     """Función para obtener el user_id de la petición (simulación hasta implementar JWT)."""
-    return request.headers.get("User-ID")  # En producción, usar JWT o sesión
+    return request.headers.get("User-ID")  # En producción, usar JWT o la sesión
 
 @profiles_bp.route("/profile", methods=["GET"])
 def get_profile():
@@ -17,7 +17,12 @@ def get_profile():
 
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("SELECT username, email, first_name, last_name FROM users WHERE id = %s", (user_id,))
+    cur.execute("""
+        SELECT u.username, u.email, p.first_name, p.last_name
+        FROM users u
+        JOIN profiles p ON u.id = p.user_id
+        WHERE u.id = %s
+    """, (user_id,))
     user = cur.fetchone()
     cur.close()
     conn.close()
@@ -34,7 +39,9 @@ def get_profile():
 
 @profiles_bp.route("/profile", methods=["PUT"])
 def update_profile():
-    """Permite editar el perfil del usuario autenticado."""
+    """Permite editar el perfil del usuario autenticado.
+       Después de actualizar, redirige a la vista de todos los perfiles.
+    """
     user_id = get_user_id_from_request()
     if not user_id:
         return jsonify({"error": "No autenticado"}), 401
@@ -48,30 +55,43 @@ def update_profile():
 
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("UPDATE users SET first_name = %s, last_name = %s WHERE id = %s",
+    # Actualizamos en la tabla profiles (donde se almacenan first_name y last_name)
+    cur.execute("UPDATE profiles SET first_name = %s, last_name = %s WHERE user_id = %s",
                 (first_name, last_name, user_id))
     conn.commit()
     cur.close()
     conn.close()
 
-    return jsonify({"message": "Perfil actualizado correctamente"})
+    # Redirige a la vista de todos los perfiles
+    return redirect(url_for("profiles.get_all_profiles"))
 
 @profiles_bp.route("/", methods=["GET"])
 def get_all_profiles():
-    """Devuelve los 500 perfiles disponibles."""
+    """Devuelve la vista de todos los perfiles (Browse Profiles)."""
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("SELECT id, username, first_name, last_name FROM users LIMIT 500")
+    cur.execute("""
+        SELECT u.id, u.username, p.first_name, p.last_name, p.profile_picture
+        FROM users u
+        JOIN profiles p ON u.id = p.user_id
+        LIMIT 500
+    """)
     users = cur.fetchall()
     cur.close()
     conn.close()
 
     profiles = [
-        {"id": u[0], "username": u[1], "first_name": u[2], "last_name": u[3]}
+        {
+            "id": u[0],
+            "username": u[1],
+            "first_name": u[2],
+            "last_name": u[3],
+            "profile_picture": u[4]
+        }
         for u in users
     ]
 
-    return jsonify(profiles)
+    return render_template("browse_profiles.html", profiles=profiles)
 
 @profiles_bp.route("/suggestions", methods=["GET"])
 def get_suggestions():
@@ -83,7 +103,7 @@ def get_suggestions():
     conn = get_db_connection()
     cur = conn.cursor()
 
-    # Obtener datos del usuario actual
+    # Obtener datos del usuario actual desde la tabla profiles
     cur.execute("""
         SELECT gender, sexual_orientation, latitude, longitude, birthdate
         FROM profiles
@@ -102,10 +122,9 @@ def get_suggestions():
     min_age = user_age - 5
     max_age = user_age + 5
 
-    # Buscar perfiles compatibles
-    # CORRECCIÓN: Se obtienen first_name y last_name desde users y se incluye p.profile_picture.
+    # Buscar perfiles compatibles: obtener first_name y last_name desde profiles y otros datos de users
     cur.execute("""
-        SELECT p.user_id, u.username, u.first_name, u.last_name, p.latitude, p.longitude, p.profile_picture
+        SELECT p.user_id, u.username, p.first_name, p.last_name, p.latitude, p.longitude, p.profile_picture
         FROM profiles p
         JOIN users u ON p.user_id = u.id
         WHERE p.user_id != %s
@@ -198,16 +217,16 @@ def search_profiles():
 
 @profiles_bp.route("/profile/<int:profile_id>", methods=["GET"])
 def get_profile_by_id(profile_id):
-    """Devuelve los detalles de un perfil específico."""
+    """Obtiene el perfil completo de un usuario a partir de su ID y renderiza la plantilla view_profiles.html."""
     conn = get_db_connection()
     cur = conn.cursor()
-    
     cur.execute("""
-        SELECT id, username, email, first_name, last_name
-        FROM users
-        WHERE id = %s
+        SELECT u.id, u.username, u.email, p.first_name, p.last_name, p.profile_picture,
+               p.gender, p.sexual_orientation, p.city, p.country, p.birthdate
+        FROM users u
+        JOIN profiles p ON u.id = p.user_id
+        WHERE u.id = %s
     """, (profile_id,))
-    
     profile = cur.fetchone()
     cur.close()
     conn.close()
@@ -215,10 +234,24 @@ def get_profile_by_id(profile_id):
     if not profile:
         return jsonify({"error": "Perfil no encontrado"}), 404
 
-    return jsonify({
+    # Convertir el resultado a un diccionario para mayor claridad
+    profile_data = {
         "id": profile[0],
         "username": profile[1],
-        "email": profile[2],  # Puede ocultarse si no se quiere mostrar
+        "email": profile[2],
         "first_name": profile[3],
-        "last_name": profile[4]
-    })
+        "last_name": profile[4],
+        "profile_picture": profile[5],
+        "gender": profile[6],
+        "sexual_orientation": profile[7],
+        "city": profile[8],
+        "country": profile[9],
+        "birthdate": profile[10]
+    }
+
+    return render_template("view_profiles.html", profile=profile_data)
+
+
+
+
+

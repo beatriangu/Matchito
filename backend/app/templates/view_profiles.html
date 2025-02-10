@@ -1,35 +1,78 @@
 {% extends "base.html" %}
+{% set background_image = url_for('static', filename='images/view_profiles_background.jpg') %}
 
-{% block title %}Browse Profiles{% endblock %}
+{% block title %}View Profile{% endblock %}
 
 {% block content %}
-<div class="background">
-    <img src="{{ url_for('static', filename='images/profiles_background.jpg') }}" alt="Profiles Background">
-</div>
-
 <div class="container">
-    <h1>Discover New Matches</h1>
-
-    {% for profile in profiles %}
-    <div class="profile-card">
-        <img src="{{ profile.profile_picture }}" alt="Profile Picture">
-        <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
-        <p><strong>Age:</strong> {{ profile.age }}</p>
-        <p><strong>Location:</strong> {{ profile.location }}</p>
-        <p><strong>Interests:</strong> {{ profile.interests }}</p>
-
-        <!-- Actions: Like, Chat, Block, Report -->
-        <div class="actions">
-            <button class="like-btn" onclick="sendLike({{ profile.user_id }})">❤️ Like</button>
-            {% if profile.mutual_like %}
-            <a href="{{ url_for('chat.start_chat', user_id=profile.user_id) }}" class="chat-btn">💬 Chat</a>
-            {% endif %}
-            <button class="block-btn" onclick="blockUser({{ profile.user_id }})">🚫 Block</button>
-            <button class="report-btn" onclick="reportUser({{ profile.user_id }})">⚠️ Report</button>
-        </div>
+    <div class="profile-header text-center">
+        <!-- Verifica si `profile.picture.large` existe, de lo contrario muestra la imagen por defecto -->
+        <img src="{{ profile.picture.large if profile.picture.large else url_for('static', filename='images/default_profile.jpg') }}" 
+             alt="Profile Picture" class="profile-img">
+        
+        <h1>{{ profile.name.first }} {{ profile.name.last }}</h1>
+        <p><strong>Username:</strong> {{ profile.login.username }}</p>
+        <p><strong>📧 Email:</strong> {{ profile.email }}</p>
+        <p><strong>🎂 Age:</strong> {{ profile.age }}</p>
+        <p><strong>📍 Location:</strong> {{ profile.location.city }}, {{ profile.location.country }}</p>
     </div>
-    {% endfor %}
+
+    <!-- Acciones -->
+    <div class="text-center mt-4">
+        <button class="btn btn-danger" onclick="sendLike({{ profile.id }})">❤️ Like</button>
+        
+        {% if profile.mutual_like %}
+        <a href="{{ url_for('chat.start_chat', user_id=profile.id) }}" class="btn btn-primary">💬 Chat</a>
+        {% endif %}
+        
+        <button class="btn btn-secondary" onclick="blockUser({{ profile.id }})">🚫 Block</button>
+        <button class="btn btn-warning" onclick="reportUser({{ profile.id }})">⚠️ Report</button>
+
+        <!-- URL válida para volver atrás -->
+        <a href="{{ url_for('profiles.get_all_profiles') }}" class="btn btn-outline-light mt-3">⬅️ Go Back</a>
+    </div>
 </div>
+
+<!-- JavaScript para manejar las acciones con fetch() -->
+<script>
+function sendLike(userId) {
+    fetch(`/like/${userId}`, { 
+        method: 'POST', 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId }) 
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error sending like:", error));
+}
+
+function blockUser(userId) {
+    fetch(`/block/${userId}`, { 
+        method: 'POST', 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId }) 
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error blocking user:", error));
+}
+
+function reportUser(userId) {
+    fetch(`/report/${userId}`, { 
+        method: 'POST', 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId }) 
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error reporting user:", error));
+}
+</script>
 {% endblock %}
+
+
+
+
+
 
 

@@ -1,41 +1,45 @@
-# version: "3.8"
-
 services:
   database:
     image: postgres:15
-    container_name: matchito_db
+    container_name: postgres_db
     restart: always
     ports:
       - "5432:5432"
-    environment:
-      POSTGRES_USER: bea
-      POSTGRES_PASSWORD: password123
-      POSTGRES_DB: matchito_db
+    env_file:
+      - ../.env
+    # volumes:
+    #   - pg_data:/var/lib/postgresql/data
+    #   - ../database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    #   - ../database/seed.sql:/docker-entrypoint-initdb.d/seed.sql
     volumes:
       - pg_data:/var/lib/postgresql/data
+      - ../database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../database/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+      - /home/belamiqu/Matchito/database:/csv_files  # Monta el directorio local en /csv_files en el contenedor
     networks:
-      - matchito_network
+      matchito_network:
+        aliases:
+          - db
 
   backend:
     build:
-      context: ..            # Directorio raíz del proyecto
-      dockerfile: docker/Dockerfile  # Dockerfile del backend ubicado en docker/
+      context: ..
+      dockerfile: docker/Dockerfile
     container_name: matchito_backend
     restart: always
     depends_on:
       - database
     ports:
       - "5000:5000"
-    environment:
-      FLASK_ENV: development
-      SECRET_KEY: "a6c2381256f8e41991013cdc9875daa1895f010b4ed74998d07afecfee825c52"
+    env_file:
+      - ../.env
     networks:
       - matchito_network
 
   nginx:
     build:
-      context: ..                        # Directorio raíz del proyecto (incluye la carpeta nginx)
-      dockerfile: docker/Dockerfile_nginx  # Dockerfile de Nginx ubicado en docker/
+      context: ..
+      dockerfile: docker/Dockerfile_nginx
     container_name: matchito_nginx
     restart: always
     depends_on:
@@ -44,6 +48,16 @@ services:
       - "8080:80"
     volumes:
       - ../nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ../backend/app/static:/app/backend/app/static
+    networks:
+      - matchito_network
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - "8081:8080"
     networks:
       - matchito_network
 
@@ -53,6 +67,10 @@ networks:
 
 volumes:
   pg_data:
+
+
+
+
 
 
 

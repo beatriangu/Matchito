@@ -1,13 +1,16 @@
 import psycopg2
-from config import Config
+import os
+from dotenv import load_dotenv
+
+# Cargar variables de entorno desde `.env`
+load_dotenv()
 
 def get_db_connection():
-    """Establece conexión con la base de datos PostgreSQL sin usar SQLAlchemy."""
-    conn = psycopg2.connect(
-        dbname=Config.DB_CONNECTION["dbname"],
-        user=Config.DB_CONNECTION["user"],
-        password=Config.DB_CONNECTION["password"],
-        host=Config.DB_CONNECTION["host"],
-        port=Config.DB_CONNECTION["port"]
+    return psycopg2.connect(
+        dbname=os.getenv("POSTGRES_DB"),
+        user=os.getenv("POSTGRES_USER"),
+        password=os.getenv("POSTGRES_PASSWORD"),
+        host=os.getenv("POSTGRES_HOST"),  # 🔥 Se asegura que use `postgres_db`
+        port=os.getenv("POSTGRES_PORT")
     )
-    return conn
+

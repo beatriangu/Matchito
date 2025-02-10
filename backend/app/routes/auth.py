@@ -37,14 +37,25 @@ def register():
         conn = get_db_connection()
         cur = conn.cursor()
         try:
+            # Insertar en la tabla users (sin first_name y last_name)
             cur.execute(
                 """
-                INSERT INTO users (username, email, password, first_name, last_name, is_verified)
-                VALUES (%s, %s, %s, %s, %s, FALSE) RETURNING id
+                INSERT INTO users (username, email, password, is_verified)
+                VALUES (%s, %s, %s, FALSE) RETURNING id
                 """,
-                (username, email, hashed_password, first_name, last_name)
+                (username, email, hashed_password)
             )
             user_id = cur.fetchone()[0]
+            conn.commit()
+
+            # Insertar los datos de perfil en la tabla profiles
+            cur.execute(
+                """
+                INSERT INTO profiles (user_id, first_name, last_name)
+                VALUES (%s, %s, %s)
+                """,
+                (user_id, first_name, last_name)
+            )
             conn.commit()
 
             # Enviar correo de verificación después de guardar en la base de datos
@@ -80,12 +91,12 @@ def login():
             if user and check_password(password, user[2]):
                 session['user_id'] = user[0]  # Guardamos sesión
                 session['username'] = user[1]
-                flash("Inicio de sesión exitoso", "success")
-                return redirect(url_for('auth.home'))
+                flash("Successful login", "success")
+                return redirect(url_for('profiles.edit_profile'))
             else:
-                flash("Email o contraseña incorrectos", "danger")
+                flash("Incorrect email or password", "danger")
         except Exception as e:
-            flash(f"Error al iniciar sesión: {str(e)}", "danger")
+            flash(f"Login error: {str(e)}", "danger")
         finally:
             cur.close()
             conn.close()
@@ -97,7 +108,7 @@ def login():
 def logout():
     """Cerrar sesión y redirigir a la página principal."""
     session.clear()
-    flash("Sesión cerrada correctamente", "success")
+    flash("Successfully logged out", "success")
     return redirect(url_for('auth.home'))
 
 # 🔹 Recuperación de contraseña
@@ -114,7 +125,7 @@ def forgot_password():
             user = cur.fetchone()
 
             if not user:
-                flash("Email no encontrado", "danger")
+                flash("Email not found", "danger")
                 return redirect(url_for('auth.forgot_password'))
 
             reset_code = os.urandom(4).hex().upper()  # Genera un código aleatorio
@@ -125,10 +136,10 @@ def forgot_password():
 
             send_email(email, reset_code)
 
-            flash("Código de recuperación enviado a tu email", "success")
+            flash("Recovery code sent to your email", "success")
             return redirect(url_for('auth.login'))
         except Exception as e:
-            flash(f"Error al recuperar contraseña: {str(e)}", "danger")
+            flash(f"Error recovering password: {str(e)}", "danger")
         finally:
             cur.close()
             conn.close()
@@ -142,8 +153,8 @@ def send_email(to_email, reset_code):
     EMAIL_SENDER = os.getenv("MAIL_USERNAME")
     EMAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
 
-    subject = "Recuperación de contraseña - Matchito"
-    body = f"Tu código de recuperación es: {reset_code}"
+    subject = "Password recovery - Matchito"
+    body = f"Your recovery code is: {reset_code}"
 
     msg = MIMEText(body)
     msg["Subject"] = subject
@@ -155,9 +166,9 @@ def send_email(to_email, reset_code):
             server.starttls()
             server.login(EMAIL_SENDER, EMAIL_PASSWORD)
             server.sendmail(EMAIL_SENDER, to_email, msg.as_string())
-        print(f"✅ Correo enviado a {to_email}")
+        print(f"✅ Mail sent to {to_email}")
     except Exception as e:
-        print(f"❌ Error enviando el correo: {e}")
+        print(f"❌ Error sending email: {e}")
 
 # 🔹 Verificación de email
 @auth_bp.route('/verify-email', methods=['GET'])
@@ -166,7 +177,7 @@ def verify_email():
     token = request.args.get('token')
 
     if not token:
-        flash("Token no proporcionado", "danger")
+        flash("Token not provided", "danger")
         return redirect(url_for('auth.home'))
 
     conn = get_db_connection()
@@ -178,10 +189,10 @@ def verify_email():
         cur.execute("UPDATE users SET is_verified = TRUE WHERE email = %s", (email,))
         conn.commit()
 
-        flash("Correo electrónico verificado exitosamente", "success")
+        flash("Email successfully verified", "success")
         return redirect(url_for('auth.login'))
     except Exception as e:
-        flash("Token inválido o expirado", "danger")
+        flash("Invalid or expired token", "danger")
     finally:
         cur.close()
         conn.close()

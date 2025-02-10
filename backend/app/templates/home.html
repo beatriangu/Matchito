@@ -1,26 +1,27 @@
 {% extends "base.html" %}
+{% set background_image = url_for('static', filename='images/home_background.jpg') %}
 
 {% block content %}
 <div class="main-content text-center">
     <h1 class="display-4 text-white mb-3">Welcome to Match@</h1>
     <p class="lead text-white mb-4">Your platform to connect and explore!</p>
-
+    
     {% if not session.get('user_id') %}
-        <!-- Mostrar botones SOLO si el usuario NO está logueado -->
         <div class="d-flex flex-column flex-md-row gap-3">
-            <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Register</a>
-            <a href="{{ url_for('auth.login') }}" class="btn btn-secondary btn-lg">Login</a>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">📝 Register</a>
+            <a href="{{ url_for('auth.login') }}" class="btn btn-secondary btn-lg">🔑 Login</a>
         </div>
     {% else %}
-        <!-- Mostrar opciones si el usuario YA está logueado -->
         <div class="d-flex flex-column flex-md-row gap-3">
             <a href="{{ url_for('profiles.view_profile') }}" class="btn btn-success btn-lg">👤 My Profile</a>
-            <a href="{{ url_for('users.all_profiles') }}" class="btn btn-info btn-lg">💑 Browse Profiles</a>
             <a href="{{ url_for('auth.logout') }}" class="btn btn-danger btn-lg">🚪 Logout</a>
         </div>
     {% endif %}
 </div>
 {% endblock %}
+
+
+
 
 
 

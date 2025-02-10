@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% set background_image = url_for('static', filename='images/profiles_background.jpg') %}
+
+{% block title %}Browse Profiles{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center text-white">Discover New Matches</h1>
+
+    <div class="row">
+        {% for profile in profiles %}
+        <div class="col-md-4">
+            <div class="card text-center">
+                <!-- Usa la imagen de perfil remota desde profiles.json -->
+                <img src="{{ profile.picture.large }}" 
+                     alt="Profile Picture" class="card-img-top">
+                <div class="card-body">
+                    <h2 class="card-title">{{ profile.name.first }} {{ profile.name.last }}</h2>
+                    <p><strong>Age:</strong> {{ profile.age }}</p>
+                    <p><strong>Location:</strong> {{ profile.location.city }}, {{ profile.location.country }}</p>
+                    <p><strong>Interests:</strong> {{ profile.interests }}</p>
+
+                    <!-- Actions -->
+                    <div class="actions">
+                        <button class="btn btn-danger" onclick="sendLike({{ profile.id }})">❤️ Like</button>
+                        {% if profile.mutual_like %}
+                        <a href="{{ url_for('chat.start_chat', user_id=profile.id) }}" class="btn btn-primary">💬 Chat</a>
+                        {% endif %}
+                        <button class="btn btn-secondary" onclick="blockUser({{ profile.id }})">🚫 Block</button>
+                        <button class="btn btn-warning" onclick="reportUser({{ profile.id }})">⚠️ Report</button>
+                        <a href="{{ url_for('profiles.get_profile_by_id', profile_id=profile.id) }}" class="btn btn-info">📄 View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- ✅ JavaScript corregido para evitar errores -->
+<script>
+function sendLike(userId) {
+    fetch(`/like/${userId}`, { 
+        method: 'POST', 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId }) 
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error sending like:", error));
+}
+
+function blockUser(userId) {
+    fetch(`/block/${userId}`, { 
+        method: 'POST', 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId }) 
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error blocking user:", error));
+}
+
+function reportUser(userId) {
+    fetch(`/report/${userId}`, { 
+        method: 'POST', 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId }) 
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error reporting user:", error));
+}
+</script>
+{% endblock %}
+
+
+
+

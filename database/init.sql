@@ -4,23 +4,27 @@ DROP TABLE IF EXISTS reports, notifications, messages, matches, profile_interest
 -- 🔹 Tabla de usuarios
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
+    is_verified BOOLEAN DEFAULT FALSE,  -- Nueva columna para verificar email
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-
 -- 🔹 Tabla de perfiles
 CREATE TABLE profiles (
-    user_id SERIAL PRIMARY KEY,
+    user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
     gender VARCHAR(20) NOT NULL,
     sexual_orientation VARCHAR(20) NOT NULL,
     birthdate DATE NOT NULL,
+    first_name VARCHAR(255) NOT NULL,   -- Agregada para almacenar el nombre
+    last_name VARCHAR(255) NOT NULL,      -- Agregada para almacenar el apellido
     bio TEXT,
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
-    profile_picture VARCHAR(255)  -- Nueva columna para la URL de la imagen de perfil
+    city VARCHAR(255),                    -- Agregada para búsquedas por localización
+    country VARCHAR(255),                 -- Agregada para búsquedas por localización
+    profile_picture VARCHAR(255)          -- Columna para la URL de la imagen de perfil
 );
 
 -- 🔹 Tabla de intereses (tags)
@@ -42,7 +46,7 @@ CREATE TABLE matches (
     user1_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     user2_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     matched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE(user1_id, user2_id)
+    CONSTRAINT unique_match UNIQUE (LEAST(user1_id, user2_id), GREATEST(user1_id, user2_id))
 );
 
 -- 🔹 Tabla de mensajes (chat)
@@ -76,11 +80,15 @@ CREATE TABLE reports (
 -- 🔹 Tabla de Likes
 CREATE TABLE likes (
     id SERIAL PRIMARY KEY,
-    liker_id INTEGER NOT NULL,
-    liked_id INTEGER NOT NULL,
+    liker_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    liked_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (liker_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (liked_id) REFERENCES users(id) ON DELETE CASCADE,
     UNIQUE (liker_id, liked_id)  -- Un usuario solo puede dar like una vez a otro
 );
+
+-- 🔹 Índices para mejorar performance
+CREATE UNIQUE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_users_username ON users(username);
+CREATE INDEX idx_profile_interests_user ON profile_interests(user_id);
+
 
