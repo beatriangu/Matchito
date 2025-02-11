@@ -10,23 +10,27 @@ def give_like():
     liker_id = data.get("liker_id")
     liked_id = data.get("liked_id")
 
+    # Validar que se reciban ambos parámetros
     if not liker_id or not liked_id:
         return jsonify({"error": "Faltan parámetros"}), 400
+
+    # Evitar que un usuario se dé like a sí mismo
+    if liker_id == liked_id:
+        return jsonify({"error": "No puedes dar like a ti mismo"}), 400
 
     conn = get_db_connection()
     cur = conn.cursor()
 
     try:
-        # Intentar insertar el like
+        # Insertar el like; en caso de conflicto, no se realiza ninguna acción
         cur.execute("""
             INSERT INTO likes (liker_id, liked_id) 
             VALUES (%s, %s) 
             ON CONFLICT (liker_id, liked_id) DO NOTHING;
         """, (liker_id, liked_id))
-
         conn.commit()
         
-        # Verificar si hay match
+        # Verificar si hay match (si el usuario liked ya te dio like)
         cur.execute("""
             SELECT 1 FROM likes WHERE liker_id = %s AND liked_id = %s;
         """, (liked_id, liker_id))
@@ -41,6 +45,8 @@ def give_like():
 
     except Exception as e:
         conn.rollback()
+        cur.close()
+        conn.close()
         return jsonify({"error": str(e)}), 500
 
 # ✅ Ver a quién le has dado like
@@ -60,7 +66,7 @@ def likes_given(user_id):
     cur.close()
     conn.close()
 
-    return jsonify([{"id": u[0], "username": u[1], "profile_picture": u[2]} for u in likes])
+    return jsonify([{"id": row[0], "username": row[1], "profile_picture": row[2]} for row in likes])
 
 # ✅ Ver quién te ha dado like
 @likes_bp.route("/likes/received/<int:user_id>", methods=["GET"])
@@ -79,7 +85,7 @@ def likes_received(user_id):
     cur.close()
     conn.close()
 
-    return jsonify([{"id": u[0], "username": u[1], "profile_picture": u[2]} for u in likes])
+    return jsonify([{"id": row[0], "username": row[1], "profile_picture": row[2]} for row in likes])
 
 # ✅ Ver los matches
 @likes_bp.route("/matches/<int:user_id>", methods=["GET"])
@@ -99,5 +105,6 @@ def get_matches(user_id):
     cur.close()
     conn.close()
 
-    return jsonify([{"id": u[0], "username": u[1], "profile_picture": u[2]} for u in matches])
+    return jsonify([{"id": row[0], "username": row[1], "profile_picture": row[2]} for row in matches])
+
 

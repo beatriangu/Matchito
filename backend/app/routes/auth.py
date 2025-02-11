@@ -5,31 +5,36 @@ import smtplib
 from email.mime.text import MIMEText
 from app.utils.db import get_db_connection
 from app.utils.security import hash_password, check_password
-from app.utils.email_verification import send_verification_email
+from app.utils.email_verification import send_verification_email  # Si lo usas para enviar verificación
 from app.utils.token import get_serializer
 
 auth_bp = Blueprint('auth', __name__)
 
-# 🔹 Ruta principal (Home) → Redirige a la página inicial
+# ─── HOME ─────────────────────────────────────────────────────────────
 @auth_bp.route('/')
 @auth_bp.route('/home')
 def home():
-    """Página principal con navbar y opciones."""
+    """Página principal con la barra de navegación y opciones."""
     return render_template('home.html')
 
-# 🔹 Registro de usuario con formulario
+# ─── REGISTRO DE USUARIO ──────────────────────────────────────────────
+
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
-    """Registro de usuario con hash de contraseña y verificación por email."""
+    """Registro de usuario: inserta datos en `users` y en `profiles`."""
     if request.method == 'POST':
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("password")
         first_name = request.form.get("first_name")
         last_name = request.form.get("last_name")
+        gender = request.form.get("gender")
+        sexual_orientation = request.form.get("sexual_orientation")
+        birthdate = request.form.get("birthdate")
 
-        if not all([username, email, password, first_name, last_name]):
-            flash("Todos los campos son obligatorios", "danger")
+        # Validar que se hayan ingresado todos los campos
+        if not all([username, email, password, first_name, last_name, gender, sexual_orientation, birthdate]):
+            flash("Todos los campos son obligatorios.", "danger")
             return redirect(url_for('auth.register'))
 
         hashed_password = hash_password(password)
@@ -37,7 +42,14 @@ def register():
         conn = get_db_connection()
         cur = conn.cursor()
         try:
-            # Insertar en la tabla users (sin first_name y last_name)
+            # Verificar si el usuario o email ya existe
+            cur.execute("SELECT id FROM users WHERE username = %s OR email = %s", (username, email))
+            existing_user = cur.fetchone()
+            if existing_user:
+                flash("El usuario o email ya existe.", "danger")
+                return redirect(url_for('auth.register'))
+
+            # Insertar en la tabla users
             cur.execute(
                 """
                 INSERT INTO users (username, email, password, is_verified)
@@ -46,38 +58,35 @@ def register():
                 (username, email, hashed_password)
             )
             user_id = cur.fetchone()[0]
-            conn.commit()
 
-            # Insertar los datos de perfil en la tabla profiles
+            # Insertar en la tabla profiles (datos básicos)
             cur.execute(
                 """
-                INSERT INTO profiles (user_id, first_name, last_name)
-                VALUES (%s, %s, %s)
+                INSERT INTO profiles (user_id, first_name, last_name, gender, sexual_orientation, birthdate)
+                VALUES (%s, %s, %s, %s, %s, %s)
                 """,
-                (user_id, first_name, last_name)
+                (user_id, first_name, last_name, gender, sexual_orientation, birthdate)
             )
+
             conn.commit()
-
-            # Enviar correo de verificación después de guardar en la base de datos
-            send_verification_email(email)
-
-            flash("Registro exitoso, revisa tu email para verificar la cuenta.", "success")
+            flash("Registro exitoso. Por favor, verifica tu email.", "success")
             return redirect(url_for('auth.login'))
-        except psycopg2.IntegrityError:
+
+        except psycopg2.IntegrityError as e:
             conn.rollback()
-            flash("El usuario o el email ya existen", "danger")
+            flash("Error: El usuario o email ya existe.", "danger")
         except Exception as e:
-            flash(f"Error al registrar usuario: {str(e)}", "danger")
+            flash(f"Error durante el registro: {str(e)}", "danger")
         finally:
             cur.close()
             conn.close()
 
     return render_template("register.html")
 
-# 🔹 Inicio de sesión con formulario y sesiones
+
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-    """Inicio de sesión con verificación de contraseña."""
+    """User login with profile completeness check."""
     if request.method == 'POST':
         email = request.form.get("email")
         password = request.form.get("password")
@@ -85,36 +94,57 @@ def login():
         conn = get_db_connection()
         cur = conn.cursor()
         try:
+            # Step 1: Authenticate user
             cur.execute("SELECT id, username, password FROM users WHERE email = %s", (email,))
             user = cur.fetchone()
 
             if user and check_password(password, user[2]):
-                session['user_id'] = user[0]  # Guardamos sesión
+                session['user_id'] = user[0]
                 session['username'] = user[1]
-                flash("Successful login", "success")
-                return redirect(url_for('profiles.edit_profile'))
+
+                # Step 2: Check if profile is complete
+                cur.execute("""
+                    SELECT first_name, last_name, bio, profile_picture 
+                    FROM profiles WHERE user_id = %s
+                """, (user[0],))
+                profile = cur.fetchone()
+
+                if not profile or None in profile:  # If any required field is missing
+                    flash("Please complete your profile before proceeding.", "warning")
+                    return redirect(url_for('profiles.edit_profile'))
+
+                # Step 3: Profile is complete, redirect to browse_profiles
+                flash("Welcome back!", "success")
+                return redirect(url_for('profiles.browse_profiles'))
+
             else:
                 flash("Incorrect email or password", "danger")
+
         except Exception as e:
             flash(f"Login error: {str(e)}", "danger")
+
         finally:
             cur.close()
             conn.close()
 
     return render_template("login.html")
 
-# 🔹 Cerrar sesión
+
+
 @auth_bp.route('/logout')
 def logout():
-    """Cerrar sesión y redirigir a la página principal."""
+    """Cierra la sesión del usuario."""
     session.clear()
-    flash("Successfully logged out", "success")
+    flash("Sesión cerrada correctamente.", "success")
     return redirect(url_for('auth.home'))
 
-# 🔹 Recuperación de contraseña
+# ─── RECUPERACIÓN DE CONTRASEÑA ──────────────────────────────────────────
 @auth_bp.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
-    """Recuperación de contraseña: envía un email con un código temporal."""
+    """
+    Recuperación de contraseña: envía un email con un código temporal
+    para restablecer la contraseña.
+    """
     if request.method == 'POST':
         email = request.form.get("email")
 
@@ -122,24 +152,26 @@ def forgot_password():
         cur = conn.cursor()
         try:
             cur.execute("SELECT id FROM users WHERE email = %s", (email,))
-            user = cur.fetchone()
-
-            if not user:
-                flash("Email not found", "danger")
+            if not cur.fetchone():
+                flash("Email no encontrado.", "danger")
                 return redirect(url_for('auth.forgot_password'))
 
-            reset_code = os.urandom(4).hex().upper()  # Genera un código aleatorio
+            reset_code = os.urandom(4).hex().upper()  # Código de recuperación aleatorio
 
-            # Guardar el código de recuperación en la base de datos
+            # Se asume que existe la columna reset_code en la tabla users
             cur.execute("UPDATE users SET reset_code = %s WHERE email = %s", (reset_code, email))
             conn.commit()
 
             send_email(email, reset_code)
-
-            flash("Recovery code sent to your email", "success")
+            flash("Se ha enviado el código de recuperación a tu email.", "success")
             return redirect(url_for('auth.login'))
+
         except Exception as e:
-            flash(f"Error recovering password: {str(e)}", "danger")
+            conn.rollback()
+            print(f"ERROR: Recuperación de contraseña falló -> {str(e)}")
+            flash(f"Error al recuperar la contraseña: {str(e)}", "danger")
+            return redirect(url_for('auth.forgot_password'))
+
         finally:
             cur.close()
             conn.close()
@@ -153,8 +185,8 @@ def send_email(to_email, reset_code):
     EMAIL_SENDER = os.getenv("MAIL_USERNAME")
     EMAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
 
-    subject = "Password recovery - Matchito"
-    body = f"Your recovery code is: {reset_code}"
+    subject = "Recuperación de contraseña - Matchito"
+    body = f"Tu código de recuperación es: {reset_code}"
 
     msg = MIMEText(body)
     msg["Subject"] = subject
@@ -166,18 +198,20 @@ def send_email(to_email, reset_code):
             server.starttls()
             server.login(EMAIL_SENDER, EMAIL_PASSWORD)
             server.sendmail(EMAIL_SENDER, to_email, msg.as_string())
-        print(f"✅ Mail sent to {to_email}")
+        print(f"✅ Email enviado a {to_email}")
     except Exception as e:
-        print(f"❌ Error sending email: {e}")
+        print(f"❌ Error al enviar email: {e}")
 
-# 🔹 Verificación de email
+# ─── VERIFICACIÓN DE EMAIL ─────────────────────────────────────────────
 @auth_bp.route('/verify-email', methods=['GET'])
 def verify_email():
-    """Verificación del email a través de un token único."""
+    """
+    Verificación de email a través de un token único.
+    Se espera recibir el token como parámetro GET.
+    """
     token = request.args.get('token')
-
     if not token:
-        flash("Token not provided", "danger")
+        flash("Token no proporcionado.", "danger")
         return redirect(url_for('auth.home'))
 
     conn = get_db_connection()
@@ -189,15 +223,21 @@ def verify_email():
         cur.execute("UPDATE users SET is_verified = TRUE WHERE email = %s", (email,))
         conn.commit()
 
-        flash("Email successfully verified", "success")
+        flash("Email verificado exitosamente.", "success")
         return redirect(url_for('auth.login'))
+
     except Exception as e:
-        flash("Invalid or expired token", "danger")
+        print(f"ERROR: Verificación de email fallida -> {str(e)}")
+        flash("Token inválido o expirado.", "danger")
+        return redirect(url_for('auth.home'))
+
     finally:
         cur.close()
         conn.close()
 
-    return redirect(url_for('auth.home'))
+
+
+
 
 
 

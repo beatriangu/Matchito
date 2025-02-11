@@ -16,8 +16,11 @@ def conversation_history():
     user2 = request.args.get('user2')
     
     if not user1 or not user2:
-        return jsonify({'error': 'Faltan datos: se requieren user1 y user2 en los parámetros de consulta'}), 400
+        return jsonify({
+            'error': 'Faltan datos: se requieren user1 y user2 en los parámetros de consulta'
+        }), 400
 
+    # Convertir a enteros y manejar posibles errores
     try:
         user1 = int(user1)
         user2 = int(user2)
@@ -26,25 +29,33 @@ def conversation_history():
 
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("""
-        SELECT id, sender_id, receiver_id, content, sent_at
-        FROM messages
-        WHERE (sender_id = %s AND receiver_id = %s)
-           OR (sender_id = %s AND receiver_id = %s)
-        ORDER BY sent_at ASC
-    """, (user1, user2, user2, user1))
-    rows = cur.fetchall()
-    cur.close()
-    conn.close()
+    try:
+        cur.execute("""
+            SELECT id, sender_id, receiver_id, content, sent_at
+            FROM messages
+            WHERE (sender_id = %s AND receiver_id = %s)
+               OR (sender_id = %s AND receiver_id = %s)
+            ORDER BY sent_at ASC
+        """, (user1, user2, user2, user1))
+        rows = cur.fetchall()
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        cur.close()
+        conn.close()
 
-    conversation = []
-    for row in rows:
-        conversation.append({
+    # Convertir cada fila en un diccionario y formatear la fecha a ISO
+    conversation = [
+        {
             'id': row[0],
             'sender_id': row[1],
             'receiver_id': row[2],
             'content': row[3],
             'sent_at': row[4].isoformat() if row[4] else None
-        })
+        }
+        for row in rows
+    ]
 
     return jsonify(conversation)
+

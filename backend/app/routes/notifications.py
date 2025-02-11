@@ -13,3 +13,4 @@ def view_notifications():
     # Lógica para obtener todas las notificaciones del usuario
     notifications = []  # Ejemplo: consulta a la base de datos
     return jsonify({"notifications": notifications})
+

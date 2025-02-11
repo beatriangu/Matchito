@@ -19,32 +19,32 @@
   {% endwith %}
 
   <form id="registerForm" action="{{ url_for('auth.register') }}" method="POST" style="width: 100%; max-width: 400px;" autocomplete="off">
-    <!-- Campo para el nombre -->
+    <!-- Nombre -->
     <div class="mb-3">
       <input type="text" class="form-control" name="first_name" placeholder="First Name" required autocomplete="off">
     </div>
 
-    <!-- Campo para el apellido -->
+    <!-- Apellido -->
     <div class="mb-3">
       <input type="text" class="form-control" name="last_name" placeholder="Last Name" required autocomplete="off">
     </div>
 
-    <!-- Campo para el nombre de usuario -->
+    <!-- Nombre de usuario -->
     <div class="mb-3">
       <input type="text" class="form-control" name="username" placeholder="Username" required autocomplete="off">
     </div>
 
-    <!-- Campo para el correo electrónico -->
+    <!-- Correo electrónico -->
     <div class="mb-3">
       <input type="email" class="form-control" name="email" placeholder="Email" required autocomplete="off">
     </div>
 
-    <!-- Campo para la contraseña -->
+    <!-- Contraseña -->
     <div class="mb-3">
       <input type="password" class="form-control" name="password" id="password" placeholder="Password" required autocomplete="new-password">
     </div>
 
-    <!-- Campo para confirmar la contraseña -->
+    <!-- Confirmar contraseña -->
     <div class="mb-3">
       <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required autocomplete="new-password">
     </div>
@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 {% endblock %}
+
 
 
 

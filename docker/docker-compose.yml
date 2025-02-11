@@ -33,8 +33,11 @@ services:
       - "5000:5000"
     env_file:
       - ../.env
+    volumes:
+      - ../backend:/app/backend  # 🔥 Asegura que esta línea está presente
     networks:
       - matchito_network
+
 
   nginx:
     build:

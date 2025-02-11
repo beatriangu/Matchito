@@ -21,11 +21,11 @@
   <form id="loginForm" action="{{ url_for('auth.login') }}" method="POST" style="width: 100%; max-width: 400px;" autocomplete="off">
     <!-- Campo para el correo electrónico -->
     <div class="mb-3">
-      <input type="email" class="form-control" name="email" placeholder="Email" required autocomplete="off">
+      <input type="email" class="form-control" name="email" placeholder="Email" required autocomplete="new-email">
     </div>
     <!-- Campo para la contraseña -->
     <div class="mb-3">
-      <input type="password" class="form-control" name="password" placeholder="Password" required autocomplete="off">
+      <input type="password" class="form-control" name="password" placeholder="Password" required autocomplete="new-password">
     </div>
     <!-- Botón de envío -->
     <button type="submit" class="btn btn-primary w-100">Login</button>
@@ -37,6 +37,24 @@
   </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let loginForm = document.getElementById("loginForm");
+
+    // Forzar a que los campos no usen autocompletado
+    loginForm.setAttribute("autocomplete", "off");
+
+    let emailField = loginForm.querySelector("input[name='email']");
+    let passwordField = loginForm.querySelector("input[name='password']");
+
+    if (emailField) emailField.setAttribute("autocomplete", "new-email");
+    if (passwordField) passwordField.setAttribute("autocomplete", "new-password");
+});
+</script>
+{% endblock %}
+
 
 
 
