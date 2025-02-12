@@ -61,81 +61,71 @@ def get_profile():
 # ─── EDIT PROFILE (GET and POST) ─────────────────────────────
 @profiles_bp.route('/edit_profile', methods=['GET', 'POST'])
 def edit_profile():
-    """
-    Allows the user to edit their profile via a form.
-    On GET: displays the edit form populated with current data and the list of available interests.
-    On POST: updates the profile data and the associated interests.
-    """
-    user_id = get_user_id()
+    """Allows users to edit their profile and add interests. Redirects to browse_profiles if complete."""
+    user_id = session.get("user_id")
     if not user_id:
-        flash("You need to be logged in.", "danger")
+        flash("You need to be logged in to edit your profile.", "danger")
         return redirect(url_for('auth.login'))
-    
+
     conn = get_db_connection()
     cur = conn.cursor()
-    try:
-        if request.method == 'POST':
-            # Retrieve form data
-            first_name = request.form.get("first_name")
-            last_name = request.form.get("last_name")
-            gender = request.form.get("gender")
-            sexual_preferences = request.form.get("sexual_preferences")
-            biography = request.form.get("biography")
-            # Obtener los intereses seleccionados (se enviarán como lista)
-            selected_interests = request.form.getlist("interests")
-            
-            # Actualizar el perfil en la base de datos
-            cur.execute("""
-                UPDATE profiles
-                SET first_name = %s, last_name = %s, gender = %s, sexual_orientation = %s, bio = %s
-                WHERE user_id = %s
-            """, (first_name, last_name, gender, sexual_preferences, biography, user_id))
-            
-            # Actualizar la relación de intereses:
-            # Primero, se eliminan los registros existentes para este usuario
-            cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
-            # Luego, se insertan los nuevos intereses seleccionados
-            for interest_id in selected_interests:
-                cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
-            
-            conn.commit()
-            flash("Profile updated successfully.", "success")
-            return redirect(url_for('profiles.get_profile'))
+
+    if request.method == 'POST':
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
+        bio = request.form.get("bio")
+        profile_picture = request.form.get("profile_picture")
+        interests = request.form.get("interests")  # Interests are now a comma-separated string
+
+        if not all([first_name, last_name, bio, profile_picture, interests]):
+            flash("All fields and at least one interest are required.", "danger")
         else:
-            # GET: cargar los datos actuales del perfil
+            # ✅ Update the profile
             cur.execute("""
-                SELECT first_name, last_name, gender, sexual_orientation, bio
-                FROM profiles
+                UPDATE profiles 
+                SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s
                 WHERE user_id = %s
-            """, (user_id,))
-            profile = cur.fetchone()
-            if not profile:
-                flash("Profile not found.", "danger")
-                return redirect(url_for('profiles.get_profile'))
-            profile_data = {
-                "first_name": profile[0],
-                "last_name": profile[1],
-                "gender": profile[2],
-                "sexual_preferences": profile[3],
-                "biography": profile[4]
-            }
-            
-            # Obtener la lista de todos los intereses disponibles
-            cur.execute("SELECT id, name FROM interests ORDER BY name ASC")
-            all_interests = cur.fetchall()  # Ejemplo: [(1, 'Vegan'), (2, 'Geek'), ...]
-            
-            # Obtener los intereses asociados al usuario
-            cur.execute("SELECT interest_id FROM profile_interests WHERE user_id = %s", (user_id,))
-            user_interests = [str(row[0]) for row in cur.fetchall()]  # Convertir a cadena para la comparación en la plantilla
-            
-            return render_template("edit_profile.html", profile=profile_data, interests=all_interests, user_interests=user_interests)
-    except Exception as e:
-        conn.rollback()
-        flash(f"Error updating profile: {str(e)}", "danger")
-        return redirect(url_for('profiles.get_profile'))
-    finally:
-        cur.close()
-        conn.close()
+            """, (first_name, last_name, bio, profile_picture, user_id))
+
+            # Clear existing interests
+            cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
+
+            # Insert new interests (split from string)
+            interest_list = [tag.strip() for tag in interests.split(",") if tag.strip()]
+            for interest in interest_list:
+                # Ensure the interest exists in the interests table
+                cur.execute("SELECT id FROM interests WHERE name = %s", (interest,))
+                result = cur.fetchone()
+                if not result:
+                    cur.execute("INSERT INTO interests (name) VALUES (%s) RETURNING id", (interest,))
+                    interest_id = cur.fetchone()[0]
+                else:
+                    interest_id = result[0]
+
+                # Insert into profile_interests
+                cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
+
+            conn.commit()
+
+            flash("Profile updated successfully!", "success")
+            print("DEBUG: Redirecting to browse_profiles")
+            return redirect(url_for('profiles.browse_profiles'))  # ✅ Redirect to Browse Profiles
+
+    # Fetch the current profile data and interests
+    cur.execute("SELECT first_name, last_name, bio, profile_picture FROM profiles WHERE user_id = %s", (user_id,))
+    profile = cur.fetchone()
+
+    cur.execute("SELECT id, name FROM interests")
+    all_interests = cur.fetchall()
+
+    cur.execute("SELECT i.name FROM profile_interests pi JOIN interests i ON pi.interest_id = i.id WHERE pi.user_id = %s", (user_id,))
+    user_interests = [row[0] for row in cur.fetchall()]
+
+    cur.close()
+    conn.close()
+
+    return render_template("edit_profile.html", profile=profile, all_interests=all_interests, user_interests=user_interests)
+
 
 
 # ─── UPDATE PROFILE (AJAX/PUT REQUEST) ─────────────────────────────

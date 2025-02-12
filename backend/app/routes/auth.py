@@ -136,20 +136,25 @@ def login():
                 session['user_id'] = user[0]
                 session['username'] = user[1]
 
-                # Debugging prints
+                # Debugging print
                 print(f"DEBUG: User {user[1]} logged in with ID {user[0]}")
 
-                # Check if the profile is complete
+                # Check if profile is complete
                 cur.execute("""
                     SELECT first_name, last_name, bio, profile_picture 
                     FROM profiles WHERE user_id = %s
                 """, (user[0],))
                 profile = cur.fetchone()
 
-                if not profile or None in profile:
-                    flash("Please complete your profile before proceeding.", "warning")
+                # Check if interests exist
+                cur.execute("SELECT COUNT(*) FROM profile_interests WHERE user_id = %s", (user[0],))
+                interest_count = cur.fetchone()[0]
+
+                # Redirect to edit profile if required fields are missing
+                if not profile or any(field is None or field == '' for field in profile) or interest_count == 0:
+                    flash("Please complete your profile, including selecting interests, before proceeding.", "warning")
                     print("DEBUG: Redirecting to edit_profile")
-                    return redirect(url_for('profiles.edit_profile'))  # ✅ Redirect to Edit Profile
+                    return redirect(url_for('profiles.edit_profile'))
 
                 # ✅ If profile is complete, go to Browse Profiles
                 flash("Welcome back!", "success")
@@ -168,6 +173,8 @@ def login():
             conn.close()
 
     return render_template("login.html")
+
+
 
 # ─── LOGOUT ─────────────────────────────────────────────────────
 @auth_bp.route('/logout')
