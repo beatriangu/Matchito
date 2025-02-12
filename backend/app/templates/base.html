@@ -91,53 +91,41 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{{ url_for('auth.home') }}">Matcha</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link {% if request.endpoint == 'auth.home' %}active{% endif %}" href="{{ url_for('auth.home') }}">🏠 Home</a>
-          </li>
-          {% if session.get('user_id') %}
-            <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'profiles.get_profile' %}active{% endif %}" href="{{ url_for('profiles.get_profile') }}">👤 Profile</a>
-            </li>
-            <!-- Chat link only available if the user can chat (por ejemplo, si recibió un like) -->
-            {% if can_chat %}
-              <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'chat.index' %}active{% endif %}" href="{{ url_for('chat.index') }}">💬 Chat</a>
-              </li>
-            {% endif %}
-            <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'notifications.view_notifications' %}active{% endif %}" href="{{ url_for('notifications.view_notifications') }}">
-                🔔 Notifications <span id="notification-count" class="badge bg-danger">0</span>
-              </a>
-            </li>
-            <!-- Advanced Search Modal Trigger -->
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#advancedSearchModal">🔍 Advanced Search</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'auth.logout' %}active{% endif %}" href="{{ url_for('auth.logout') }}">🚪 Logout</a>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'auth.register' %}active{% endif %}" href="{{ url_for('auth.register') }}">📝 Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'auth.login' %}active{% endif %}" href="{{ url_for('auth.login') }}">🔑 Login</a>
-            </li>
-          {% endif %}
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="{{ url_for('auth.home') }}">Matchito</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                      <a class="nav-link {% if request.endpoint == 'auth.home' %}active{% endif %}" href="{{ url_for('auth.home') }}">🏠 Home</a>
+                  </li>
+                  {% if session.get('user_id') %}
+                      <!-- User is logged in -->
+                      <li class="nav-item">
+                          <a class="nav-link {% if request.endpoint == 'profiles.get_profile' %}active{% endif %}" href="{{ url_for('profiles.get_profile') }}">👤 Profile</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link {% if request.endpoint == 'auth.logout' %}active{% endif %}" href="{{ url_for('auth.logout') }}">🚪 Logout</a>
+                      </li>
+                  {% else %}
+                      <!-- User is NOT logged in -->
+                      <li class="nav-item">
+                          <a class="nav-link {% if request.endpoint == 'auth.register' %}active{% endif %}" href="{{ url_for('auth.register') }}">📝 Register</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link {% if request.endpoint == 'auth.login' %}active{% endif %}" href="{{ url_for('auth.login') }}">🔑 Login</a>
+                      </li>
+                  {% endif %}
+              </ul>
+          </div>
       </div>
-    </div>
   </nav>
+
+
 
   <!-- Notifications Popup (Hidden by Default) -->
   <div id="notifications" class="notifications" style="display: none; position: fixed; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.9); padding: 10px; border-radius: 5px; z-index: 1050;">

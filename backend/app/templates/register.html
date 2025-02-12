@@ -74,6 +74,15 @@
       <input type="date" class="form-control" name="birthdate" required>
     </div>
 
+    <!-- City (User Can Edit or Leave Empty for Auto-Detection) -->
+    <div class="mb-3">
+      <input type="text" class="form-control" name="city" id="city" placeholder="Enter your city (leave blank to auto-detect)">
+    </div>
+
+    <!-- Hidden Fields for Latitude and Longitude (Auto-Detected) -->
+    <input type="hidden" name="latitude" id="latitude">
+    <input type="hidden" name="longitude" id="longitude">
+
     <!-- Submit Button -->
     <button type="submit" class="btn btn-primary w-100">Register</button>
   </form>
@@ -84,6 +93,8 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.getElementById("registerForm");
+
+    // Validate Passwords Match
     form.addEventListener("submit", function(event) {
         var password = document.getElementById("password").value;
         var confirmPassword = document.getElementById("confirm_password").value;
@@ -92,6 +103,18 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Passwords do not match. Please check the data.");
         }
     });
+
+    // Geolocation Detection Using IP
+    fetch("https://ipapi.co/json/")
+        .then(response => response.json())
+        .then(data => {
+            if (!document.getElementById("city").value) {
+                document.getElementById("city").value = data.city;
+            }
+            document.getElementById("latitude").value = data.latitude;
+            document.getElementById("longitude").value = data.longitude;
+        })
+        .catch(error => console.error("Error getting location:", error));
 });
 </script>
 {% endblock %}

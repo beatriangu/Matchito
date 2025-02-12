@@ -7,13 +7,13 @@ CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    is_verified BOOLEAN DEFAULT FALSE,  -- Nueva columna para verificar email
+    is_verified BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- 🔹 Tabla de perfiles
-CREATE TABLE profiles (
-    user_id SERIAL PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS profiles (
+    user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
     gender VARCHAR(20) NOT NULL,
@@ -27,32 +27,54 @@ CREATE TABLE profiles (
     profile_picture VARCHAR(255)
 );
 
-
 -- 🔹 Tabla de intereses (tags)
-CREATE TABLE interests (
+CREATE TABLE IF NOT EXISTS interests (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) UNIQUE NOT NULL
 );
 
+-- Insertar 20 intereses en inglés en la tabla `interests`
+INSERT INTO interests (name) VALUES
+('Music'),
+('Sports'),
+('Reading'),
+('Traveling'),
+('Cooking'),
+('Gaming'),
+('Photography'),
+('Art'),
+('Technology'),
+('Fitness'),
+('Hiking'),
+('Movies'),
+('Dancing'),
+('Writing'),
+('Fashion'),
+('Gardening'),
+('Swimming'),
+('Yoga'),
+('Volunteer Work'),
+('Blogging');
+
 -- 🔹 Relación entre perfiles e intereses
-CREATE TABLE profile_interests (
+CREATE TABLE IF NOT EXISTS profile_interests (
     user_id INTEGER REFERENCES profiles(user_id) ON DELETE CASCADE,
     interest_id INTEGER REFERENCES interests(id) ON DELETE CASCADE,
     PRIMARY KEY (user_id, interest_id)
 );
 
 -- 🔹 Tabla de matches (cuando dos usuarios se gustan)
-CREATE TABLE matches (
+CREATE TABLE IF NOT EXISTS matches (
     id SERIAL PRIMARY KEY,
     user1_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     user2_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     matched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CHECK (user1_id < user2_id),  -- 🔥 Asegura que user1_id siempre sea menor que user2_id
-    UNIQUE (user1_id, user2_id)   -- 🔥 Evita duplicados sin necesidad de LEAST() y GREATEST()
+    CHECK (user1_id < user2_id),
+    UNIQUE (user1_id, user2_id)
 );
 
 -- 🔹 Tabla de mensajes (chat)
-CREATE TABLE messages (
+CREATE TABLE IF NOT EXISTS messages (
     id SERIAL PRIMARY KEY,
     sender_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     receiver_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
@@ -61,7 +83,7 @@ CREATE TABLE messages (
 );
 
 -- 🔹 Tabla de notificaciones
-CREATE TABLE notifications (
+CREATE TABLE IF NOT EXISTS notifications (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     event_type VARCHAR(50) NOT NULL,
@@ -71,7 +93,7 @@ CREATE TABLE notifications (
 );
 
 -- 🔹 Tabla de reportes y bloqueos
-CREATE TABLE reports (
+CREATE TABLE IF NOT EXISTS reports (
     id SERIAL PRIMARY KEY,
     reporter_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     reported_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
@@ -80,18 +102,15 @@ CREATE TABLE reports (
 );
 
 -- 🔹 Tabla de Likes
-CREATE TABLE likes (
+CREATE TABLE IF NOT EXISTS likes (
     id SERIAL PRIMARY KEY,
     liker_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     liked_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE (liker_id, liked_id)  -- Un usuario solo puede dar like una vez a otro
+    UNIQUE (liker_id, liked_id)
 );
 
 -- 🔹 Índices para mejorar performance
-CREATE UNIQUE INDEX idx_users_email ON users(email);
-CREATE INDEX idx_users_username ON users(username);
-CREATE INDEX idx_profile_interests_user ON profile_interests(user_id);
-
-
-
+CREATE UNIQUE INDEX IF NOT EXISTS idx_users_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_users_username ON users(username);
+CREATE INDEX IF NOT EXISTS idx_profile_interests_user ON profile_interests(user_id);

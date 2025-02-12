@@ -56,12 +56,28 @@
             <textarea id="biography" name="biography" rows="5" class="form-control" placeholder="Write a short biography...">{{ profile.biography }}</textarea>
         </div>
 
+        <!-- BLOQUE DE INTERESES -->
+        <div class="mb-3">
+            <label for="interests" class="form-label text-white">Interests</label>
+            <div>
+                {% for interest in interests %}
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="interests" id="interest{{ interest[0] }}" value="{{ interest[0] }}"
+                               {% if interest[0]|string in user_interests %}checked{% endif %}>
+                        <label class="form-check-label" for="interest{{ interest[0] }}">{{ interest[1] }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- FIN BLOQUE DE INTERESES -->
+
         <div class="text-center">
             <button type="submit" class="btn btn-primary mt-3 w-100">Save Changes</button>
         </div>
     </form>
 </div>
 {% endblock %}
+
 
 
 

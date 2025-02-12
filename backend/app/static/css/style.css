@@ -17,3 +17,12 @@ body {
     margin: auto;
     padding: 20px;
 }
+/* En css/style.css */
+.btn-custom-profile {
+    background-color: #ff6600;  /* Color personalizado, por ejemplo, naranja */
+    color: white;
+    border: none;
+}
+.btn-custom-profile:hover {
+    background-color: #e65c00;
+}
