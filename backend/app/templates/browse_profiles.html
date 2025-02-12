@@ -5,30 +5,46 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="text-center text-white">Discover New Matches</h1>
+    <h1 class="text-center text-white mt-4">Discover New Matches</h1>
 
-    <div class="row">
+    <div class="row justify-content-center">
         {% for profile in profiles %}
-        <div class="col-md-4">
-            <div class="card text-center">
-                <!-- Usa la imagen de perfil remota desde profiles.json -->
-                <img src="{{ profile.picture.large }}" 
-                     alt="Profile Picture" class="card-img-top">
-                <div class="card-body">
-                    <h2 class="card-title">{{ profile.name.first }} {{ profile.name.last }}</h2>
-                    <p><strong>Age:</strong> {{ profile.age }}</p>
-                    <p><strong>Location:</strong> {{ profile.location.city }}, {{ profile.location.country }}</p>
-                    <p><strong>Interests:</strong> {{ profile.interests }}</p>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card bg-dark text-white shadow-lg rounded">
+                <!-- Profile Picture -->
+                <img src="{{ profile.profile_picture if profile.profile_picture else url_for('static', filename='images/default.png') }}" 
+                     alt="Profile Picture" class="card-img-top rounded-top">
 
-                    <!-- Actions -->
-                    <div class="actions">
-                        <button class="btn btn-danger" onclick="sendLike({{ profile.id }})">❤️ Like</button>
+                <div class="card-body text-center">
+                    <!-- Name -->
+                    <h3 class="card-title">{{ profile.first_name }} {{ profile.last_name }}</h3>
+                    
+                    <!-- Age Calculation -->
+                    {% if profile.birthdate %}
+                        <p><strong>Age:</strong> {{ current_year - profile.birthdate.year }}</p>
+                    {% else %}
+                        <p><strong>Age:</strong> Unknown</p>
+                    {% endif %}
+
+                    <!-- Location -->
+                    <p>
+                        <strong>Location:</strong> 
+                        {{ profile.city if profile.city else "Unknown" }}, 
+                        {{ profile.country if profile.country else "Unknown" }}
+                    </p>
+
+                    <!-- Interests -->
+                    <p><strong>Interests:</strong> {{ profile.interests | default("Not provided") }}</p>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+                        <button class="btn btn-danger" onclick="sendLike({{ profile.user_id }})">❤️ Like</button>
                         {% if profile.mutual_like %}
-                        <a href="{{ url_for('chat.start_chat', user_id=profile.id) }}" class="btn btn-primary">💬 Chat</a>
+                        <a href="{{ url_for('chat.start_chat', user_id=profile.user_id) }}" class="btn btn-primary">💬 Chat</a>
                         {% endif %}
-                        <button class="btn btn-secondary" onclick="blockUser({{ profile.id }})">🚫 Block</button>
-                        <button class="btn btn-warning" onclick="reportUser({{ profile.id }})">⚠️ Report</button>
-                        <a href="{{ url_for('profiles.get_profile_by_id', profile_id=profile.id) }}" class="btn btn-info">📄 View Profile</a>
+                        <button class="btn btn-secondary" onclick="blockUser({{ profile.user_id }})">🚫 Block</button>
+                        <button class="btn btn-warning" onclick="reportUser({{ profile.user_id }})">⚠️ Report</button>
+                        <a href="{{ url_for('profiles.get_profile_by_id', profile_id=profile.user_id) }}" class="btn btn-info">📄 View Profile</a>
                     </div>
                 </div>
             </div>
@@ -37,13 +53,13 @@
     </div>
 </div>
 
-<!-- ✅ JavaScript corregido para evitar errores -->
+<!-- JavaScript Functions to Handle User Actions -->
 <script>
 function sendLike(userId) {
     fetch(`/like/${userId}`, { 
         method: 'POST', 
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: userId }) 
+        body: JSON.stringify({ user_id: userId })
     })
     .then(response => response.json())
     .then(data => alert(data.message))
@@ -54,7 +70,7 @@ function blockUser(userId) {
     fetch(`/block/${userId}`, { 
         method: 'POST', 
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: userId }) 
+        body: JSON.stringify({ user_id: userId })
     })
     .then(response => response.json())
     .then(data => alert(data.message))
@@ -65,7 +81,7 @@ function reportUser(userId) {
     fetch(`/report/${userId}`, { 
         method: 'POST', 
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: userId }) 
+        body: JSON.stringify({ user_id: userId })
     })
     .then(response => response.json())
     .then(data => alert(data.message))

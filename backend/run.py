@@ -3,11 +3,11 @@ eventlet.monkey_patch()
 
 from flask import Flask, render_template, url_for
 from config import Config
-from app.routes.auth import auth_bp  # Blueprint de autenticación
+from app.routes.auth import auth_bp      # Blueprint de autenticación
 from app.routes.profiles import profiles_bp
 from app.routes.likes import likes_bp
 from app.routes.messages import messages_bp
-from app.routes.notifications import notifications_bp  # Nuevo
+from app.routes.notifications import notifications_bp
 from app.routes.chat import chat_bp
 from flask_socketio import SocketIO
 from datetime import datetime
@@ -26,22 +26,25 @@ def create_app():
     app.register_blueprint(notifications_bp, url_prefix='/notifications')
     app.register_blueprint(chat_bp, url_prefix='/chat')
 
-    # Context processor para que 'current_year' esté en todas las plantillas
+    # Context processor para que 'current_year' (y otras variables si es necesario) estén en todas las plantillas
     @app.context_processor
-    def inject_current_year():
+    def inject_globals():
         return {'current_year': datetime.now().year}
-
+    
     # Ruta principal -> Renderiza home.html
     @app.route("/")
     def home():
-        return render_template("home.html", background_image=url_for('static', filename='images/home_background.jpg'))
+        return render_template(
+            "home.html", 
+            background_image=url_for('static', filename='images/home_background.jpg')
+        )
 
     return app
 
 # Crear la aplicación Flask
 app = create_app()
 
-# Registrar los manejadores de error llamando a init_app() desde errors.py
+# Registrar los manejadores de error (desde app.errors)
 from app.errors import init_app
 init_app(app)
 
@@ -49,11 +52,11 @@ init_app(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 if __name__ == '__main__':
-    # Verifica si Flask puede encontrar templates y archivos estáticos
+    # Verificar rutas de templates y archivos estáticos
     print(f"🔍 Buscando plantillas en: {app.template_folder}")
     print(f"📂 Buscando archivos estáticos en: {app.static_folder}")
     
-    # Confirmar si el puerto está disponible
+    # Confirmar el puerto (por defecto 5000)
     PORT = int(os.getenv("FLASK_PORT", 5000))
     
     print(f"🚀 Iniciando Matchito en http://0.0.0.0:{PORT}")
@@ -62,6 +65,7 @@ if __name__ == '__main__':
         socketio.run(app, host='0.0.0.0', port=PORT, debug=True)
     except Exception as e:
         print(f"❌ Error al iniciar el servidor: {e}")
+
 
 
 

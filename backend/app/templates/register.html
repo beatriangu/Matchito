@@ -19,37 +19,62 @@
   {% endwith %}
 
   <form id="registerForm" action="{{ url_for('auth.register') }}" method="POST" style="width: 100%; max-width: 400px;" autocomplete="off">
-    <!-- Nombre -->
+    <!-- First Name -->
     <div class="mb-3">
       <input type="text" class="form-control" name="first_name" placeholder="First Name" required autocomplete="off">
     </div>
 
-    <!-- Apellido -->
+    <!-- Last Name -->
     <div class="mb-3">
       <input type="text" class="form-control" name="last_name" placeholder="Last Name" required autocomplete="off">
     </div>
 
-    <!-- Nombre de usuario -->
+    <!-- Username -->
     <div class="mb-3">
       <input type="text" class="form-control" name="username" placeholder="Username" required autocomplete="off">
     </div>
 
-    <!-- Correo electrónico -->
+    <!-- Email -->
     <div class="mb-3">
       <input type="email" class="form-control" name="email" placeholder="Email" required autocomplete="off">
     </div>
 
-    <!-- Contraseña -->
+    <!-- Password -->
     <div class="mb-3">
       <input type="password" class="form-control" name="password" id="password" placeholder="Password" required autocomplete="new-password">
     </div>
 
-    <!-- Confirmar contraseña -->
+    <!-- Confirm Password -->
     <div class="mb-3">
       <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required autocomplete="new-password">
     </div>
 
-    <!-- Botón de envío -->
+    <!-- Gender -->
+    <div class="mb-3">
+      <select class="form-control" name="gender" required>
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Non-binary">Non-binary</option>
+      </select>
+    </div>
+
+    <!-- Sexual Orientation -->
+    <div class="mb-3">
+      <select class="form-control" name="sexual_orientation" required>
+          <option value="">Select Orientation</option>
+          <option value="Heterosexual">Heterosexual</option>
+          <option value="Homosexual">Homosexual</option>
+          <option value="Bisexual">Bisexual</option>
+      </select>
+    </div>
+
+    <!-- Birthdate -->
+    <div class="mb-3">
+      <input type="date" class="form-control" name="birthdate" required>
+    </div>
+
+    <!-- Submit Button -->
     <button type="submit" class="btn btn-primary w-100">Register</button>
   </form>
 </div>
@@ -70,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 {% endblock %}
+
 
 
 

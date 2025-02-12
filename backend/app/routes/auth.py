@@ -21,7 +21,7 @@ def home():
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
-    """Registro de usuario: inserta datos en `users` y en `profiles`."""
+    """User registration with password hashing and email verification."""
     if request.method == 'POST':
         username = request.form.get("username")
         email = request.form.get("email")
@@ -32,56 +32,68 @@ def register():
         sexual_orientation = request.form.get("sexual_orientation")
         birthdate = request.form.get("birthdate")
 
-        # Validar que se hayan ingresado todos los campos
+        # 🔹 Debugging prints
+        print(f"DEBUG: Received data - Username: {username}, Email: {email}")
+        print(f"DEBUG: First Name: {first_name}, Last Name: {last_name}, Gender: {gender}")
+
         if not all([username, email, password, first_name, last_name, gender, sexual_orientation, birthdate]):
-            flash("Todos los campos son obligatorios.", "danger")
+            flash("All fields are required.", "danger")
+            print("DEBUG: Missing fields, redirecting to register.")
             return redirect(url_for('auth.register'))
 
-        hashed_password = hash_password(password)
+        hashed_password = hash_password(password)  # 🔹 Ensure bcrypt is hashing correctly
+        print(f"DEBUG: Hashed Password: {hashed_password}")
 
         conn = get_db_connection()
         cur = conn.cursor()
+
         try:
-            # Verificar si el usuario o email ya existe
+            # 🔹 Step 1: Check if the user exists
             cur.execute("SELECT id FROM users WHERE username = %s OR email = %s", (username, email))
             existing_user = cur.fetchone()
+
             if existing_user:
-                flash("El usuario o email ya existe.", "danger")
+                flash("The username or email already exists.", "danger")
+                print(f"DEBUG: User already exists - {existing_user}")
                 return redirect(url_for('auth.register'))
 
-            # Insertar en la tabla users
+            # 🔹 Step 2: Insert user into `users`
             cur.execute(
                 """
-                INSERT INTO users (username, email, password, is_verified)
-                VALUES (%s, %s, %s, FALSE) RETURNING id
+                INSERT INTO users (username, email, password, is_verified, created_at)
+                VALUES (%s, %s, %s, FALSE, NOW()) RETURNING id
                 """,
                 (username, email, hashed_password)
             )
-            user_id = cur.fetchone()[0]
+            user_id = cur.fetchone()[0]  # 🔹 Retrieve new user ID
+            print(f"DEBUG: User inserted with ID {user_id}")
 
-            # Insertar en la tabla profiles (datos básicos)
+            # 🔹 Step 3: Insert user profile into `profiles`
             cur.execute(
                 """
-                INSERT INTO profiles (user_id, first_name, last_name, gender, sexual_orientation, birthdate)
-                VALUES (%s, %s, %s, %s, %s, %s)
+                INSERT INTO profiles (user_id, first_name, last_name, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture)
+                VALUES (%s, %s, %s, %s, %s, %s, '', NULL, NULL, '')
                 """,
                 (user_id, first_name, last_name, gender, sexual_orientation, birthdate)
             )
+            print("DEBUG: Profile inserted.")
 
-            conn.commit()
-            flash("Registro exitoso. Por favor, verifica tu email.", "success")
+            conn.commit()  # 🔹 Ensure commit happens
+            flash("Registration successful. Please log in.", "success")
+            print("DEBUG: Registration completed, redirecting to login.")
             return redirect(url_for('auth.login'))
 
-        except psycopg2.IntegrityError as e:
-            conn.rollback()
-            flash("Error: El usuario o email ya existe.", "danger")
         except Exception as e:
-            flash(f"Error durante el registro: {str(e)}", "danger")
+            conn.rollback()
+            print(f"ERROR: Registration failed - {str(e)}")  # 🔹 Capture exact SQL error
+            flash(f"Error during registration: {str(e)}", "danger")
+
         finally:
             cur.close()
             conn.close()
 
     return render_template("register.html")
+
 
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
@@ -94,7 +106,7 @@ def login():
         conn = get_db_connection()
         cur = conn.cursor()
         try:
-            # Step 1: Authenticate user
+            # Authenticate user
             cur.execute("SELECT id, username, password FROM users WHERE email = %s", (email,))
             user = cur.fetchone()
 
@@ -102,18 +114,18 @@ def login():
                 session['user_id'] = user[0]
                 session['username'] = user[1]
 
-                # Step 2: Check if profile is complete
+                # Check if profile is complete
                 cur.execute("""
                     SELECT first_name, last_name, bio, profile_picture 
                     FROM profiles WHERE user_id = %s
                 """, (user[0],))
                 profile = cur.fetchone()
 
-                if not profile or None in profile:  # If any required field is missing
+                if not profile or None in profile:
                     flash("Please complete your profile before proceeding.", "warning")
                     return redirect(url_for('profiles.edit_profile'))
 
-                # Step 3: Profile is complete, redirect to browse_profiles
+                # ✅ Redirect to `browse_profiles` after login
                 flash("Welcome back!", "success")
                 return redirect(url_for('profiles.browse_profiles'))
 
@@ -128,6 +140,7 @@ def login():
             conn.close()
 
     return render_template("login.html")
+
 
 
 

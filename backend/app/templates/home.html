@@ -13,12 +13,13 @@
         </div>
     {% else %}
         <div class="d-flex flex-column flex-md-row gap-3">
-            <a href="{{ url_for('profiles.view_profile') }}" class="btn btn-success btn-lg">👤 My Profile</a>
+            <a href="{{ url_for('profiles.get_profile') }}" class="btn btn-success btn-lg">👤 My Profile</a>
             <a href="{{ url_for('auth.logout') }}" class="btn btn-danger btn-lg">🚪 Logout</a>
         </div>
     {% endif %}
 </div>
 {% endblock %}
+
 
 
 

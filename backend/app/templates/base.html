@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Matcha{% endblock %}</title>
   
-  <!-- Favicon animado con archivos .ico -->
+  <!-- Favicon (animated) -->
   <link id="favicon" rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon_penguin1.ico') }}">
 
   <!-- Bootstrap CSS -->
@@ -15,52 +15,41 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Si ya tienes un favicon inicial, intenta asignarle el id "favicon" en tu HTML.
-        let favicon = document.getElementById("favicon");
-        
-        // Define las URLs de tus favicons
-        let frames = [
-            "{{ url_for('static', filename='favicon_penguin1.ico') }}",
-            "{{ url_for('static', filename='favicon_penguin2.ico') }}",
-            "{{ url_for('static', filename='favicon_penguin3.ico') }}"
-        ];
-        let currentFrame = 0;
+      let favicon = document.getElementById("favicon");
+      let frames = [
+        "{{ url_for('static', filename='favicon_penguin1.ico') }}",
+        "{{ url_for('static', filename='favicon_penguin2.ico') }}",
+        "{{ url_for('static', filename='favicon_penguin3.ico') }}"
+      ];
+      let currentFrame = 0;
     
-        function animateFavicon() {
-            // Si por alguna razón no hay un elemento favicon, crearlo
-            if (!favicon) {
-                favicon = document.createElement("link");
-                favicon.id = "favicon";
-                favicon.rel = "icon";
-                favicon.type = "image/x-icon";
-                document.head.appendChild(favicon);
-            }
-    
-            // Calcula el siguiente índice (0, 1, 2, 0, 1, 2, ...)
-            currentFrame = (currentFrame + 1) % frames.length;
-            console.log("Cambiando favicon a:", frames[currentFrame]);
-    
-            // Crea el nuevo link con una query para evitar cache
-            let newFavicon = document.createElement("link");
-            newFavicon.id = "favicon";  // Asigna el id para mantener consistencia
-            newFavicon.rel = "icon";
-            newFavicon.type = "image/x-icon";
-            newFavicon.href = frames[currentFrame] + "?v=" + new Date().getTime();
-    
-            // Elimina todos los elementos link de favicon anteriores
-            document.head.querySelectorAll("link[rel='icon']").forEach(el => el.remove());
-            document.head.appendChild(newFavicon);
-    
-            // Actualiza la referencia
-            favicon = newFavicon;
+      function animateFavicon() {
+        if (!favicon) {
+          favicon = document.createElement("link");
+          favicon.id = "favicon";
+          favicon.rel = "icon";
+          favicon.type = "image/x-icon";
+          document.head.appendChild(favicon);
         }
     
-        // Cambia el favicon cada 1000ms (1 segundo), prueba con 500ms y si sigue sin cargar bien, aumenta el tiempo
-        setInterval(animateFavicon, 1000);
+        currentFrame = (currentFrame + 1) % frames.length;
+        // Append a query string to avoid caching issues
+        let newFavicon = document.createElement("link");
+        newFavicon.id = "favicon";
+        newFavicon.rel = "icon";
+        newFavicon.type = "image/x-icon";
+        newFavicon.href = frames[currentFrame] + "?v=" + new Date().getTime();
+    
+        // Remove any previous favicon links and add the new one
+        document.head.querySelectorAll("link[rel='icon']").forEach(el => el.remove());
+        document.head.appendChild(newFavicon);
+        favicon = newFavicon;
+      }
+    
+      setInterval(animateFavicon, 1000);
     });
-    </script>
-    
-    
+  </script>
+
   <style>
     html, body {
       height: 100%;
@@ -82,7 +71,7 @@
       padding: 20px;
       text-align: center;
       gap: 20px;
-      max-width: 800px;
+      max-width: 1200px;
       margin: 0 auto;
     }
     footer {
@@ -92,8 +81,6 @@
       color: white;
       font-size: 0.9rem;
       width: 100%;
-      position: relative;
-      bottom: 0;
     }
     @media (max-width: 768px) {
       footer {
@@ -111,6 +98,7 @@
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
@@ -120,10 +108,20 @@
             <li class="nav-item">
               <a class="nav-link {% if request.endpoint == 'profiles.get_profile' %}active{% endif %}" href="{{ url_for('profiles.get_profile') }}">👤 Profile</a>
             </li>
+            <!-- Chat link only available if the user can chat (por ejemplo, si recibió un like) -->
+            {% if can_chat %}
+              <li class="nav-item">
+                <a class="nav-link {% if request.endpoint == 'chat.index' %}active{% endif %}" href="{{ url_for('chat.index') }}">💬 Chat</a>
+              </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link {% if request.endpoint == 'notifications.view_notifications' %}active{% endif %}" href="{{ url_for('notifications.view_notifications') }}">
                 🔔 Notifications <span id="notification-count" class="badge bg-danger">0</span>
               </a>
+            </li>
+            <!-- Advanced Search Modal Trigger -->
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#advancedSearchModal">🔍 Advanced Search</a>
             </li>
             <li class="nav-item">
               <a class="nav-link {% if request.endpoint == 'auth.logout' %}active{% endif %}" href="{{ url_for('auth.logout') }}">🚪 Logout</a>
@@ -141,8 +139,8 @@
     </div>
   </nav>
 
-  <!-- Notifications -->
-  <div id="notifications" class="notifications" style="display: none; position: fixed; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.9); padding: 10px; border-radius: 5px;">
+  <!-- Notifications Popup (Hidden by Default) -->
+  <div id="notifications" class="notifications" style="display: none; position: fixed; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.9); padding: 10px; border-radius: 5px; z-index: 1050;">
     <p>You have new notifications!</p>
   </div>
 
@@ -156,12 +154,63 @@
     <p>&copy; {{ current_year }} Matcha. All rights reserved.</p>
   </footer>
 
-  <!-- Bootstrap JS -->
+  <!-- Advanced Search Modal -->
+  {% if session.get('user_id') %}
+  <div class="modal fade" id="advancedSearchModal" tabindex="-1" aria-labelledby="advancedSearchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="advancedSearchModalLabel">Advanced Search</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Advanced search form with filtering and sorting options -->
+          <form id="advancedSearchForm">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="ageRange" class="form-label">Age Range</label>
+                <input type="text" class="form-control" id="ageRange" placeholder="e.g., 25-35">
+              </div>
+              <div class="col-md-6">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" placeholder="City or Country">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="fameRating" class="form-label">Fame Rating Gap</label>
+                <input type="text" class="form-control" id="fameRating" placeholder="e.g., 70-90">
+              </div>
+              <div class="col-md-6">
+                <label for="commonTags" class="form-label">Common Tags</label>
+                <input type="text" class="form-control" id="commonTags" placeholder="e.g., music, travel">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="sortCriteria" class="form-label">Sort By</label>
+              <select class="form-select" id="sortCriteria">
+                <option value="age">Age</option>
+                <option value="location">Location</option>
+                <option value="fameRating">Fame Rating</option>
+                <option value="commonTags">Common Tags</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+          <!-- Additional instructions or filters can be added here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom JS for notifications -->
+  <!-- Custom JS for Notifications and Advanced Search -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+      // Fetch unread notifications count
       fetch("{{ url_for('notifications.unread_count') }}")
         .then(response => {
           if (!response.ok) throw new Error("Error fetching notifications");
@@ -174,11 +223,31 @@
           }
         })
         .catch(error => console.error("⚠️ Failed to load notifications:", error));
+
+      // Handle Advanced Search Form Submission (example)
+      const advancedSearchForm = document.getElementById("advancedSearchForm");
+      if (advancedSearchForm) {
+        advancedSearchForm.addEventListener("submit", function(e) {
+          e.preventDefault();
+          // Collect form data and implement filtering/sorting logic here.
+          const ageRange = document.getElementById("ageRange").value;
+          const location = document.getElementById("location").value;
+          const fameRating = document.getElementById("fameRating").value;
+          const commonTags = document.getElementById("commonTags").value;
+          const sortCriteria = document.getElementById("sortCriteria").value;
+          console.log("Advanced Search:", { ageRange, location, fameRating, commonTags, sortCriteria });
+          // For now, simply close the modal after submission
+          var advancedSearchModal = bootstrap.Modal.getInstance(document.getElementById('advancedSearchModal'));
+          advancedSearchModal.hide();
+          // Implement further actions here (e.g., perform a fetch or redirect)
+        });
+      }
     });
   </script>
   {% block scripts %}{% endblock %}
 </body>
 </html>
+
 
 
 
