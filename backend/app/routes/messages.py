@@ -12,6 +12,7 @@ def conversation_history():
       - user2: ID del segundo usuario.
     Ejemplo: /messages/conversation?user1=1&user2=2
     """
+    # Obtener los parámetros de consulta
     user1 = request.args.get('user1')
     user2 = request.args.get('user2')
     
@@ -20,29 +21,29 @@ def conversation_history():
             'error': 'Faltan datos: se requieren user1 y user2 en los parámetros de consulta'
         }), 400
 
-    # Convertir a enteros y manejar posibles errores
+    # Convertir los parámetros a enteros
     try:
         user1 = int(user1)
         user2 = int(user2)
     except ValueError:
         return jsonify({'error': 'user1 y user2 deben ser números'}), 400
 
+    # Obtener la conexión a la base de datos y ejecutar la consulta
     conn = get_db_connection()
-    cur = conn.cursor()
     try:
-        cur.execute("""
-            SELECT id, sender_id, receiver_id, content, sent_at
-            FROM messages
-            WHERE (sender_id = %s AND receiver_id = %s)
-               OR (sender_id = %s AND receiver_id = %s)
-            ORDER BY sent_at ASC
-        """, (user1, user2, user2, user1))
-        rows = cur.fetchall()
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT id, sender_id, receiver_id, content, sent_at
+                FROM messages
+                WHERE (sender_id = %s AND receiver_id = %s)
+                   OR (sender_id = %s AND receiver_id = %s)
+                ORDER BY sent_at ASC
+            """, (user1, user2, user2, user1))
+            rows = cur.fetchall()
     except Exception as e:
         conn.rollback()
         return jsonify({'error': str(e)}), 500
     finally:
-        cur.close()
         conn.close()
 
     # Convertir cada fila en un diccionario y formatear la fecha a ISO
@@ -58,4 +59,5 @@ def conversation_history():
     ]
 
     return jsonify(conversation)
+
 

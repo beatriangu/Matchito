@@ -4,12 +4,35 @@ import random
 import os
 import uuid  # Para generar identificadores únicos
 from datetime import datetime, timedelta
+import requests  # Usamos requests para llamar a la API de geolocalización
 
 def random_birthdate():
     """Genera una fecha de nacimiento aleatoria para edades entre 18 y 50 años."""
     start_date = datetime.now() - timedelta(days=50*365)  # Hace 50 años
     end_date = datetime.now() - timedelta(days=18*365)    # Hace 18 años
     return start_date + (end_date - start_date) * random.random()
+
+def reverse_geocode(lat, lon):
+    """
+    Realiza una geolocalización inversa usando la API de Nominatim (OpenStreetMap)
+    para obtener la ciudad a partir de las coordenadas.
+    """
+    try:
+        url = f"https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat={lat}&lon={lon}"
+        headers = {"User-Agent": "SeedScript/1.0"}
+        response = requests.get(url, headers=headers, timeout=5)
+        if response.status_code == 200:
+            result = response.json()
+            address = result.get("address", {})
+            # Se intenta obtener la ciudad, si no, se busca 'town' o 'village'
+            city = address.get("city") or address.get("town") or address.get("village") or "Unknown"
+            # Escapar comillas simples para evitar errores en SQL
+            return city.replace("'", "''")
+        else:
+            return "Unknown"
+    except Exception as e:
+        print(f"Error in reverse_geocode: {e}")
+        return "Unknown"
 
 # Obtener la ruta absoluta del directorio donde está el script
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -66,6 +89,9 @@ with open(sql_file_path, "w") as sql_file:
         latitude = float(user["location"]["coordinates"]["latitude"])
         longitude = float(user["location"]["coordinates"]["longitude"])
 
+        # Obtener la ciudad a partir de la latitud y longitud (geolocalización inversa)
+        city = reverse_geocode(latitude, longitude)
+
         # Generar valores aleatorios para otros campos
         sexual_orientation = random.choice(["heterosexual", "homosexual", "bisexual"])
         bio = f"Hi, I'm {first_name} and I love meeting new people!".replace("'", "''")
@@ -81,10 +107,11 @@ with open(sql_file_path, "w") as sql_file:
             f"VALUES ('{username}', '{email}', '{password}', TRUE, NOW()) RETURNING id;\n"
         )
 
-        # Insertar en la tabla `profiles`, usando LASTVAL() para obtener el id insertado en users
+        # Insertar en la tabla `profiles`, usando LASTVAL() para obtener el id insertado en users.
+        # Se incluye la ciudad obtenida por geolocalización.
         sql_file.write(
-            f"INSERT INTO profiles (user_id, first_name, last_name, gender, sexual_orientation, birthdate, bio, latitude, longitude, profile_picture) "
-            f"VALUES (LASTVAL(), '{first_name}', '{last_name}', '{gender}', '{sexual_orientation}', '{birthdate}', '{bio}', {latitude}, {longitude}, '{profile_picture}');\n\n"
+            f"INSERT INTO profiles (user_id, first_name, last_name, gender, sexual_orientation, birthdate, bio, city, latitude, longitude, profile_picture) "
+            f"VALUES (LASTVAL(), '{first_name}', '{last_name}', '{gender}', '{sexual_orientation}', '{birthdate}', '{bio}', '{city}', {latitude}, {longitude}, '{profile_picture}');\n\n"
         )
     
     # Inserción de 20 intereses en inglés en la tabla `interests`
@@ -98,7 +125,7 @@ with open(sql_file_path, "w") as sql_file:
     interests_sql = ",\n".join([f"('{interest}')" for interest in interests_list])
     sql_file.write(interests_sql + ";\n\n")
     
-    # Asignar 4 intereses aleatorios a cada perfil
+    # Asignar 4 intereses aleatorios a cada perfil (se asume que la tabla se llama profile_interests)
     sql_file.write("-- Assign 4 random interests to each profile\n")
     sql_file.write("""
 INSERT INTO profile_interests (user_id, interest_id)
@@ -110,6 +137,7 @@ CROSS JOIN LATERAL (
 """)
     
     sql_file.write("\n-- ✅ Data inserted successfully\n")
+
 
 
 

@@ -13,17 +13,17 @@ from app.utils.db import get_db_connection
 profiles_bp = Blueprint("profiles", __name__)
 
 def get_user_id():
-    """Retrieves user ID from session."""
+    """Obtiene el ID del usuario de la sesión."""
     return session.get("user_id")
 
 
-# ─── FETCH USER PROFILE (logged-in user) ─────────────────────────────
+# ─── OBTENER PERFIL DEL USUARIO (usuario logueado) ─────────────────────────────
 @profiles_bp.route('/profile', methods=['GET'])
 def get_profile():
-    """Fetch the logged-in user's profile along with up to 5 photos."""
+    """Recupera el perfil del usuario logueado junto con hasta 5 fotos."""
     user_id = get_user_id()
     if not user_id:
-        flash("You need to be logged in.", "danger")
+        flash("Debes iniciar sesión.", "danger")
         return redirect(url_for('auth.login'))
     
     conn = get_db_connection()
@@ -31,15 +31,16 @@ def get_profile():
     try:
         cur.execute("""
             SELECT first_name, last_name, email, gender, sexual_orientation, bio, profile_picture, city, country
-            FROM profiles JOIN users ON profiles.user_id = users.id
+            FROM profiles 
+            JOIN users ON profiles.user_id = users.id
             WHERE profiles.user_id = %s
         """, (user_id,))
         profile = cur.fetchone()
         if not profile:
-            flash("Profile not found.", "danger")
+            flash("Perfil no encontrado.", "danger")
             return redirect(url_for('profiles.edit_profile'))
         
-        # Get up to 5 photos from profile_images table
+        # Obtener hasta 5 fotos de la tabla profile_images
         cur.execute("""
             SELECT image_url FROM profile_images
             WHERE user_id = %s
@@ -51,20 +52,23 @@ def get_profile():
         
         return render_template("profile.html", profile=profile, photos=photos_list)
     except Exception as e:
-        flash(f"Error retrieving profile: {str(e)}", "danger")
+        flash(f"Error al recuperar el perfil: {str(e)}", "danger")
         return redirect(url_for('profiles.edit_profile'))
     finally:
         cur.close()
         conn.close()
 
 
-# ─── EDIT PROFILE (GET and POST) ─────────────────────────────
+# ─── EDITAR PERFIL (GET y POST) ─────────────────────────────
 @profiles_bp.route('/edit_profile', methods=['GET', 'POST'])
 def edit_profile():
-    """Allows users to edit their profile and add interests. Redirects to browse_profiles if complete."""
-    user_id = session.get("user_id")
+    """
+    Permite al usuario editar su perfil e intereses.
+    Si el perfil se actualiza correctamente, redirige a la página de sugerencias.
+    """
+    user_id = get_user_id()
     if not user_id:
-        flash("You need to be logged in to edit your profile.", "danger")
+        flash("Debes iniciar sesión para editar tu perfil.", "danger")
         return redirect(url_for('auth.login'))
 
     conn = get_db_connection()
@@ -75,73 +79,82 @@ def edit_profile():
         last_name = request.form.get("last_name")
         bio = request.form.get("bio")
         profile_picture = request.form.get("profile_picture")
-        interests = request.form.get("interests")  # Interests are now a comma-separated string
+        interests = request.form.get("interests")  # Cadena separada por comas, por ejemplo: "#vegan, #geek"
 
         if not all([first_name, last_name, bio, profile_picture, interests]):
-            flash("All fields and at least one interest are required.", "danger")
+            flash("Todos los campos y al menos un interés son obligatorios.", "danger")
         else:
-            # ✅ Update the profile
-            cur.execute("""
-                UPDATE profiles 
-                SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s
-                WHERE user_id = %s
-            """, (first_name, last_name, bio, profile_picture, user_id))
+            try:
+                # Actualizar la tabla profiles
+                cur.execute("""
+                    UPDATE profiles 
+                    SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s
+                    WHERE user_id = %s
+                """, (first_name, last_name, bio, profile_picture, user_id))
 
-            # Clear existing interests
-            cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
+                # Limpiar intereses existentes
+                cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
 
-            # Insert new interests (split from string)
-            interest_list = [tag.strip() for tag in interests.split(",") if tag.strip()]
-            for interest in interest_list:
-                # Ensure the interest exists in the interests table
-                cur.execute("SELECT id FROM interests WHERE name = %s", (interest,))
-                result = cur.fetchone()
-                if not result:
-                    cur.execute("INSERT INTO interests (name) VALUES (%s) RETURNING id", (interest,))
-                    interest_id = cur.fetchone()[0]
-                else:
-                    interest_id = result[0]
+                # Insertar nuevos intereses (separados por comas)
+                interest_list = [tag.strip() for tag in interests.split(",") if tag.strip()]
+                for interest in interest_list:
+                    # Asegurarse de que el interés exista en la tabla interests
+                    cur.execute("SELECT id FROM interests WHERE name = %s", (interest,))
+                    result = cur.fetchone()
+                    if not result:
+                        cur.execute("INSERT INTO interests (name) VALUES (%s) RETURNING id", (interest,))
+                        interest_id = cur.fetchone()[0]
+                    else:
+                        interest_id = result[0]
 
-                # Insert into profile_interests
-                cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
+                    # Insertar en profile_interests
+                    cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
 
-            conn.commit()
+                conn.commit()
+                flash("¡Perfil actualizado con éxito!", "success")
+                return redirect(url_for('profiles.browse_profiles'))
+            except Exception as e:
+                conn.rollback()
+                flash(f"Error al actualizar el perfil: {str(e)}", "danger")
+    try:
+        # Obtener datos actuales del perfil e intereses
+        cur.execute("SELECT first_name, last_name, bio, profile_picture FROM profiles WHERE user_id = %s", (user_id,))
+        profile = cur.fetchone()
 
-            flash("Profile updated successfully!", "success")
-            print("DEBUG: Redirecting to browse_profiles")
-            return redirect(url_for('profiles.browse_profiles'))  # ✅ Redirect to Browse Profiles
+        cur.execute("SELECT id, name FROM interests")
+        all_interests = cur.fetchall()
 
-    # Fetch the current profile data and interests
-    cur.execute("SELECT first_name, last_name, bio, profile_picture FROM profiles WHERE user_id = %s", (user_id,))
-    profile = cur.fetchone()
-
-    cur.execute("SELECT id, name FROM interests")
-    all_interests = cur.fetchall()
-
-    cur.execute("SELECT i.name FROM profile_interests pi JOIN interests i ON pi.interest_id = i.id WHERE pi.user_id = %s", (user_id,))
-    user_interests = [row[0] for row in cur.fetchall()]
-
-    cur.close()
-    conn.close()
+        cur.execute("""
+            SELECT i.name 
+            FROM profile_interests pi 
+            JOIN interests i ON pi.interest_id = i.id 
+            WHERE pi.user_id = %s
+        """, (user_id,))
+        user_interests = [row[0] for row in cur.fetchall()]
+    except Exception as e:
+        flash(f"Error al cargar datos: {str(e)}", "danger")
+        profile, all_interests, user_interests = None, [], []
+    finally:
+        cur.close()
+        conn.close()
 
     return render_template("edit_profile.html", profile=profile, all_interests=all_interests, user_interests=user_interests)
 
 
-
-# ─── UPDATE PROFILE (AJAX/PUT REQUEST) ─────────────────────────────
+# ─── ACTUALIZAR PERFIL (AJAX/PUT REQUEST) ─────────────────────────────
 @profiles_bp.route("/profile", methods=["PUT"])
 def update_profile_ajax():
-    """Updates the authenticated user's profile via a PUT request."""
+    """Actualiza el perfil del usuario autenticado mediante una petición PUT (AJAX)."""
     user_id = get_user_id()
     if not user_id:
-        return jsonify({"error": "Not authenticated"}), 401
+        return jsonify({"error": "No autenticado"}), 401
 
     data = request.get_json()
     first_name = data.get("first_name")
     last_name = data.get("last_name")
 
     if not first_name or not last_name:
-        return jsonify({"error": "Missing data"}), 400
+        return jsonify({"error": "Datos incompletos"}), 400
 
     conn = get_db_connection()
     cur = conn.cursor()
@@ -152,47 +165,46 @@ def update_profile_ajax():
             WHERE user_id = %s
         """, (first_name, last_name, user_id))
         conn.commit()
+        return jsonify({"success": True})
     except Exception as e:
         conn.rollback()
-        return jsonify({"error": f"Error updating profile: {str(e)}"}), 500
+        return jsonify({"error": f"Error al actualizar el perfil: {str(e)}"}), 500
     finally:
         cur.close()
         conn.close()
 
-    return redirect(url_for("profiles.browse_profiles"))
 
-
-# ─── BROWSE ALL PROFILES (Suggested Profiles) ─────────────────────────────
+# ─── BROWSE DE PERFIL (Perfiles sugeridos) ─────────────────────────────
 @profiles_bp.route('/browse_profiles')
 def browse_profiles():
     """
-    Displays suggested user profiles based on interests and proximity.
-    Uses a subquery to order by the calculated distance.
+    Muestra perfiles sugeridos basados en intereses y proximidad.
+    Se utiliza una subconsulta para calcular la distancia y ordenar los resultados.
     """
     user_id = get_user_id()
     if not user_id:
-        flash("You need to be logged in to view profiles.", "danger")
+        flash("Debes iniciar sesión para ver perfiles.", "danger")
         return redirect(url_for('auth.login'))
     
     conn = get_db_connection()
     cur = conn.cursor()
     try:
-        # Get current user details
+        # Obtener datos del usuario actual
         cur.execute("""
             SELECT gender, sexual_orientation, latitude, longitude, birthdate
             FROM profiles WHERE user_id = %s
         """, (user_id,))
         user_data = cur.fetchone()
         if not user_data:
-            flash("Profile not found.", "danger")
+            flash("Perfil no encontrado.", "danger")
             return redirect(url_for('profiles.edit_profile'))
         gender, sexual_orientation, lat, lon, birthdate = user_data
 
-        # Get user interests
+        # Obtener intereses del usuario
         cur.execute("SELECT interest_id FROM profile_interests WHERE user_id = %s", (user_id,))
         user_interests = [row[0] for row in cur.fetchall()]
 
-        # Build query using subquery to compute and order by distance
+        # Consulta para calcular la distancia usando la función power()
         query = """
             SELECT user_id, first_name, last_name, bio, profile_picture, city, country
             FROM (
@@ -204,7 +216,7 @@ def browse_profiles():
                     p.profile_picture, 
                     p.city, 
                     p.country,
-                    ((p.latitude - %s)^2 + (p.longitude - %s)^2) AS distance
+                    power(p.latitude - %s, 2) + power(p.longitude - %s, 2) AS distance
                 FROM profiles p
                 JOIN profile_interests pi ON p.user_id = pi.user_id
                 WHERE p.user_id != %s
@@ -214,28 +226,26 @@ def browse_profiles():
             ORDER BY sub.distance ASC
             LIMIT 10;
         """
-        # Note: se pasan los parámetros en el orden: lat, lon, user_id, user_interests
         cur.execute(query, (lat, lon, user_id, user_interests))
         suggested_profiles = cur.fetchall()
-        cur.close()
-        conn.close()
         return render_template("browse_profiles.html", profiles=suggested_profiles)
     except Exception as e:
+        flash(f"Error al cargar perfiles: {str(e)}", "danger")
+        return redirect(url_for('auth.home'))
+    finally:
         cur.close()
         conn.close()
-        flash(f"Error loading profiles: {str(e)}", "danger")
-        return redirect(url_for('auth.home'))
 
 
-# ─── GET SUGGESTIONS ─────────────────────────────────────────────
+# ─── OBTENER SUGERENCIAS (JSON) ─────────────────────────────────────────────
 @profiles_bp.route("/suggestions", methods=["GET"])
 def get_suggestions():
     """
-    Returns suggested profiles based on gender, orientation, age range, and location.
+    Devuelve perfiles sugeridos basados en género, orientación, rango de edad y ubicación.
     """
     user_id = get_user_id()
     if not user_id:
-        return jsonify({"error": "Not authenticated"}), 401
+        return jsonify({"error": "No autenticado"}), 401
 
     conn = get_db_connection()
     cur = conn.cursor()
@@ -246,7 +256,7 @@ def get_suggestions():
         """, (user_id,))
         user_data = cur.fetchone()
         if not user_data:
-            return jsonify({"error": "Profile not found"}), 404
+            return jsonify({"error": "Perfil no encontrado"}), 404
         gender, sexual_orientation, lat, lon, birthdate = user_data
 
         cur.execute("SELECT DATE_PART('year', AGE(birthdate)) FROM profiles WHERE user_id = %s", (user_id,))
@@ -261,14 +271,20 @@ def get_suggestions():
               AND p.gender = %s
               AND p.sexual_orientation = %s
               AND DATE_PART('year', AGE(p.birthdate)) BETWEEN %s AND %s
-            ORDER BY ((p.latitude - %s)^2 + (p.longitude - %s)^2) ASC
+            ORDER BY power(p.latitude - %s, 2) + power(p.longitude - %s, 2) ASC
             LIMIT 10
         """, (user_id, gender, sexual_orientation, min_age, max_age, lat, lon))
         
         suggestions = cur.fetchall()
-        profiles = [{"id": row[0], "username": row[1], "first_name": row[2], "last_name": row[3],
-                     "latitude": row[4], "longitude": row[5], "profile_picture": row[6]}
-                    for row in suggestions]
+        profiles = [{
+            "id": row[0],
+            "username": row[1],
+            "first_name": row[2],
+            "last_name": row[3],
+            "latitude": row[4],
+            "longitude": row[5],
+            "profile_picture": row[6]
+        } for row in suggestions]
         return jsonify(profiles)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -277,10 +293,10 @@ def get_suggestions():
         conn.close()
 
 
-# ─── SEARCH PROFILES ─────────────────────────────────────────────
+# ─── BUSCAR PERFILES ─────────────────────────────────────────────
 @profiles_bp.route("/search", methods=["GET"])
 def search_profiles():
-    """Allows searching profiles by name, gender, orientation, interests, or location."""
+    """Permite buscar perfiles por nombre, género, orientación, intereses o ubicación."""
     first_name = request.args.get("first_name")
     last_name = request.args.get("last_name")
     gender = request.args.get("gender")
@@ -321,8 +337,12 @@ def search_profiles():
         query += " LIMIT 50"
         cur.execute(query, tuple(params))
         results = cur.fetchall()
-        profiles = [{"id": row[0], "username": row[1], "first_name": row[2], "last_name": row[3]}
-                    for row in results]
+        profiles = [{
+            "id": row[0],
+            "username": row[1],
+            "first_name": row[2],
+            "last_name": row[3]
+        } for row in results]
         return jsonify(profiles)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -331,12 +351,12 @@ def search_profiles():
         conn.close()
 
 
-# ─── VIEW PROFILE BY ID ─────────────────────────────────────────────
+# ─── VER PERFIL POR ID ─────────────────────────────────────────────
 @profiles_bp.route("/profile/<int:profile_id>", methods=["GET"])
 def get_profile_by_id(profile_id):
     """
-    Fetches the full profile of a user by their ID and renders the view_profiles template.
-    Also retrieves up to 5 photos for the user from the profile_images table.
+    Recupera el perfil completo de un usuario por su ID y renderiza la plantilla view_profiles.
+    También recupera hasta 5 fotos del usuario desde la tabla profile_images.
     """
     conn = get_db_connection()
     cur = conn.cursor()
@@ -350,7 +370,7 @@ def get_profile_by_id(profile_id):
         """, (profile_id,))
         profile = cur.fetchone()
         if not profile:
-            flash("Profile not found.", "danger")
+            flash("Perfil no encontrado.", "danger")
             return redirect(url_for('profiles.get_profile'))
 
         profile_data = {
@@ -367,7 +387,7 @@ def get_profile_by_id(profile_id):
             "birthdate": profile[10]
         }
 
-        # Retrieve up to 5 photos for the profile
+        # Recuperar hasta 5 fotos del perfil
         cur.execute("""
             SELECT image_url FROM profile_images
             WHERE user_id = %s
@@ -379,9 +399,10 @@ def get_profile_by_id(profile_id):
 
         return render_template("view_profiles.html", profile=profile_data)
     except Exception as e:
-        flash(f"Error loading profile: {str(e)}", "danger")
+        flash(f"Error al cargar el perfil: {str(e)}", "danger")
         return redirect(url_for('profiles.get_profile'))
     finally:
         cur.close()
         conn.close()
+
 

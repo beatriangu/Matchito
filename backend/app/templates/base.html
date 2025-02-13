@@ -47,6 +47,22 @@
       }
     
       setInterval(animateFavicon, 1000);
+
+      // Fetch unread notifications count only if user is logged in
+      {% if session.get('user_id') %}
+      fetch("{{ url_for('notifications.unread_count') }}")
+        .then(response => {
+          if (!response.ok) throw new Error("Error fetching notifications");
+          return response.json();
+        })
+        .then(data => {
+          if (data.unread_count > 0) {
+            // Actualizamos el badge de notificaciones en el menú
+            document.getElementById("notif-count").textContent = data.unread_count;
+          }
+        })
+        .catch(error => console.error("⚠️ Failed to load notifications:", error));
+      {% endif %}
     });
   </script>
 
@@ -104,9 +120,22 @@
             <a class="nav-link {% if request.endpoint == 'auth.home' %}active{% endif %}" href="{{ url_for('auth.home') }}">🏠 Home</a>
           </li>
           {% if session.get('user_id') %}
-            <!-- ✅ Corrected "Profile" link -->
             <li class="nav-item">
               <a class="nav-link {% if request.endpoint == 'profiles.edit_profile' %}active{% endif %}" href="{{ url_for('profiles.edit_profile') }}">👤 Profile</a>
+            </li>
+            <!-- Nuevos enlaces para usuarios autenticados -->
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('notifications.view_notifications') }}">
+                🔔 Notifications <span id="notif-count" class="badge bg-danger"></span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('messages.conversation_history', user_id=session.get('user_id')) }}">💬 Messages</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('likes.likes_received', user_id=session.get('user_id')) }}">❤️ Likes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('likes.get_matches', user_id=session.get('user_id')) }}">🤝 Matches</a>
             </li>
             <li class="nav-item">
               <a class="nav-link {% if request.endpoint == 'auth.logout' %}active{% endif %}" href="{{ url_for('auth.logout') }}">🚪 Logout</a>
@@ -124,9 +153,7 @@
     </div>
   </nav>
 
-
-
-  <!-- Notifications Popup (Hidden by Default) -->
+  <!-- Notifications Popup (opcional, si deseas mostrar un popup emergente) -->
   <div id="notifications" class="notifications" style="display: none; position: fixed; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.9); padding: 10px; border-radius: 5px; z-index: 1050;">
     <p>You have new notifications!</p>
   </div>
@@ -184,7 +211,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
-          <!-- Additional instructions or filters can be added here -->
         </div>
       </div>
     </div>
@@ -197,36 +223,19 @@
   <!-- Custom JS for Notifications and Advanced Search -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Fetch unread notifications count
-      fetch("{{ url_for('notifications.unread_count') }}")
-        .then(response => {
-          if (!response.ok) throw new Error("Error fetching notifications");
-          return response.json();
-        })
-        .then(data => {
-          if (data.unread_count > 0) {
-            document.getElementById("notification-count").textContent = data.unread_count;
-            document.getElementById("notifications").style.display = "block";
-          }
-        })
-        .catch(error => console.error("⚠️ Failed to load notifications:", error));
-
-      // Handle Advanced Search Form Submission (example)
+      // Advanced Search Form submission handler
       const advancedSearchForm = document.getElementById("advancedSearchForm");
       if (advancedSearchForm) {
         advancedSearchForm.addEventListener("submit", function(e) {
           e.preventDefault();
-          // Collect form data and implement filtering/sorting logic here.
           const ageRange = document.getElementById("ageRange").value;
           const location = document.getElementById("location").value;
           const fameRating = document.getElementById("fameRating").value;
           const commonTags = document.getElementById("commonTags").value;
           const sortCriteria = document.getElementById("sortCriteria").value;
           console.log("Advanced Search:", { ageRange, location, fameRating, commonTags, sortCriteria });
-          // For now, simply close the modal after submission
           var advancedSearchModal = bootstrap.Modal.getInstance(document.getElementById('advancedSearchModal'));
           advancedSearchModal.hide();
-          // Implement further actions here (e.g., perform a fetch or redirect)
         });
       }
     });
@@ -234,6 +243,7 @@
   {% block scripts %}{% endblock %}
 </body>
 </html>
+
 
 
 

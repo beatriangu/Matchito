@@ -1,27 +1,29 @@
 from flask import Blueprint, request, render_template, redirect, url_for, session, flash
-import psycopg2
 import os
 import smtplib
 from email.mime.text import MIMEText
+import requests
+
 from app.utils.db import get_db_connection
 from app.utils.security import hash_password, check_password
-from app.utils.email_verification import send_verification_email  # If using email verification
+from app.utils.email_verification import send_verification_email  # Si se usa verificación por email
 from app.utils.token import get_serializer
 
 auth_bp = Blueprint('auth', __name__)
+
 
 # ─── HOME ─────────────────────────────────────────────────────────────
 @auth_bp.route('/')
 @auth_bp.route('/home')
 def home():
-    """Main page with navigation bar and options."""
-    print(f"DEBUG: Session data - {session}")  # 🔹 Check session data
+    """Página principal con barra de navegación y opciones."""
+    print(f"DEBUG: Session data - {session}")  # Para depuración
     return render_template('home.html')
 
 
 # ─── HELPER FUNCTION ─────────────────────────────────────────────────
 def get_user_by_email(email):
-    """Fetch user details by email."""
+    """Recupera detalles del usuario a partir del email."""
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("SELECT id, username, password FROM users WHERE email = %s", (email,))
@@ -30,16 +32,11 @@ def get_user_by_email(email):
     conn.close()
     return user
 
+
 # ─── USER REGISTRATION ──────────────────────────────────────────────
-import requests
-
-import requests
-
-import requests
-
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
-    """User registration with optional location detection."""
+    """Registro de usuario con detección opcional de ubicación."""
     if request.method == 'POST':
         username = request.form.get("username")
         email = request.form.get("email")
@@ -53,10 +50,10 @@ def register():
         latitude = request.form.get("latitude")
         longitude = request.form.get("longitude")
 
-        # 🔹 Debugging print
+        # Depuración: mostrar ciudad antes de geolocalización
         print(f"DEBUG: City before geolocation = {city}")
 
-        # 🔹 If city, latitude, or longitude is missing, fetch IP geolocation
+        # Si falta ciudad, latitud o longitud, se intenta obtener mediante geolocalización IP
         if not city or not latitude or not longitude:
             try:
                 response = requests.get("https://ipapi.co/json/")
@@ -64,27 +61,23 @@ def register():
                 city = city or location_data.get("city", location_data.get("region", "Unknown"))
                 latitude = latitude or location_data.get("latitude", None)
                 longitude = longitude or location_data.get("longitude", None)
-
-                # 🔹 Debugging print for fetched location
                 print(f"DEBUG: Geolocation fetched - City: {city}, Latitude: {latitude}, Longitude: {longitude}")
-
             except Exception as e:
                 print(f"ERROR: Could not get geolocation: {str(e)}")
                 city = "Unknown"
                 latitude = None
                 longitude = None
 
-        # 🔹 Debugging print before inserting into the database
+        # Depuración final de la ubicación
         print(f"DEBUG: Final City = {city}, Latitude = {latitude}, Longitude = {longitude}")
 
-        # Hash the password
+        # Hashear la contraseña
         hashed_password = hash_password(password)
 
         conn = get_db_connection()
         cur = conn.cursor()
-
         try:
-            # Insert user into `users`
+            # Insertar usuario en la tabla `users`
             cur.execute(
                 """
                 INSERT INTO users (username, email, password, is_verified, created_at)
@@ -94,7 +87,10 @@ def register():
             )
             user_id = cur.fetchone()[0]
 
-            # Insert user profile into `profiles`
+            # Opcional: enviar email de verificación
+            # send_verification_email(email, get_serializer())
+
+            # Insertar perfil del usuario en la tabla `profiles`
             cur.execute(
                 """
                 INSERT INTO profiles (user_id, first_name, last_name, gender, sexual_orientation, birthdate, city, latitude, longitude, profile_picture, bio)
@@ -104,13 +100,12 @@ def register():
             )
 
             conn.commit()
-            flash("Registration successful. Please complete your profile.", "success")
+            flash("Registro exitoso. Por favor, completa tu perfil.", "success")
             return redirect(url_for('profiles.get_profile'))
 
         except Exception as e:
             conn.rollback()
-            flash(f"Error during registration: {str(e)}", "danger")
-
+            flash(f"Error durante el registro: {str(e)}", "danger")
         finally:
             cur.close()
             conn.close()
@@ -121,7 +116,7 @@ def register():
 # ─── USER LOGIN ─────────────────────────────────────────────────────
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-    """User login with profile completeness check."""
+    """Inicio de sesión del usuario con verificación de perfil completo."""
     if request.method == 'POST':
         email = request.form.get("email")
         password = request.form.get("password")
@@ -135,39 +130,33 @@ def login():
             if user and check_password(password, user[2]):
                 session['user_id'] = user[0]
                 session['username'] = user[1]
-
-                # Debugging print
                 print(f"DEBUG: User {user[1]} logged in with ID {user[0]}")
 
-                # Check if profile is complete
+                # Verificar que el perfil esté completo
                 cur.execute("""
                     SELECT first_name, last_name, bio, profile_picture 
                     FROM profiles WHERE user_id = %s
                 """, (user[0],))
                 profile = cur.fetchone()
 
-                # Check if interests exist
+                # Verificar si hay intereses registrados
                 cur.execute("SELECT COUNT(*) FROM profile_interests WHERE user_id = %s", (user[0],))
                 interest_count = cur.fetchone()[0]
 
-                # Redirect to edit profile if required fields are missing
                 if not profile or any(field is None or field == '' for field in profile) or interest_count == 0:
-                    flash("Please complete your profile, including selecting interests, before proceeding.", "warning")
+                    flash("Por favor, completa tu perfil, incluyendo la selección de intereses, antes de continuar.", "warning")
                     print("DEBUG: Redirecting to edit_profile")
                     return redirect(url_for('profiles.edit_profile'))
 
-                # ✅ If profile is complete, go to Browse Profiles
-                flash("Welcome back!", "success")
+                flash("¡Bienvenido de nuevo!", "success")
                 print("DEBUG: Redirecting to browse_profiles")
-                return redirect(url_for('profiles.browse_profiles'))  
-
+                return redirect(url_for('profiles.browse_profiles'))
             else:
-                flash("Incorrect email or password", "danger")
+                flash("Email o contraseña incorrectos", "danger")
 
         except Exception as e:
             flash(f"Login error: {str(e)}", "danger")
             print(f"ERROR: {str(e)}")
-
         finally:
             cur.close()
             conn.close()
@@ -175,53 +164,55 @@ def login():
     return render_template("login.html")
 
 
-
 # ─── LOGOUT ─────────────────────────────────────────────────────
 @auth_bp.route('/logout')
 def logout():
-    """Ends user session and redirects to home."""
+    """Termina la sesión del usuario y redirige a la página principal."""
     session.clear()
-    flash("Successfully logged out.", "success")
+    flash("Has cerrado sesión exitosamente.", "success")
     return redirect(url_for('auth.home'))
+
 
 # ─── PASSWORD RECOVERY ─────────────────────────────────────────────
 @auth_bp.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
-    """Handles password recovery by sending a reset code via email."""
+    """Maneja la recuperación de contraseña enviando un código de reinicio vía email."""
     if request.method == 'POST':
         email = request.form.get("email")
         user = get_user_by_email(email)
 
         if not user:
-            flash("Email not found.", "danger")
+            flash("Email no encontrado.", "danger")
             return redirect(url_for('auth.forgot_password'))
 
-        reset_code = os.urandom(4).hex().upper()  # Random recovery code
+        reset_code = os.urandom(4).hex().upper()  # Código de recuperación aleatorio
+
         conn = get_db_connection()
         cur = conn.cursor()
         try:
             cur.execute("UPDATE users SET reset_code = %s WHERE email = %s", (reset_code, email))
             conn.commit()
             send_email(email, reset_code)
-            flash("A recovery code has been sent to your email.", "success")
+            flash("Se ha enviado un código de recuperación a tu email.", "success")
         except Exception as e:
             conn.rollback()
-            flash(f"Error recovering password: {str(e)}", "danger")
+            flash(f"Error al recuperar la contraseña: {str(e)}", "danger")
         finally:
             cur.close()
             conn.close()
 
     return render_template("forgot_password.html")
 
+
 def send_email(to_email, reset_code):
-    """Sends an email with the recovery code."""
+    """Envía un email con el código de recuperación."""
     SMTP_SERVER = os.getenv("MAIL_SERVER", "smtp.gmail.com")
     SMTP_PORT = int(os.getenv("MAIL_PORT", 587))
     EMAIL_SENDER = os.getenv("MAIL_USERNAME")
     EMAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
 
-    msg = MIMEText(f"Your recovery code is: {reset_code}")
-    msg["Subject"] = "Password Recovery - Matchito"
+    msg = MIMEText(f"Tu código de recuperación es: {reset_code}")
+    msg["Subject"] = "Recuperación de Contraseña - Matchito"
     msg["From"] = EMAIL_SENDER
     msg["To"] = to_email
 

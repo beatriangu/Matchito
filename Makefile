@@ -18,15 +18,15 @@ help:
 	@echo "  clean               - Limpia contenedores, imágenes y volúmenes (⚠️ Elimina datos)."
 	@echo "  update-requirements - Actualiza el requirements.txt en backend/"
 
-# 🚀 Levantar los contenedores y construir las imágenes si es necesario
+# Levantar contenedores y construir imágenes
 start:
 	docker-compose -f $(COMPOSE_FILE) up --build
 
-# ⛔ Detener y remover los contenedores
+# Detener y remover contenedores
 stop:
 	docker-compose -f $(COMPOSE_FILE) down
 
-# 🔄 Reiniciar contenedores y verificar la base de datos
+# Reiniciar contenedores y verificar la base de datos
 restart:
 	docker-compose -f $(COMPOSE_FILE) down
 	docker-compose -f $(COMPOSE_FILE) up --build
@@ -43,27 +43,29 @@ restart:
 		  docker exec -i $(DATABASE_CONTAINER) psql -U bea -d matchito_db < database/seed.sql && \
 		  echo "✅ Base de datos inicializada correctamente." )
 
-# 📜 Ver logs del contenedor del backend
+# Mostrar logs del contenedor backend
 logs-backend:
 	docker logs -f $(BACKEND_CONTAINER)
 
-# 📜 Ver logs del contenedor de Nginx
+# Mostrar logs del contenedor Nginx
 logs-nginx:
 	docker logs -f $(NGINX_CONTAINER)
 
-# 🔍 Acceder a la shell interactiva de la base de datos
+# Acceder a la shell interactiva de la base de datos
 db-shell:
 	docker exec -it $(DATABASE_CONTAINER) psql -U bea -d matchito_db
 
-# 🧹 Limpiar contenedores, imágenes y volúmenes (⚠️ Elimina datos)
+# Limpiar contenedores, imágenes y volúmenes (Elimina datos)
 clean:
 	docker-compose -f $(COMPOSE_FILE) down -v --remove-orphans && \
 	docker system prune -af && \
 	docker volume prune -f
 
-# 📦 Actualizar requirements.txt en el directorio backend/
+# Actualizar requirements.txt en el directorio backend/
 update-requirements:
 	pip freeze > backend/requirements.txt
+
+
 
 
 

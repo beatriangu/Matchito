@@ -22,14 +22,25 @@ def give_like():
     cur = conn.cursor()
 
     try:
-        # Insertar el like; en caso de conflicto, no se realiza ninguna acción
+        # Insertar el like y obtener un resultado solo si se inserta uno nuevo
         cur.execute("""
-            INSERT INTO likes (liker_id, liked_id) 
-            VALUES (%s, %s) 
-            ON CONFLICT (liker_id, liked_id) DO NOTHING;
+            INSERT INTO likes (liker_id, liked_id)
+            VALUES (%s, %s)
+            ON CONFLICT (liker_id, liked_id) DO NOTHING
+            RETURNING liked_id;
         """, (liker_id, liked_id))
+        result = cur.fetchone()
+
+        # Si se insertó un nuevo like, actualizar el fame_rating del usuario que recibe el like
+        if result is not None:
+            cur.execute("""
+                UPDATE profiles
+                SET fame_rating = fame_rating + 10
+                WHERE user_id = %s;
+            """, (liked_id,))
+
         conn.commit()
-        
+
         # Verificar si hay match (si el usuario liked ya te dio like)
         cur.execute("""
             SELECT 1 FROM likes WHERE liker_id = %s AND liked_id = %s;
@@ -48,6 +59,54 @@ def give_like():
         cur.close()
         conn.close()
         return jsonify({"error": str(e)}), 500
+
+
+# ✅ Quitar like a un usuario (unlike)
+@likes_bp.route("/unlike", methods=["POST"])
+def remove_like():
+    data = request.json
+    liker_id = data.get("liker_id")
+    liked_id = data.get("liked_id")
+
+    # Validar que se reciban ambos parámetros
+    if not liker_id or not liked_id:
+        return jsonify({"error": "Faltan parámetros"}), 400
+
+    # Evitar que un usuario se quite like a sí mismo
+    if liker_id == liked_id:
+        return jsonify({"error": "No puedes quitar like a ti mismo"}), 400
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    try:
+        # Eliminar el like y obtener el liked_id si se eliminó un registro
+        cur.execute("""
+            DELETE FROM likes
+            WHERE liker_id = %s AND liked_id = %s
+            RETURNING liked_id;
+        """, (liker_id, liked_id))
+        result = cur.fetchone()
+
+        # Si se eliminó el like, restar 10 puntos al fame_rating del usuario receptor (sin caer por debajo de 0)
+        if result is not None:
+            cur.execute("""
+                UPDATE profiles
+                SET fame_rating = GREATEST(fame_rating - 10, 0)
+                WHERE user_id = %s;
+            """, (liked_id,))
+
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({"message": "Unlike registrado"}), 200
+
+    except Exception as e:
+        conn.rollback()
+        cur.close()
+        conn.close()
+        return jsonify({"error": str(e)}), 500
+
 
 # ✅ Ver a quién le has dado like
 @likes_bp.route("/likes/given/<int:user_id>", methods=["GET"])
@@ -68,6 +127,7 @@ def likes_given(user_id):
 
     return jsonify([{"id": row[0], "username": row[1], "profile_picture": row[2]} for row in likes])
 
+
 # ✅ Ver quién te ha dado like
 @likes_bp.route("/likes/received/<int:user_id>", methods=["GET"])
 def likes_received(user_id):
@@ -86,6 +146,7 @@ def likes_received(user_id):
     conn.close()
 
     return jsonify([{"id": row[0], "username": row[1], "profile_picture": row[2]} for row in likes])
+
 
 # ✅ Ver los matches
 @likes_bp.route("/matches/<int:user_id>", methods=["GET"])
@@ -106,5 +167,6 @@ def get_matches(user_id):
     conn.close()
 
     return jsonify([{"id": row[0], "username": row[1], "profile_picture": row[2]} for row in matches])
+
 
 
