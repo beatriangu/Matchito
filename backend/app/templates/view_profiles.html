@@ -1,39 +1,76 @@
 {% extends "base.html" %}
 {% set background_image = url_for('static', filename='images/view_profiles_background.jpg') %}
 
-{% block title %}View Profile{% endblock %}
+{% block title %}View Profiles - Match@{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="profile-header text-center">
-        <!-- Verifica si `profile.picture.large` existe, de lo contrario muestra la imagen por defecto -->
-        <img src="{{ profile.picture.large if profile.picture.large else url_for('static', filename='images/default_profile.jpg') }}" 
-             alt="Profile Picture" class="profile-img">
-        
-        <h1>{{ profile.name.first }} {{ profile.name.last }}</h1>
-        <p><strong>Username:</strong> {{ profile.login.username }}</p>
-        <p><strong>📧 Email:</strong> {{ profile.email }}</p>
-        <p><strong>🎂 Age:</strong> {{ profile.age }}</p>
-        <p><strong>📍 Location:</strong> {{ profile.location.city }}, {{ profile.location.country }}</p>
-    </div>
+<div class="container mt-5">
+  <h1 class="text-center text-white">Search Results</h1>
 
-    <!-- Acciones -->
-    <div class="text-center mt-4">
-        <button class="btn btn-danger" onclick="sendLike({{ profile.id }})">❤️ Like</button>
-        
-        {% if profile.mutual_like %}
-        <a href="{{ url_for('chat.start_chat', user_id=profile.id) }}" class="btn btn-primary">💬 Chat</a>
+  <!-- Lista de perfiles -->
+  <div class="row">
+    {% for profile in profiles %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow text-center">
+          <img src="{{ profile.profile_picture }}" class="card-img-top" alt="Profile Picture">
+          <div class="card-body">
+            <h5 class="card-title">{{ profile.first_name }} {{ profile.last_name }}</h5>
+            <p class="card-text">{{ profile.city }}, {{ profile.country }}</p>
+            {% if profile.birthdate %}
+              {% set age = now().year - profile.birthdate.year %}
+              <p class="card-text"><strong>Age:</strong> {{ age }}</p>
+            {% endif %}
+            <a href="{{ url_for('profiles.view_profile', profile_id=profile.id) }}" class="btn btn-primary">View Profile</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Paginación -->
+  <div class="text-center mt-4">
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        {% if page > 1 %}
+          <li class="page-item">
+            <a class="page-link" href="{{ url_for('profiles.view_profiles', page=page-1) }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">&laquo;</span>
+          </li>
         {% endif %}
-        
-        <button class="btn btn-secondary" onclick="blockUser({{ profile.id }})">🚫 Block</button>
-        <button class="btn btn-warning" onclick="reportUser({{ profile.id }})">⚠️ Report</button>
 
-        <!-- URL válida para volver atrás -->
-        <a href="{{ url_for('profiles.get_all_profiles') }}" class="btn btn-outline-light mt-3">⬅️ Go Back</a>
-    </div>
+        {% for p in range(1, total_pages + 1) %}
+          <li class="page-item {% if p == page %}active{% endif %}">
+            <a class="page-link" href="{{ url_for('profiles.view_profiles', page=p) }}">{{ p }}</a>
+          </li>
+        {% endfor %}
+
+        {% if page < total_pages %}
+          <li class="page-item">
+            <a class="page-link" href="{{ url_for('profiles.view_profiles', page=page+1) }}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">&raquo;</span>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Botón para regresar a Browse Profiles -->
+  <div class="text-center mt-4">
+    <a href="{{ url_for('profiles.browse_profiles') }}" class="btn btn-outline-light">⬅ Back to Browse Profiles</a>
+  </div>
 </div>
 
-<!-- JavaScript para manejar las acciones con fetch() -->
+<!-- JavaScript para manejar las acciones -->
 <script>
 function sendLike(userId) {
     fetch(`/like/${userId}`, { 
@@ -69,6 +106,7 @@ function reportUser(userId) {
 }
 </script>
 {% endblock %}
+
 
 
 

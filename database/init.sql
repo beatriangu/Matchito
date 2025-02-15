@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 🔹 Tabla de perfiles
+-- 🔹 Tabla de perfiles (se eliminó la columna "country")
 CREATE TABLE IF NOT EXISTS profiles (
     user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
     first_name VARCHAR(255) NOT NULL,
@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS profiles (
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
     city VARCHAR(255),
-    country VARCHAR(255),
     profile_picture VARCHAR(255)
 );
 

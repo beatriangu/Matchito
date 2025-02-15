@@ -3,25 +3,50 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 import requests
+from app.utils.test_mail import test_mail
+
+# Llamar a la función para enviar un correo de prueba
+test_mail()
 
 from app.utils.db import get_db_connection
 from app.utils.security import hash_password, check_password
-from app.utils.email_verification import send_verification_email  # Si se usa verificación por email
-from app.utils.token import get_serializer
+from app.utils.token_util import get_serializer
 
 auth_bp = Blueprint('auth', __name__)
 
+# ─── FUNCIONES AUXILIARES ─────────────────────────────────────────────
+def send_verification_email(to_email, serializer):
+    """
+    Envía un email de verificación con un enlace único generado mediante el serializer.
+    """
+    # Generar el token de verificación
+    token = serializer.dumps(to_email, salt='email-confirm')
+    # Construir la URL de verificación utilizando el endpoint 'confirm_email'
+    verification_url = url_for('auth.confirm_email', token=token, _external=True)
+    
+    subject = "Verificación de correo - Matchito"
+    body = f"Por favor, confirma tu correo haciendo click en el siguiente enlace:\n{verification_url}"
+    
+    msg = MIMEText(body)
+    msg["Subject"] = subject
+    msg["From"] = os.getenv("MAIL_USERNAME")
+    msg["To"] = to_email
 
-# ─── HOME ─────────────────────────────────────────────────────────────
-@auth_bp.route('/')
-@auth_bp.route('/home')
-def home():
-    """Página principal con barra de navegación y opciones."""
-    print(f"DEBUG: Session data - {session}")  # Para depuración
-    return render_template('home.html')
+    SMTP_SERVER = os.getenv("MAIL_SERVER", "smtp.gmail.com")
+    SMTP_PORT = int(os.getenv("MAIL_PORT", 587))
+    EMAIL_SENDER = os.getenv("MAIL_USERNAME")
+    EMAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
+
+    try:
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+            server.starttls()
+            server.login(EMAIL_SENDER, EMAIL_PASSWORD)
+            server.sendmail(EMAIL_SENDER, to_email, msg.as_string())
+        print(f"✅ Email de verificación enviado a {to_email}")
+    except Exception as e:
+        print(f"❌ Error enviando email de verificación: {e}")
 
 
-# ─── HELPER FUNCTION ─────────────────────────────────────────────────
 def get_user_by_email(email):
     """Recupera detalles del usuario a partir del email."""
     conn = get_db_connection()
@@ -31,6 +56,15 @@ def get_user_by_email(email):
     cur.close()
     conn.close()
     return user
+
+
+# ─── HOME ─────────────────────────────────────────────────────────────
+@auth_bp.route('/')
+@auth_bp.route('/home')
+def home():
+    """Página principal con barra de navegación y opciones."""
+    print(f"DEBUG: Session data - {session}")  # Para depuración
+    return render_template('home.html')
 
 
 # ─── USER REGISTRATION ──────────────────────────────────────────────
@@ -87,8 +121,8 @@ def register():
             )
             user_id = cur.fetchone()[0]
 
-            # Opcional: enviar email de verificación
-            # send_verification_email(email, get_serializer())
+            # Enviar email de verificación
+            send_verification_email(email, get_serializer())
 
             # Insertar perfil del usuario en la tabla `profiles`
             cur.execute(
@@ -101,7 +135,7 @@ def register():
 
             conn.commit()
             flash("Registro exitoso. Por favor, completa tu perfil.", "success")
-            return redirect(url_for('profiles.get_profile'))
+            return redirect(url_for('profiles.edit_profile'))
 
         except Exception as e:
             conn.rollback()
@@ -226,10 +260,29 @@ def send_email(to_email, reset_code):
         print(f"❌ Error sending email: {e}")
 
 
-
-
-
-
-
+# ─── EMAIL VERIFICATION ─────────────────────────────────────────────
+# ── EMAIL VERIFICATION ─────────────────────────────────────────────
+@auth_bp.route('/verify-email/<token>', endpoint='confirm_email')
+def verify_email(token):
+    """
+    Verifica el token recibido por email y marca al usuario como verificado.
+    """
+    try:
+        # Intenta extraer el email del token
+        email = get_serializer().loads(token, salt='email-confirm', max_age=3600)
+    except Exception as e:
+        flash("El enlace de verificación es inválido o ha expirado.", "danger")
+        return redirect(url_for('auth.home'))
+    
+    # Actualiza el estado de verificación en la base de datos
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("UPDATE users SET is_verified = TRUE WHERE email = %s", (email,))
+    conn.commit()
+    cur.close()
+    conn.close()
+    
+    flash("Tu correo ha sido verificado correctamente.", "success")
+    return redirect(url_for('auth.home'))
 
 

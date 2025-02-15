@@ -1,31 +1,172 @@
-<form action="{{ url_for('profiles.complete_profile') }}" method="POST" enctype="multipart/form-data">
-    <label>Gender:</label>
-    <select name="gender" required>
-        <option value="">Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-    </select>
+{% extends "base.html" %}
 
-    <label>Sexual Orientation:</label>
-    <select name="sexual_orientation" required>
-        <option value="">Select Orientation</option>
-        <option value="heterosexual">Heterosexual</option>
-        <option value="homosexual">Homosexual</option>
-        <option value="bisexual">Bisexual</option>
-    </select>
+{% set background_image = url_for('static', filename='images/edit_profile_background.jpg' if completing else 'images/profile_background.jpg') %}
 
-    <label>Biography:</label>
-    <textarea name="bio" required></textarea>
+{% block title %}
+  {{ "Edit Your Profile" if editing else "Complete Your Profile" }} - Match@
+{% endblock %}
 
-    <label>Interests (comma-separated hashtags):</label>
-    <input type="text" name="interests" placeholder="#vegan, #geek, #piercing" required>
+{% block content %}
+<style>
+    body {
+        background: url("{{ background_image }}") no-repeat center center fixed;
+        background-size: cover;
+    }
+    /* Contenedor que alinea el formulario a la izquierda */
+    .profile-container {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        padding-left: 5%; /* Separa el formulario del borde izquierdo */
+        justify-content: flex-start;
+    }
+    /* Asegurar que el formulario esté a la izquierda */
+    .profile-form-container {
+        max-width: 450px; /* Ajustamos el ancho */
+        background: rgba(0, 0, 0, 0.4); /* Más transparente para mejor visibilidad */
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+    }
+    /* Inputs con fondo transparente */
+    .form-control {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+        border: 1px solid white;
+    }
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    /* Espacio vacío a la derecha para la imagen */
+    .profile-image-placeholder {
+        flex: 1;
+    }
+    @media (max-width: 992px) {
+        .profile-container {
+            flex-direction: column;
+            align-items: center;
+            padding-left: 0;
+        }
+        .profile-image-placeholder {
+            display: none;
+        }
+    }
+</style>
 
-    <label>Upload up to 5 images:</label>
-    <input type="file" name="images" multiple accept="image/*">
+<div class="container profile-container">
+    <div class="profile-form-container">
+        <h1 class="text-start text-white">
+            {{ "Edit Your Profile" if editing else "Complete Your Profile" }}
+        </h1>
 
-    <button type="submit">Save Profile</button>
-</form>
+        <form action="{{ url_for('profiles.edit_profile') }}" method="POST" enctype="multipart/form-data" class="text-start">
+            <div class="mb-3">
+                <input type="text" name="first_name" class="form-control" 
+                       value="{{ profile.first_name if profile else '' }}" placeholder="First Name" required>
+            </div>
+            <div class="mb-3">
+                <input type="text" name="last_name" class="form-control" 
+                       value="{{ profile.last_name if profile else '' }}" placeholder="Last Name" required>
+            </div>
+
+            <!-- Género -->
+            <div class="mb-3">
+                <label>Gender:</label>
+                <select name="gender" class="form-control" required>
+                    <option value="">Select Gender</option>
+                    <option value="male" {% if profile and profile.gender == "male" %}selected{% endif %}>Male</option>
+                    <option value="female" {% if profile and profile.gender == "female" %}selected{% endif %}>Female</option>
+                    <option value="other" {% if profile and profile.gender == "other" %}selected{% endif %}>Other</option>
+                </select>
+            </div>
+
+            <!-- Orientación Sexual -->
+            <div class="mb-3">
+                <label>Sexual Orientation:</label>
+                <select name="sexual_orientation" class="form-control" required>
+                    <option value="">Select Orientation</option>
+                    <option value="heterosexual" {% if profile and profile.sexual_orientation == "heterosexual" %}selected{% endif %}>Heterosexual</option>
+                    <option value="homosexual" {% if profile and profile.sexual_orientation == "homosexual" %}selected{% endif %}>Homosexual</option>
+                    <option value="bisexual" {% if profile and profile.sexual_orientation == "bisexual" %}selected{% endif %}>Bisexual</option>
+                </select>
+            </div>
+
+            <!-- Fecha de Nacimiento -->
+            <div class="mb-3">
+                <label>Birthdate:</label>
+                <input type="date" name="birthdate" class="form-control" 
+                       value="{{ profile.birthdate.strftime('%Y-%m-%d') if profile and profile.birthdate else '' }}" required>
+            </div>
+
+            <!-- Biografía -->
+            <div class="mb-3">
+                <textarea name="bio" class="form-control" placeholder="Tell us about yourself" required>{{ profile.bio if profile else '' }}</textarea>
+            </div>
+
+            <!-- Ubicación -->
+            <div class="mb-3">
+                <input type="text" name="city" class="form-control" value="{{ profile.city if profile else '' }}" placeholder="City">
+            </div>
+
+            <!-- Imagen de Perfil -->
+            <div class="mb-3">
+                <input type="text" name="profile_picture" class="form-control" 
+                       value="{{ profile.profile_picture if profile else '' }}" placeholder="Profile Picture URL">
+            </div>
+
+            <!-- Intereses -->
+            <div class="mb-3">
+                <label for="interests">Select up to 4 Interests:</label>
+                <input name="interests" id="interests-input" 
+                       value="{% for interest in user_interests %}{{ interest }}, {% endfor %}">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Save & Continue</button>
+        </form>
+    </div>
+
+    <div class="profile-image-placeholder"></div>
+</div>
+
+<!-- Include Tagify Library -->
+<link rel="stylesheet" href="https://unpkg.com/@yaireo/tagify/dist/tagify.css">
+<script src="https://unpkg.com/@yaireo/tagify"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var input = document.querySelector('#interests-input');
+    var tagify = new Tagify(input, {
+        whitelist: [
+            "Music", "Sports", "Reading", "Traveling", "Cooking", "Gaming", "Photography", "Art",
+            "Technology", "Fitness", "Hiking", "Movies", "Dancing", "Writing", "Fashion", "Gardening",
+            "Swimming", "Yoga", "Volunteer Work", "Blogging"
+        ],
+        maxTags: 4,
+        dropdown: {
+            maxItems: 10,
+            classname: "tags-look",
+            enabled: 0,
+            closeOnSelect: false
+        }
+    });
+    var existingInterests = [{% for interest in user_interests %}"{{ interest }}",{% endfor %}];
+    tagify.addTags(existingInterests);
+});
+</script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -3,68 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Matcha{% endblock %}</title>
+  <title>{% block title %}Matchito{% endblock %}</title>
   
-  <!-- Favicon (animated) -->
-  <link id="favicon" rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon_penguin1.ico') }}">
+  <!-- Favicon Animado -->
+  <link id="favicon" rel="icon" type="image/gif" href="{{ url_for('static', filename='favicon_penguin1.gif') }}">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      let favicon = document.getElementById("favicon");
-      let frames = [
-        "{{ url_for('static', filename='favicon_penguin1.ico') }}",
-        "{{ url_for('static', filename='favicon_penguin2.ico') }}",
-        "{{ url_for('static', filename='favicon_penguin3.ico') }}"
-      ];
-      let currentFrame = 0;
-    
-      function animateFavicon() {
-        if (!favicon) {
-          favicon = document.createElement("link");
-          favicon.id = "favicon";
-          favicon.rel = "icon";
-          favicon.type = "image/x-icon";
-          document.head.appendChild(favicon);
-        }
-    
-        currentFrame = (currentFrame + 1) % frames.length;
-        // Append a query string to avoid caching issues
-        let newFavicon = document.createElement("link");
-        newFavicon.id = "favicon";
-        newFavicon.rel = "icon";
-        newFavicon.type = "image/x-icon";
-        newFavicon.href = frames[currentFrame] + "?v=" + new Date().getTime();
-    
-        // Remove any previous favicon links and add the new one
-        document.head.querySelectorAll("link[rel='icon']").forEach(el => el.remove());
-        document.head.appendChild(newFavicon);
-        favicon = newFavicon;
-      }
-    
-      setInterval(animateFavicon, 1000);
-
-      // Fetch unread notifications count only if user is logged in
-      {% if session.get('user_id') %}
-      fetch("{{ url_for('notifications.unread_count') }}")
-        .then(response => {
-          if (!response.ok) throw new Error("Error fetching notifications");
-          return response.json();
-        })
-        .then(data => {
-          if (data.unread_count > 0) {
-            // Actualizamos el badge de notificaciones en el menú
-            document.getElementById("notif-count").textContent = data.unread_count;
-          }
-        })
-        .catch(error => console.error("⚠️ Failed to load notifications:", error));
-      {% endif %}
-    });
-  </script>
 
   <style>
     html, body {
@@ -78,18 +24,35 @@
       background-size: cover;
       font-family: Arial, sans-serif;
     }
+    
     .main-content {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      justify-content: flex-end;  
       padding: 20px;
       text-align: center;
       gap: 20px;
-      max-width: 1200px;
+      max-width: 800px;
       margin: 0 auto;
     }
+
+    /* Ajuste especial para la página de perfil */
+    .profile-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100vh;
+      padding-left: 5%;
+    }
+
+    @media (max-width: 768px) {
+      .profile-container {
+        justify-content: center;
+        padding-left: 0;
+      }
+    }
+
     footer {
       text-align: center;
       padding: 10px;
@@ -97,11 +60,6 @@
       color: white;
       font-size: 0.9rem;
       width: 100%;
-    }
-    @media (max-width: 768px) {
-      footer {
-        font-size: 0.8rem;
-      }
     }
   </style>
 </head>
@@ -117,35 +75,14 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link {% if request.endpoint == 'auth.home' %}active{% endif %}" href="{{ url_for('auth.home') }}">🏠 Home</a>
+            <a class="nav-link {% if request.endpoint == 'auth.home' %}active{% endif %}" href="{{ url_for('auth.home') }}">🏔️ Home</a>
           </li>
           {% if session.get('user_id') %}
             <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'profiles.edit_profile' %}active{% endif %}" href="{{ url_for('profiles.edit_profile') }}">👤 Profile</a>
-            </li>
-            <!-- Nuevos enlaces para usuarios autenticados -->
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('notifications.view_notifications') }}">
-                🔔 Notifications <span id="notif-count" class="badge bg-danger"></span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('messages.conversation_history', user_id=session.get('user_id')) }}">💬 Messages</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('likes.likes_received', user_id=session.get('user_id')) }}">❤️ Likes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('likes.get_matches', user_id=session.get('user_id')) }}">🤝 Matches</a>
+              <a class="nav-link {% if request.endpoint == 'profiles.get_profile' %}active{% endif %}" href="{{ url_for('profiles.get_profile') }}">🐧 Profile</a>
             </li>
             <li class="nav-item">
               <a class="nav-link {% if request.endpoint == 'auth.logout' %}active{% endif %}" href="{{ url_for('auth.logout') }}">🚪 Logout</a>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'auth.register' %}active{% endif %}" href="{{ url_for('auth.register') }}">📝 Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'auth.login' %}active{% endif %}" href="{{ url_for('auth.login') }}">🔑 Login</a>
             </li>
           {% endif %}
         </ul>
@@ -153,96 +90,57 @@
     </div>
   </nav>
 
-  <!-- Notifications Popup (opcional, si deseas mostrar un popup emergente) -->
-  <div id="notifications" class="notifications" style="display: none; position: fixed; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.9); padding: 10px; border-radius: 5px; z-index: 1050;">
-    <p>You have new notifications!</p>
-  </div>
-
   <!-- Main Content -->
-  <div class="main-content">
+  <div class="main-content {% if request.endpoint == 'profiles.edit_profile' %}profile-container{% endif %}">
     {% block content %}{% endblock %}
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; {{ current_year }} Matcha. All rights reserved.</p>
+    <p>&copy; {{ current_year }} Matchito. All rights reserved.</p>
   </footer>
-
-  <!-- Advanced Search Modal -->
-  {% if session.get('user_id') %}
-  <div class="modal fade" id="advancedSearchModal" tabindex="-1" aria-labelledby="advancedSearchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="advancedSearchModalLabel">Advanced Search</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Advanced search form with filtering and sorting options -->
-          <form id="advancedSearchForm">
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <label for="ageRange" class="form-label">Age Range</label>
-                <input type="text" class="form-control" id="ageRange" placeholder="e.g., 25-35">
-              </div>
-              <div class="col-md-6">
-                <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="location" placeholder="City or Country">
-              </div>
-            </div>
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <label for="fameRating" class="form-label">Fame Rating Gap</label>
-                <input type="text" class="form-control" id="fameRating" placeholder="e.g., 70-90">
-              </div>
-              <div class="col-md-6">
-                <label for="commonTags" class="form-label">Common Tags</label>
-                <input type="text" class="form-control" id="commonTags" placeholder="e.g., music, travel">
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="sortCriteria" class="form-label">Sort By</label>
-              <select class="form-select" id="sortCriteria">
-                <option value="age">Age</option>
-                <option value="location">Location</option>
-                <option value="fameRating">Fame Rating</option>
-                <option value="commonTags">Common Tags</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Search</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  {% endif %}
 
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom JS for Notifications and Advanced Search -->
+  
+  <!-- Favicon Animado (Forzar recarga para evitar cacheo) -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Advanced Search Form submission handler
-      const advancedSearchForm = document.getElementById("advancedSearchForm");
-      if (advancedSearchForm) {
-        advancedSearchForm.addEventListener("submit", function(e) {
-          e.preventDefault();
-          const ageRange = document.getElementById("ageRange").value;
-          const location = document.getElementById("location").value;
-          const fameRating = document.getElementById("fameRating").value;
-          const commonTags = document.getElementById("commonTags").value;
-          const sortCriteria = document.getElementById("sortCriteria").value;
-          console.log("Advanced Search:", { ageRange, location, fameRating, commonTags, sortCriteria });
-          var advancedSearchModal = bootstrap.Modal.getInstance(document.getElementById('advancedSearchModal'));
-          advancedSearchModal.hide();
-        });
-      }
+    document.addEventListener("DOMContentLoaded", function () {
+        // Array con las rutas de los favicons animados (GIF)
+        var favicons = [
+            "{{ url_for('static', filename='favicon_penguin1.gif') }}",
+            "{{ url_for('static', filename='favicon_penguin2.gif') }}",
+            "{{ url_for('static', filename='favicon_penguin3_1.gif') }}"
+        ];
+        var index = 0;
+        // Cambiar favicon cada 8 segundos
+        setInterval(function() {
+            // Elimina el favicon anterior
+            var oldLink = document.getElementById("favicon");
+            if(oldLink) {
+                oldLink.parentNode.removeChild(oldLink);
+            }
+            // Crea un nuevo elemento link para el favicon
+            var newLink = document.createElement("link");
+            newLink.id = "favicon";
+            newLink.rel = "icon";
+            newLink.type = "image/gif";
+            // Se agrega un query string para forzar la recarga y evitar cacheo
+            newLink.href = favicons[index] + '?v=' + new Date().getTime();
+            document.head.appendChild(newLink);
+            index = (index + 1) % favicons.length;
+        }, 8000);
     });
   </script>
+
   {% block scripts %}{% endblock %}
 </body>
 </html>
+
+
+
+
+
 
 
 

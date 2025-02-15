@@ -16,6 +16,7 @@ def reverse_geocode(lat, lon):
     """
     Realiza una geolocalización inversa usando la API de Nominatim (OpenStreetMap)
     para obtener la ciudad a partir de las coordenadas.
+    (Esta función ya no se usará si asignamos ciudades por defecto)
     """
     try:
         url = f"https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat={lat}&lon={lon}"
@@ -26,13 +27,34 @@ def reverse_geocode(lat, lon):
             address = result.get("address", {})
             # Se intenta obtener la ciudad, si no, se busca 'town' o 'village'
             city = address.get("city") or address.get("town") or address.get("village") or "Unknown"
-            # Escapar comillas simples para evitar errores en SQL
             return city.replace("'", "''")
         else:
             return "Unknown"
     except Exception as e:
         print(f"Error in reverse_geocode: {e}")
         return "Unknown"
+
+# Lista predefinida de ciudades (en este caso del País Vasco o de España)
+cities = [
+    {'name': 'Madrid', 'coords': [-3.7038, 40.4168]},
+    {'name': 'Barcelona', 'coords': [2.1734, 41.3851]},
+    {'name': 'Valencia', 'coords': [-0.3763, 39.4699]},
+    {'name': 'Seville', 'coords': [-5.9845, 37.3891]},
+    {'name': 'Bilbao', 'coords': [-2.9253, 43.2630]},
+    {'name': 'Barakaldo', 'coords': [-2.9899, 43.2972]},
+    {'name': 'Leioa', 'coords': [-2.9869, 43.3329]},
+    {'name': 'Portugalete', 'coords': [-3.00706, 43.30968]},
+    {'name': 'Basauri', 'coords': [-2.8833, 43.2333]},
+    {'name': 'Galdakao', 'coords': [-2.8417, 43.2333]},
+    {'name': 'Sondika', 'coords': [-2.8975, 43.2833]},
+    {'name': 'Mungia', 'coords': [-2.8333, 43.3500]},
+    {'name': 'Basauri', 'coords': [-2.8833, 43.2333]},
+    {'name': 'Urduliz', 'coords': [-2.95962, 43.37970]},
+    {'name': 'Landa', 'coords': [-2.96773, 43.38131]},
+    {'name': 'Zamudio', 'coords': [-2.8667, 43.2833]},
+    {'name': 'Derio', 'coords': [-2.8833, 43.2833]},
+    {'name': 'Erandio', 'coords': [-2.9833, 43.3000]},
+]
 
 # Obtener la ruta absoluta del directorio donde está el script
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -86,11 +108,13 @@ with open(sql_file_path, "w") as sql_file:
         last_name = user["name"]["last"].replace("'", "''")
 
         gender = user["gender"]
-        latitude = float(user["location"]["coordinates"]["latitude"])
-        longitude = float(user["location"]["coordinates"]["longitude"])
 
-        # Obtener la ciudad a partir de la latitud y longitud (geolocalización inversa)
-        city = reverse_geocode(latitude, longitude)
+        # En lugar de usar las coordenadas originales y reverse_geocode,
+        # asignamos aleatoriamente una ciudad de la lista predefinida.
+        selected_city = random.choice(cities)
+        city = selected_city['name'].replace("'", "''")
+        # Nota: en la lista, 'coords' está en el orden [longitud, latitud]
+        longitude, latitude = selected_city['coords']
 
         # Generar valores aleatorios para otros campos
         sexual_orientation = random.choice(["heterosexual", "homosexual", "bisexual"])
@@ -108,7 +132,7 @@ with open(sql_file_path, "w") as sql_file:
         )
 
         # Insertar en la tabla `profiles`, usando LASTVAL() para obtener el id insertado en users.
-        # Se incluye la ciudad obtenida por geolocalización.
+        # Se incluye la ciudad y las coordenadas seleccionadas de la lista predefinida.
         sql_file.write(
             f"INSERT INTO profiles (user_id, first_name, last_name, gender, sexual_orientation, birthdate, bio, city, latitude, longitude, profile_picture) "
             f"VALUES (LASTVAL(), '{first_name}', '{last_name}', '{gender}', '{sexual_orientation}', '{birthdate}', '{bio}', '{city}', {latitude}, {longitude}, '{profile_picture}');\n\n"
@@ -137,6 +161,7 @@ CROSS JOIN LATERAL (
 """)
     
     sql_file.write("\n-- ✅ Data inserted successfully\n")
+
 
 
 

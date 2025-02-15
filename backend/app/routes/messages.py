@@ -60,4 +60,24 @@ def conversation_history():
 
     return jsonify(conversation)
 
+@messages_bp.route('/unread_count/<int:user_id>', methods=['GET'])
+def get_unread_messages_count(user_id):
+    """
+    Devuelve la cantidad de mensajes no leídos para un usuario.
+    """
+    conn = get_db_connection()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT COUNT(*) FROM messages
+                WHERE receiver_id = %s AND is_read = FALSE;
+            """, (user_id,))
+            unread_count = cur.fetchone()[0]
+
+        return jsonify({'unread_messages': unread_count})
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    finally:
+        conn.close()
 

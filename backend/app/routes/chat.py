@@ -1,62 +1,105 @@
 from flask import Blueprint, request, jsonify, session, render_template
 from app.utils.db import get_db_connection
+from flask_socketio import emit
 
 chat_bp = Blueprint('chat', __name__)
 
 @chat_bp.route('/', methods=['GET'])
 def index():
     """
-    Endpoint que muestra una vista general del chat, por ejemplo, la lista de conversaciones.
-    Se requiere que el usuario esté autenticado.
+    Vista general del chat, muestra la lista de conversaciones del usuario autenticado.
     """
     current_user_id = session.get("user_id")
     if not current_user_id:
         return jsonify({"error": "Usuario no autenticado"}), 401
-    
-    # Aquí podrías realizar una consulta a la BD para obtener los chats activos.
-    # Por simplicidad, se renderiza una plantilla de ejemplo (asegúrate de crear "chat_index.html").
-    return render_template("chat_index.html")
-
-@chat_bp.route('/send', methods=['POST'])
-def send_message():
-    """
-    Endpoint para enviar un mensaje.
-    Se espera recibir:
-      - sender_id: ID del usuario que envía el mensaje
-      - receiver_id: ID del usuario que recibirá el mensaje
-      - message: Contenido del mensaje
-    """
-    data = request.get_json() or request.form
-
-    sender_id = data.get("sender_id")
-    receiver_id = data.get("receiver_id")
-    message_text = data.get("message")
-    if not sender_id or not receiver_id or not message_text:
-        return jsonify({"error": "Faltan campos obligatorios (sender_id, receiver_id, message)"}), 400
 
     conn = get_db_connection()
     cur = conn.cursor()
     try:
+        # Obtener los IDs de los usuarios con los que ha chateado
         cur.execute("""
-            INSERT INTO messages (sender_id, receiver_id, content, sent_at)
-            VALUES (%s, %s, %s, NOW())
-        """, (sender_id, receiver_id, message_text))
-        conn.commit()
-        return jsonify({"status": "Message sent"}), 201
+            SELECT DISTINCT 
+                CASE 
+                    WHEN sender_id = %s THEN receiver_id
+                    ELSE sender_id 
+                END AS chat_partner
+            FROM messages 
+            WHERE sender_id = %s OR receiver_id = %s
+        """, (current_user_id, current_user_id, current_user_id))
+        chat_partners = cur.fetchall()
+
+        return render_template("chat_index.html", chat_partners=[row[0] for row in chat_partners])
 
     except Exception as e:
-        conn.rollback()
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": f"Error al cargar chats: {str(e)}"}), 500
 
     finally:
         cur.close()
         conn.close()
 
+
+@chat_bp.route('/send', methods=['POST'])
+def send_message():
+    """
+    Enviar un mensaje. Se requiere:
+      - receiver_id: ID del destinatario
+      - message: Contenido del mensaje
+    """
+    current_user_id = session.get("user_id")
+    if not current_user_id:
+        return jsonify({"error": "Usuario no autenticado"}), 401
+
+    data = request.get_json() or request.form
+    receiver_id = data.get("receiver_id")
+    message_text = data.get("message")
+
+    # Validaciones de los datos
+    if not receiver_id or not message_text:
+        return jsonify({"error": "Faltan datos obligatorios (receiver_id, message)"}), 400
+    if len(message_text) > 500:
+        return jsonify({"error": "El mensaje no puede exceder los 500 caracteres."}), 400
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        # Verificar que el usuario existe antes de enviar el mensaje
+        cur.execute("SELECT id FROM users WHERE id = %s", (receiver_id,))
+        if not cur.fetchone():
+            return jsonify({"error": "El destinatario no existe."}), 404
+
+        # Insertar mensaje
+        cur.execute("""
+            INSERT INTO messages (sender_id, receiver_id, content, sent_at)
+            VALUES (%s, %s, %s, NOW())
+            RETURNING id, sent_at
+        """, (current_user_id, receiver_id, message_text))
+        message_id, sent_at = cur.fetchone()
+        conn.commit()
+
+        # Emitir mensaje en tiempo real si se usa SocketIO
+        emit('new_message', {
+            "id": message_id,
+            "sender_id": current_user_id,
+            "receiver_id": receiver_id,
+            "content": message_text,
+            "sent_at": sent_at.isoformat() if sent_at else None
+        }, broadcast=True)
+
+        return jsonify({"status": "Mensaje enviado", "message_id": message_id, "sent_at": sent_at.isoformat()}), 201
+
+    except Exception as e:
+        conn.rollback()
+        return jsonify({"error": f"Error al enviar mensaje: {str(e)}"}), 500
+
+    finally:
+        cur.close()
+        conn.close()
+
+
 @chat_bp.route('/<int:user_id>', methods=['GET'])
 def view_chat(user_id):
     """
-    Endpoint para recuperar el historial de chat entre el usuario autenticado y otro usuario.
-    Se requiere que el usuario esté autenticado.
+    Recupera el historial de chat entre el usuario autenticado y otro usuario.
     """
     current_user_id = session.get("user_id")
     if not current_user_id:
@@ -72,25 +115,24 @@ def view_chat(user_id):
                OR (sender_id = %s AND receiver_id = %s)
             ORDER BY sent_at ASC
         """, (current_user_id, user_id, user_id, current_user_id))
-        rows = cur.fetchall()
-
-        messages = []
-        for row in rows:
-            messages.append({
-                "id": row[0],
-                "sender_id": row[1],
-                "receiver_id": row[2],
-                "content": row[3],
-                "sent_at": row[4].isoformat() if row[4] else None
-            })
+        messages = [{
+            "id": row[0],
+            "sender_id": row[1],
+            "receiver_id": row[2],
+            "content": row[3],
+            "sent_at": row[4].isoformat() if row[4] else None
+        } for row in cur.fetchall()]
 
         return jsonify({"messages": messages})
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": f"Error al recuperar historial de chat: {str(e)}"}), 500
 
     finally:
         cur.close()
         conn.close()
+
+
+
 
 
