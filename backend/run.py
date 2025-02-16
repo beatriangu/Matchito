@@ -45,8 +45,8 @@ def create_app():
 app = create_app()
 
 # Registrar los manejadores de error (desde app.errors)
-from app.errors import init_app
-init_app(app)
+# from app.errors import init_app
+# init_app(app)
 
 # Inicializar SocketIO con la app (permitiendo CORS para desarrollo)
 socketio = SocketIO(app, cors_allowed_origins="*")

@@ -6,7 +6,43 @@
 {% block content %}
 <div class="container">
   <h1 class="text-center text-white mt-4">Suggested Profiles</h1>
+  
+  <!-- Advanced Search / Filtering Form -->
+  <form action="{{ url_for('profiles.view_profiles') }}" method="GET" class="mb-4">
+    <div class="row">
+      <div class="col-md-3 mb-2">
+        <input type="number" name="min_age" class="form-control" placeholder="Min Age">
+      </div>
+      <div class="col-md-3 mb-2">
+        <input type="number" name="max_age" class="form-control" placeholder="Max Age">
+      </div>
+      <div class="col-md-3 mb-2">
+        <input type="text" name="location" class="form-control" placeholder="Location">
+      </div>
+      <div class="col-md-3 mb-2">
+        <select name="sort_by" class="form-control">
+          <option value="">Sort By</option>
+          <option value="age">Age</option>
+          <option value="location">Location</option>
+          <option value="fame_rating">Fame Rating</option>
+          <option value="common_tags">Common Tags</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-2">
+        <input type="text" name="interests" class="form-control" placeholder="Interests (comma separated)">
+      </div>
+      <div class="col-md-6 mb-2">
+        <input type="number" name="fame_rating_gap" class="form-control" placeholder="Fame Rating Gap">
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-outline-light">Advanced Search</button>
+    </div>
+  </form>
 
+  <!-- Profiles List -->
   <div class="row justify-content-center">
     {% for profile in profiles %}
       <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
@@ -44,7 +80,7 @@
               {% endif %}
               <button class="btn btn-secondary" onclick="blockUser({{ profile.user_id }})">🚫 Block</button>
               <button class="btn btn-warning" onclick="reportUser({{ profile.user_id }})">⚠️ Report</button>
-              <a href="{{ url_for('profiles.get_profile_by_id', profile_id=profile.user_id) }}" class="btn btn-info">📄 View Profile</a>
+              <a href="{{ url_for('profiles.edit_profile_by_id', profile_id=profile.user_id) }}" class="btn btn-info">📄 View Profile</a>
             </div>
           </div>
         </div>
@@ -53,7 +89,7 @@
   </div>
 </div>
 
-<!-- Botón para buscar más perfiles -->
+<!-- Button to access advanced search if not using the form above -->
 <div class="text-center mt-4">
   <a href="{{ url_for('profiles.view_profiles') }}" class="btn btn-outline-light">🔍 Search Profiles</a>
 </div>
@@ -94,6 +130,7 @@ function reportUser(userId) {
 }
 </script>
 {% endblock %}
+
 
 
 

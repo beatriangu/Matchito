@@ -12,10 +12,14 @@
     {% for profile in profiles %}
       <div class="col-md-4 mb-4">
         <div class="card h-100 shadow text-center">
-          <img src="{{ profile.profile_picture }}" class="card-img-top" alt="Profile Picture">
+          <img src="{{ profile.profile_picture if profile.profile_picture else url_for('static', filename='images/default.png') }}" 
+               class="card-img-top" alt="Profile Picture">
           <div class="card-body">
             <h5 class="card-title">{{ profile.first_name }} {{ profile.last_name }}</h5>
-            <p class="card-text">{{ profile.city }}, {{ profile.country }}</p>
+            <p class="card-text">
+              {{ profile.city if profile.city else "Unknown" }}, 
+              {{ profile.country if profile.country else "Unknown" }}
+            </p>
             {% if profile.birthdate %}
               {% set age = now().year - profile.birthdate.year %}
               <p class="card-text"><strong>Age:</strong> {{ age }}</p>

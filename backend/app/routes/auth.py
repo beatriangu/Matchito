@@ -3,14 +3,14 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 import requests
-from app.utils.test_mail import test_mail
-
-# Llamar a la función para enviar un correo de prueba
-test_mail()
 
 from app.utils.db import get_db_connection
 from app.utils.security import hash_password, check_password
 from app.utils.token_util import get_serializer
+from app.utils.test_mail import test_mail
+
+# Llamar a la función para enviar un correo de prueba
+test_mail()
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -46,7 +46,6 @@ def send_verification_email(to_email, serializer):
     except Exception as e:
         print(f"❌ Error enviando email de verificación: {e}")
 
-
 def get_user_by_email(email):
     """Recupera detalles del usuario a partir del email."""
     conn = get_db_connection()
@@ -57,8 +56,7 @@ def get_user_by_email(email):
     conn.close()
     return user
 
-
-# ─── HOME ─────────────────────────────────────────────────────────────
+# ─── RUTAS ───────────────────────────────────────────────────────────
 @auth_bp.route('/')
 @auth_bp.route('/home')
 def home():
@@ -66,8 +64,6 @@ def home():
     print(f"DEBUG: Session data - {session}")  # Para depuración
     return render_template('home.html')
 
-
-# ─── USER REGISTRATION ──────────────────────────────────────────────
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     """Registro de usuario con detección opcional de ubicación."""
@@ -111,11 +107,11 @@ def register():
         conn = get_db_connection()
         cur = conn.cursor()
         try:
-            # Insertar usuario en la tabla `users`
+            # Insertar usuario en la tabla `users` .lo pongo a is verified true porque se me ha acabado el mailtrap
             cur.execute(
                 """
                 INSERT INTO users (username, email, password, is_verified, created_at)
-                VALUES (%s, %s, %s, FALSE, NOW()) RETURNING id
+                VALUES (%s, %s, %s, TRUE, NOW()) RETURNING id
                 """,
                 (username, email, hashed_password)
             )
@@ -127,7 +123,8 @@ def register():
             # Insertar perfil del usuario en la tabla `profiles`
             cur.execute(
                 """
-                INSERT INTO profiles (user_id, first_name, last_name, gender, sexual_orientation, birthdate, city, latitude, longitude, profile_picture, bio)
+                INSERT INTO profiles 
+                (user_id, first_name, last_name, gender, sexual_orientation, birthdate, city, latitude, longitude, profile_picture, bio)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, '', '')
                 """,
                 (user_id, first_name, last_name, gender, sexual_orientation, birthdate, city, latitude, longitude)
@@ -146,11 +143,8 @@ def register():
 
     return render_template("register.html")
 
-
-# ─── USER LOGIN ─────────────────────────────────────────────────────
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-    """Inicio de sesión del usuario con verificación de perfil completo."""
     if request.method == 'POST':
         email = request.form.get("email")
         password = request.form.get("password")
@@ -158,39 +152,30 @@ def login():
         conn = get_db_connection()
         cur = conn.cursor()
         try:
-            cur.execute("SELECT id, username, password FROM users WHERE email = %s", (email,))
+            cur.execute("SELECT id, username, password, is_verified FROM users WHERE email = %s", (email,))
             user = cur.fetchone()
 
             if user and check_password(password, user[2]):
                 session['user_id'] = user[0]
                 session['username'] = user[1]
-                print(f"DEBUG: User {user[1]} logged in with ID {user[0]}")
 
-                # Verificar que el perfil esté completo
-                cur.execute("""
-                    SELECT first_name, last_name, bio, profile_picture 
-                    FROM profiles WHERE user_id = %s
-                """, (user[0],))
+                # Verificar si el perfil está completo y el usuario está verificado.
+                # Se puede usar la función edit_profile_and_stats o realizar una consulta específica.
+                cur.execute("SELECT first_name, last_name, bio, profile_picture FROM profiles WHERE user_id = %s", (user[0],))
                 profile = cur.fetchone()
-
-                # Verificar si hay intereses registrados
                 cur.execute("SELECT COUNT(*) FROM profile_interests WHERE user_id = %s", (user[0],))
                 interest_count = cur.fetchone()[0]
 
-                if not profile or any(field is None or field == '' for field in profile) or interest_count == 0:
-                    flash("Por favor, completa tu perfil, incluyendo la selección de intereses, antes de continuar.", "warning")
-                    print("DEBUG: Redirecting to edit_profile")
-                    return redirect(url_for('profiles.edit_profile'))
-
-                flash("¡Bienvenido de nuevo!", "success")
-                print("DEBUG: Redirecting to browse_profiles")
-                return redirect(url_for('profiles.browse_profiles'))
+                if user[3] and profile and all(profile) and interest_count > 0:
+                    flash("Inicio de sesión exitoso. Redirigiendo a Explore.", "success")
+                    return redirect(url_for('profiles.browse_profiles'))
+                else:
+                    flash("Inicio de sesión exitoso", "success")
+                    return redirect(url_for('auth.home'))
             else:
                 flash("Email o contraseña incorrectos", "danger")
-
         except Exception as e:
-            flash(f"Login error: {str(e)}", "danger")
-            print(f"ERROR: {str(e)}")
+            flash(f"Error al iniciar sesión: {str(e)}", "danger")
         finally:
             cur.close()
             conn.close()
@@ -198,7 +183,6 @@ def login():
     return render_template("login.html")
 
 
-# ─── LOGOUT ─────────────────────────────────────────────────────
 @auth_bp.route('/logout')
 def logout():
     """Termina la sesión del usuario y redirige a la página principal."""
@@ -206,8 +190,6 @@ def logout():
     flash("Has cerrado sesión exitosamente.", "success")
     return redirect(url_for('auth.home'))
 
-
-# ─── PASSWORD RECOVERY ─────────────────────────────────────────────
 @auth_bp.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
     """Maneja la recuperación de contraseña enviando un código de reinicio vía email."""
@@ -237,7 +219,6 @@ def forgot_password():
 
     return render_template("forgot_password.html")
 
-
 def send_email(to_email, reset_code):
     """Envía un email con el código de recuperación."""
     SMTP_SERVER = os.getenv("MAIL_SERVER", "smtp.gmail.com")
@@ -259,9 +240,6 @@ def send_email(to_email, reset_code):
     except Exception as e:
         print(f"❌ Error sending email: {e}")
 
-
-# ─── EMAIL VERIFICATION ─────────────────────────────────────────────
-# ── EMAIL VERIFICATION ─────────────────────────────────────────────
 @auth_bp.route('/verify-email/<token>', endpoint='confirm_email')
 def verify_email(token):
     """
@@ -284,5 +262,6 @@ def verify_email(token):
     
     flash("Tu correo ha sido verificado correctamente.", "success")
     return redirect(url_for('auth.home'))
+
 
 

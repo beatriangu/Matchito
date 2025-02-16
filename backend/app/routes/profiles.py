@@ -4,11 +4,10 @@ from flask import (
 from app.utils.db import get_db_connection
 from datetime import date
 
-profiles_bp = Blueprint("profiles", __name__)
-
 def get_user_id():
-    """Obtiene el ID del usuario de la sesión."""
     return session.get("user_id")
+
+profiles_bp = Blueprint("profiles", __name__)
 
 def get_city_from_ip(ip_address):
     """
@@ -24,13 +23,14 @@ VALID_INTERESTS = [
     "Swimming", "Yoga", "Volunteer Work", "Blogging"
 ]
 
-def get_profile_and_stats(user_id):
+def edit_profile_and_stats(user_id):
     """
     Recupera el perfil del usuario junto con sus estadísticas e intereses.
     """
     conn = get_db_connection()
     cur = conn.cursor()
     try:
+        # Obtener datos del perfil
         cur.execute("""
             SELECT first_name, last_name, bio, profile_picture, gender, sexual_orientation,
                    birthdate, city 
@@ -39,117 +39,84 @@ def get_profile_and_stats(user_id):
         """, (user_id,))
         profile = cur.fetchone()
 
+        # Si el perfil no existe, asignar None
+        if not profile:
+            profile = (None, None, None, None, None, None, None, None)
+
+        # Obtener estadísticas del usuario
         cur.execute("SELECT COUNT(*) FROM messages WHERE receiver_id = %s AND is_read = FALSE", (user_id,))
-        unread_messages = cur.fetchone()[0]
+        unread_messages = cur.fetchone() or (0,)
 
         cur.execute("SELECT COUNT(*) FROM notifications WHERE user_id = %s AND is_read = FALSE", (user_id,))
-        unread_notifications = cur.fetchone()[0]
+        unread_notifications = cur.fetchone() or (0,)
 
         cur.execute("SELECT COUNT(*) FROM likes WHERE liked_id = %s", (user_id,))
-        total_likes = cur.fetchone()[0]
+        total_likes = cur.fetchone() or (0,)
 
+        # Obtener intereses del usuario
         cur.execute("SELECT interest_id FROM profile_interests WHERE user_id = %s", (user_id,))
-        user_interests = [row[0] for row in cur.fetchall()]
-    
+        user_interests = [row[0] for row in cur.fetchall()] if cur.rowcount > 0 else []
+
     except Exception as e:
+        conn.rollback()  # Asegurar que la BD no quede en estado inconsistente
         flash(f"Error al cargar datos: {str(e)}", "danger")
-        profile, unread_messages, unread_notifications, total_likes, user_interests = None, 0, 0, 0, []
-    
+        profile, unread_messages, unread_notifications, total_likes, user_interests = (None, None, None, None, None, None, None, None), 0, 0, 0, []
+
     finally:
         cur.close()
         conn.close()
 
-    return profile, unread_messages, unread_notifications, total_likes, user_interests
+    return profile, unread_messages[0], unread_notifications[0], total_likes[0], user_interests
 
 @profiles_bp.route('/profile/edit', methods=['GET', 'POST'])
 def edit_profile():
-    """
-    Vista para crear o actualizar el perfil del usuario.
-    """
     user_id = get_user_id()
     if not user_id:
         flash("Debes iniciar sesión para editar tu perfil.", "danger")
         return redirect(url_for('auth.login'))
-
+    
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT first_name, last_name, bio, profile_picture FROM profiles WHERE user_id = %s", (user_id,))
+    profile = cur.fetchone()
+    cur.execute("SELECT COUNT(*) FROM profile_interests WHERE user_id = %s", (user_id,))
+    interest_count = cur.fetchone()[0]
+    cur.execute("SELECT is_verified FROM users WHERE id = %s", (user_id,))
+    is_verified = cur.fetchone()[0]
+    
+    if is_verified and profile and all(profile) and interest_count > 0:
+        flash("Tu perfil ya está completo. Redirigiendo a la página de exploración de perfiles.", "info")
+        return redirect(url_for('profiles.browse_profiles'))
+    
     if request.method == 'POST':
         first_name = request.form.get("first_name")
         last_name = request.form.get("last_name")
         bio = request.form.get("bio")
         profile_picture = request.form.get("profile_picture")
-        gender = request.form.get("gender")
-        sexual_orientation = request.form.get("sexual_orientation")
-        birthdate = request.form.get("birthdate")
-        city = request.form.get("city") or get_city_from_ip(request.remote_addr)
-        interests_raw = request.form.get("interests", "")
-        interests = [i.strip() for i in interests_raw.split(",") if i.strip() in VALID_INTERESTS]
-
-        if len(interests) > 4:
-            flash("Solo puedes seleccionar hasta 4 intereses.", "danger")
-            return redirect(url_for("profiles.edit_profile"))
-
+        
         if not all([first_name, last_name, bio, profile_picture]):
             flash("Todos los campos obligatorios deben completarse.", "danger")
             return redirect(url_for("profiles.edit_profile"))
 
-        conn = get_db_connection()
-        cur = conn.cursor()
-        try:
-            cur.execute("SELECT user_id FROM profiles WHERE user_id = %s", (user_id,))
-            exists = cur.fetchone() is not None
-
-            if exists:
-                cur.execute("""
-                    UPDATE profiles 
-                    SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s,
-                        gender = %s, sexual_orientation = %s, birthdate = %s, city = %s
-                    WHERE user_id = %s
-                """, (first_name, last_name, bio, profile_picture, gender, sexual_orientation, birthdate, city, user_id))
-                
-                cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
-            else:
-                cur.execute("""
-                    INSERT INTO profiles (user_id, first_name, last_name, bio, profile_picture,
-                                          gender, sexual_orientation, birthdate, city)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-                """, (user_id, first_name, last_name, bio, profile_picture, gender, sexual_orientation, birthdate, city))
-
-            for interest in interests:
-                cur.execute("""
-                    INSERT INTO profile_interests (user_id, interest_id)
-                    SELECT %s, id FROM interests WHERE name = %s
-                """, (user_id, interest))
-
-            conn.commit()
-            flash("¡Perfil guardado con éxito!", "success")
-            return redirect(url_for("profiles.browse_profiles"))
-
-        except Exception as e:
-            conn.rollback()
-            flash(f"Error al guardar el perfil: {str(e)}", "danger")
+        cur.execute("""
+            UPDATE profiles 
+            SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s 
+            WHERE user_id = %s
+        """, (first_name, last_name, bio, profile_picture, user_id))
+        conn.commit()
         
-        finally:
-            cur.close()
-            conn.close()
-
-    profile, unread_messages, unread_notifications, total_likes, user_interests = get_profile_and_stats(user_id)
-    completing = not profile or not profile[2] or not profile[3]
-    editing = not completing
-
-    return render_template(
-        "profile.html",
-        profile=profile,
-        unread_messages=unread_messages,
-        unread_notifications=unread_notifications,
-        total_likes=total_likes,
-        user_interests=user_interests,
-        completing=completing,
-        editing=editing
-    )
-
+        flash("¡Perfil actualizado con éxito!", "success")
+        return redirect(url_for("profiles.browse_profiles"))
+    
+    cur.close()
+    conn.close()
+    
+    return render_template("browse_profiles.html", profile=profile, completing=not profile or not all(profile), editing=bool(profile))
 @profiles_bp.route('/browse_profiles', methods=['GET'])
 def browse_profiles():
     """
     Muestra perfiles sugeridos (sin filtros avanzados).
+    Solo se accede a esta vista si el perfil del usuario está completo y verificado.
     """
     user_id = get_user_id()
     if not user_id:
@@ -159,8 +126,26 @@ def browse_profiles():
     conn = get_db_connection()
     cur = conn.cursor()
     try:
+        # Verificar si el usuario tiene el perfil completo y verificado
         cur.execute("""
-            SELECT id, username, profile_picture 
+            SELECT bio, profile_picture FROM profiles 
+            WHERE user_id = %s
+        """, (user_id,))
+        profile = cur.fetchone()
+
+        cur.execute("SELECT COUNT(*) FROM profile_interests WHERE user_id = %s", (user_id,))
+        interest_count = cur.fetchone() or (0,)
+
+        cur.execute("SELECT is_verified FROM users WHERE id = %s", (user_id,))
+        is_verified = cur.fetchone() or (False,)
+
+        if not profile or not all(profile) or interest_count[0] == 0 or not is_verified[0]:
+            flash("Debes completar tu perfil antes de ver sugerencias.", "warning")
+            return redirect(url_for('profiles.edit_profile'))
+
+        # Obtener perfiles sugeridos
+        cur.execute("""
+            SELECT users.id, users.username, profiles.profile_picture 
             FROM users
             JOIN profiles ON users.id = profiles.user_id
             WHERE users.id != %s
@@ -168,13 +153,17 @@ def browse_profiles():
             LIMIT 10;
         """, (user_id,))
         suggested_profiles = cur.fetchall()
-        return render_template("browse_profiles.html", profiles=suggested_profiles)
+
+        return render_template("view_profiles.html", profiles=suggested_profiles)
+    
     except Exception as e:
         flash(f"Error al cargar perfiles: {str(e)}", "danger")
         return redirect(url_for('profiles.edit_profile'))
+    
     finally:
         cur.close()
         conn.close()
+
 
 @profiles_bp.route('/view_profiles', methods=['GET'])
 def view_profiles():
@@ -187,32 +176,37 @@ def view_profiles():
         return redirect(url_for('auth.login'))
 
     page = request.args.get("page", 1, type=int)
-    offset = (page - 1) * 10  # Paginación de 10 en 10
+    limit = 10
+    offset = (page - 1) * limit  # Paginación de 10 en 10
 
     conn = get_db_connection()
     cur = conn.cursor()
     try:
         cur.execute("""
-            SELECT user_id, first_name, last_name, 
-                   COALESCE(city, 'Desconocido') AS city, 
-                   COALESCE(country, 'Desconocido') AS country, 
-                   profile_picture
+            SELECT profiles.user_id, profiles.first_name, profiles.last_name, 
+                   COALESCE(profiles.city, 'Desconocido') AS city, 
+                   COALESCE(profiles.country, 'Desconocido') AS country, 
+                   profiles.profile_picture
             FROM profiles
-            WHERE user_id != %s
+            WHERE profiles.user_id != %s
             ORDER BY RANDOM()
-            LIMIT 10 OFFSET %s;
-        """, (user_id, offset))
+            LIMIT %s OFFSET %s;
+        """, (user_id, limit, offset))
         suggested_profiles = cur.fetchall()
 
         cur.execute("SELECT COUNT(*) FROM profiles WHERE user_id != %s", (user_id,))
         total_profiles = cur.fetchone()[0]
-        total_pages = (total_profiles + 9) // 10  # Redondear hacia arriba
+        total_pages = (total_profiles + limit - 1) // limit  # Redondear hacia arriba
 
         return render_template("view_profiles.html", profiles=suggested_profiles, page=page, total_pages=total_pages)
+
     except Exception as e:
         flash(f"Error al cargar perfiles: {str(e)}", "danger")
         return redirect(url_for('profiles.browse_profiles'))
+
     finally:
         cur.close()
         conn.close()
+
+
 
