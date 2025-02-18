@@ -23,8 +23,10 @@ CREATE TABLE IF NOT EXISTS profiles (
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
     city VARCHAR(255),
-    profile_picture VARCHAR(255)
+    profile_picture VARCHAR(255),
+    fame_rating INTEGER DEFAULT 0
 );
+
 
 -- 🔹 Tabla de intereses (tags)
 CREATE TABLE IF NOT EXISTS interests (
