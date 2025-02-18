@@ -75,6 +75,29 @@
                        value="{{ profile.profile_picture if profile else '' }}" 
                        placeholder="Profile Picture URL">
             </div>
+            <!-- Género -->
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender:</label>
+                <select name="gender" id="gender" class="form-control" required>
+                    <option value="Masculino" {% if profile.gender == 'Masculino' %}selected{% endif %}>Masculino</option>
+                    <option value="Femenino" {% if profile.gender == 'Femenino' %}selected{% endif %}>Femenino</option>
+                    <option value="No binario" {% if profile.gender == 'No binario' %}selected{% endif %}>No binario</option>
+                    <option value="Otro" {% if profile.gender == 'Otro' %}selected{% endif %}>Otro</option>
+                    <option value="Prefiero no decirlo" {% if profile.gender == 'Prefiero no decirlo' %}selected{% endif %}>Prefiero no decirlo</option>
+                </select>
+            </div>
+            <!-- Orientación Sexual -->
+            <div class="mb-3">
+                <label for="sexual_orientation" class="form-label">Sexual Orientation:</label>
+                <select name="sexual_orientation" id="sexual_orientation" class="form-control" required>
+                    <option value="Heterosexual" {% if profile.sexual_orientation == 'Heterosexual' %}selected{% endif %}>Heterosexual</option>
+                    <option value="Homosexual" {% if profile.sexual_orientation == 'Homosexual' %}selected{% endif %}>Homosexual</option>
+                    <option value="Bisexual" {% if profile.sexual_orientation == 'Bisexual' %}selected{% endif %}>Bisexual</option>
+                    <option value="Asexual" {% if profile.sexual_orientation == 'Asexual' %}selected{% endif %}>Asexual</option>
+                    <option value="Otro" {% if profile.sexual_orientation == 'Otro' %}selected{% endif %}>Otro</option>
+                    <option value="Prefiero no decirlo" {% if profile.sexual_orientation == 'Prefiero no decirlo' %}selected{% endif %}>Prefiero no decirlo</option>
+                </select>
+            </div>
             <!-- Intereses -->
             <div class="mb-3">
                 <label for="interests" class="form-label">Interests:</label>
@@ -116,6 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 {% endblock %}
+
 
 
 

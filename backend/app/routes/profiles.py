@@ -78,60 +78,38 @@ def edit_profile():
     
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("SELECT first_name, last_name, bio, profile_picture FROM profiles WHERE user_id = %s", (user_id,))
+    cur.execute("""
+        SELECT first_name, last_name, bio, profile_picture, gender, sexual_orientation
+        FROM profiles WHERE user_id = %s
+    """, (user_id,))
     profile = cur.fetchone()
-    cur.execute("SELECT COUNT(*) FROM profile_interests WHERE user_id = %s", (user_id,))
-    interest_count = cur.fetchone()[0]
-    
-    is_verified = True  # Se omiten comprobaciones y siempre se considera verificado
     
     if request.method == 'POST':
         first_name = request.form.get("first_name")
         last_name = request.form.get("last_name")
         bio = request.form.get("bio")
         profile_picture = request.form.get("profile_picture")
-        interests_json = request.form.get("interests")
+        gender = request.form.get("gender")
+        sexual_orientation = request.form.get("sexual_orientation")
         
-        try:
-            interests = [i["value"] for i in json.loads(interests_json)]
-        except (json.JSONDecodeError, TypeError, ValueError):
-            interests = []
-
-        if not all([first_name, last_name, bio, profile_picture]) or not interests:
-            flash("Todos los campos obligatorios y al menos un interés deben completarse.", "danger")
+        if not all([first_name, last_name, bio, gender, sexual_orientation]):
+            flash("Todos los campos son obligatorios.", "danger")
             return redirect(url_for("profiles.edit_profile"))
 
-        # Actualizar perfil
         cur.execute("""
             UPDATE profiles 
-            SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s 
+            SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s, gender = %s, sexual_orientation = %s
             WHERE user_id = %s
-        """, (first_name, last_name, bio, profile_picture, user_id))
+        """, (first_name, last_name, bio, profile_picture, gender, sexual_orientation, user_id))
         conn.commit()
 
-        # Borrar intereses previos y agregar nuevos
-        cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
-
-        # Convertir nombres de intereses a IDs antes de insertarlos
-        interest_ids = []
-        for interest in interests:
-            cur.execute("SELECT id FROM interests WHERE name = %s LIMIT 1", (interest,))
-            interest_id = cur.fetchone()
-            if interest_id:
-                interest_ids.append(interest_id[0])
-
-        # Insertar intereses en la base de datos
-        for interest_id in interest_ids:
-            cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
-        conn.commit()
-
-        flash("¡Perfil actualizado con éxito! Ahora puedes explorar perfiles.", "success")
+        flash("¡Perfil actualizado con éxito!", "success")
         return redirect(url_for("profiles.browse_profiles"))
-    
+
     cur.close()
     conn.close()
     
-    return render_template("profile.html", profile=profile, completing=not profile or not all(profile), editing=bool(profile))
+    return render_template("profile.html", profile=profile, editing=True)
 
 @profiles_bp.route('/browse_profiles', methods=['GET'])
 def browse_profiles():
