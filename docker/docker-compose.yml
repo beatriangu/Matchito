@@ -34,7 +34,8 @@ services:
     env_file:
       - ../.env
     volumes:
-      - ../backend:/app/backend  # 🔥 Asegura que esta línea está presente
+      - ../backend:/app/backend
+      - ../database:/app/database    # Agrega esta línea para montar la carpeta "database"
     networks:
       - matchito_network
 
@@ -70,7 +71,6 @@ networks:
 
 volumes:
   pg_data:
-
 
 
 

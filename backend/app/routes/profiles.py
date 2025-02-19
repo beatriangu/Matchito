@@ -40,7 +40,7 @@ def edit_profile_and_stats(user_id):
         """, (user_id,))
         profile = cur.fetchone()
 
-        # Si el perfil no existe, asignar None
+        # Si el perfil no existe, asignar valores None
         if not profile:
             profile = (None, None, None, None, None, None, None, None)
 
@@ -54,14 +54,14 @@ def edit_profile_and_stats(user_id):
         cur.execute("SELECT COUNT(*) FROM likes WHERE liked_id = %s", (user_id,))
         total_likes = cur.fetchone() or (0,)
 
-        # Obtener intereses del usuario
+        # Obtener intereses del usuario (se obtienen los ids, luego se pueden mapear a nombres en la vista)
         cur.execute("SELECT interest_id FROM profile_interests WHERE user_id = %s", (user_id,))
         user_interests = [row[0] for row in cur.fetchall()] if cur.rowcount > 0 else []
 
     except Exception as e:
         conn.rollback()  # Asegurar que la BD no quede en estado inconsistente
         flash(f"Error al cargar datos: {str(e)}", "danger")
-        profile, unread_messages, unread_notifications, total_likes, user_interests = (None, None, None, None, None, None, None, None), 0, 0, 0, []
+        profile, unread_messages, unread_notifications, total_likes, user_interests = (None,)*8, 0, 0, 0, []
 
     finally:
         cur.close()
@@ -91,16 +91,45 @@ def edit_profile():
         profile_picture = request.form.get("profile_picture")
         gender = request.form.get("gender")
         sexual_orientation = request.form.get("sexual_orientation")
+        interests_data = request.form.get("interests")  # Campo de intereses enviado desde Tagify o similar
         
         if not all([first_name, last_name, bio, gender, sexual_orientation]):
             flash("Todos los campos son obligatorios.", "danger")
             return redirect(url_for("profiles.edit_profile"))
 
+        # Actualizar campos básicos del perfil
         cur.execute("""
             UPDATE profiles 
             SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s, gender = %s, sexual_orientation = %s
             WHERE user_id = %s
         """, (first_name, last_name, bio, profile_picture, gender, sexual_orientation, user_id))
+        
+        # Procesar y actualizar los intereses
+        if interests_data:
+            try:
+                # Intentar parsear como JSON (por ejemplo, si se envía desde Tagify)
+                interests = json.loads(interests_data)
+                # Se espera una lista de intereses (cadenas)
+                valid_interests = [interest for interest in interests if interest in VALID_INTERESTS]
+            except json.JSONDecodeError:
+                # Fallback: cadena separada por comas
+                interests = [interest.strip() for interest in interests_data.split(',')]
+                valid_interests = [interest for interest in interests if interest in VALID_INTERESTS]
+            
+            # Eliminar intereses existentes para el usuario
+            cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
+            # Insertar los nuevos intereses válidos (ahora convirtiendo el nombre al id de la tabla interests)
+            for interest in valid_interests:
+                # Buscar el id del interés en la tabla 'interests'
+                cur.execute("SELECT id FROM interests WHERE name = %s", (interest,))
+                result = cur.fetchone()
+                if result:
+                    interest_id = result[0]
+                    cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
+                else:
+                    # Si el interés no existe en la tabla, se puede optar por ignorarlo o insertarlo (según la lógica de la aplicación)
+                    flash(f"Interés '{interest}' no reconocido.", "warning")
+        
         conn.commit()
 
         flash("¡Perfil actualizado con éxito!", "success")
@@ -120,13 +149,27 @@ def browse_profiles():
     
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("SELECT id, username, profile_picture FROM users JOIN profiles ON users.id = profiles.user_id WHERE users.id != %s ORDER BY RANDOM() LIMIT 10;", (user_id,))
-    suggested_profiles = cur.fetchall()
+    cur.execute("""
+        SELECT p.user_id, p.first_name, p.last_name, p.birthdate, p.city, p.profile_picture,
+               COALESCE(
+                 (SELECT string_agg(i.name, ', ')
+                  FROM profile_interests pi
+                  JOIN interests i ON pi.interest_id = i.id
+                  WHERE pi.user_id = p.user_id),
+                 'No interests provided'
+               ) AS interests,
+               FALSE AS mutual_like
+        FROM profiles p
+        WHERE p.user_id != %s
+        ORDER BY RANDOM()
+        LIMIT 10;
+    """, (user_id,))
+    columns = [desc[0] for desc in cur.description]
+    suggested_profiles = [dict(zip(columns, row)) for row in cur.fetchall()]
     cur.close()
     conn.close()
-    
+    print(suggested_profiles, flush=True)
     return render_template("browse_profiles.html", profiles=suggested_profiles)
-
 
 @profiles_bp.route('/view_profiles', methods=['GET'])
 def view_profiles():
@@ -148,7 +191,6 @@ def view_profiles():
         cur.execute("""
             SELECT profiles.user_id, profiles.first_name, profiles.last_name, 
                    COALESCE(profiles.city, 'Desconocido') AS city, 
-                   COALESCE(profiles.country, 'Desconocido') AS country, 
                    profiles.profile_picture
             FROM profiles
             WHERE profiles.user_id != %s
@@ -170,6 +212,43 @@ def view_profiles():
     finally:
         cur.close()
         conn.close()
+
+@profiles_bp.route('/profiles/matches', methods=['GET'])
+def match_profiles():
+    user_id = get_user_id()
+    if not user_id:
+        flash("Debes iniciar sesión para ver los matches.", "danger")
+        return redirect(url_for('auth.login'))
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        cur.execute("""
+            SELECT u.id, u.username, p.profile_picture, p.fame_rating, p.city, 
+                   COUNT(pi_common.interest_id) AS common_interests
+            FROM users u
+            JOIN profiles p ON u.id = p.user_id
+            LEFT JOIN profile_interests pi_common ON pi_common.user_id = u.id 
+                AND pi_common.interest_id IN (
+                    SELECT interest_id FROM profile_interests WHERE user_id = %s
+                )
+            WHERE u.id != %s
+              AND p.city = (SELECT city FROM profiles WHERE user_id = %s)
+            GROUP BY u.id, u.username, p.profile_picture, p.fame_rating, p.city
+            ORDER BY common_interests DESC, p.fame_rating ASC
+            LIMIT 10;
+        """, (user_id, user_id, user_id))
+        matches = cur.fetchall()
+    except Exception as e:
+        conn.rollback()
+        flash(f"Error al obtener matches: {e}", "danger")
+        matches = []
+    finally:
+        cur.close()
+        conn.close()
+
+    return render_template("matches.html", matches=matches)
+
 
 
 

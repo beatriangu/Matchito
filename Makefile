@@ -65,7 +65,10 @@ clean:
 update-requirements:
 	pip freeze > backend/requirements.txt
 
+.PHONY: seed-interactions
 
+seed-interactions:
+	docker exec -it $(BACKEND_CONTAINER) python /app/database/seed_interactions.py
 
 
 
