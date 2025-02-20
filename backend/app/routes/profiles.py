@@ -172,15 +172,20 @@ def browse_profiles():
     conn = get_db_connection()
     cur = conn.cursor()
     try:
-        # Join with users to get last_seen for online status.
+        # Obtener los perfiles junto con los intereses agregados
         cur.execute("""
             SELECT p.user_id, p.first_name, p.last_name, p.bio, p.profile_picture, 
-                   p.fame_rating, p.city, p.birthdate, u.last_seen
+                   p.fame_rating, p.city, p.birthdate, u.last_seen,
+                   ARRAY_AGG(i.name) AS interests
             FROM profiles p
             JOIN users u ON p.user_id = u.id
+            LEFT JOIN profile_interests pi ON p.user_id = pi.user_id
+            LEFT JOIN interests i ON pi.interest_id = i.id
             WHERE p.user_id != %s
+            GROUP BY p.user_id, u.last_seen
             ORDER BY p.fame_rating DESC
         """, (user_id,))
+        
         rows = cur.fetchall()
         profiles = []
         for row in rows:
@@ -194,7 +199,8 @@ def browse_profiles():
                 'fame_rating': row[5],
                 'city': row[6],
                 'birthdate': row[7],
-                'status': status
+                'status': status,
+                'interests': row[9] if row[9] else []  # Asegurar que haya una lista vacía si no tiene intereses
             })
     except Exception as e:
         conn.rollback()
@@ -205,6 +211,7 @@ def browse_profiles():
         conn.close()
     
     return render_template("browse_profiles.html", profiles=profiles)
+
 
 @profiles_bp.route('/profile/<int:profile_id>', methods=['GET'])
 def view_profile(profile_id):

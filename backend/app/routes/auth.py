@@ -99,29 +99,37 @@ def register():
         city = request.form.get("city")
         latitude = request.form.get("latitude")
         longitude = request.form.get("longitude")
+        interests = request.form.getlist("interests")  # Recoge los intereses como lista
 
-        print(f"DEBUG: City before geolocation = {city}")
+        print(f"DEBUG: Intereses seleccionados en el formulario: {interests}")
 
+        # Validar que todos los campos obligatorios estén llenos
+        if not all([username, email, password, first_name, last_name, gender, sexual_orientation, birthdate]):
+            flash("Todos los campos son obligatorios.", "danger")
+            return redirect(url_for('auth.register'))
+
+        # Geolocalización si no se proporciona manualmente
         if not city or not latitude or not longitude:
             try:
                 response = requests.get("https://ipapi.co/json/")
                 location_data = response.json()
                 city = city or location_data.get("city", location_data.get("region", "Unknown"))
-                latitude = latitude or location_data.get("latitude", None)
-                longitude = longitude or location_data.get("longitude", None)
-                print(f"DEBUG: Geolocation fetched - City: {city}, Latitude: {latitude}, Longitude: {longitude}")
+                latitude = latitude or location_data.get("latitude", 0.0)
+                longitude = longitude or location_data.get("longitude", 0.0)
+                print(f"DEBUG: Geolocalización obtenida - Ciudad: {city}, Latitud: {latitude}, Longitud: {longitude}")
             except Exception as e:
-                print(f"ERROR: Could not get geolocation: {str(e)}")
+                print(f"ERROR: No se pudo obtener la geolocalización: {str(e)}")
                 city = "Unknown"
-                latitude = None
-                longitude = None
+                latitude = 0.0
+                longitude = 0.0
 
-        print(f"DEBUG: Final City = {city}, Latitude = {latitude}, Longitude = {longitude}")
+        print(f"DEBUG: Ciudad final = {city}, Latitud = {latitude}, Longitud = {longitude}")
 
         hashed_password = hash_password(password)
         conn = get_db_connection()
         cur = conn.cursor()
         try:
+            # Insertar usuario en la base de datos con is_verified=True
             cur.execute(
                 """
                 INSERT INTO users (username, email, password, is_verified, created_at)
@@ -129,14 +137,13 @@ def register():
                 """,
                 (username, email, hashed_password)
             )
-            user_id = cur.fetchone()[0]
+            user_result = cur.fetchone()
+            if not user_result:
+                flash("Error al registrar usuario.", "danger")
+                return redirect(url_for('auth.register'))
+            user_id = user_result[0]
 
-            # Asignar sesión para loguear al usuario automáticamente
-            session['user_id'] = user_id
-            session['username'] = username
-
-            send_verification_email(email, get_serializer())
-
+            # Crear perfil en la tabla `profiles`
             cur.execute(
                 """
                 INSERT INTO profiles 
@@ -146,16 +153,33 @@ def register():
                 (user_id, first_name, last_name, gender, sexual_orientation, birthdate, city, latitude, longitude)
             )
 
+            # 🔹 Insertar intereses en `profile_interests`
+            if interests:
+                cur.execute("SELECT id, name FROM interests WHERE name IN %s", (tuple(interests),))
+                interest_map = {name: id for id, name in cur.fetchall()}
+                
+                for interest in interests:
+                    if interest in interest_map:
+                        cur.execute(
+                            "INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)",
+                            (user_id, interest_map[interest])
+                        )
+
             conn.commit()
-            flash("Registro exitoso. Por favor, completa tu perfil.", "success")
-            return redirect(url_for('profiles.edit_profile'))
+
+            # ✅ Se omite el envío de correo de verificación porque is_verified=True
+            flash("Registro exitoso. Por favor, inicia sesión.", "success")
+            return redirect(url_for('auth.login'))
+
         except Exception as e:
             conn.rollback()
             flash(f"Error durante el registro: {str(e)}", "danger")
         finally:
             cur.close()
             conn.close()
+
     return render_template("register.html")
+
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():

@@ -1,24 +1,27 @@
 {% extends "base.html" %}
-{% set background_image = url_for('static', filename='images/home_background.jpg') %}
+
+{% block title %}Welcome to Matcha{% endblock %}
 
 {% block content %}
-<div class="main-content text-center">
-    <h1 class="display-4 text-white mb-3">Welcome to Match@</h1>
-    <p class="lead text-white mb-4">Your platform to connect and explore!</p>
-    
-    {% if not session.get('user_id') %}
-    <div class="d-flex flex-column align-items-end gap-3">
-            <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">📝 Register</a>
-            <a href="{{ url_for('auth.login') }}" class="btn btn-secondary btn-lg">🔑 Login</a>
-        </div>
-    {% else %}
-    <div class="d-flex flex-column align-items-end gap-3">
-            <a href="{{ url_for('profiles.edit_profile') }}" class="btn btn-custom-profile btn-lg">👤 My Profile</a>
-            <a href="{{ url_for('auth.logout') }}" class="btn btn-danger btn-lg">🚪 Logout</a>
-        </div>
-    {% endif %}
+<div class="container text-center mt-5">
+    <h1 class="text-white">Welcome to Matcha</h1>
+    <p class="text-light">Find and connect with people who share your interests!</p>
+
+    <div class="mt-4">
+        {% if session.get('user_id') %}
+            <!-- Si el usuario está autenticado -->
+            <a href="{{ url_for('profiles.browse_profiles') }}" class="btn btn-primary btn-lg mx-2">Browse Profiles</a>
+            <a href="{{ url_for('profiles.edit_profile') }}" class="btn btn-secondary btn-lg mx-2">Edit Profile</a>
+            <a href="{{ url_for('auth.logout') }}" class="btn btn-danger btn-lg mx-2">Logout</a>
+        {% else %}
+            <!-- Si el usuario NO está autenticado -->
+            <a href="{{ url_for('auth.login') }}" class="btn btn-success btn-lg mx-2">Login</a>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-outline-light btn-lg mx-2">Register</a>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
+
 
 
 

@@ -68,8 +68,10 @@
               {{ profile.city if profile.city else "Unknown" }}
             </p>
         
-            <!-- Interests -->
-            <p><strong>Interests:</strong> {{ profile.interests if profile.interests else "No interests provided" }}</p>
+            <!-- Interests (Corrected) -->
+            <p><strong>Interests:</strong> 
+              {{ profile.interests | join(', ') if profile.interests else "No interests provided" }}
+            </p>
         
             <!-- Action Buttons -->
             <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
@@ -125,6 +127,7 @@ function reportUser(userId) {
 }
 </script>
 {% endblock %}
+
 
 
 
