@@ -20,6 +20,15 @@ def give_like():
     cur = conn.cursor()
 
     try:
+        # Validar que el usuario que da like tenga una foto de perfil
+        cur.execute("SELECT profile_picture FROM profiles WHERE user_id = %s", (liker_id,))
+        profile = cur.fetchone()
+        if not profile or not profile[0]:
+            cur.close()
+            conn.close()
+            return jsonify({"error": "No tienes foto de perfil. Sube una foto de perfil para dar like."}), 400
+
+        # Intentar insertar el like
         cur.execute("""
             INSERT INTO likes (liker_id, liked_id)
             VALUES (%s, %s)
@@ -28,6 +37,7 @@ def give_like():
         """, (liker_id, liked_id))
         result = cur.fetchone()
 
+        # Si se insertó el like, se incrementa el fame_rating del usuario que recibe el like
         if result:
             cur.execute("""
                 UPDATE profiles
@@ -37,6 +47,7 @@ def give_like():
 
         conn.commit()
 
+        # Verificar si hay match (si el otro usuario también dio like)
         cur.execute("""
             SELECT 1 FROM likes WHERE liker_id = %s AND liked_id = %s;
         """, (liked_id, liker_id))
@@ -45,7 +56,9 @@ def give_like():
         cur.close()
         conn.close()
 
-        return jsonify({"message": "¡Es un match!" if is_match else "Like registrado"}), 200
+        if is_match:
+            return jsonify({"message": "¡Es un match!"}), 200
+        return jsonify({"message": "Like registrado"}), 200
 
     except Exception as e:
         conn.rollback()
@@ -172,6 +185,7 @@ def get_matches(user_id):
     finally:
         cur.close()
         conn.close()
+
 
 
 

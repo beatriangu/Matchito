@@ -82,7 +82,8 @@ with open(sql_file_path, "w") as sql_file:
     sql_file.write("DELETE FROM interests;\n")
     sql_file.write("DELETE FROM profiles;\n")
     sql_file.write("DELETE FROM users;\n")
-    sql_file.write("DELETE FROM likes;\n\n")
+    sql_file.write("DELETE FROM likes;\n")
+    sql_file.write("DELETE FROM user_pictures;\n\n")
 
     # Reiniciar secuencia de usuarios (no hay secuencia para profiles, ya que user_id es una FK)
     sql_file.write("ALTER SEQUENCE users_id_seq RESTART WITH 1;\n\n")
@@ -109,8 +110,7 @@ with open(sql_file_path, "w") as sql_file:
 
         gender = user["gender"]
 
-        # En lugar de usar las coordenadas originales y reverse_geocode,
-        # asignamos aleatoriamente una ciudad de la lista predefinida.
+        # Asignar aleatoriamente una ciudad de la lista predefinida
         selected_city = random.choice(cities)
         city = selected_city['name'].replace("'", "''")
         # Nota: en la lista, 'coords' está en el orden [longitud, latitud]
@@ -121,7 +121,7 @@ with open(sql_file_path, "w") as sql_file:
         bio = f"Hi, I'm {first_name} and I love meeting new people!".replace("'", "''")
         birthdate = random_birthdate().strftime('%Y-%m-%d')
 
-        # Extraer URL de la foto de perfil
+        # Extraer URL de la foto de perfil (foto grande)
         profile_picture = user["picture"]["large"] if user["picture"]["large"] else ''
         profile_picture = profile_picture.replace("'", "''")
 
@@ -132,11 +132,29 @@ with open(sql_file_path, "w") as sql_file:
         )
 
         # Insertar en la tabla `profiles`, usando LASTVAL() para obtener el id insertado en users.
-        # Se incluye la ciudad y las coordenadas seleccionadas de la lista predefinida.
         sql_file.write(
             f"INSERT INTO profiles (user_id, first_name, last_name, gender, sexual_orientation, birthdate, bio, city, latitude, longitude, profile_picture) "
             f"VALUES (LASTVAL(), '{first_name}', '{last_name}', '{gender}', '{sexual_orientation}', '{birthdate}', '{bio}', '{city}', {latitude}, {longitude}, '{profile_picture}');\n\n"
         )
+
+        # Insertar fotos en la tabla user_pictures
+        # Insertar la foto principal
+        sql_file.write(
+            f"INSERT INTO user_pictures (user_id, picture_url, is_profile_picture) VALUES (LASTVAL(), '{profile_picture}', TRUE);\n"
+        )
+        # Insertar fotos adicionales: medium y thumbnail (si existen)
+        additional_photos = []
+        if user["picture"].get("medium"):
+            additional_photos.append(user["picture"]["medium"])
+        if user["picture"].get("thumbnail"):
+            additional_photos.append(user["picture"]["thumbnail"])
+        for photo in additional_photos:
+            photo_url = photo.replace("'", "''") if photo else ''
+            if photo_url:
+                sql_file.write(
+                    f"INSERT INTO user_pictures (user_id, picture_url, is_profile_picture) VALUES (LASTVAL(), '{photo_url}', FALSE);\n"
+                )
+        sql_file.write("\n")
     
     # Inserción de 20 intereses en inglés en la tabla `interests`
     sql_file.write("-- Insert interests\n")
@@ -161,6 +179,7 @@ CROSS JOIN LATERAL (
 """)
     
     sql_file.write("\n-- ✅ Data inserted successfully\n")
+
 
 
 

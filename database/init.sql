@@ -1,5 +1,5 @@
 -- 🔹 Borrar tablas si existen (para evitar conflictos)
-DROP TABLE IF EXISTS reports, notifications, messages, matches, profile_interests, interests, profiles, users, likes CASCADE;
+DROP TABLE IF EXISTS reports, notifications, messages, matches, profile_interests, interests, profiles, users, likes, user_pictures, profile_views, blocked_users CASCADE;
 
 -- 🔹 Tabla de usuarios
 CREATE TABLE IF NOT EXISTS users (
@@ -8,6 +8,8 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     is_verified BOOLEAN DEFAULT FALSE,
+    reset_code VARCHAR(255),            -- Campo para restablecimiento de contraseña
+    last_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Para registrar la última conexión o estado en línea
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -23,10 +25,9 @@ CREATE TABLE IF NOT EXISTS profiles (
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
     city VARCHAR(255),
-    profile_picture VARCHAR(255),
+    profile_picture VARCHAR(255),  -- Puedes usar esta columna para una imagen principal o dejarla para compatibilidad
     fame_rating INTEGER DEFAULT 0
 );
-
 
 -- 🔹 Tabla de intereses (tags)
 CREATE TABLE IF NOT EXISTS interests (
@@ -93,7 +94,7 @@ CREATE TABLE IF NOT EXISTS notifications (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 🔹 Tabla de reportes y bloqueos
+-- 🔹 Tabla de reportes y bloqueos (reportes de usuarios)
 CREATE TABLE IF NOT EXISTS reports (
     id SERIAL PRIMARY KEY,
     reporter_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
@@ -109,6 +110,32 @@ CREATE TABLE IF NOT EXISTS likes (
     liked_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (liker_id, liked_id)
+);
+
+-- 🔹 Tabla para múltiples imágenes de perfil
+CREATE TABLE IF NOT EXISTS user_pictures (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    picture_url VARCHAR(255) NOT NULL,
+    is_profile_picture BOOLEAN DEFAULT FALSE,  -- Indica cuál es la imagen principal
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 🔹 Tabla para historial de visitas a perfiles
+CREATE TABLE IF NOT EXISTS profile_views (
+    id SERIAL PRIMARY KEY,
+    viewer_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    viewed_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    viewed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 🔹 Tabla para bloqueos de usuarios
+CREATE TABLE IF NOT EXISTS blocked_users (
+    id SERIAL PRIMARY KEY,
+    blocker_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    blocked_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    blocked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (blocker_id, blocked_id)
 );
 
 -- 🔹 Índices para mejorar performance

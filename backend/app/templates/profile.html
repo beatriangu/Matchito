@@ -11,14 +11,13 @@
         background: url("{{ background_image }}") no-repeat center center fixed;
         background-size: cover;
     }
-    /* Contenedor centrado horizontalmente y ubicado en la parte inferior */
     .profile-container {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         align-items: center;
         height: 100vh;
-        padding-bottom: 20px; /* Espacio desde el borde inferior */
+        padding-bottom: 20px;
     }
     .profile-form-container {
         max-width: 450px;
@@ -36,13 +35,12 @@
     .form-control::placeholder {
         color: rgba(255, 255, 255, 0.7);
     }
-    .profile-image-placeholder {
-        display: none;
-    }
-    @media (max-width: 992px) {
-        .profile-container {
-            padding-bottom: 10px;
-        }
+    .fame-rating {
+        font-size: 20px;
+        font-weight: bold;
+        color: gold;
+        text-align: center;
+        margin-top: 10px;
     }
 </style>
 
@@ -52,41 +50,40 @@
             {{ "Edit Your Profile" if editing else "Complete Your Profile" }}
         </h1>
 
+        <!-- Fame Rating Section -->
+        <div class="fame-rating">
+            ⭐ Fame Rating: {{ profile.fame_rating if profile and profile.fame_rating else 0 }}
+        </div>
+
         <form action="{{ url_for('profiles.edit_profile') }}" method="POST" enctype="multipart/form-data" class="text-center">
-            <!-- Nombre -->
             <div class="mb-3">
                 <input type="text" name="first_name" class="form-control" 
                        value="{{ profile.first_name if profile else (user.first_name if user else '') }}" 
                        placeholder="First Name" required>
             </div>
-            <!-- Apellidos -->
             <div class="mb-3">
                 <input type="text" name="last_name" class="form-control" 
                        value="{{ profile.last_name if profile else (user.last_name if user else '') }}" 
                        placeholder="Last Name" required>
             </div>
-            <!-- Biografía -->
             <div class="mb-3">
                 <textarea name="bio" class="form-control" placeholder="Tell us about yourself" required>{{ profile.bio if profile else '' }}</textarea>
             </div>
-            <!-- Foto de Perfil -->
             <div class="mb-3">
                 <input type="text" name="profile_picture" class="form-control" 
                        value="{{ profile.profile_picture if profile else '' }}" 
                        placeholder="Profile Picture URL">
             </div>
-            <!-- Género -->
             <div class="mb-3">
                 <label for="gender" class="form-label">Gender:</label>
                 <select name="gender" id="gender" class="form-control" required>
-                    <option value="Masculino" {% if profile.gender == 'Masculino' %}selected{% endif %}>Masculino</option>
-                    <option value="Femenino" {% if profile.gender == 'Femenino' %}selected{% endif %}>Femenino</option>
-                    <option value="No binario" {% if profile.gender == 'No binario' %}selected{% endif %}>No binario</option>
-                    <option value="Otro" {% if profile.gender == 'Otro' %}selected{% endif %}>Otro</option>
-                    <option value="Prefiero no decirlo" {% if profile.gender == 'Prefiero no decirlo' %}selected{% endif %}>Prefiero no decirlo</option>
+                    <option value="Male" {% if profile.gender == 'Male' %}selected{% endif %}>Male</option>
+                    <option value="Female" {% if profile.gender == 'Female' %}selected{% endif %}>Female</option>
+                    <option value="Non-binary" {% if profile.gender == 'Non-binary' %}selected{% endif %}>Non-binary</option>
+                    <option value="Other" {% if profile.gender == 'Other' %}selected{% endif %}>Other</option>
+                    <option value="Prefer not to say" {% if profile.gender == 'Prefer not to say' %}selected{% endif %}>Prefer not to say</option>
                 </select>
             </div>
-            <!-- Orientación Sexual -->
             <div class="mb-3">
                 <label for="sexual_orientation" class="form-label">Sexual Orientation:</label>
                 <select name="sexual_orientation" id="sexual_orientation" class="form-control" required>
@@ -94,11 +91,10 @@
                     <option value="Homosexual" {% if profile.sexual_orientation == 'Homosexual' %}selected{% endif %}>Homosexual</option>
                     <option value="Bisexual" {% if profile.sexual_orientation == 'Bisexual' %}selected{% endif %}>Bisexual</option>
                     <option value="Asexual" {% if profile.sexual_orientation == 'Asexual' %}selected{% endif %}>Asexual</option>
-                    <option value="Otro" {% if profile.sexual_orientation == 'Otro' %}selected{% endif %}>Otro</option>
-                    <option value="Prefiero no decirlo" {% if profile.sexual_orientation == 'Prefiero no decirlo' %}selected{% endif %}>Prefiero no decirlo</option>
+                    <option value="Other" {% if profile.sexual_orientation == 'Other' %}selected{% endif %}>Other</option>
+                    <option value="Prefer not to say" {% if profile.sexual_orientation == 'Prefer not to say' %}selected{% endif %}>Prefer not to say</option>
                 </select>
             </div>
-            <!-- Intereses -->
             <div class="mb-3">
                 <label for="interests" class="form-label">Interests:</label>
                 <input name="interests" id="interests-input" class="form-control" placeholder="Enter interests">
@@ -113,7 +109,6 @@
     </div>
 </div>
 
-<!-- Include Tagify Library -->
 <link rel="stylesheet" href="https://unpkg.com/@yaireo/tagify/dist/tagify.css">
 <script src="https://unpkg.com/@yaireo/tagify"></script>
 <script>
@@ -133,12 +128,13 @@ document.addEventListener("DOMContentLoaded", function() {
             closeOnSelect: false
         }
     });
-    // Pre-cargar intereses existentes (se espera que user_interests sea una lista)
+
     var existingInterests = [{% for interest in user_interests %}"{{ interest }}",{% endfor %}];
     tagify.addTags(existingInterests);
 });
 </script>
 {% endblock %}
+
 
 
 

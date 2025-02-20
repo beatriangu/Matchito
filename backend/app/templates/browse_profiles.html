@@ -8,7 +8,7 @@
   <h1 class="text-center text-white mt-4">Suggested Profiles</h1>
   
   <!-- Advanced Search / Filtering Form -->
-  <form action="{{ url_for('profiles.view_profiles') }}" method="GET" class="mb-4">
+  <form action="{{ url_for('profiles.browse_profiles') }}" method="GET" class="mb-4">
     <div class="row">
       <div class="col-md-3 mb-2">
         <input type="number" name="min_age" class="form-control" placeholder="Min Age">
@@ -79,7 +79,8 @@
               {% endif %}
               <button class="btn btn-secondary" onclick="blockUser({{ profile.user_id }})">🚫 Block</button>
               <button class="btn btn-warning" onclick="reportUser({{ profile.user_id }})">⚠️ Report</button>
-              <a href="{{ url_for('profiles.edit_profile', profile_id=profile.user_id) }}" class="btn btn-info">📄 View Profile</a>
+              <!-- Enlace para ver el perfil individual -->
+              <a href="{{ url_for('profiles.view_profile', profile_id=profile.user_id) }}" class="btn btn-primary">📄 View Profile</a>
             </div>
           </div>
         </div>
@@ -124,6 +125,7 @@ function reportUser(userId) {
 }
 </script>
 {% endblock %}
+
 
 
 

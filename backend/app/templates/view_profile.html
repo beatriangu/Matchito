@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% set background_image = url_for('static', filename='images/view_profiles_background.jpg') %}
+
+{% block title %}View Profile - Match@{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="text-center text-white">Profile Details</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card h-100 shadow text-center">
+        <!-- Profile Picture -->
+        <img src="{{ profile.profile_picture if profile.profile_picture else url_for('static', filename='images/default.png') }}" 
+             class="card-img-top" alt="Profile Picture">
+        <div class="card-body">
+          <!-- Name -->
+          <h2 class="card-title">{{ profile.first_name }} {{ profile.last_name }}</h2>
+          <!-- Bio -->
+          <p class="card-text"><strong>Bio:</strong> {{ profile.bio }}</p>
+          <!-- Gender and Orientation -->
+          <p class="card-text"><strong>Gender:</strong> {{ profile.gender }}</p>
+          <p class="card-text"><strong>Sexual Orientation:</strong> {{ profile.sexual_orientation }}</p>
+          <!-- Age Calculation -->
+          {% if profile.birthdate %}
+            {% set age = now().year - profile.birthdate.year %}
+            <p class="card-text"><strong>Age:</strong> {{ age }}</p>
+          {% endif %}
+          <!-- Location and Fame Rating -->
+          <p class="card-text"><strong>Location:</strong> {{ profile.city if profile.city else "Unknown" }}</p>
+          <p class="card-text"><strong>Fame Rating:</strong> {{ profile.fame_rating }}</p>
+          <!-- Botón para regresar -->
+          <div class="mt-3">
+            <a href="{{ url_for('profiles.browse_profiles') }}" class="btn btn-outline-light">⬅ Back to Browse Profiles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+  <!-- Botón para regresar a Browse Profiles -->
+  <div class="text-center mt-4">
+    <a href="{{ url_for('profiles.browse_profiles') }}" class="btn btn-outline-light">⬅ Back to Browse Profiles</a>
+  </div>
+</div>
+
+<!-- JavaScript para manejar las acciones -->
+<script>
+function sendLike(userId) {
+    fetch(`/like/${userId}`, { 
+        method: 'POST', 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId }) 
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error sending like:", error));
+}
+
+function blockUser(userId) {
+    fetch(`/block/${userId}`, { 
+        method: 'POST', 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId }) 
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error blocking user:", error));
+}
+
+function reportUser(userId) {
+    fetch(`/report/${userId}`, { 
+        method: 'POST', 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId }) 
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error reporting user:", error));
+}
+</script>
+{% endblock %}
+
+
+
+
+
+
+
+

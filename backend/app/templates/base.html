@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Matchito{% endblock %}</title>
   
-  <!-- Favicon Animado -->
+  <!-- Animated Favicon -->
   <link id="favicon" rel="icon" type="image/gif" href="{{ url_for('static', filename='favicon_penguin1.gif') }}">
 
   <!-- Bootstrap CSS -->
@@ -37,7 +37,7 @@
       margin: 0 auto;
     }
 
-    /* Ajuste especial para la página de perfil */
+    /* Profile Container */
     .profile-container {
       display: flex;
       justify-content: flex-start;
@@ -61,6 +61,12 @@
       font-size: 0.9rem;
       width: 100%;
     }
+
+    /* Badge Styling */
+    .notification-badge {
+      font-size: 0.8rem;
+      margin-left: 5px;
+    }
   </style>
 </head>
 <body>
@@ -77,9 +83,27 @@
           <li class="nav-item">
             <a class="nav-link {% if request.endpoint == 'auth.home' %}active{% endif %}" href="{{ url_for('auth.home') }}">🏔️ Home</a>
           </li>
+
           {% if session.get('user_id') %}
             <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'profiles.edit_profile' %}active{% endif %}" href="{{ url_for('profiles.edit_profile') }}">🐧 Profile</a>
+              <a class="nav-link {% if request.endpoint == 'profiles.edit_profile' %}active{% endif %}" href="{{ url_for('profiles.edit_profile') }}">
+                🐧 Profile
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('profiles.view_matches') }}">
+                🔥 Matches <span id="match-count" class="badge bg-warning notification-badge">0</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('notifications.view_notifications') }}">
+                🔔 Notifications <span id="notification-count" class="badge bg-danger notification-badge">0</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('messages.get_unread_messages_count', user_id=session.get('user_id')) }}">
+                ✉️ Messages <span id="message-count" class="badge bg-primary notification-badge">0</span>
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link {% if request.endpoint == 'auth.logout' %}active{% endif %}" href="{{ url_for('auth.logout') }}">🚪 Logout</a>
@@ -103,7 +127,30 @@
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   
-  <!-- Favicon Animado (Forzar Recarga en Navegadores) -->
+  <!-- Dynamic Notification Update Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function updateCount(url, elementId) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const element = document.getElementById(elementId);
+                    if (element) {
+                        element.textContent = data.unread_messages || 0;
+                    }
+                })
+                .catch(error => console.error(`Error fetching ${elementId}:`, error));
+        }
+
+        updateCount("{{ url_for('notifications.unread_count') }}", "notification-count");
+        {% if session.get('user_id') %}
+        updateCount("{{ url_for('messages.get_unread_messages_count', user_id=session.get('user_id')) }}", "message-count");
+        {% endif %}
+        updateCount("{{ url_for('profiles.match_count') }}", "match-count");
+    });
+  </script>
+
+  <!-- Animated Favicon (Auto-refresh in Browsers) -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
         var favicon = document.getElementById("favicon");
@@ -130,6 +177,9 @@
   {% block scripts %}{% endblock %}
 </body>
 </html>
+
+
+
 
 
 
