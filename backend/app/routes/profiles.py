@@ -101,6 +101,9 @@ def edit_profile_and_stats(user_id):
 
 @profiles_bp.route('/profile/edit', methods=['GET', 'POST'])
 def edit_profile():
+    """
+    Edita el perfil del usuario autenticado, incluyendo intereses.
+    """
     user_id = get_user_id()
     if not user_id:
         flash("You must log in to edit your profile.", "danger")
@@ -108,16 +111,9 @@ def edit_profile():
     
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("""
-        SELECT first_name, last_name, bio, profile_picture, gender, sexual_orientation,
-               birthdate, city, fame_rating
-        FROM profiles 
-        WHERE user_id = %s
-    """, (user_id,))
-    profile = cur.fetchone()
-    print("DEBUG - Profile Data:", profile, flush=True)
 
     if request.method == 'POST':
+        # Recibir datos del formulario
         first_name = request.form.get("first_name")
         last_name = request.form.get("last_name")
         bio = request.form.get("bio")
@@ -126,43 +122,106 @@ def edit_profile():
         sexual_orientation = request.form.get("sexual_orientation")
         interests_data = request.form.get("interests")
 
+        # Validar datos obligatorios
         if not all([first_name, last_name, bio, gender, sexual_orientation]):
             flash("All fields are required.", "danger")
             return redirect(url_for("profiles.edit_profile"))
 
-        cur.execute("""
-            UPDATE profiles 
-            SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s, gender = %s, sexual_orientation = %s
-            WHERE user_id = %s
-        """, (first_name, last_name, bio, profile_picture, gender, sexual_orientation, user_id))
-        
-        if interests_data:
-            try:
-                interests = json.loads(interests_data)
-            except json.JSONDecodeError:
-                interests = [interest.strip() for interest in interests_data.split(',')]
-            valid_interests = [interest for interest in interests if interest in VALID_INTERESTS]
-            cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
-            for interest in valid_interests:
-                cur.execute("SELECT id FROM interests WHERE name = %s", (interest,))
-                result = cur.fetchone()
-                if result:
-                    interest_id = result[0]
-                    cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
-        
-        conn.commit()
-        flash("Profile updated successfully!", "success")
-        return redirect(url_for("profiles.browse_profiles"))
+        # Actualizar perfil
+        try:
+            cur.execute("""
+                UPDATE profiles 
+                SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s, gender = %s, sexual_orientation = %s
+                WHERE user_id = %s
+            """, (first_name, last_name, bio, profile_picture, gender, sexual_orientation, user_id))
+
+            # Manejo de intereses
+            if interests_data:
+                try:
+                    interests = json.loads(interests_data)  # Si viene en formato JSON
+                except json.JSONDecodeError:
+                    interests = [interest.strip() for interest in interests_data.split(',')]  # Si viene como string
+
+                # Filtrar intereses válidos
+                valid_interests = [interest for interest in interests if interest in VALID_INTERESTS]
+
+                # Eliminar intereses anteriores
+                cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
+
+                # Insertar nuevos intereses
+                for interest in valid_interests:
+                    cur.execute("SELECT id FROM interests WHERE name = %s", (interest,))
+                    result = cur.fetchone()
+                    if result:
+                        interest_id = result[0]
+                        cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
+
+            conn.commit()
+            flash("Profile updated successfully!", "success")
+            return redirect(url_for("profiles.browse_profiles"))
+
+        except Exception as e:
+            conn.rollback()
+            flash(f"Error updating profile: {str(e)}", "danger")
+
+    # Obtener datos del perfil
+    cur.execute("""
+        SELECT first_name, last_name, bio, profile_picture, gender, sexual_orientation,
+               birthdate, city, fame_rating
+        FROM profiles WHERE user_id = %s
+    """, (user_id,))
+    profile = cur.fetchone()
+
     cur.close()
     conn.close()
     
     return render_template("profile.html", profile=profile, editing=True)
 
+@profiles_bp.route('/profile/interests', methods=['PUT'])
+def update_interests():
+    """
+    Permite actualizar los intereses del usuario.
+    """
+    user_id = get_user_id()
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    data = request.json
+    if "interests" not in data:
+        return jsonify({"error": "Missing interests field"}), 400
+
+    interests = data["interests"]
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    try:
+        # Borrar intereses previos
+        cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
+
+        # Insertar nuevos intereses
+        for interest in interests:
+            cur.execute("SELECT id FROM interests WHERE name = %s", (interest,))
+            result = cur.fetchone()
+            if result:
+                interest_id = result[0]
+                cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
+
+        conn.commit()
+        return jsonify({"message": "Interests updated successfully"})
+
+    except Exception as e:
+        conn.rollback()
+        return jsonify({"error": str(e)}), 500
+
+    finally:
+        cur.close()
+        conn.close()
+
 @profiles_bp.route('/profiles', methods=['GET'])
 def browse_profiles():
     """
-    Displays a list of profiles for browsing.
-    Excludes the current user's profile.
+    Muestra la lista de perfiles de otros usuarios.
     """
     user_id = get_user_id()
     if not user_id:
@@ -172,7 +231,6 @@ def browse_profiles():
     conn = get_db_connection()
     cur = conn.cursor()
     try:
-        # Obtener los perfiles junto con los intereses agregados
         cur.execute("""
             SELECT p.user_id, p.first_name, p.last_name, p.bio, p.profile_picture, 
                    p.fame_rating, p.city, p.birthdate, u.last_seen,
@@ -200,7 +258,7 @@ def browse_profiles():
                 'city': row[6],
                 'birthdate': row[7],
                 'status': status,
-                'interests': row[9] if row[9] else []  # Asegurar que haya una lista vacía si no tiene intereses
+                'interests': row[9] if row[9] else []
             })
     except Exception as e:
         conn.rollback()

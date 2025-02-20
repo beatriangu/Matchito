@@ -1,9 +1,11 @@
-from flask import Blueprint, request, render_template, redirect, url_for, session, flash
 import os
 import smtplib
+import jwt
+import datetime
+import bcrypt
+from flask import Blueprint, request, render_template, redirect, url_for, session, flash, jsonify
 from email.mime.text import MIMEText
 import requests
-
 from app.utils.db import get_db_connection
 from app.utils.security import hash_password, check_password
 from app.utils.token_util import get_serializer
@@ -84,10 +86,57 @@ def home():
     print(f"DEBUG: Session data - {session}")
     return render_template('home.html')
 
-@auth_bp.route('/register', methods=['GET', 'POST'])
+import bcrypt
+import json
+from flask import Blueprint, request, render_template, redirect, url_for, flash, session, jsonify
+from app.utils.db import get_db_connection
+
+auth_bp = Blueprint("auth", __name__)
+
+import bcrypt
+import json
+from flask import Blueprint, request, render_template, redirect, url_for, flash, session, jsonify
+from app.utils.db import get_db_connection
+
+auth_bp = Blueprint("auth", __name__)
+
+import bcrypt
+import json
+from flask import Blueprint, request, render_template, redirect, url_for, flash, session, jsonify
+from app.utils.db import get_db_connection
+
+auth_bp = Blueprint("auth", __name__)
+
+@auth_bp.route('/register', methods=['POST'])
 def register():
-    """Registro de usuario con detección opcional de ubicación."""
-    if request.method == 'POST':
+    """Registro de usuario con detección correcta de JSON o Formulario HTML."""
+
+    # 📌 Detectar si la solicitud es JSON
+    is_json_request = request.is_json
+
+    # 📌 Obtener datos según el tipo de solicitud
+    if is_json_request:
+        try:
+            data = request.get_json()
+            if not data:
+                return jsonify({"error": "Solicitud JSON mal formada"}), 400
+
+            username = data.get("username")
+            email = data.get("email")
+            password = data.get("password")
+            first_name = data.get("first_name")
+            last_name = data.get("last_name")
+            gender = data.get("gender")
+            sexual_orientation = data.get("sexual_orientation")
+            birthdate = data.get("birthdate")
+            city = data.get("city")
+            latitude = data.get("latitude")
+            longitude = data.get("longitude")
+            interests = data.get("interests", [])
+
+        except Exception as e:
+            return jsonify({"error": f"Error al leer JSON: {str(e)}"}), 400
+    else:
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("password")
@@ -99,111 +148,131 @@ def register():
         city = request.form.get("city")
         latitude = request.form.get("latitude")
         longitude = request.form.get("longitude")
-        interests = request.form.getlist("interests")  # Recoge los intereses como lista
+        interests = request.form.getlist("interests")
 
-        print(f"DEBUG: Intereses seleccionados en el formulario: {interests}")
+    print(f"DEBUG: Datos recibidos -> Username: {username}, Email: {email}, Interests: {interests}")
 
-        # Validar que todos los campos obligatorios estén llenos
-        if not all([username, email, password, first_name, last_name, gender, sexual_orientation, birthdate]):
-            flash("Todos los campos son obligatorios.", "danger")
-            return redirect(url_for('auth.register'))
+    if not all([username, email, password, first_name, last_name, gender, sexual_orientation, birthdate]):
+        error_msg = "Todos los campos son obligatorios."
+        return jsonify({"error": error_msg}), 400 if is_json_request else flash(error_msg, "danger")
 
-        # Geolocalización si no se proporciona manualmente
-        if not city or not latitude or not longitude:
-            try:
-                response = requests.get("https://ipapi.co/json/")
-                location_data = response.json()
-                city = city or location_data.get("city", location_data.get("region", "Unknown"))
-                latitude = latitude or location_data.get("latitude", 0.0)
-                longitude = longitude or location_data.get("longitude", 0.0)
-                print(f"DEBUG: Geolocalización obtenida - Ciudad: {city}, Latitud: {latitude}, Longitud: {longitude}")
-            except Exception as e:
-                print(f"ERROR: No se pudo obtener la geolocalización: {str(e)}")
-                city = "Unknown"
-                latitude = 0.0
-                longitude = 0.0
+    hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+    
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        # 🔹 Insertar usuario
+        cur.execute(
+            """
+            INSERT INTO users (username, email, password, is_verified, created_at)
+            VALUES (%s, %s, %s, TRUE, NOW()) RETURNING id
+            """,
+            (username, email, hashed_password)
+        )
+        user_result = cur.fetchone()
+        if not user_result:
+            return jsonify({"error": "Error al registrar usuario."}), 500 if is_json_request else flash("Error al registrar usuario.", "danger")
+        
+        user_id = user_result[0]
 
-        print(f"DEBUG: Ciudad final = {city}, Latitud = {latitude}, Longitud = {longitude}")
+        # 🔹 Insertar perfil en `profiles`
+        cur.execute(
+            """
+            INSERT INTO profiles 
+            (user_id, first_name, last_name, gender, sexual_orientation, birthdate, city, latitude, longitude, profile_picture, bio)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, '', '')
+            """,
+            (user_id, first_name, last_name, gender, sexual_orientation, birthdate, city, latitude, longitude)
+        )
 
-        hashed_password = hash_password(password)
-        conn = get_db_connection()
-        cur = conn.cursor()
-        try:
-            # Insertar usuario en la base de datos con is_verified=True
-            cur.execute(
-                """
-                INSERT INTO users (username, email, password, is_verified, created_at)
-                VALUES (%s, %s, %s, TRUE, NOW()) RETURNING id
-                """,
-                (username, email, hashed_password)
-            )
-            user_result = cur.fetchone()
-            if not user_result:
-                flash("Error al registrar usuario.", "danger")
-                return redirect(url_for('auth.register'))
-            user_id = user_result[0]
+        # 🔹 Insertar intereses en `profile_interests`
+        if interests:
+            cur.execute("SELECT id, name FROM interests WHERE name IN %s", (tuple(interests),))
+            interest_map = {name: id for id, name in cur.fetchall()}
 
-            # Crear perfil en la tabla `profiles`
-            cur.execute(
-                """
-                INSERT INTO profiles 
-                (user_id, first_name, last_name, gender, sexual_orientation, birthdate, city, latitude, longitude, profile_picture, bio)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, '', '')
-                """,
-                (user_id, first_name, last_name, gender, sexual_orientation, birthdate, city, latitude, longitude)
-            )
+            for interest in interests:
+                if interest in interest_map:
+                    cur.execute(
+                        "INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)",
+                        (user_id, interest_map[interest])
+                    )
 
-            # 🔹 Insertar intereses en `profile_interests`
-            if interests:
-                cur.execute("SELECT id, name FROM interests WHERE name IN %s", (tuple(interests),))
-                interest_map = {name: id for id, name in cur.fetchall()}
-                
-                for interest in interests:
-                    if interest in interest_map:
-                        cur.execute(
-                            "INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)",
-                            (user_id, interest_map[interest])
-                        )
+        conn.commit()
 
-            conn.commit()
+        # ✅ SI LA SOLICITUD ES JSON, RESPONDER CON JSON Y NO REDIRIGIR
+        if is_json_request:
+            return jsonify({"message": "Registro exitoso", "user_id": user_id}), 201
 
-            # ✅ Se omite el envío de correo de verificación porque is_verified=True
-            flash("Registro exitoso. Por favor, inicia sesión.", "success")
-            return redirect(url_for('auth.login'))
+        flash("Registro exitoso. Por favor, inicia sesión.", "success")
+        return redirect(url_for('auth.login'))
 
-        except Exception as e:
-            conn.rollback()
-            flash(f"Error durante el registro: {str(e)}", "danger")
-        finally:
-            cur.close()
-            conn.close()
+    except Exception as e:
+        conn.rollback()
+        error_msg = f"Error durante el registro: {str(e)}"
+        return jsonify({"error": error_msg}), 500 if is_json_request else flash(error_msg, "danger")
 
-    return render_template("register.html")
+    finally:
+        cur.close()
+        conn.close()
+
+    return render_template("register.html") if not is_json_request else jsonify({"error": "Unexpected Error"}), 500
+
+
+
 
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     """Inicia sesión validando el email y contraseña del usuario."""
     if request.method == 'POST':
-        email = request.form.get("email")
-        password = request.form.get("password")
+        # 📌 Detectar si la solicitud viene de un formulario o de la API (JSON)
+        if request.content_type == "application/x-www-form-urlencoded":
+            email = request.form.get("email")
+            password = request.form.get("password")
+        else:
+            data = request.json
+            email = data.get("email")
+            password = data.get("password")
+
         conn = get_db_connection()
         cur = conn.cursor()
         try:
-            cur.execute("SELECT id, username, password, is_verified FROM users WHERE email = %s", (email,))
+            cur.execute("SELECT id, username, password FROM users WHERE email = %s", (email,))
             user = cur.fetchone()
-            if user and check_password(password, user[2]):
-                session['user_id'] = user[0]
-                session['username'] = user[1]
-                flash("Inicio de sesión exitoso.", "success")
-                return redirect(url_for('profiles.edit_profile'))
+
+            if user and bcrypt.checkpw(password.encode(), user[2].encode()):  # 📌 Comparar con bcrypt
+                user_id, username, _ = user
+                
+                # ✅ Manejo de sesiones en navegador
+                if request.content_type == "application/x-www-form-urlencoded":
+                    session['user_id'] = user_id
+                    session['username'] = username
+                    flash("Inicio de sesión exitoso.", "success")
+                    return redirect(url_for('profiles.edit_profile'))
+                
+                # ✅ Si la solicitud es JSON (API), devolver un token
+                token = jwt.encode({
+                    "user_id": user_id,
+                    "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=24)
+                }, SECRET_KEY, algorithm="HS256")
+
+                return jsonify({
+                    "message": "Login exitoso",
+                    "user_id": user_id,
+                    "username": username,
+                    "token": token
+                }), 200
             else:
                 flash("Email o contraseña incorrectos", "danger")
+                return jsonify({"error": "Email o contraseña incorrectos"}), 401
+
         except Exception as e:
             flash(f"Error al iniciar sesión: {str(e)}", "danger")
+            return jsonify({"error": str(e)}), 500
         finally:
             cur.close()
             conn.close()
+
     return render_template("login.html")
 
 @auth_bp.route('/logout')

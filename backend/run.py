@@ -1,9 +1,9 @@
 import eventlet
 eventlet.monkey_patch()
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, jsonify
 from config import Config
-from app.routes.auth import auth_bp      # Blueprint de autenticación
+from app.routes.auth import auth_bp      # Blueprints de la app
 from app.routes.profiles import profiles_bp
 from app.routes.likes import likes_bp
 from app.routes.messages import messages_bp
@@ -26,12 +26,12 @@ def create_app():
     app.register_blueprint(notifications_bp, url_prefix='/notifications')
     app.register_blueprint(chat_bp, url_prefix='/chat')
 
-    # Context processor para que 'current_year' (y otras variables si es necesario) estén en todas las plantillas
+    # Variables globales para plantillas
     @app.context_processor
     def inject_globals():
         return {'current_year': datetime.now().year}
-    
-    # Ruta principal -> Renderiza home.html
+
+    # Ruta principal
     @app.route("/")
     def home():
         return render_template(
@@ -39,32 +39,35 @@ def create_app():
             background_image=url_for('static', filename='images/home_background.jpg')
         )
 
+    # Ruta de prueba de salud
+    @app.route("/healthcheck", methods=["GET"])
+    def healthcheck():
+        return jsonify({"status": "ok"}), 200
+
     return app
 
 # Crear la aplicación Flask
 app = create_app()
 
-# Registrar los manejadores de error (desde app.errors)
-# from app.errors import init_app
-# init_app(app)
-
 # Inicializar SocketIO con la app (permitiendo CORS para desarrollo)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 if __name__ == '__main__':
-    # Verificar rutas de templates y archivos estáticos
+    # Confirmar rutas de plantillas y archivos estáticos
     print(f"🔍 Buscando plantillas en: {app.template_folder}")
     print(f"📂 Buscando archivos estáticos en: {app.static_folder}")
-    
-    # Confirmar el puerto (por defecto 5000)
-    PORT = int(os.getenv("FLASK_PORT", 5000))
-    
+
+    # 🔥 Asegurar que se usa el puerto correcto
+    PORT = int(os.getenv("FLASK_PORT", "8081"))  # Cambiado a 8081 por defecto
+
     print(f"🚀 Iniciando Matchito en http://0.0.0.0:{PORT}")
     try:
-        # Ejecutar la aplicación con Flask-SocketIO
+        # Ejecutar Flask con SocketIO
         socketio.run(app, host='0.0.0.0', port=PORT, debug=True)
     except Exception as e:
         print(f"❌ Error al iniciar el servidor: {e}")
+
+
 
 
 
