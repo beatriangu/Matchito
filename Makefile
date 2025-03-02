@@ -33,15 +33,16 @@ restart:
 	@echo ""
 	@echo "✅ Matchito ha sido reiniciado con éxito"
 	@echo "🔗 Accede a los servicios en:"
-	@echo "   - 🟢 Backend Flask:      http://localhost:5000"
+	@echo "   - 🟢 Backend Flask:      http://localhost:8081"
 	@echo "   - 🌐 Nginx (Frontend):   http://localhost:8080"
-	@echo "   - 🛢️ Adminer (DB):      http://localhost:8081"
+	@echo "   - 🛢️ Adminer (DB):      http://localhost:8082"
 	@echo ""
 	@echo "📌 Verificando si la base de datos necesita reinicialización..."
 	@docker exec -it $(DATABASE_CONTAINER) psql -U bea -d matchito_db -c "SELECT COUNT(*) FROM users;" || \
 		( docker exec -i $(DATABASE_CONTAINER) psql -U bea -d matchito_db < database/init.sql && \
 		  docker exec -i $(DATABASE_CONTAINER) psql -U bea -d matchito_db < database/seed.sql && \
 		  echo "✅ Base de datos inicializada correctamente." )
+
 
 # Mostrar logs del contenedor backend
 logs-backend:

@@ -7,15 +7,11 @@ services:
       - "5432:5432"
     env_file:
       - ../.env
-    # volumes:
-    #   - pg_data:/var/lib/postgresql/data
-    #   - ../database/init.sql:/docker-entrypoint-initdb.d/init.sql
-    #   - ../database/seed.sql:/docker-entrypoint-initdb.d/seed.sql
     volumes:
       - pg_data:/var/lib/postgresql/data
       - ../database/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ../database/seed.sql:/docker-entrypoint-initdb.d/seed.sql
-      - /home/belamiqu/Matchito/database:/csv_files  # Monta el directorio local en /csv_files en el contenedor
+      - /home/belamiqu/Matchito/database:/csv_files
     networks:
       matchito_network:
         aliases:
@@ -35,10 +31,9 @@ services:
       - ../.env
     volumes:
       - ../backend:/app/backend
-      - ../database:/app/database    # Agrega esta línea para montar la carpeta "database"
+      - ../database:/app/database
     networks:
       - matchito_network
-
 
   nginx:
     build:
@@ -71,6 +66,7 @@ networks:
 
 volumes:
   pg_data:
+
 
 
 

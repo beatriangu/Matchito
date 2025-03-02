@@ -73,15 +73,17 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{ url_for('auth.home') }}">Matchito</a>
+      <!-- Enlace del brand apunta a la ruta principal 'home' -->
+      <a class="navbar-brand" href="{{ url_for('home') }}">Matchito</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
+          <!-- Enlace de Home actualizado para usar el endpoint 'home' -->
           <li class="nav-item">
-            <a class="nav-link {% if request.endpoint == 'auth.home' %}active{% endif %}" href="{{ url_for('auth.home') }}">🏔️ Home</a>
+            <a class="nav-link {% if request.endpoint == 'home' %}active{% endif %}" href="{{ url_for('home') }}">🏔️ Home</a>
           </li>
 
           {% if session.get('user_id') %}
@@ -177,6 +179,7 @@
   {% block scripts %}{% endblock %}
 </body>
 </html>
+
 
 
 
