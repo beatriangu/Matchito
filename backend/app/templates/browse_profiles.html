@@ -48,8 +48,9 @@
       <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
         <div class="card bg-dark text-white shadow-lg rounded">
           <!-- Profile Picture -->
-          <img src="{{ profile.profile_picture if profile.profile_picture else url_for('static', filename='images/default.png') }}" 
-               alt="Profile Picture" class="card-img-top rounded-top">
+          <img src="{{ profile.profile_picture or url_for('static', filename='images/default.png') }}" 
+              alt="Profile Picture" class="card-img-top rounded-top">
+
 
           <div class="card-body text-center">
             <!-- Name -->

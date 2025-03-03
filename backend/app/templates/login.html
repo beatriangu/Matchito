@@ -8,9 +8,10 @@
 <div class="d-flex flex-column align-items-center">
   <h1 class="display-4 text-white mb-4">Login to Matcha</h1>
   
+  <!-- Mensajes Flash -->
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-      <div class="alert-container">
+      <div class="alert-container w-100" style="max-width: 400px;">
         {% for category, message in messages %}
           <div class="alert alert-{{ category }} text-center">{{ message }}</div>
         {% endfor %}
@@ -18,14 +19,15 @@
     {% endif %}
   {% endwith %}
   
-  <form id="loginForm" action="{{ url_for('auth.login') }}" method="POST" style="width: 100%; max-width: 400px;" autocomplete="off">
+  <!-- Formulario de login -->
+  <form id="loginForm" action="{{ url_for('auth.login') }}" method="POST" class="w-100" style="max-width: 400px;" autocomplete="off">
     <!-- Campo para el correo electrónico -->
     <div class="mb-3">
-      <input type="email" class="form-control" name="email" placeholder="Email" required autocomplete="new-email">
+      <input type="email" class="form-control" name="email" placeholder="Email" required autocomplete="email">
     </div>
     <!-- Campo para la contraseña -->
     <div class="mb-3">
-      <input type="password" class="form-control" name="password" placeholder="Password" required autocomplete="new-password">
+      <input type="password" class="form-control" name="password" placeholder="Password" required autocomplete="current-password">
     </div>
     <!-- Botón de envío -->
     <button type="submit" class="btn btn-primary w-100">Login</button>
@@ -49,11 +51,20 @@ document.addEventListener("DOMContentLoaded", function() {
     let emailField = loginForm.querySelector("input[name='email']");
     let passwordField = loginForm.querySelector("input[name='password']");
 
-    if (emailField) emailField.setAttribute("autocomplete", "new-email");
-    if (passwordField) passwordField.setAttribute("autocomplete", "new-password");
+    if (emailField) emailField.setAttribute("autocomplete", "email");
+    if (passwordField) passwordField.setAttribute("autocomplete", "current-password");
+
+    // Validación de campos antes del envío
+    loginForm.addEventListener("submit", function(event) {
+        if (!emailField.value || !passwordField.value) {
+            event.preventDefault();
+            alert("Por favor, complete todos los campos.");
+        }
+    });
 });
 </script>
 {% endblock %}
+
 
 
 
