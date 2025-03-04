@@ -1,5 +1,7 @@
 # Mi Matchito
 
+Matcha es una aplicación de citas online diseñada para conectar personas de manera inteligente y segura. Este proyecto invita a explorar y aplicar herramientas modernas de desarrollo web, integrando seguridad, escalabilidad y una experiencia de usuario superior. Utilizando el micro-framework Flask en Python, se construye una plataforma web dinámica y responsiva en la que la interacción entre usuarios es el elemento central.
+
 <div style="width: 800px; margin: auto;">
   <!-- Primera fila -->
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
@@ -13,7 +15,7 @@
   <div style="display: flex; justify-content: space-between;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/Editingprofilefront.png?raw=true" alt="Editing Profile Front" width="100"/>
     <img src="https://github.com/beatriangu/Matchito/blob/main/tables.png?raw=true" alt="Tables" width="100"/>
-    <img src="https://github.com/beatriangu/Matchito/blob/main/matches.png?raw=true" alt="Matches" width="100"/>
+    
     <img src="https://github.com/beatriangu/Matchito/blob/main/notifications.png?raw=true" alt="Notifications" width="100"/>
     <img src="https://github.com/beatriangu/Matchito/blob/main/messages.png?raw=true" alt="Messages" width="100"/>
   </div>
@@ -21,7 +23,7 @@
 
 
 
-Matcha es una aplicación de citas online diseñada para conectar personas de manera inteligente y segura. Este proyecto invita a explorar y aplicar herramientas modernas de desarrollo web, integrando seguridad, escalabilidad y una experiencia de usuario superior. Utilizando el micro-framework Flask en Python, se construye una plataforma web dinámica y responsiva en la que la interacción entre usuarios es el elemento central.
+
 
 # Tecnologías Utilizadas
 
@@ -30,25 +32,6 @@ Matcha es una aplicación de citas online diseñada para conectar personas de ma
 - **Contenedores:** Docker, Docker Compose  
 - **Servidor Web:** NGINX (configurado como proxy reverso)  
 - **Seguridad:** JWT, bcrypt, validaciones en formularios y protección contra inyección SQL  
-
-# Estructura del Proyecto
-
-Matcha/
-├── docker/
-│   ├── Dockerfile            # Construcción del contenedor del backend
-│   └── Dockerfile_nginx      # Construcción del contenedor de NGINX
-├── docker-compose.yml        # Orquestación de contenedores (Postgres, Backend y NGINX)
-├── nginx/
-│   └── default.conf          # Configuración de NGINX para manejo de rutas y archivos estáticos
-├── backend/
-│   ├── app/
-│   │   ├── routes/           # Rutas de la aplicación (auth, perfiles, likes, mensajes, notificaciones, chat)
-│   │   ├── templates/        # Plantillas HTML (base, register, login, home....etc)
-│   │   └── static/           # Archivos estáticos (CSS, JS, imágenes)
-│   ├── run.py                # Punto de entrada de la aplicación Flask
-│   └── config.py             # Configuración y carga de variables de entorno
-├── requirements.txt          # Dependencias del proyecto
-└── Matcha.pdf                # Documentación y guías de evaluación del proyecto
 
 
 # Características Destacadas
