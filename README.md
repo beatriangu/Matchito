@@ -1,6 +1,5 @@
 # Mi Matchito
 <img width="800" alt="" src="(https://github.com/beatriangu/Matchito/blob/main/home.png)" />
-https://github.com/beatriangu/Matchito/blob/main/home.png
 Matcha es una aplicación de citas online diseñada para conectar personas de manera inteligente y segura. Este proyecto invita a explorar y aplicar herramientas modernas de desarrollo web, integrando seguridad, escalabilidad y una experiencia de usuario superior. Utilizando el micro-framework Flask en Python, se construye una plataforma web dinámica y responsiva en la que la interacción entre usuarios es el elemento central.
 
 # Tecnologías Utilizadas
