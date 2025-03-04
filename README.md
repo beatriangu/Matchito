@@ -4,15 +4,42 @@
   <img src="https://github.com/beatriangu/Matchito/blob/main/home.png?raw=true" alt="Home de Matchito" width="100"/>
 </p>
 
-https://github.com/beatriangu/Matchito/blob/main/register.png
-https://github.com/beatriangu/Matchito/blob/main/login.png
-https://github.com/beatriangu/Matchito/blob/main/Editingprofile.png
-https://github.com/beatriangu/Matchito/blob/main/Editfront.png
-https://github.com/beatriangu/Matchito/blob/main/Editingprofilefront.png
-https://github.com/beatriangu/Matchito/blob/main/tables.png
-https://github.com/beatriangu/Matchito/blob/main/matches.png
-https://github.com/beatriangu/Matchito/blob/main/notifications.png
-https://github.com/beatriangu/Matchito/blob/main/messages.png
+<p align="left">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/register.png?raw=true" alt="Register de Matchito" width="100"/>
+</p>
+
+<p align="left">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/login.png?raw=true" alt="Login de Matchito" width="100"/>
+</p>
+
+<p align="left">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/Editingprofile.png?raw=true" alt="Editing Profile" width="100"/>
+</p>
+
+<p align="left">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/Editfront.png?raw=true" alt="Edit Front" width="100"/>
+</p>
+
+<p align="left">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/Editingprofilefront.png?raw=true" alt="Editing Profile Front" width="100"/>
+</p>
+
+<p align="left">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/tables.png?raw=true" alt="Tables" width="100"/>
+</p>
+
+<p align="left">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/matches.png?raw=true" alt="Matches" width="100"/>
+</p>
+
+<p align="left">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/notifications.png?raw=true" alt="Notifications" width="100"/>
+</p>
+
+<p align="left">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/messages.png?raw=true" alt="Messages" width="100"/>
+</p>
+
 
 
 Matcha es una aplicación de citas online diseñada para conectar personas de manera inteligente y segura. Este proyecto invita a explorar y aplicar herramientas modernas de desarrollo web, integrando seguridad, escalabilidad y una experiencia de usuario superior. Utilizando el micro-framework Flask en Python, se construye una plataforma web dinámica y responsiva en la que la interacción entre usuarios es el elemento central.
