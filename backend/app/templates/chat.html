@@ -11,9 +11,11 @@
     <div id="messages" class="mb-4" style="height: 400px; overflow-y: auto;">
         {% for message in messages %}
             <div class="message {{ 'sent' if message.sender_id == user_id else 'received' }} mb-2">
-                <strong>{{ message.sender.username }}:</strong>
-                <p class="mb-1">{{ message.text }}</p>
-                <small class="text-muted">{{ message.timestamp }}</small>
+                <strong>
+                    {{ "You" if message.sender_id == user_id else other_user.username }}:
+                </strong>
+                <p class="mb-1">{{ message.content }}</p>
+                <small class="text-muted">{{ message.sent_at }}</small>
             </div>
         {% endfor %}
     </div>
@@ -28,5 +30,6 @@
     </form>
 </div>
 {% endblock %}
+
 
 

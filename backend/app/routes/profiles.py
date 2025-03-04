@@ -12,14 +12,25 @@ def get_user_id():
     return session.get("user_id")
 
 def get_user_profile(user_id):
-    """Obtiene el perfil del usuario autenticado."""
+    """Obtiene el perfil del usuario autenticado, incluyendo sus intereses."""
     conn = get_db_connection()
     cur = conn.cursor()
+    
+    # Consulta el perfil del usuario
     cur.execute("""
         SELECT first_name, last_name, bio, profile_picture, gender, sexual_orientation, latitude, longitude, fame_rating 
         FROM profiles WHERE user_id = %s
     """, (user_id,))
     profile = cur.fetchone()
+
+    # Consulta los intereses del usuario
+    cur.execute("""
+        SELECT i.name FROM profile_interests pi
+        JOIN interests i ON pi.interest_id = i.id
+        WHERE pi.user_id = %s
+    """, (user_id,))
+    interests = [row[0] for row in cur.fetchall()]
+
     cur.close()
     conn.close()
 
@@ -28,14 +39,16 @@ def get_user_profile(user_id):
             "first_name": profile[0] or "",
             "last_name": profile[1] or "",
             "bio": profile[2] or "",
-            "profile_picture": profile[3] or "",
+            "profile_picture": profile[3] or "https://randomuser.me/api/portraits/lego/1.jpg",
             "gender": profile[4] or "",
             "sexual_orientation": profile[5] or "",
             "latitude": profile[6],
             "longitude": profile[7],
-            "fame_rating": profile[8] or 0
+            "fame_rating": profile[8] or 0,
+            "interests": interests
         }
     return None
+
 
 # ─── EDITAR PERFIL ────────────────────────────────────────────────────────
 
@@ -56,16 +69,14 @@ def edit_profile():
         sexual_orientation = request.form.get("sexual_orientation", "").strip()
         latitude = request.form.get("latitude")
         longitude = request.form.get("longitude")
-        interests_data = request.form.get("interests_data")  # 🔹 Capturamos los intereses
+        interests_data = request.form.get("interests_data")  # Capturamos los intereses
 
-        # ✅ Verificar si los intereses están llegando correctamente
         print(f"🔍 Intereses recibidos: {interests_data}")
 
         if not all([first_name, last_name, bio, profile_picture, gender, sexual_orientation]):
             flash("Todos los campos obligatorios deben ser completados.", "danger")
             return redirect(url_for("profiles.edit_profile"))
 
-        # ✅ Convertir coordenadas seguras
         latitude = float(latitude) if latitude and latitude.strip() else None
         longitude = float(longitude) if longitude and longitude.strip() else None
 
@@ -73,7 +84,6 @@ def edit_profile():
         cur = conn.cursor()
 
         try:
-            # ✅ ACTUALIZA EL PERFIL DEL USUARIO
             cur.execute("""
                 UPDATE profiles 
                 SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s, 
@@ -81,30 +91,24 @@ def edit_profile():
                 WHERE user_id = %s
             """, (first_name, last_name, bio, profile_picture, gender, sexual_orientation, latitude, longitude, user_id))
 
-            # ✅ ACTUALIZAR INTERESES
             if interests_data:
                 try:
-                    interests = json.loads(interests_data)  # Si es JSON
+                    interests = json.loads(interests_data)
                 except json.JSONDecodeError:
-                    interests = [interest.strip() for interest in interests_data.split(',')]  # Si es string
+                    interests = [interest.strip() for interest in interests_data.split(',')]
 
-                # 🔹 Eliminar intereses previos y agregar nuevos
                 cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
                 for interest in interests:
                     cur.execute("SELECT id FROM interests WHERE name = %s", (interest,))
                     result = cur.fetchone()
-
                     if not result:
                         cur.execute("INSERT INTO interests (name) VALUES (%s) RETURNING id", (interest,))
                         result = cur.fetchone()
-
                     interest_id = result[0]
                     cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
 
             conn.commit()
-
-            print(f"✅ Perfil actualizado en BD y los intereses se han guardado correctamente.")
-
+            print("✅ Perfil actualizado en BD y los intereses se han guardado correctamente.")
             flash("Perfil actualizado correctamente!", "success")
             return redirect(url_for("profiles.browse_profiles"))
 
@@ -125,68 +129,97 @@ def edit_profile():
 
 @profiles_bp.route('/profiles', methods=['GET'])
 def browse_profiles():
-    """Muestra una lista de perfiles sugeridos según orientación sexual, ubicación e intereses y permite aplicar filtros."""
+    """Muestra una lista de perfiles sugeridos con información completa."""
     user_id = get_user_id()
     if not user_id:
         flash("Debes iniciar sesión para ver perfiles.", "danger")
         return redirect(url_for('auth.login'))
 
-    user_profile = get_user_profile(user_id)
-    if not user_profile:
-        flash("Por favor, completa tu perfil antes de navegar.", "warning")
-        return redirect(url_for('profiles.edit_profile'))
-
-    user_lat = user_profile["latitude"]
-    user_lon = user_profile["longitude"]
-
     conn = get_db_connection()
     cur = conn.cursor()
 
     query = """
-        SELECT p.user_id, p.first_name, p.last_name, COALESCE(p.bio, 'No bio available') AS bio, 
-            COALESCE(p.profile_picture, 'https://randomuser.me/api/portraits/lego/1.jpg') AS profile_picture, 
-            p.gender, p.fame_rating, p.latitude, p.longitude, COUNT(pi.interest_id) AS common_tags,
-            ST_Distance(
-                geography(ST_SetSRID(ST_MakePoint(p.longitude, p.latitude), 4326)),
-                geography(ST_SetSRID(ST_MakePoint(%s, %s), 4326))
-            ) AS distance
+        SELECT p.user_id, p.first_name, p.last_name, 
+               COALESCE(p.bio, 'No bio available') AS bio, 
+               COALESCE(p.profile_picture, 'https://randomuser.me/api/portraits/lego/1.jpg') AS profile_picture, 
+               p.gender, p.fame_rating, p.birthdate, p.city, p.latitude, p.longitude
         FROM profiles p
-        LEFT JOIN profile_interests pi ON p.user_id = pi.user_id
-        LEFT JOIN profile_interests user_pi ON pi.interest_id = user_pi.interest_id AND user_pi.user_id = %s
         WHERE p.user_id != %s
-        AND p.user_id NOT IN (SELECT blocked_id FROM blocked_users WHERE blocker_id = %s)
-        AND p.bio IS NOT NULL
+        ORDER BY p.fame_rating DESC
     """
-
-    params = [user_lon, user_lat, user_id, user_id, user_id]
-
-    query += """
-        GROUP BY p.user_id
-        ORDER BY distance ASC, common_tags DESC, p.fame_rating DESC
-    """
-    cur.execute(query, params)
+    cur.execute(query, (user_id,))
     raw_profiles = cur.fetchall()
     cur.close()
     conn.close()
 
-    # 🔹 Convertir resultados a diccionarios
     profiles = []
     for row in raw_profiles:
-        profiles.append({
+        profile_dict = {
             "user_id": row[0],
             "first_name": row[1],
-            "bio": row[2],
-            "profile_picture": row[3],  # Ahora nunca será NULL
-            "gender": row[4],
-            "fame_rating": row[5],
-            "latitude": row[6],
-            "longitude": row[7],
-            "common_tags": row[8],
-            "distance": row[9],
-        })
+            "last_name": row[2],
+            "bio": row[3],
+            "profile_picture": row[4],
+            "gender": row[5],
+            "fame_rating": row[6],
+            "birthdate": row[7],
+            "city": row[8],
+            "latitude": row[9],
+            "longitude": row[10],
+        }
+        if row[7]:
+            today = datetime.today().date()
+            bd = row[7]
+            age = today.year - bd.year - ((today.month, today.day) < (bd.month, bd.day))
+            profile_dict["age"] = age
+        else:
+            profile_dict["age"] = "Unknown"
 
-    print(f"🔍 Perfiles recuperados con fotos: {len(profiles)}")
+        profiles.append(profile_dict)
 
+    # Recuperar intereses para todos los perfiles sugeridos
+    if profiles:
+        user_ids = [p["user_id"] for p in profiles]
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT pi.user_id, i.name
+            FROM profile_interests pi
+            JOIN interests i ON pi.interest_id = i.id
+            WHERE pi.user_id = ANY(%s)
+        """, (user_ids,))
+        interests_rows = cur.fetchall()
+        cur.close()
+        conn.close()
+
+        interests_dict = {}
+        for uid, interest in interests_rows:
+            interests_dict.setdefault(uid, []).append(interest)
+
+        for p in profiles:
+            p["interests"] = interests_dict.get(p["user_id"], [])
+    else:
+        for p in profiles:
+            p["interests"] = []
+
+    # Recuperar los matches mutuos para el usuario actual
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT l1.liked_id
+        FROM likes l1
+        JOIN likes l2 ON l1.liker_id = l2.liked_id AND l1.liked_id = l2.liker_id
+        WHERE l1.liker_id = %s
+    """, (user_id,))
+    mutual_like_rows = cur.fetchall()
+    cur.close()
+    conn.close()
+    mutual_likes = {row[0] for row in mutual_like_rows}
+
+    for p in profiles:
+        p["mutual_like"] = True if p["user_id"] in mutual_likes else False
+
+    print(f"🔍 Perfiles recuperados: {len(profiles)}")
     return render_template("browse_profiles.html", profiles=profiles)
 
 
@@ -194,7 +227,7 @@ def browse_profiles():
 
 @profiles_bp.route('/like/<int:liked_id>', methods=['POST'])
 def like_user(liked_id):
-    """Permite dar "like" a un usuario si el perfil está completo y tiene foto."""
+    """Permite dar 'like' a un usuario si el perfil está completo y tiene foto."""
     user_id = get_user_id()
     if not user_id:
         return jsonify({"error": "Debes iniciar sesión."}), 403
@@ -206,7 +239,6 @@ def like_user(liked_id):
     conn = get_db_connection()
     cur = conn.cursor()
 
-    # 📌 Verificar si ya existe el "like"
     cur.execute("SELECT 1 FROM likes WHERE liker_id = %s AND liked_id = %s", (user_id, liked_id))
     existing_like = cur.fetchone()
 
@@ -217,7 +249,6 @@ def like_user(liked_id):
         cur.execute("INSERT INTO likes (liker_id, liked_id, created_at) VALUES (%s, %s, NOW())", (user_id, liked_id))
         conn.commit()
 
-        # 📌 Verificar si hay match
         cur.execute("SELECT 1 FROM likes WHERE liker_id = %s AND liked_id = %s", (liked_id, user_id))
         match_exists = cur.fetchone() is not None
 
@@ -225,8 +256,7 @@ def like_user(liked_id):
         conn.close()
 
         if match_exists:
-            return jsonify({"message": "Es un match!"})
-
+            return jsonify({"message": "¡Es un match!"})
         return jsonify({"message": "Like enviado con éxito."})
 
     except Exception as e:
@@ -238,14 +268,12 @@ def like_user(liked_id):
         conn.close()
 
 
-
-
 # ─── HISTORIAL DE VISITAS ────────────────────────────────────────────────
 
 def register_profile_view(viewer_id, profile_id):
     """Registra la visita a un perfil."""
     if viewer_id == profile_id:
-        return  # No registrar si el usuario ve su propio perfil
+        return
 
     conn = get_db_connection()
     cur = conn.cursor()
@@ -260,6 +288,7 @@ def register_profile_view(viewer_id, profile_id):
     finally:
         cur.close()
         conn.close()
+
 
 # ─── VER UN PERFIL ──────────────────────────────────────────────────────
 
@@ -295,7 +324,7 @@ def view_profile(profile_id):
             "birthdate": profile[6],
             "city": profile[7],
             "fame_rating": profile[8],
-            "status": get_user_status(profile_id)
+            "status": None  # Ajusta o elimina get_user_status si no está implementado
         }
 
         register_profile_view(user_id, profile_id)
@@ -305,6 +334,7 @@ def view_profile(profile_id):
         conn.close()
 
     return render_template("view_profile.html", profile=profile_dict)
+
 
 @profiles_bp.route('/profile/report/<int:profile_id>', methods=['POST'])
 def report_profile(profile_id):
@@ -333,6 +363,7 @@ def report_profile(profile_id):
         conn.close()
     return redirect(url_for("profiles.view_profile", profile_id=profile_id))
 
+
 @profiles_bp.route('/profile/block/<int:profile_id>', methods=['POST'])
 def block_profile(profile_id):
     """
@@ -360,37 +391,23 @@ def block_profile(profile_id):
         conn.close()
     return redirect(url_for("profiles.browse_profiles"))
 
+
+# ─── VER MATCHES ──────────────────────────────────────────────────────────
+
 @profiles_bp.route('/matches', methods=['GET'])
 def view_matches():
     """
-    Displays the user's matches.
+    En lugar de renderizar una plantilla 'matches.html' inexistente,
+    redirige al índice de chat donde se muestran las conversaciones.
     """
     user_id = get_user_id()
     if not user_id:
-        flash("You must be logged in to view your matches.", "danger")
+        flash("Debes iniciar sesión para ver tus matches.", "danger")
         return redirect(url_for('auth.login'))
 
-    conn = get_db_connection()
-    cur = conn.cursor()
-    try:
-        cur.execute("""
-            SELECT u.id, u.username, p.profile_picture, p.fame_rating, p.city
-            FROM users u
-            JOIN profiles p ON u.id = p.user_id
-            WHERE (u.id IN (SELECT user2_id FROM matches WHERE user1_id = %s)
-                OR u.id IN (SELECT user1_id FROM matches WHERE user2_id = %s))
-            ORDER BY p.fame_rating DESC
-        """, (user_id, user_id))
-        matches = cur.fetchall()
-    except Exception as e:
-        conn.rollback()
-        flash(f"Error retrieving matches: {e}", "danger")
-        matches = []
-    finally:
-        cur.close()
-        conn.close()
+    # Aquí se podría realizar la consulta de matches si se desea usarla en el chat index.
+    return redirect(url_for('chat.index'))
 
-    return render_template("matches.html", matches=matches)
 
 @profiles_bp.route('/match_count', methods=['GET'])
 def match_count():
@@ -406,6 +423,7 @@ def match_count():
     cur.close()
     conn.close()
     return jsonify({"match_count": match_count})
+
 
 
 

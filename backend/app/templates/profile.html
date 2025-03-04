@@ -97,7 +97,7 @@
             </div>
             <div class="mb-3">
                 <label for="interests" class="form-label">Interests:</label>
-                <input name="interests" id="interests-input" class="form-control" placeholder="Enter interests">
+                <input name="interests_data" id="interests-input" class="form-control" placeholder="Enter interests">
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Save & Continue</button>
@@ -129,11 +129,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    var existingInterests = [{% for interest in user_interests %}"{{ interest }}",{% endfor %}];
+    var existingInterests = [{% for interest in profile.interests %}"{{ interest }}",{% endfor %}];
     tagify.addTags(existingInterests);
 });
 </script>
 {% endblock %}
+
 
 
 
