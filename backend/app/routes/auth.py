@@ -54,16 +54,6 @@ def send_verification_email(to_email):
     verification_url = url_for('auth.confirm_email', token=token, _external=True)
     send_email(to_email, "Verificación de correo - Matchito", f"Confirma tu correo: {verification_url}")
 
-def get_user_by_email(email):
-    """Recupera usuario por email."""
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT id, username, password FROM users WHERE email = %s", (email,))
-    user = cur.fetchone()
-    cur.close()
-    conn.close()
-    return user
-
 # ─── REGISTRO ─────────────────────────────────────────────────────────
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
@@ -72,6 +62,7 @@ def register():
     if request.method == 'GET':
         return render_template("register.html")
 
+    # Soporta tanto JSON como formulario
     data = request.get_json() if request.is_json else request.form
 
     if not data:
@@ -93,6 +84,7 @@ def register():
     if not all([username, email, password, first_name, last_name, gender, sexual_orientation, birthdate]):
         return jsonify({"error": "Todos los campos son obligatorios"}), 400
 
+    # Puedes usar tu función hash_password o bcrypt directamente
     hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
 
     conn = get_db_connection()
@@ -111,7 +103,7 @@ def register():
 
         conn.commit()
 
-        send_verification_email(email)  # 🔹 Ahora esta función está definida correctamente
+        send_verification_email(email)
 
         return jsonify({"message": "Registro exitoso, revisa tu correo"}), 201
 
@@ -131,14 +123,14 @@ def login():
         email = request.form.get("email")
         password = request.form.get("password")
 
-        user = get_user_by_email(email)  # 📌 Verifica que el usuario existe en la BD
-        if user and check_password(password, user[2]):  # 📌 Comprueba la contraseña
+        user = get_user_by_email(email)  # Verifica que el usuario exista
+        if user and check_password(password, user[2]):  # Comprueba la contraseña
             session.clear()
-            session['user_id'] = user[0]  # 📌 Guarda el ID del usuario en la sesión
+            session['user_id'] = user[0]  # Guarda el ID del usuario en la sesión
             session['username'] = user[1]
-            print("🔹 SESIÓN INICIADA:", session)  # 📌 Verificar si se guarda la sesión
+            print("🔹 SESIÓN INICIADA:", session)
             flash("Inicio de sesión exitoso.", "success")
-            return redirect(url_for('profiles.edit_profile'))  # 📌 Redirigir al perfil
+            return redirect(url_for('profiles.edit_profile'))  # Redirige al perfil
 
         else:
             flash("Email o contraseña incorrectos.", "danger")
@@ -180,7 +172,7 @@ def verify_email(token):
 
 @auth_bp.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
-    """Maneja la recuperación de contraseña enviando un código de reinicio vía email."""
+    """Maneja la recuperación de contraseña enviando un enlace vía email."""
     if request.method == 'POST':
         email = request.form.get("email").strip()
         user = get_user_by_email(email)

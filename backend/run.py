@@ -13,6 +13,9 @@ from flask_socketio import SocketIO
 from datetime import datetime
 import os
 
+# Importa la función para inicializar los manejadores de error
+from app.routes.errors import init_app as init_error_handlers
+
 def create_app():
     """ Configuración y creación de la aplicación Flask. """
     app = Flask(__name__, template_folder="app/templates", static_folder="app/static")
@@ -25,6 +28,9 @@ def create_app():
     app.register_blueprint(messages_bp, url_prefix='/messages')
     app.register_blueprint(notifications_bp, url_prefix='/notifications')
     app.register_blueprint(chat_bp, url_prefix='/chat')
+
+    # Inicializar manejadores de error
+    init_error_handlers(app)
 
     # Variables globales para plantillas
     @app.context_processor
@@ -57,7 +63,7 @@ if __name__ == '__main__':
     print(f"🔍 Buscando plantillas en: {app.template_folder}")
     print(f"📂 Buscando archivos estáticos en: {app.static_folder}")
 
-    # 🔥 Asegurar que se usa el puerto correcto
+    # Asegurar que se usa el puerto correcto
     PORT = int(os.getenv("FLASK_PORT", "8081"))  # Cambiado a 8081 por defecto
 
     print(f"🚀 Iniciando Matchito en http://0.0.0.0:{PORT}")
@@ -66,6 +72,8 @@ if __name__ == '__main__':
         socketio.run(app, host='0.0.0.0', port=PORT, debug=True)
     except Exception as e:
         print(f"❌ Error al iniciar el servidor: {e}")
+
+
 
 
 

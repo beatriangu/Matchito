@@ -3,10 +3,12 @@ from app.utils.db import get_db_connection
 
 notifications_bp = Blueprint('notifications', __name__)
 
-# Endpoint para obtener la cantidad de notificaciones no leídas del usuario autenticado
 @notifications_bp.route('/unread_count', methods=['GET'])
 def unread_count():
-    # Suponemos que el usuario está autenticado y su id se guarda en la sesión
+    """
+    Endpoint para obtener la cantidad de notificaciones no leídas
+    del usuario autenticado.
+    """
     user_id = session.get("user_id")
     if not user_id:
         return jsonify({"error": "No autenticado"}), 401
@@ -20,7 +22,7 @@ def unread_count():
         )
         unread = cur.fetchone()[0]
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": f"Error al obtener notificaciones: {str(e)}"}), 500
     finally:
         cur.close()
         conn.close()
@@ -28,9 +30,12 @@ def unread_count():
     return jsonify({"unread_count": unread})
 
 
-# Endpoint para ver todas las notificaciones del usuario autenticado
 @notifications_bp.route('/', methods=['GET'])
 def view_notifications():
+    """
+    Endpoint para obtener todas las notificaciones del usuario autenticado,
+    ordenadas de la más reciente a la más antigua.
+    """
     user_id = session.get("user_id")
     if not user_id:
         return jsonify({"error": "No autenticado"}), 401
@@ -56,7 +61,7 @@ def view_notifications():
             for row in notifications
         ]
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": f"Error al obtener notificaciones: {str(e)}"}), 500
     finally:
         cur.close()
         conn.close()
@@ -64,15 +69,20 @@ def view_notifications():
     return jsonify({"notifications": notifications_list})
 
 
-# (Opcional) Endpoint para marcar notificaciones como leídas
 @notifications_bp.route('/mark_read', methods=['POST'])
 def mark_read():
+    """
+    Endpoint para marcar como leídas una lista de notificaciones.
+    Se espera recibir en el body JSON una clave "notification_ids" con una lista de ids.
+    """
     user_id = session.get("user_id")
     if not user_id:
         return jsonify({"error": "No autenticado"}), 401
 
-    # Se espera recibir en el body una lista de ids de notificaciones a marcar como leídas
     data = request.get_json()
+    if not data:
+        return jsonify({"error": "No se enviaron datos"}), 400
+
     notification_ids = data.get("notification_ids")
     if not notification_ids or not isinstance(notification_ids, list):
         return jsonify({"error": "Se requiere una lista de notification_ids"}), 400
@@ -88,11 +98,12 @@ def mark_read():
         conn.commit()
     except Exception as e:
         conn.rollback()
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": f"Error al marcar notificaciones como leídas: {str(e)}"}), 500
     finally:
         cur.close()
         conn.close()
 
     return jsonify({"message": "Notificaciones marcadas como leídas"}), 200
+
 
 

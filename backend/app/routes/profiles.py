@@ -5,8 +5,6 @@ import json
 
 profiles_bp = Blueprint("profiles", __name__)
 
-# ─── FUNCIONES AUXILIARES ─────────────────────────────────────────────────
-
 def get_user_id():
     """Obtiene el ID del usuario autenticado desde la sesión."""
     return session.get("user_id")
@@ -50,15 +48,27 @@ def get_user_profile(user_id):
     return None
 
 
-# ─── EDITAR PERFIL ────────────────────────────────────────────────────────
-
 @profiles_bp.route('/profile/edit', methods=['GET', 'POST'])
 def edit_profile():
-    """Edita el perfil del usuario autenticado."""
+    """Edita el perfil del usuario autenticado. Si el perfil está completo, redirige a los perfiles sugeridos."""
     user_id = get_user_id()
     if not user_id:
-        flash("Debes iniciar sesión para editar tu perfil.", "danger")
+        flash("You must log in to edit your profile.", "danger")
         return redirect(url_for('auth.login'))
+
+    profile = get_user_profile(user_id)
+
+    def is_profile_complete(profile):
+        required_fields = ['first_name', 'last_name', 'bio', 'profile_picture', 'gender', 'sexual_orientation']
+        for field in required_fields:
+            if not profile.get(field) or profile.get(field).strip() == "":
+                return False
+        if not profile.get('interests') or len(profile.get('interests')) == 0:
+            return False
+        return True
+
+    if request.method == 'GET' and profile and is_profile_complete(profile):
+        return redirect(url_for("profiles.browse_profiles"))
 
     if request.method == 'POST':
         first_name = request.form.get("first_name", "").strip()
@@ -69,12 +79,10 @@ def edit_profile():
         sexual_orientation = request.form.get("sexual_orientation", "").strip()
         latitude = request.form.get("latitude")
         longitude = request.form.get("longitude")
-        interests_data = request.form.get("interests_data")  # Capturamos los intereses
-
-        print(f"🔍 Intereses recibidos: {interests_data}")
+        interests_data = request.form.get("interests_data")
 
         if not all([first_name, last_name, bio, profile_picture, gender, sexual_orientation]):
-            flash("Todos los campos obligatorios deben ser completados.", "danger")
+            flash("All required fields must be filled in.", "danger")
             return redirect(url_for("profiles.edit_profile"))
 
         latitude = float(latitude) if latitude and latitude.strip() else None
@@ -82,7 +90,6 @@ def edit_profile():
 
         conn = get_db_connection()
         cur = conn.cursor()
-
         try:
             cur.execute("""
                 UPDATE profiles 
@@ -95,7 +102,7 @@ def edit_profile():
                 try:
                     interests = json.loads(interests_data)
                 except json.JSONDecodeError:
-                    interests = [interest.strip() for interest in interests_data.split(',')]
+                    interests = [i.strip() for i in interests_data.split(',') if i.strip()]
 
                 cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
                 for interest in interests:
@@ -108,46 +115,71 @@ def edit_profile():
                     cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
 
             conn.commit()
-            print("✅ Perfil actualizado en BD y los intereses se han guardado correctamente.")
-            flash("Perfil actualizado correctamente!", "success")
+            flash("Profile updated successfully!", "success")
             return redirect(url_for("profiles.browse_profiles"))
 
         except Exception as e:
             conn.rollback()
-            flash(f"Error al actualizar el perfil: {str(e)}", "danger")
-            print(f"❌ Error en SQL: {e}")
-
+            flash(f"Error updating profile: {str(e)}", "danger")
         finally:
             cur.close()
             conn.close()
 
-    profile = get_user_profile(user_id)
     return render_template("profile.html", profile=profile, editing=True)
 
 
-# ─── NAVEGAR PERFILES ────────────────────────────────────────────────────────
-
 @profiles_bp.route('/profiles', methods=['GET'])
 def browse_profiles():
-    """Muestra una lista de perfiles sugeridos con información completa."""
+    """Muestra una lista de perfiles sugeridos con información completa, filtrados y ordenables."""
     user_id = get_user_id()
     if not user_id:
         flash("Debes iniciar sesión para ver perfiles.", "danger")
         return redirect(url_for('auth.login'))
 
-    conn = get_db_connection()
-    cur = conn.cursor()
+    # Parámetros de búsqueda avanzada
+    min_age = request.args.get("min_age", type=int)
+    max_age = request.args.get("max_age", type=int)
+    location = request.args.get("location", "").strip()
+    sort_by = request.args.get("sort_by", "").strip()
+    interests_param = request.args.get("interests", "").strip()
+    fame_rating_gap = request.args.get("fame_rating_gap", type=float)
 
+    # Consulta base: se incluye el conteo de likes (likes_count)
     query = """
         SELECT p.user_id, p.first_name, p.last_name, 
                COALESCE(p.bio, 'No bio available') AS bio, 
                COALESCE(p.profile_picture, 'https://randomuser.me/api/portraits/lego/1.jpg') AS profile_picture, 
-               p.gender, p.fame_rating, p.birthdate, p.city, p.latitude, p.longitude
+               p.gender, p.fame_rating, p.birthdate, p.city, p.latitude, p.longitude,
+               COALESCE(l.likes_count, 0) as likes_count
         FROM profiles p
+        LEFT JOIN (
+            SELECT liked_id, COUNT(*) as likes_count
+            FROM likes
+            GROUP BY liked_id
+        ) l ON p.user_id = l.liked_id
         WHERE p.user_id != %s
-        ORDER BY p.fame_rating DESC
     """
-    cur.execute(query, (user_id,))
+    params = [user_id]
+
+    # Filtros por ubicación (simplificado) si se proporciona
+    if location:
+        query += " AND p.city ILIKE %s"
+        params.append(f"%{location}%")
+
+    # Se pueden agregar filtros por edad y fama usando el cálculo de la edad en Python después de obtener los datos.
+    # Ordenamiento: por defecto se ordena por fama_rating DESC
+    if sort_by == "age":
+        query += " ORDER BY p.birthdate ASC"  # Los más jóvenes tendrán birthdate más reciente
+    elif sort_by == "location":
+        query += " ORDER BY p.city"  # Orden alfabético de la ciudad
+    elif sort_by == "fame_rating":
+        query += " ORDER BY p.fame_rating DESC"
+    else:
+        query += " ORDER BY p.fame_rating DESC"
+
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute(query, tuple(params))
     raw_profiles = cur.fetchall()
     cur.close()
     conn.close()
@@ -166,6 +198,7 @@ def browse_profiles():
             "city": row[8],
             "latitude": row[9],
             "longitude": row[10],
+            "likes_count": row[11]
         }
         if row[7]:
             today = datetime.today().date()
@@ -223,8 +256,6 @@ def browse_profiles():
     return render_template("browse_profiles.html", profiles=profiles)
 
 
-# ─── DAR LIKE ────────────────────────────────────────────────────────────────
-
 @profiles_bp.route('/like/<int:liked_id>', methods=['POST'])
 def like_user(liked_id):
     """Permite dar 'like' a un usuario si el perfil está completo y tiene foto."""
@@ -268,13 +299,10 @@ def like_user(liked_id):
         conn.close()
 
 
-# ─── HISTORIAL DE VISITAS ────────────────────────────────────────────────
-
 def register_profile_view(viewer_id, profile_id):
     """Registra la visita a un perfil."""
     if viewer_id == profile_id:
         return
-
     conn = get_db_connection()
     cur = conn.cursor()
     try:
@@ -289,8 +317,6 @@ def register_profile_view(viewer_id, profile_id):
         cur.close()
         conn.close()
 
-
-# ─── VER UN PERFIL ──────────────────────────────────────────────────────
 
 @profiles_bp.route('/profile/<int:profile_id>', methods=['GET'])
 def view_profile(profile_id):
@@ -324,7 +350,7 @@ def view_profile(profile_id):
             "birthdate": profile[6],
             "city": profile[7],
             "fame_rating": profile[8],
-            "status": None  # Ajusta o elimina get_user_status si no está implementado
+            "status": None
         }
 
         register_profile_view(user_id, profile_id)
@@ -338,9 +364,7 @@ def view_profile(profile_id):
 
 @profiles_bp.route('/profile/report/<int:profile_id>', methods=['POST'])
 def report_profile(profile_id):
-    """
-    Report a user as a fake account.
-    """
+    """Reporta un perfil como falso."""
     reporter_id = get_user_id()
     if not reporter_id:
         flash("Debes iniciar sesión para reportar un perfil.", "danger")
@@ -366,9 +390,7 @@ def report_profile(profile_id):
 
 @profiles_bp.route('/profile/block/<int:profile_id>', methods=['POST'])
 def block_profile(profile_id):
-    """
-    Block a user so that they no longer appear in search results or generate notifications.
-    """
+    """Bloquea a un usuario para que ya no aparezca en las búsquedas o notificaciones."""
     blocker_id = get_user_id()
     if not blocker_id:
         flash("Debes iniciar sesión para bloquear un perfil.", "danger")
@@ -392,8 +414,6 @@ def block_profile(profile_id):
     return redirect(url_for("profiles.browse_profiles"))
 
 
-# ─── VER MATCHES ──────────────────────────────────────────────────────────
-
 @profiles_bp.route('/matches', methods=['GET'])
 def view_matches():
     """
@@ -405,7 +425,6 @@ def view_matches():
         flash("Debes iniciar sesión para ver tus matches.", "danger")
         return redirect(url_for('auth.login'))
 
-    # Aquí se podría realizar la consulta de matches si se desea usarla en el chat index.
     return redirect(url_for('chat.index'))
 
 
@@ -423,6 +442,7 @@ def match_count():
     cur.close()
     conn.close()
     return jsonify({"match_count": match_count})
+
 
 
 

@@ -20,6 +20,7 @@
       flex-direction: column;
     }
     body {
+      /* Usa el background_image definido en el template hijo, o el fondo por defecto */
       background: url("{{ background_image or url_for('static', filename='images/home_background.jpg') }}") no-repeat center center fixed;
       background-size: cover;
       font-family: Arial, sans-serif;
@@ -138,6 +139,7 @@
                 .then(data => {
                     const element = document.getElementById(elementId);
                     if (element) {
+                        // Ajusta según la estructura de datos devuelta
                         element.textContent = data.unread_messages || 0;
                     }
                 })
@@ -179,6 +181,7 @@
   {% block scripts %}{% endblock %}
 </body>
 </html>
+
 
 
 

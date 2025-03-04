@@ -28,7 +28,8 @@ def index():
         """, (current_user_id, current_user_id, current_user_id))
         chat_partners = cur.fetchall()
 
-        return render_template("chat_index.html", chat_partners=[row[0] for row in chat_partners])
+        # Se renderiza la plantilla chat.html pasando la lista de IDs de los partners
+        return render_template("chat.html", chat_partners=[row[0] for row in chat_partners])
 
     except Exception as e:
         return jsonify({"error": f"Error al cargar chats: {str(e)}"}), 500
@@ -62,12 +63,12 @@ def send_message():
     conn = get_db_connection()
     cur = conn.cursor()
     try:
-        # Verificar que el usuario existe antes de enviar el mensaje
+        # Verificar que el usuario destinatario existe
         cur.execute("SELECT id FROM users WHERE id = %s", (receiver_id,))
         if not cur.fetchone():
             return jsonify({"error": "El destinatario no existe."}), 404
 
-        # Insertar mensaje
+        # Insertar mensaje en la base de datos
         cur.execute("""
             INSERT INTO messages (sender_id, receiver_id, content, sent_at)
             VALUES (%s, %s, %s, NOW())
@@ -85,7 +86,11 @@ def send_message():
             "sent_at": sent_at.isoformat() if sent_at else None
         }, broadcast=True)
 
-        return jsonify({"status": "Mensaje enviado", "message_id": message_id, "sent_at": sent_at.isoformat()}), 201
+        return jsonify({
+            "status": "Mensaje enviado", 
+            "message_id": message_id, 
+            "sent_at": sent_at.isoformat()
+        }), 201
 
     except Exception as e:
         conn.rollback()
@@ -96,10 +101,11 @@ def send_message():
         conn.close()
 
 
-@chat_bp.route('/<int:user_id>', methods=['GET'])
-def view_chat(user_id):
+@chat_bp.route('/<int:other_user_id>', methods=['GET'])
+def view_chat(other_user_id):
     """
-    Recupera el historial de chat entre el usuario autenticado y otro usuario.
+    Recupera el historial de chat entre el usuario autenticado y otro usuario,
+    y renderiza la plantilla chat.html con la información necesaria.
     """
     current_user_id = session.get("user_id")
     if not current_user_id:
@@ -108,13 +114,21 @@ def view_chat(user_id):
     conn = get_db_connection()
     cur = conn.cursor()
     try:
+        # Obtener datos del otro usuario
+        cur.execute("SELECT id, username FROM users WHERE id = %s", (other_user_id,))
+        other_user_row = cur.fetchone()
+        if not other_user_row:
+            return jsonify({"error": "El usuario de chat no existe"}), 404
+        other_user = {"id": other_user_row[0], "username": other_user_row[1]}
+
+        # Obtener historial de mensajes entre el usuario actual y el otro usuario
         cur.execute("""
             SELECT id, sender_id, receiver_id, content, sent_at
             FROM messages
             WHERE (sender_id = %s AND receiver_id = %s)
                OR (sender_id = %s AND receiver_id = %s)
             ORDER BY sent_at ASC
-        """, (current_user_id, user_id, user_id, current_user_id))
+        """, (current_user_id, other_user_id, other_user_id, current_user_id))
         messages = [{
             "id": row[0],
             "sender_id": row[1],
@@ -123,14 +137,16 @@ def view_chat(user_id):
             "sent_at": row[4].isoformat() if row[4] else None
         } for row in cur.fetchall()]
 
-        return jsonify({"messages": messages})
-
     except Exception as e:
         return jsonify({"error": f"Error al recuperar historial de chat: {str(e)}"}), 500
-
     finally:
         cur.close()
         conn.close()
+
+    # Renderizamos la plantilla chat.html con las variables necesarias
+    return render_template("chat.html", messages=messages, other_user=other_user, user_id=current_user_id)
+
+
 
 
 

@@ -10,3 +10,5 @@ def init_app(app):
         return render_template('500.html'), 500
 
 
+
+
