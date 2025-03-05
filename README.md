@@ -5,7 +5,7 @@ Matcha es una aplicación de citas online diseñada para conectar personas de ma
   <!-- Primera fila -->
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/home.png?raw=true" alt="Home de Matchito" style="width: 100px; height: auto;">
-    <img src="?raw=true" alt="Home de Matchito" style="width: 100px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/homelog.png?raw=true" alt="Home de Matchito" style="width: 100px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/register.png?raw=true" alt="Register de Matchito" style="width: 100px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/login.png?raw=true" alt="Login de Matchito" style="width: 100px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/Password_recovery.png?raw=true" alt="Password_recovery" style="width: 100px; height: auto;">
