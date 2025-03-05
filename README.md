@@ -1,15 +1,16 @@
 # Mi Matchito
 
 Matcha es una aplicación de citas online diseñada para conectar personas de manera inteligente y segura. Este proyecto invita a explorar y aplicar herramientas modernas de desarrollo web, integrando seguridad, escalabilidad y una experiencia de usuario superior. Utilizando el micro-framework Flask en Python, se construye una plataforma web dinámica y responsiva en la que la interacción entre usuarios es el elemento central.
-
 <div style="width: 800px; margin: auto;">
   <!-- Primera fila -->
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/home.png?raw=true" alt="Home de Matchito" width="100"/>
-    <img src="https://github.com/beatriangu/Matchito/blob/main/register.png?raw=true" alt="Register de Matchito" width="100"/>
-    <img src="https://github.com/beatriangu/Matchito/blob/main/login.png?raw=true" alt="Login de Matchito" width="100"/>
+    <img src="https://github.com/beatriangu/Matchito/blob/main/home.png?raw=true" alt="Home de Matchito" style="width: 100px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/register.png?raw=true" alt="Register de Matchito" style="width: 100px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/login.png?raw=true" alt="Login de Matchito" style="width: 100px; height: auto;">
+  </div>
+</div>
+<img src="https://github.com/beatriangu/Matchito/blob/main/Editingprofilefront.png?raw=true" alt="Editing Profile Front" style="width: 100px; height: auto;">
 
-    <img src="https://github.com/beatriangu/Matchito/blob/main/Editingprofilefront.png?raw=true" alt="Editing Profile Front" width="100"/>
     
   </div>
   <!-- Segunda fila -->
