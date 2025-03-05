@@ -10,20 +10,27 @@ def get_user_id():
     return session.get("user_id")
 
 def get_user_profile(user_id):
-    """Retrieve the authenticated user's profile along with their interests."""
+    """
+    Retrieve the authenticated user's profile details along with their interests.
+    Returns a dictionary with keys: first_name, last_name, bio, profile_picture, gender,
+    sexual_orientation, latitude, longitude, fame_rating, and interests.
+    """
     conn = get_db_connection()
     cur = conn.cursor()
     
-    # Query the user's profile details
+    # Query the user's profile details (assuming your table has these fields)
     cur.execute("""
-        SELECT first_name, last_name, bio, profile_picture, gender, sexual_orientation, latitude, longitude, fame_rating 
-        FROM profiles WHERE user_id = %s
+        SELECT first_name, last_name, bio, profile_picture, gender, sexual_orientation, 
+               latitude, longitude, fame_rating 
+        FROM profiles 
+        WHERE user_id = %s
     """, (user_id,))
     profile = cur.fetchone()
 
     # Query the user's interests
     cur.execute("""
-        SELECT i.name FROM profile_interests pi
+        SELECT i.name 
+        FROM profile_interests pi
         JOIN interests i ON pi.interest_id = i.id
         WHERE pi.user_id = %s
     """, (user_id,))
@@ -50,8 +57,9 @@ def get_user_profile(user_id):
 @profiles_bp.route('/profile/edit', methods=['GET', 'POST'])
 def edit_profile():
     """
-    Edit the authenticated user's profile.
-    If the profile is complete (including bio and interests), redirect to the suggested profiles page.
+    Allows the authenticated user to edit their profile.
+    If the profile is complete (i.e., required fields and at least one interest are provided),
+    the user is redirected to the browse profiles page.
     """
     user_id = get_user_id()
     if not user_id:
@@ -61,8 +69,10 @@ def edit_profile():
     profile = get_user_profile(user_id)
 
     def is_profile_complete(profile):
-        """Check if all required fields (first name, last name, bio, profile picture, gender, sexual orientation)
-        are provided and at least one interest exists."""
+        """
+        Check if the profile is complete by verifying that all required fields are provided
+        and that at least one interest exists.
+        """
         required_fields = ['first_name', 'last_name', 'bio', 'profile_picture', 'gender', 'sexual_orientation']
         for field in required_fields:
             if not profile.get(field) or profile.get(field).strip() == "":
@@ -71,7 +81,7 @@ def edit_profile():
             return False
         return True
 
-    # On GET, if profile is complete, redirect to the browse profiles page.
+    # On GET, if the profile is complete, redirect to the browse profiles page.
     if request.method == 'GET' and profile and is_profile_complete(profile):
         return redirect(url_for("profiles.browse_profiles"))
 
@@ -87,12 +97,12 @@ def edit_profile():
         longitude = request.form.get("longitude")
         interests_data = request.form.get("interests_data")  # Expected as JSON string or comma-separated list
 
-        # Validate required fields
+        # Validate that all required fields are provided
         if not all([first_name, last_name, bio, profile_picture, gender, sexual_orientation]):
             flash("All required fields must be filled in.", "danger")
             return redirect(url_for("profiles.edit_profile"))
 
-        # Convert latitude and longitude to float if provided
+        # Convert latitude and longitude to floats if provided
         latitude = float(latitude) if latitude and latitude.strip() else None
         longitude = float(longitude) if longitude and longitude.strip() else None
 
@@ -110,13 +120,13 @@ def edit_profile():
             # Update interests if provided
             if interests_data:
                 try:
-                    # Try to parse the interests data as JSON
+                    # Attempt to parse interests_data as JSON
                     interests = json.loads(interests_data)
                 except json.JSONDecodeError:
                     # Otherwise, split by commas
                     interests = [i.strip() for i in interests_data.split(',') if i.strip()]
 
-                # Remove current interests and insert new ones
+                # Delete existing interests and insert new ones
                 cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
                 for interest in interests:
                     cur.execute("SELECT id FROM interests WHERE name = %s", (interest,))
@@ -144,15 +154,15 @@ def edit_profile():
 def browse_profiles():
     """
     Display a list of suggested profiles with advanced filtering and sorting.
-    This endpoint applies filters based on the current user's gender, sexual orientation,
-    and optionally location and other search criteria.
+    Filters include gender based on the current user's sexual orientation,
+    optional location filtering, and sorting options.
     """
     user_id = get_user_id()
     if not user_id:
         flash("You must be logged in to view profiles.", "danger")
         return redirect(url_for('auth.login'))
 
-    # Retrieve search parameters from query string
+    # Retrieve search parameters from the query string
     min_age = request.args.get("min_age", type=int)
     max_age = request.args.get("max_age", type=int)
     location = request.args.get("location", "").strip()
@@ -291,11 +301,11 @@ def browse_profiles():
     print(f"🔍 Profiles retrieved: {len(profiles)}")
     return render_template("browse_profiles.html", profiles=profiles)
 
-@profiles_bp.route("/profile/<int:profile_id>", methods=["GET"])
+@profiles_bp.route('/profile/<int:profile_id>', methods=["GET"])
 def view_profile(profile_id):
     """
-    Display another user's profile.
-    When a profile is viewed, add it to the view history.
+    Display another user's profile and register the view in the history.
+    Excludes sensitive information and computes age if the birthdate is available.
     """
     user_id = get_user_id()
     if not user_id:
@@ -305,9 +315,9 @@ def view_profile(profile_id):
     conn = get_db_connection()
     cur = conn.cursor()
     try:
+        # Get profile details from the profiles table
         cur.execute("""
-            SELECT first_name, last_name, bio, profile_picture, gender, sexual_orientation,
-                   birthdate, city, fame_rating
+            SELECT first_name, last_name, bio, profile_picture, gender, sexual_orientation, birthdate, city, fame_rating
             FROM profiles WHERE user_id = %s
         """, (profile_id,))
         profile = cur.fetchone()
@@ -315,6 +325,7 @@ def view_profile(profile_id):
             flash("Profile not found.", "danger")
             return redirect(url_for("profiles.browse_profiles"))
 
+        # Build a dictionary from the profile data
         profile_dict = {
             "id": profile_id,
             "first_name": profile[0],
@@ -325,13 +336,20 @@ def view_profile(profile_id):
             "sexual_orientation": profile[5],
             "birthdate": profile[6],
             "city": profile[7],
-            "fame_rating": profile[8],
-            "status": None  # Placeholder for online status or last connection time
+            "fame_rating": profile[8]
         }
+
+        # Compute age if birthdate is available
+        if profile[6]:
+            today = datetime.today().date()
+            birthdate = profile[6]
+            age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+            profile_dict["age"] = age
+        else:
+            profile_dict["age"] = "Unknown"
 
         # Register the profile view
         register_profile_view(user_id, profile_id)
-
     finally:
         cur.close()
         conn.close()
@@ -367,7 +385,7 @@ def report_profile(profile_id):
 @profiles_bp.route("/profile/block/<int:profile_id>", methods=["POST"])
 def block_profile(profile_id):
     """
-    Block a user so that they no longer appear in search results or notifications.
+    Block a user so that they no longer appear in search results or generate notifications.
     Returns a JSON response.
     """
     blocker_id = get_user_id()
@@ -393,7 +411,8 @@ def block_profile(profile_id):
 @profiles_bp.route("/matches", methods=["GET"])
 def view_matches():
     """
-    Instead of rendering a non-existent 'matches.html', redirect to the chat index.
+    Instead of rendering a non-existent 'matches.html' template,
+    redirect to the chat index where conversations are shown.
     """
     user_id = get_user_id()
     if not user_id:
@@ -418,7 +437,7 @@ def match_count():
     cur.close()
     conn.close()
     return jsonify({"match_count": count})
-    
+
 def register_profile_view(viewer_id, profile_id):
     """
     Register a profile view if the viewer is not the same as the profile owner.
@@ -438,5 +457,6 @@ def register_profile_view(viewer_id, profile_id):
     finally:
         cur.close()
         conn.close()
+
 
 
