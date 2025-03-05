@@ -9,7 +9,7 @@ Matcha es una aplicación de citas online diseñada para conectar personas de ma
     <img src="https://github.com/beatriangu/Matchito/blob/main/register.png?raw=true" alt="Register de Matchito" style="width: 100px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/login.png?raw=true" alt="Login de Matchito" style="width: 100px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/Password_recovery.png?raw=true" alt="Password_recovery" style="width: 100px; height: auto;">
-    
+    <img src="https://github.com/beatriangu/Matchito/blob/main/Suggestedprofiles.png?raw=true" alt="Editing Profile Front" style="width: 100px; height: auto;">
     
   </div>
   </div>
@@ -19,7 +19,6 @@ Matcha es una aplicación de citas online diseñada para conectar personas de ma
     <img src="https://github.com/beatriangu/Matchito/blob/main/suggestedage.png"?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/suggestedlocation.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/suggestedfamerating.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/suggestedtags.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
     
     <img src=https://github.com/beatriangu/Matchito/blob/main/Browselikereportblockview.webm"?raw=true" alt="Browse" width="100"/>
     <img src="https://github.com/beatriangu/Matchito/blob/main/chat.png?raw=true" alt="Chat" width="100"/>
