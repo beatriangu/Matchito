@@ -8,21 +8,21 @@ from app.utils.security import hash_password, check_password
 from app.utils.token_util import get_serializer
 from app.utils.test_mail import test_mail
 
-# Configuración de correo
+# Email configuration
 SMTP_SERVER = os.getenv("MAIL_SERVER", "smtp.gmail.com")
 SMTP_PORT = int(os.getenv("MAIL_PORT", 587))
 EMAIL_SENDER = os.getenv("MAIL_USERNAME")
 EMAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
 
-# Enviar email de prueba al iniciar la aplicación
+# Send a test email when the application starts
 test_mail()
 
 auth_bp = Blueprint('auth', __name__)
 
-# ─── FUNCIONES AUXILIARES ─────────────────────────────────────────────
+# ─── AUXILIARY FUNCTIONS ─────────────────────────────────────────────
 
 def send_email(to_email, subject, body):
-    """Envía un correo usando SMTP."""
+    """Send an email using SMTP."""
     msg = MIMEText(body)
     msg["Subject"] = subject
     msg["From"] = EMAIL_SENDER
@@ -33,12 +33,12 @@ def send_email(to_email, subject, body):
             server.starttls()
             server.login(EMAIL_SENDER, EMAIL_PASSWORD)
             server.sendmail(EMAIL_SENDER, to_email, msg.as_string())
-        print(f"✅ Email enviado a {to_email}")
+        print(f"✅ Email sent to {to_email}")
     except Exception as e:
-        print(f"❌ Error enviando email: {e}")
+        print(f"❌ Error sending email: {e}")
 
 def get_user_by_email(email):
-    """Recupera usuario por email."""
+    """Retrieve a user by email."""
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("SELECT id, username, password FROM users WHERE email = %s", (email,))
@@ -48,25 +48,25 @@ def get_user_by_email(email):
     return user
 
 def send_verification_email(to_email):
-    """Envía el correo de verificación al usuario."""
+    """Send a verification email to the user."""
     serializer = get_serializer()
     token = serializer.dumps(to_email, salt='email-confirm')
     verification_url = url_for('auth.confirm_email', token=token, _external=True)
-    send_email(to_email, "Verificación de correo - Matchito", f"Confirma tu correo: {verification_url}")
+    send_email(to_email, "Email Verification - Matchito", f"Please confirm your email: {verification_url}")
 
-# ─── REGISTRO ─────────────────────────────────────────────────────────
+# ─── REGISTRATION ─────────────────────────────────────────────────────
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
-    """Registra un nuevo usuario y lo verifica por email."""
+    """Register a new user and verify their email."""
     if request.method == 'GET':
         return render_template("register.html")
 
-    # Soporta tanto JSON como formulario
+    # Support both JSON and form data
     data = request.get_json() if request.is_json else request.form
 
     if not data:
-        return jsonify({"error": "No se recibieron datos"}), 400
+        return jsonify({"error": "No data received"}), 400
 
     username = data.get("username", "").strip()
     email = data.get("email", "").strip()
@@ -82,9 +82,9 @@ def register():
     interests = data.get("interests", [])
 
     if not all([username, email, password, first_name, last_name, gender, sexual_orientation, birthdate]):
-        return jsonify({"error": "Todos los campos son obligatorios"}), 400
+        return jsonify({"error": "All fields are required"}), 400
 
-    # Puedes usar tu función hash_password o bcrypt directamente
+    # You can use the hash_password function or directly bcrypt
     hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
 
     conn = get_db_connection()
@@ -105,11 +105,11 @@ def register():
 
         send_verification_email(email)
 
-        return jsonify({"message": "Registro exitoso, revisa tu correo"}), 201
+        return jsonify({"message": "Registration successful, please check your email"}), 201
 
     except Exception as e:
         conn.rollback()
-        return jsonify({"error": f"Error durante el registro: {str(e)}"}), 500
+        return jsonify({"error": f"Registration error: {str(e)}"}), 500
     finally:
         cur.close()
         conn.close()
@@ -118,22 +118,22 @@ def register():
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-    """Inicia sesión al usuario."""
+    """Log in the user."""
     if request.method == 'POST':
         email = request.form.get("email")
         password = request.form.get("password")
 
-        user = get_user_by_email(email)  # Verifica que el usuario exista
-        if user and check_password(password, user[2]):  # Comprueba la contraseña
+        user = get_user_by_email(email)  # Verify the user exists
+        if user and check_password(password, user[2]):  # Check the password
             session.clear()
-            session['user_id'] = user[0]  # Guarda el ID del usuario en la sesión
+            session['user_id'] = user[0]  # Store the user ID in the session
             session['username'] = user[1]
-            print("🔹 SESIÓN INICIADA:", session)
-            flash("Inicio de sesión exitoso.", "success")
-            return redirect(url_for('profiles.edit_profile'))  # Redirige al perfil
+            print("🔹 SESSION STARTED:", session)
+            flash("Successfully logged in.", "success")
+            return redirect(url_for('profiles.edit_profile'))  # Redirect to the profile edit page
 
         else:
-            flash("Email o contraseña incorrectos.", "danger")
+            flash("Incorrect email or password.", "danger")
 
     return render_template("login.html")
 
@@ -141,30 +141,30 @@ def login():
 
 @auth_bp.route('/logout')
 def logout():
-    """Cierra la sesión del usuario."""
+    """Log out the user and display the logout page."""
     session.clear()
-    flash("Has cerrado sesión exitosamente.", "success")
-    return redirect(url_for('home'))
+    flash("Successfully logged out", "success")
+    return render_template("logout.html")
 
-# ─── VERIFICACIÓN DE EMAIL ────────────────────────────────────────────
+# ─── EMAIL VERIFICATION ──────────────────────────────────────────────
 
 @auth_bp.route('/verify-email/<token>', endpoint='confirm_email')
 def verify_email(token):
-    """Verifica el token recibido por email."""
+    """Verify the email using the provided token."""
     try:
         email = get_serializer().loads(token, salt='email-confirm', max_age=3600)
     except Exception as e:
-        flash("El enlace de verificación es inválido o ha expirado.", "danger")
+        flash("The verification link is invalid or has expired.", "danger")
         return redirect(url_for('home'))
     conn = get_db_connection()
     cur = conn.cursor()
     try:
         cur.execute("UPDATE users SET is_verified = TRUE WHERE email = %s", (email,))
         conn.commit()
-        flash("Tu correo ha sido verificado correctamente.", "success")
+        flash("Your email has been successfully verified.", "success")
     except Exception as e:
         conn.rollback()
-        flash(f"Error al verificar el correo: {e}", "danger")
+        flash(f"Error verifying email: {e}", "danger")
     finally:
         cur.close()
         conn.close()
@@ -172,39 +172,39 @@ def verify_email(token):
 
 @auth_bp.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
-    """Maneja la recuperación de contraseña enviando un enlace vía email."""
+    """Handle password recovery by sending a reset link via email."""
     if request.method == 'POST':
         email = request.form.get("email").strip()
         user = get_user_by_email(email)
 
         if not user:
-            flash("El email no existe en el sistema.", "danger")
+            flash("The email does not exist in our system.", "danger")
             return redirect(url_for('auth.forgot_password'))
 
         reset_token = get_serializer().dumps(email, salt="reset-password")
         reset_url = url_for('auth.reset_password', token=reset_token, _external=True)
 
-        # Enviar el email con el enlace de recuperación
-        send_email(email, "Recuperación de Contraseña - Matchito", f"Haz clic en el siguiente enlace para restablecer tu contraseña: {reset_url}")
+        # Send the email with the password reset link
+        send_email(email, "Password Reset - Matchito", f"Click the following link to reset your password: {reset_url}")
 
-        flash("Se ha enviado un enlace de recuperación a tu email.", "success")
+        flash("A password reset link has been sent to your email.", "success")
         return redirect(url_for('auth.login'))
 
     return render_template("forgot_password.html")
 
 @auth_bp.route('/reset-password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
-    """Página para restablecer la contraseña con un token válido."""
+    """Reset the user's password using a valid token."""
     try:
         email = get_serializer().loads(token, salt="reset-password", max_age=3600)
     except Exception as e:
-        flash("El enlace de recuperación ha expirado o no es válido.", "danger")
+        flash("The password reset link has expired or is invalid.", "danger")
         return redirect(url_for('auth.forgot_password'))
 
     if request.method == 'POST':
         new_password = request.form.get("password").strip()
         if not new_password:
-            flash("La contraseña no puede estar vacía.", "danger")
+            flash("The password cannot be empty.", "danger")
             return redirect(url_for('auth.reset_password', token=token))
 
         hashed_password = bcrypt.hashpw(new_password.encode(), bcrypt.gensalt()).decode()
@@ -213,13 +213,18 @@ def reset_password(token):
         try:
             cur.execute("UPDATE users SET password = %s WHERE email = %s", (hashed_password, email))
             conn.commit()
-            flash("Tu contraseña ha sido restablecida exitosamente.", "success")
+            flash("Your password has been successfully reset.", "success")
             return redirect(url_for('auth.login'))
         except Exception as e:
             conn.rollback()
-            flash(f"Error al actualizar la contraseña: {e}", "danger")
+            flash(f"Error updating password: {e}", "danger")
         finally:
             cur.close()
             conn.close()
 
     return render_template("reset_password.html", token=token)
+
+@auth_bp.route('/trigger-error')
+def trigger_error():
+    # This route is only for testing the 500 error page.
+    raise Exception("This is a test error to trigger the 500 error page")

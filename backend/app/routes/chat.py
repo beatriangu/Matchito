@@ -28,7 +28,6 @@ def index():
         """, (current_user_id, current_user_id, current_user_id))
         chat_partners = cur.fetchall()
 
-        # Se renderiza la plantilla chat.html pasando la lista de IDs de los partners
         return render_template("chat.html", chat_partners=[row[0] for row in chat_partners])
 
     except Exception as e:
@@ -50,7 +49,8 @@ def send_message():
     if not current_user_id:
         return jsonify({"error": "Usuario no autenticado"}), 401
 
-    data = request.get_json() or request.form
+    # Usamos silent=True para evitar errores si el Content-Type no es application/json
+    data = request.get_json(silent=True) or request.form
     receiver_id = data.get("receiver_id")
     message_text = data.get("message")
 
@@ -63,12 +63,12 @@ def send_message():
     conn = get_db_connection()
     cur = conn.cursor()
     try:
-        # Verificar que el usuario destinatario existe
+        # Verificar que el usuario existe antes de enviar el mensaje
         cur.execute("SELECT id FROM users WHERE id = %s", (receiver_id,))
         if not cur.fetchone():
             return jsonify({"error": "El destinatario no existe."}), 404
 
-        # Insertar mensaje en la base de datos
+        # Insertar mensaje
         cur.execute("""
             INSERT INTO messages (sender_id, receiver_id, content, sent_at)
             VALUES (%s, %s, %s, NOW())
@@ -86,11 +86,7 @@ def send_message():
             "sent_at": sent_at.isoformat() if sent_at else None
         }, broadcast=True)
 
-        return jsonify({
-            "status": "Mensaje enviado", 
-            "message_id": message_id, 
-            "sent_at": sent_at.isoformat()
-        }), 201
+        return jsonify({"status": "Mensaje enviado", "message_id": message_id, "sent_at": sent_at.isoformat()}), 201
 
     except Exception as e:
         conn.rollback()
@@ -145,6 +141,7 @@ def view_chat(other_user_id):
 
     # Renderizamos la plantilla chat.html con las variables necesarias
     return render_template("chat.html", messages=messages, other_user=other_user, user_id=current_user_id)
+
 
 
 

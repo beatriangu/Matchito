@@ -10,15 +10,19 @@
   <!-- Advanced Search / Filtering Form -->
   <form action="{{ url_for('profiles.browse_profiles') }}" method="GET" class="mb-4">
     <div class="row">
+      <!-- Minimum Age Input -->
       <div class="col-md-3 mb-2">
         <input type="number" name="min_age" class="form-control" placeholder="Min Age">
       </div>
+      <!-- Maximum Age Input -->
       <div class="col-md-3 mb-2">
         <input type="number" name="max_age" class="form-control" placeholder="Max Age">
       </div>
+      <!-- Location Input -->
       <div class="col-md-3 mb-2">
         <input type="text" name="location" class="form-control" placeholder="Location">
       </div>
+      <!-- Sorting Options -->
       <div class="col-md-3 mb-2">
         <select name="sort_by" class="form-control">
           <option value="">Sort By</option>
@@ -30,9 +34,11 @@
       </div>
     </div>
     <div class="row">
+      <!-- Interests Input (comma separated) -->
       <div class="col-md-6 mb-2">
         <input type="text" name="interests" class="form-control" placeholder="Interests (comma separated)">
       </div>
+      <!-- Fame Rating Gap Input -->
       <div class="col-md-6 mb-2">
         <input type="number" name="fame_rating_gap" class="form-control" placeholder="Fame Rating Gap">
       </div>
@@ -51,20 +57,20 @@
           <img src="{{ profile.profile_picture or url_for('static', filename='images/default.png') }}" 
                alt="Profile Picture" class="card-img-top rounded-top">
           <div class="card-body text-center">
-            <!-- Name -->
+            <!-- Full Name -->
             <h3 class="card-title">{{ profile.first_name }} {{ profile.last_name }}</h3>
 
-            <!-- Age Calculation -->
+            <!-- Display Age -->
             {% if profile.birthdate %}
               <p><strong>Age:</strong> {{ profile.age if profile.age else "Unknown" }}</p>
             {% else %}
               <p><strong>Age:</strong> Unknown</p>
             {% endif %}
 
-            <!-- Location -->
+            <!-- Display Location -->
             <p><strong>Location:</strong> {{ profile.city if profile.city else "Unknown" }}</p>
 
-            <!-- Interests -->
+            <!-- Display Interests -->
             <p><strong>Interests:</strong> 
               {% if profile.interests and profile.interests|length > 0 %}
                 {{ profile.interests | join(', ') }}
@@ -73,19 +79,23 @@
               {% endif %}
             </p>
 
-            <!-- Fame Rating -->
+            <!-- Display Fame Rating and Likes Count -->
             <p><strong>Fame Rating:</strong> {{ profile.fame_rating if profile.fame_rating else "N/A" }}</p>
-            <!-- Likes Count -->
             <p><strong>Likes:</strong> {{ profile.likes_count }}</p>
 
             <!-- Action Buttons -->
             <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+              <!-- Like Button -->
               <button class="btn btn-danger" onclick="sendLike({{ profile.user_id }})">❤️ Like</button>
+              <!-- Chat Button (only if mutual like exists) -->
               {% if profile.mutual_like %}
                 <a href="{{ url_for('chat.view_chat', other_user_id=profile.user_id) }}" class="btn btn-info">Chat</a>
               {% endif %}
+              <!-- Block Button -->
               <button class="btn btn-secondary" onclick="blockUser({{ profile.user_id }})">🚫 Block</button>
+              <!-- Report Button -->
               <button class="btn btn-warning" onclick="reportUser({{ profile.user_id }})">⚠️ Report</button>
+              <!-- View Profile Button -->
               <a href="{{ url_for('profiles.view_profile', profile_id=profile.user_id) }}" class="btn btn-primary">📄 View Profile</a>
             </div>
           </div>
@@ -95,42 +105,42 @@
   </div>
 </div>
 
-<!-- JavaScript Functions to Handle User Actions -->
+<!-- JavaScript functions for handling actions -->
 <script>
-function sendLike(userId) {
-  fetch(`/likes/like`, { 
-    method: 'POST', 
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ liker_id: {{ session.get('user_id') }}, liked_id: userId })
-  })
-  .then(response => response.json())
-  .then(data => alert(data.message))
-  .catch(error => console.error("Error sending like:", error));
-}
-
-function blockUser(userId) {
-  fetch(`/profiles/block`, { 
-    method: 'POST', 
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ user_id: userId })
-  })
-  .then(response => response.json())
-  .then(data => alert(data.message))
-  .catch(error => console.error("Error blocking user:", error));
-}
-
-function reportUser(userId) {
-  fetch(`/profiles/report`, { 
-    method: 'POST', 
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ user_id: userId })
-  })
-  .then(response => response.json())
-  .then(data => alert(data.message))
-  .catch(error => console.error("Error reporting user:", error));
-}
+  function sendLike(userId) {
+    fetch(`/likes/like`, { 
+      method: 'POST', 
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ liker_id: {{ session.get('user_id') }}, liked_id: userId })
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error sending like:", error));
+  }
+  
+  function blockUser(userId) {
+    // Use the correct endpoint URL for blocking a profile
+    fetch(`/profiles/profile/block/${userId}`, { 
+      method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error blocking user:", error));
+  }
+  
+  function reportUser(userId) {
+    // Use the correct endpoint URL for reporting a profile
+    fetch(`/profiles/profile/report/${userId}`, { 
+      method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error("Error reporting user:", error));
+  }
 </script>
 {% endblock %}
+
+
 
 
 

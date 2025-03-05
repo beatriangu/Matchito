@@ -10,6 +10,7 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
   <style>
@@ -20,40 +21,23 @@
       flex-direction: column;
     }
     body {
-      /* Usa el background_image definido en el template hijo, o el fondo por defecto */
+      /* Use the child template background image if provided, else default */
       background: url("{{ background_image or url_for('static', filename='images/home_background.jpg') }}") no-repeat center center fixed;
       background-size: cover;
       font-family: Arial, sans-serif;
     }
-    
     .main-content {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;  
+      justify-content: center;
+      align-items: center;
       padding: 20px;
       text-align: center;
       gap: 20px;
       max-width: 800px;
       margin: 0 auto;
     }
-
-    /* Profile Container */
-    .profile-container {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      height: 100vh;
-      padding-left: 5%;
-    }
-
-    @media (max-width: 768px) {
-      .profile-container {
-        justify-content: center;
-        padding-left: 0;
-      }
-    }
-
     footer {
       text-align: center;
       padding: 10px;
@@ -61,8 +45,14 @@
       color: white;
       font-size: 0.9rem;
       width: 100%;
+      position: relative;
+      bottom: 0;
     }
-
+    @media (max-width: 768px) {
+      footer {
+        font-size: 0.8rem;
+      }
+    }
     /* Badge Styling */
     .notification-badge {
       font-size: 0.8rem;
@@ -74,7 +64,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <!-- Enlace del brand apunta a la ruta principal 'home' -->
+      <!-- Brand link to home page -->
       <a class="navbar-brand" href="{{ url_for('home') }}">Matchito</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,34 +72,44 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <!-- Enlace de Home actualizado para usar el endpoint 'home' -->
+          <!-- Home link -->
           <li class="nav-item">
             <a class="nav-link {% if request.endpoint == 'home' %}active{% endif %}" href="{{ url_for('home') }}">🏔️ Home</a>
           </li>
-
           {% if session.get('user_id') %}
+            <!-- Profile link: now passes the logged-in user's ID -->
             <li class="nav-item">
-              <a class="nav-link {% if request.endpoint == 'profiles.edit_profile' %}active{% endif %}" href="{{ url_for('profiles.edit_profile') }}">
-                🐧 Profile
-              </a>
+              <a class="nav-link {% if request.endpoint == 'profiles.view_profile' %}active{% endif %}" href="{{ url_for('profiles.view_profile', profile_id=session.get('user_id')) }}">👤 Profile</a>
             </li>
+            <!-- Matches link with dynamic match count badge -->
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('profiles.view_matches') }}">
                 🔥 Matches <span id="match-count" class="badge bg-warning notification-badge">0</span>
               </a>
             </li>
+            <!-- Notifications link with dynamic unread count badge -->
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('notifications.view_notifications') }}">
                 🔔 Notifications <span id="notification-count" class="badge bg-danger notification-badge">0</span>
               </a>
             </li>
+            <!-- Messages link with dynamic unread messages badge -->
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('messages.get_unread_messages_count', user_id=session.get('user_id')) }}">
                 ✉️ Messages <span id="message-count" class="badge bg-primary notification-badge">0</span>
               </a>
             </li>
+            <!-- Logout link -->
             <li class="nav-item">
               <a class="nav-link {% if request.endpoint == 'auth.logout' %}active{% endif %}" href="{{ url_for('auth.logout') }}">🚪 Logout</a>
+            </li>
+          {% else %}
+            <!-- Register and Login links for unauthenticated users -->
+            <li class="nav-item">
+              <a class="nav-link {% if request.endpoint == 'auth.register' %}active{% endif %}" href="{{ url_for('auth.register') }}">📝 Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.endpoint == 'auth.login' %}active{% endif %}" href="{{ url_for('auth.login') }}">🔑 Login</a>
             </li>
           {% endif %}
         </ul>
@@ -117,8 +117,13 @@
     </div>
   </nav>
 
+  <!-- Notifications Pop-up -->
+  <div id="notifications" class="notifications" style="display: none; position: fixed; top: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 5px;">
+    <p>You have new notifications!</p>
+  </div>
+
   <!-- Main Content -->
-  <div class="main-content {% if request.endpoint == 'profiles.edit_profile' %}profile-container{% endif %}">
+  <div class="main-content">
     {% block content %}{% endblock %}
   </div>
 
@@ -133,54 +138,65 @@
   <!-- Dynamic Notification Update Script -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-        function updateCount(url, elementId) {
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    const element = document.getElementById(elementId);
-                    if (element) {
-                        // Ajusta según la estructura de datos devuelta
-                        element.textContent = data.unread_messages || 0;
-                    }
-                })
-                .catch(error => console.error(`Error fetching ${elementId}:`, error));
-        }
+      // Function to fetch and update the count for a given endpoint and element ID
+      function updateCount(url, elementId) {
+        fetch(url)
+          .then(response => {
+            if (!response.ok) throw new Error("Error fetching data");
+            return response.json();
+          })
+          .then(data => {
+            const element = document.getElementById(elementId);
+            if (element) {
+              // Use the "unread_count" key from the notifications endpoint
+              element.textContent = data.unread_count || 0;
+            }
+          })
+          .catch(error => console.error(`Error fetching ${elementId}:`, error));
+      }
 
-        updateCount("{{ url_for('notifications.unread_count') }}", "notification-count");
-        {% if session.get('user_id') %}
+      // Update notifications count
+      updateCount("{{ url_for('notifications.unread_count') }}", "notification-count");
+
+      // Update unread messages count if the user is logged in
+      {% if session.get('user_id') %}
         updateCount("{{ url_for('messages.get_unread_messages_count', user_id=session.get('user_id')) }}", "message-count");
-        {% endif %}
-        updateCount("{{ url_for('profiles.match_count') }}", "match-count");
+      {% endif %}
+
+      // Update matches count (make sure your endpoint returns the correct key)
+      updateCount("{{ url_for('profiles.match_count') }}", "match-count");
     });
   </script>
 
-  <!-- Animated Favicon (Auto-refresh in Browsers) -->
+  <!-- Animated Favicon Script -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var favicon = document.getElementById("favicon");
-        var favicons = [
-            "{{ url_for('static', filename='favicon_penguin1.gif') }}",
-            "{{ url_for('static', filename='favicon_penguin2.gif') }}",
-            "{{ url_for('static', filename='favicon_penguin3_1.gif') }}"
-        ];
-        var staticFavicon = "{{ url_for('static', filename='favicon_penguin1.ico') }}"; 
-        var index = 0;
+      var favicon = document.getElementById("favicon");
+      var favicons = [
+        "{{ url_for('static', filename='favicon_penguin1.gif') }}",
+        "{{ url_for('static', filename='favicon_penguin2.gif') }}",
+        "{{ url_for('static', filename='favicon_penguin3_1.gif') }}"
+      ];
+      var staticFavicon = "{{ url_for('static', filename='favicon_penguin1.ico') }}"; 
+      var index = 0;
 
-        function changeFavicon() {
-            favicon.href = favicons[index];
-            index = (index + 1) % favicons.length;
-            setTimeout(() => {
-                favicon.href = staticFavicon;
-            }, 4000);
-        }
+      function changeFavicon() {
+        favicon.href = favicons[index];
+        index = (index + 1) % favicons.length;
+        setTimeout(() => {
+          favicon.href = staticFavicon;
+        }, 4000);
+      }
 
-        setInterval(changeFavicon, 8000);
+      setInterval(changeFavicon, 8000);
     });
   </script>
 
   {% block scripts %}{% endblock %}
 </body>
 </html>
+
+
 
 
 

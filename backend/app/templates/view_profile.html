@@ -13,23 +13,37 @@
         <img src="{{ profile.profile_picture if profile.profile_picture else url_for('static', filename='images/default.png') }}" 
              class="card-img-top" alt="Profile Picture">
         <div class="card-body">
-          <!-- Name -->
+          <!-- Full Name -->
           <h2 class="card-title">{{ profile.first_name }} {{ profile.last_name }}</h2>
           <!-- Bio -->
           <p class="card-text"><strong>Bio:</strong> {{ profile.bio }}</p>
-          <!-- Gender and Orientation -->
+          <!-- Gender and Sexual Orientation -->
           <p class="card-text"><strong>Gender:</strong> {{ profile.gender }}</p>
           <p class="card-text"><strong>Sexual Orientation:</strong> {{ profile.sexual_orientation }}</p>
-          <!-- Age Calculation -->
+          <!-- Age -->
           {% if profile.birthdate %}
-            {% set age = now().year - profile.birthdate.year %}
-            <p class="card-text"><strong>Age:</strong> {{ age }}</p>
+            <p class="card-text"><strong>Age:</strong> {{ profile.age }}</p>
+          {% else %}
+            <p class="card-text"><strong>Age:</strong> Unknown</p>
           {% endif %}
-          <!-- Location and Fame Rating -->
+          <!-- Location -->
           <p class="card-text"><strong>Location:</strong> {{ profile.city if profile.city else "Unknown" }}</p>
+          <!-- Fame Rating -->
           <p class="card-text"><strong>Fame Rating:</strong> {{ profile.fame_rating }}</p>
-          <!-- Botón para regresar -->
+          <!-- Online Status (if available) -->
+          <p class="card-text"><strong>Status:</strong> {{ profile.online_status }}{% if profile.online_status != "online" and profile.last_connection %} (Last seen: {{ profile.last_connection }}){% endif %}</p>
+          <!-- Action Buttons -->
           <div class="mt-3">
+            <!-- Like/Unlike Button (you might toggle this based on mutual_like) -->
+            <button class="btn btn-danger" onclick="sendLike({{ profile.id }})">❤️ Like</button>
+            {% if profile.mutual_like %}
+              <a href="{{ url_for('chat.view_chat', other_user_id=profile.id) }}" class="btn btn-info">Chat</a>
+            {% endif %}
+            <!-- Block Button -->
+            <button class="btn btn-secondary" onclick="blockUser({{ profile.id }})">🚫 Block</button>
+            <!-- Report Button -->
+            <button class="btn btn-warning" onclick="reportUser({{ profile.id }})">⚠️ Report</button>
+            <!-- Back Button -->
             <a href="{{ url_for('profiles.browse_profiles') }}" class="btn btn-outline-light">⬅ Back to Browse Profiles</a>
           </div>
         </div>
@@ -39,49 +53,42 @@
 </div>
 {% endblock %}
 
-
-  <!-- Botón para regresar a Browse Profiles -->
-  <div class="text-center mt-4">
-    <a href="{{ url_for('profiles.browse_profiles') }}" class="btn btn-outline-light">⬅ Back to Browse Profiles</a>
-  </div>
-</div>
-
-<!-- JavaScript para manejar las acciones -->
+{% block scripts %}
 <script>
-function sendLike(userId) {
-    fetch(`/like/${userId}`, { 
-        method: 'POST', 
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: userId }) 
+  // Function to send a 'like' to the profile (AJAX request)
+  function sendLike(profileId) {
+    fetch(`/likes/like`, { 
+      method: 'POST', 
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ liker_id: {{ session.get('user_id') }}, liked_id: profileId })
     })
     .then(response => response.json())
     .then(data => alert(data.message))
     .catch(error => console.error("Error sending like:", error));
-}
-
-function blockUser(userId) {
-    fetch(`/block/${userId}`, { 
-        method: 'POST', 
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: userId }) 
+  }
+  
+  // Function to block the profile (AJAX request)
+  function blockUser(profileId) {
+    fetch(`/profiles/profile/block/${profileId}`, { 
+      method: 'POST'
     })
     .then(response => response.json())
     .then(data => alert(data.message))
     .catch(error => console.error("Error blocking user:", error));
-}
-
-function reportUser(userId) {
-    fetch(`/report/${userId}`, { 
-        method: 'POST', 
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: userId }) 
+  }
+  
+  // Function to report the profile (AJAX request)
+  function reportUser(profileId) {
+    fetch(`/profiles/profile/report/${profileId}`, { 
+      method: 'POST'
     })
     .then(response => response.json())
     .then(data => alert(data.message))
     .catch(error => console.error("Error reporting user:", error));
-}
+  }
 </script>
 {% endblock %}
+
 
 
 
