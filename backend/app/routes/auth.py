@@ -130,7 +130,7 @@ def login():
             session['username'] = user[1]
             print("🔹 SESSION STARTED:", session)
             flash("Successfully logged in.", "success")
-            return redirect(url_for('profiles.edit_profile'))  # Redirect to the profile edit page
+            return redirect(url_for('profiles.edit_profile'))
 
         else:
             flash("Incorrect email or password.", "danger")
@@ -224,7 +224,12 @@ def reset_password(token):
 
     return render_template("reset_password.html", token=token)
 
-@auth_bp.route('/trigger-error')
+# En tu archivo errors.py (o en otro módulo de pruebas)
+from flask import Blueprint, render_template
+
+error_bp = Blueprint('error_bp', __name__)
+
+@error_bp.route('/trigger-error')
 def trigger_error():
-    # This route is only for testing the 500 error page.
-    raise Exception("This is a test error to trigger the 500 error page")
+    # Esto forzará un error 500
+    raise Exception("Test 500 error")

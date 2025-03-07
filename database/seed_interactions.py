@@ -8,6 +8,23 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../b
 
 from utils.db import get_db_connection
 
+def is_valid_candidate(liker, candidate):
+    """
+    Verifica si, según la orientación sexual del usuario que da like (liker),
+    el candidato es válido.
+    
+    - Heterosexual: solo puede dar like a alguien de género opuesto.
+    - Homosexual: solo puede dar like a alguien del mismo género.
+    - Bisexual (o no especificado): puede dar like a cualquiera.
+    """
+    orientation = liker.get('sexual_orientation', 'bisexual')
+    if orientation == 'heterosexual':
+        return candidate['gender'] != liker['gender']
+    elif orientation == 'homosexual':
+        return candidate['gender'] == liker['gender']
+    else:
+        return True
+
 def seed_interactions():
     conn = None
     cur = None
@@ -20,25 +37,42 @@ def seed_interactions():
         cur.execute("SELECT 1")
         print("✅ Conexión a la base de datos exitosa.")
 
-        # Obtener todos los user_id de la tabla profiles
-        cur.execute("SELECT user_id FROM profiles")
-        user_ids = [row[0] for row in cur.fetchall()]
+        # Obtener todos los perfiles con user_id, gender y sexual_orientation
+        cur.execute("SELECT user_id, gender, sexual_orientation FROM profiles")
+        profiles_data = cur.fetchall()
 
-        if not user_ids:
+        if not profiles_data:
             print("⚠️ No hay usuarios en la tabla profiles. Abortando seed.")
             return
+
+        # Construir un diccionario de perfiles para validaciones
+        profiles = {}
+        for user_id, gender, sexual_orientation in profiles_data:
+            if not sexual_orientation:
+                sexual_orientation = 'bisexual'
+            profiles[user_id] = {
+                'gender': gender,
+                'sexual_orientation': sexual_orientation
+            }
+        user_ids = list(profiles.keys())
 
         likes = []
         notifications = []
         matches = []
 
-        # Generar likes aleatorios
+        # Generar likes aleatorios solo hacia perfiles compatibles
         for liker in user_ids:
+            # Filtrar candidatos válidos para el like, según orientación y género
+            valid_candidates = [
+                candidate for candidate in user_ids
+                if candidate != liker and is_valid_candidate(profiles[liker], profiles[candidate])
+            ]
+            if not valid_candidates:
+                continue
+
             num_likes = random.randint(1, 5)  # Cada usuario dará entre 1 y 5 likes
             for _ in range(num_likes):
-                liked = random.choice(user_ids)
-                while liked == liker:  # No puede darse like a sí mismo
-                    liked = random.choice(user_ids)
+                liked = random.choice(valid_candidates)
                 likes.append((liked, liker))
                 notifications.append((liked, "like", liker))
 
@@ -58,7 +92,7 @@ def seed_interactions():
                     (liked_id, liker_id)
                 )
                 if cur.fetchone():
-                    # Asegurar que user1_id < user2_id para evitar error de CHECK constraint
+                    # Asegurar que user1_id < user2_id para evitar duplicados
                     user1_id, user2_id = sorted([liker_id, liked_id])
                     matches.append((user1_id, user2_id))
                     notifications.append((user1_id, "match", user2_id))
@@ -81,8 +115,7 @@ def seed_interactions():
                 (user_id, event_type, related_user_id)
             )
 
-        # Insertar mensajes (10 tipos de mensajes en inglés)
-        # NOTA: Los mensajes se insertan siempre en inglés.
+        # Generar mensajes solo para usuarios que hayan hecho match
         messages_list = [
             "Hey, how are you?",
             "Hello! What's up?",
@@ -95,17 +128,76 @@ def seed_interactions():
             "Hello! Want to grab coffee sometime?",
             "Hey, let's connect and get to know each other better!"
         ]
+        reply_messages_list = [
+            "Thanks for your message!",
+            "I appreciate your message, how are you?",
+            "That's interesting!",
+            "Let's chat more!",
+            "Sounds good to me!",
+            "Sure, I'd love to know more!",
+            "Hi, great to hear from you!",
+            "Thank you for reaching out!"
+        ]
         messages_count = 0
-        for message in messages_list:
-            sender = random.choice(user_ids)
-            receiver = random.choice(user_ids)
-            while receiver == sender:
-                receiver = random.choice(user_ids)
+        reply_messages_count = 0
+
+        # Solo se insertan mensajes para cada pareja que ha hecho match
+        for user1, user2 in matches:
+            # Enviar un mensaje de user1 a user2
+            message = random.choice(messages_list)
             cur.execute(
                 "INSERT INTO messages (sender_id, receiver_id, content) VALUES (%s, %s, %s)",
-                (sender, receiver, message)
+                (user1, user2, message)
             )
             messages_count += 1
+
+            # Con una probabilidad del 50%, generar un mensaje de respuesta de user2 a user1
+            if random.random() < 0.5:
+                reply_message = random.choice(reply_messages_list)
+                cur.execute(
+                    "INSERT INTO messages (sender_id, receiver_id, content) VALUES (%s, %s, %s)",
+                    (user2, user1, reply_message)
+                )
+                reply_messages_count += 1
+
+        # Generar bloqueos, reportes y unlikes de forma aleatoria
+        block_probability = 0.1
+        report_probability = 0.05
+        unlike_probability = 0.1
+
+        blocks_count = 0
+        reports_count = 0
+        unlikes_count = 0
+
+        # Simular bloqueos: cada usuario con cierta probabilidad bloquea a otro usuario aleatorio
+        for blocker in user_ids:
+            if random.random() < block_probability:
+                candidate = random.choice([uid for uid in user_ids if uid != blocker])
+                cur.execute(
+                    "INSERT INTO blocked_users (blocker_id, blocked_id) VALUES (%s, %s) ON CONFLICT DO NOTHING",
+                    (blocker, candidate)
+                )
+                blocks_count += 1
+
+        # Simular reportes: cada usuario con cierta probabilidad reporta a otro usuario aleatorio
+        for reporter in user_ids:
+            if random.random() < report_probability:
+                candidate = random.choice([uid for uid in user_ids if uid != reporter])
+                # Se ha eliminado la columna "created_at" ya que no existe en la tabla reports.
+                cur.execute(
+                    "INSERT INTO reports (reporter_id, reported_id, reason) VALUES (%s, %s, %s)",
+                    (reporter, candidate, "Spam or inappropriate content")
+                )
+                reports_count += 1
+
+        # Simular unlikes: cada like existente se elimina con cierta probabilidad
+        for liked_id, liker_id in likes:
+            if random.random() < unlike_probability:
+                cur.execute(
+                    "DELETE FROM likes WHERE liked_id = %s AND liker_id = %s",
+                    (liked_id, liker_id)
+                )
+                unlikes_count += 1
 
         conn.commit()
         print(f"🎉 Likes insertados: {len(likes)}")
@@ -113,6 +205,10 @@ def seed_interactions():
         print("💯 Fame rating actualizado para usuarios con likes y matches")
         print(f"🔔 Notificaciones creadas: {len(notifications)}")
         print(f"💬 Mensajes insertados: {messages_count}")
+        print(f"↩️ Respuestas generadas: {reply_messages_count}")
+        print(f"🚫 Bloqueos generados: {blocks_count}")
+        print(f"⚠️ Reportes generados: {reports_count}")
+        print(f"❌ Unlikes generados: {unlikes_count}")
 
     except psycopg2.OperationalError as e:
         print(f"❌ Error de conexión a PostgreSQL: {e}")

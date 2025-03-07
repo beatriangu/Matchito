@@ -112,29 +112,39 @@
 <link rel="stylesheet" href="https://unpkg.com/@yaireo/tagify/dist/tagify.css">
 <script src="https://unpkg.com/@yaireo/tagify"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    var input = document.querySelector('#interests-input');
-    var tagify = new Tagify(input, {
-        whitelist: [
-            "Music", "Sports", "Reading", "Traveling", "Cooking", "Gaming", "Photography", "Art",
-            "Technology", "Fitness", "Hiking", "Movies", "Dancing", "Writing", "Fashion", "Gardening",
-            "Swimming", "Yoga", "Volunteer Work", "Blogging"
-        ],
-        maxTags: 4,
-        dropdown: {
-            maxItems: 10,
-            classname: "tags-look",
-            enabled: 0,
-            closeOnSelect: false
-        }
+    document.addEventListener("DOMContentLoaded", function() {
+        var input = document.querySelector('#interests-input');
+        var tagify = new Tagify(input, {
+            whitelist: [
+                "Music", "Sports", "Reading", "Traveling", "Cooking", "Gaming", "Photography", "Art",
+                "Technology", "Fitness", "Hiking", "Movies", "Dancing", "Writing", "Fashion", "Gardening",
+                "Swimming", "Yoga", "Volunteer Work", "Blogging"
+            ],
+            maxTags: 4,
+            dropdown: {
+                maxItems: 10,
+                classname: "tags-look",
+                enabled: 0,
+                closeOnSelect: false
+            }
+        });
+    
+        var existingInterests = [{% for interest in profile.interests %}"{{ interest }}",{% endfor %}];
+        tagify.addTags(existingInterests);
+    
+        // Asegurar que se envíen correctamente
+        document.querySelector('form').addEventListener('submit', function(event) {
+            var interestsField = document.createElement("input");
+            interestsField.setAttribute("type", "hidden");
+            interestsField.setAttribute("name", "interests_data");
+            interestsField.setAttribute("value", JSON.stringify(tagify.value.map(i => i.value)));
+            this.appendChild(interestsField);
+            console.log("📤 Enviando intereses:", interestsField.value);
+        });
     });
-
-    var existingInterests = [{% for interest in profile.interests %}"{{ interest }}",{% endfor %}];
-    tagify.addTags(existingInterests);
-});
-</script>
-{% endblock %}
-
+    </script>
+    
+    
 
 
 

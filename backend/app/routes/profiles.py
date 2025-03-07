@@ -1,24 +1,19 @@
 from flask import Blueprint, request, render_template, redirect, url_for, session, flash, jsonify
 from app.utils.db import get_db_connection
-from datetime import datetime
 import json
+from datetime import datetime
+
 
 profiles_bp = Blueprint("profiles", __name__)
 
 def get_user_id():
-    """Retrieve the authenticated user's ID from the session."""
     return session.get("user_id")
 
 def get_user_profile(user_id):
-    """
-    Retrieve the authenticated user's profile details along with their interests.
-    Returns a dictionary with keys: first_name, last_name, bio, profile_picture, gender,
-    sexual_orientation, latitude, longitude, fame_rating, and interests.
-    """
+    """ Obtiene el perfil del usuario desde la base de datos. """
     conn = get_db_connection()
     cur = conn.cursor()
     
-    # Query the user's profile details (assuming your table has these fields)
     cur.execute("""
         SELECT first_name, last_name, bio, profile_picture, gender, sexual_orientation, 
                latitude, longitude, fame_rating 
@@ -27,7 +22,6 @@ def get_user_profile(user_id):
     """, (user_id,))
     profile = cur.fetchone()
 
-    # Query the user's interests
     cur.execute("""
         SELECT i.name 
         FROM profile_interests pi
@@ -56,37 +50,22 @@ def get_user_profile(user_id):
 
 @profiles_bp.route('/profile/edit', methods=['GET', 'POST'])
 def edit_profile():
-    """
-    Allows the authenticated user to edit their profile.
-    If the profile is complete (i.e., required fields and at least one interest are provided),
-    the user is redirected to the browse profiles page.
-    """
     user_id = get_user_id()
     if not user_id:
         flash("You must log in to edit your profile.", "danger")
         return redirect(url_for('auth.login'))
 
     profile = get_user_profile(user_id)
-
+    
     def is_profile_complete(profile):
-        """
-        Check if the profile is complete by verifying that all required fields are provided
-        and that at least one interest exists.
-        """
         required_fields = ['first_name', 'last_name', 'bio', 'profile_picture', 'gender', 'sexual_orientation']
-        for field in required_fields:
-            if not profile.get(field) or profile.get(field).strip() == "":
-                return False
-        if not profile.get('interests') or len(profile.get('interests')) == 0:
-            return False
-        return True
-
-    # On GET, if the profile is complete, redirect to the browse profiles page.
+        return all(profile.get(field) and profile[field].strip() for field in required_fields) and profile.get('interests')
+    
     if request.method == 'GET' and profile and is_profile_complete(profile):
         return redirect(url_for("profiles.browse_profiles"))
 
     if request.method == 'POST':
-        # Retrieve and strip form inputs
+        # 📥 Recibir datos del formulario
         first_name = request.form.get("first_name", "").strip()
         last_name = request.form.get("last_name", "").strip()
         bio = request.form.get("bio", "").strip()
@@ -95,21 +74,21 @@ def edit_profile():
         sexual_orientation = request.form.get("sexual_orientation", "").strip()
         latitude = request.form.get("latitude")
         longitude = request.form.get("longitude")
-        interests_data = request.form.get("interests_data")  # Expected as JSON string or comma-separated list
+        interests_data = request.form.get("interests_data")
 
-        # Validate that all required fields are provided
-        if not all([first_name, last_name, bio, profile_picture, gender, sexual_orientation]):
-            flash("All required fields must be filled in.", "danger")
-            return redirect(url_for("profiles.edit_profile"))
+        print("📥 Datos recibidos:")
+        print(f"First Name: {first_name}, Last Name: {last_name}, Bio: {bio}")
+        print(f"Profile Picture: {profile_picture}, Gender: {gender}, Sexual Orientation: {sexual_orientation}")
+        print(f"Latitude: {latitude}, Longitude: {longitude}")
+        print(f"Interests: {interests_data}")
 
-        # Convert latitude and longitude to floats if provided
-        latitude = float(latitude) if latitude and latitude.strip() else None
-        longitude = float(longitude) if longitude and longitude.strip() else None
-
+        latitude = float(latitude) if latitude else None
+        longitude = float(longitude) if longitude else None
+        
         conn = get_db_connection()
         cur = conn.cursor()
         try:
-            # Update profile details in the profiles table
+            # 🛠️ Actualizar el perfil del usuario
             cur.execute("""
                 UPDATE profiles 
                 SET first_name = %s, last_name = %s, bio = %s, profile_picture = %s, 
@@ -117,16 +96,15 @@ def edit_profile():
                 WHERE user_id = %s
             """, (first_name, last_name, bio, profile_picture, gender, sexual_orientation, latitude, longitude, user_id))
 
-            # Update interests if provided
+            print(f"✅ Filas afectadas por UPDATE: {cur.rowcount}")
+
+            # 🛠️ Actualizar los intereses
             if interests_data:
                 try:
-                    # Attempt to parse interests_data as JSON
                     interests = json.loads(interests_data)
                 except json.JSONDecodeError:
-                    # Otherwise, split by commas
                     interests = [i.strip() for i in interests_data.split(',') if i.strip()]
-
-                # Delete existing interests and insert new ones
+                
                 cur.execute("DELETE FROM profile_interests WHERE user_id = %s", (user_id,))
                 for interest in interests:
                     cur.execute("SELECT id FROM interests WHERE name = %s", (interest,))
@@ -134,21 +112,30 @@ def edit_profile():
                     if not result:
                         cur.execute("INSERT INTO interests (name) VALUES (%s) RETURNING id", (interest,))
                         result = cur.fetchone()
-                    interest_id = result[0]
-                    cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, interest_id))
+                    cur.execute("INSERT INTO profile_interests (user_id, interest_id) VALUES (%s, %s)", (user_id, result[0]))
 
             conn.commit()
+            print("✅ Perfil actualizado con éxito.")
             flash("Profile updated successfully!", "success")
+
+            print("✅ Redirigiendo a browse_profiles...")
             return redirect(url_for("profiles.browse_profiles"))
 
         except Exception as e:
             conn.rollback()
+            print(f"❌ Error al actualizar el perfil: {str(e)}")
             flash(f"Error updating profile: {str(e)}", "danger")
+            return redirect(url_for("profiles.edit_profile"))
+
         finally:
             cur.close()
             conn.close()
 
-    return render_template("profile.html", profile=profile, editing=True)
+    print("✅ Redirigiendo a browse_profiles...")
+    return redirect(url_for("profiles.browse_profiles"))
+
+
+
 
 @profiles_bp.route('/profiles', methods=['GET'])
 def browse_profiles():
@@ -356,31 +343,33 @@ def view_profile(profile_id):
 
     return render_template("view_profile.html", profile=profile_dict)
 
-@profiles_bp.route("/profile/report/<int:profile_id>", methods=["POST"])
-def report_profile(profile_id):
-    """
-    Report a profile as fake.
-    Returns a JSON response.
-    """
-    reporter_id = get_user_id()
-    if not reporter_id:
-        return jsonify({"error": "You must be logged in to report a profile."}), 403
-    reason = request.form.get("reason", "No reason provided")
+@profiles_bp.route("/report", methods=["POST"])
+def report_user():
+    """Permite reportar un usuario por comportamiento inadecuado"""
+    data = request.json
+    reporter_id = data.get("reporter_id")
+    reported_id = data.get("reported_id")
+    reason = data.get("reason")
+
+    if not all([reporter_id, reported_id, reason]):
+        return jsonify({"error": "Faltan datos"}), 400
+
     conn = get_db_connection()
     cur = conn.cursor()
+    
     try:
-        cur.execute("""
-            INSERT INTO reports (reporter_id, reported_id, reason, created_at)
-            VALUES (%s, %s, %s, NOW())
-        """, (reporter_id, profile_id, reason))
+        cur.execute(
+            "INSERT INTO reports (reporter_id, reported_id, reason) VALUES (%s, %s, %s)",
+            (reporter_id, reported_id, reason)
+        )
         conn.commit()
-        return jsonify({"message": "Profile reported successfully."})
-    except Exception as e:
-        conn.rollback()
-        return jsonify({"error": f"Error reporting profile: {str(e)}"}), 500
-    finally:
         cur.close()
         conn.close()
+        return jsonify({"message": "Reporte registrado correctamente"}), 200  # ✅ Respuesta válida
+    except Exception as e:
+        conn.rollback()
+        return jsonify({"error": str(e)}), 500
+
 
 @profiles_bp.route("/profile/block/<int:profile_id>", methods=["POST"])
 def block_profile(profile_id):
