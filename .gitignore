@@ -1,0 +1,18 @@
+# 🔥 Archivos de sistema
+__pycache__/
+*.py[cod]
+*.swp
+*.swo
+*.DS_Store
+*.log
+
+# 📦 Dependencias de Python
+venv/
+env/
+*.egg-info/
+pip-log.txt
+pip-delete-this-directory.txt
+# 🔐 Claves y tokens API
+.env
+# 🗑 Archivos ignorados específicos de Matcha
+backend/__pycache__/
