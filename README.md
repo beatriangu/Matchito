@@ -4,25 +4,25 @@ Matcha es una aplicación de citas online diseñada para conectar personas de ma
 <div style="width: 800px; margin: auto;">
   <!-- Primera fila -->
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/home.png?raw=true" alt="Home de Matchito" style="width: 100px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/homelog.png?raw=true" alt="Home de Matchito" style="width: 100px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/register.png?raw=true" alt="Register de Matchito" style="width: 100px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/login.png?raw=true" alt="Login de Matchito" style="width: 100px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/Password_recovery.png?raw=true" alt="Password_recovery" style="width: 100px; height: auto;">
-    <img src=https://github.com/beatriangu/Matchito/blob/main/Editprofile.png?raw=true" alt="Editing Profile Front" style="width: 100px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/404.png?raw=true" alt="Notifications" width="100"/>
-    <img src="https://github.com/beatriangu/Matchito/blob/main/tablaperfiles.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/home.png?raw=true" alt="Home de Matchito" style="width: 100px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/homelog.png?raw=true" alt="Home de Matchito" style="width: 100px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/register.png?raw=true" alt="Register de Matchito" style="width: 100px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/login.png?raw=true" alt="Login de Matchito" style="width: 100px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/Password_recovery.png?raw=true" alt="Password_recovery" style="width: 100px; height: auto;">
+    <img src=https://github.com/beatriangu/Matchito/blob/main/img/Editprofile.png?raw=true" alt="Editing Profile Front" style="width: 100px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/404.png?raw=true" alt="Notifications" width="100"/>
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/tablaperfiles.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
     
     
   </div>
   </div>
   <!-- Segunda fila -->
   <div style="display: flex; justify-content: space-between;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/Beaprofilevie.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/MatchChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/ChatChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/ChattinwithChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/logout.png?raw=true" alt="Messages" width="100"/>
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/Beaprofilevie.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/MatchChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/ChatChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/ChattinwithChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/img/logout.png?raw=true" alt="Messages" width="100"/>
   
   </div>
 </div>
