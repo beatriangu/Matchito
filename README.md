@@ -1,31 +1,30 @@
 # Mi Matchito
 
 Matcha es una aplicación de citas online diseñada para conectar personas de manera inteligente y segura. Este proyecto invita a explorar y aplicar herramientas modernas de desarrollo web, integrando seguridad, escalabilidad y una experiencia de usuario superior. Utilizando el micro-framework Flask en Python, se construye una plataforma web dinámica y responsiva en la que la interacción entre usuarios es el elemento central.
-<div style="width: 800px; margin: auto;">
-  <!-- Primera fila -->
-  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/home.png?raw=true" alt="Home de Matchito" style="width: 100px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/homelog.png?raw=true" alt="Home de Matchito" style="width: 100px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/register.png?raw=true" alt="Register de Matchito" style="width: 100px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/login.png?raw=true" alt="Login de Matchito" style="width: 100px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/Password_recovery.png?raw=true" alt="Password_recovery" style="width: 100px; height: auto;">
-    <img src=https://github.com/beatriangu/Matchito/blob/main/img/Editprofile.png?raw=true" alt="Editing Profile Front" style="width: 100px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/404.png?raw=true" alt="Notifications" width="100"/>
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/tablaperfiles.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
-    
-    
-  </div>
-  </div>
-  <!-- Segunda fila -->
-  <div style="display: flex; justify-content: space-between;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/Beaprofilevie.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/MatchChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/ChatChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/ChattinwithChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/img/logout.png?raw=true" alt="Messages" width="100"/>
-  
-  </div>
-</div>
+
+## Capturas de Pantalla
+
+### Primera fila  
+<p align="center">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/home.png?raw=true" alt="Home de Matchito" width="100">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/homelog.png?raw=true" alt="Home log de Matchito" width="100">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/register.png?raw=true" alt="Register de Matchito" width="100">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/login.png?raw=true" alt="Login de Matchito" width="100">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/Password_recovery.png?raw=true" alt="Password Recovery" width="100">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/Editprofile.png?raw=true" alt="Editing Profile" width="100">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/404.png?raw=true" alt="404 Error" width="100">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/tablaperfiles.png?raw=true" alt="Tabla de perfiles" width="200">
+</p>
+
+### Segunda fila  
+<p align="center">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/Beaprofilevie.png?raw=true" alt="Bea Profile View" width="200">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/MatchChristian.png?raw=true" alt="Match con Christian" width="200">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/ChatChristian.png?raw=true" alt="Chat con Christian" width="200">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/ChattinwithChristian.png?raw=true" alt="Chateando con Christian" width="200">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/logout.png?raw=true" alt="Logout" width="100">
+</p>
+
 
 # Tecnologías Utilizadas
 
