@@ -11,17 +11,18 @@ Matcha es una aplicación de citas online diseñada para conectar personas de ma
     <img src="https://github.com/beatriangu/Matchito/blob/main/Password_recovery.png?raw=true" alt="Password_recovery" style="width: 100px; height: auto;">
     <img src=https://github.com/beatriangu/Matchito/blob/main/Editprofile.png?raw=true" alt="Editing Profile Front" style="width: 100px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/404.png?raw=true" alt="Notifications" width="100"/>
-    <img src="https://github.com/beatriangu/Matchito/blob/main/logout.png?raw=true" alt="Messages" width="100"/>
+    <img src="https://github.com/beatriangu/Matchito/blob/main/tablaperfiles.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
+    
     
   </div>
   </div>
   <!-- Segunda fila -->
   <div style="display: flex; justify-content: space-between;">
-    <img src="https://github.com/beatriangu/Matchito/blob/main/tablaperfiles.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/Beaprofilevie.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/MatchChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/ChatChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
     <img src="https://github.com/beatriangu/Matchito/blob/main/ChattinwithChristian.png?raw=true" alt="Editing Profile Front" style="width: 200px; height: auto;">
+    <img src="https://github.com/beatriangu/Matchito/blob/main/logout.png?raw=true" alt="Messages" width="100"/>
   
   </div>
 </div>
