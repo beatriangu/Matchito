@@ -40,4 +40,6 @@ Matcha es una aplicación de citas online diseñada para conectar personas de ma
 - **Búsqueda y Sugerencias Inteligentes:** Filtrado avanzado y recomendaciones basadas en geolocalización e intereses.
 - **Despliegue con Docker:** Plataforma completamente containerizada para un despliegue y escalabilidad óptimos.
 - **Base de Datos Robusta:** Utiliza PostgreSQL para garantizar integridad y rendimiento en el manejo de datos.
-
+<p align="left">
+  <img src="?raw=true" alt="Miniatura" width="200"/>
+</p>
