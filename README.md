@@ -14,12 +14,20 @@ https://github.com/beatriangu/Matchito
 ## 🖼️ Vista General
 
 <p align="center">
-  <img src="https://github.com/beatriangu/Matchito/blob/main/img/home.png?raw=true" width="120">
-  <img src="https://github.com/beatriangu/Matchito/blob/main/img/login.png?raw=true" width="120">
-  <img src="https://github.com/beatriangu/Matchito/blob/main/img/Editprofile.png?raw=true" width="120">
-  <img src="https://github.com/beatriangu/Matchito/blob/main/img/MatchChristian.png?raw=true" width="120">
-  <img src="https://github.com/beatriangu/Matchito/blob/main/img/ChatChristian.png?raw=true" width="120">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/home.png?raw=true" height="160">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/homelog.png?raw=true" height="160">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/register.png?raw=true" height="160">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/login.png?raw=true" height="160">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/Password_recovery.png?raw=true" height="160">
 </p>
+
+<p align="center">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/Editprofile.png?raw=true" height="180">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/MatchChristian.png?raw=true" height="180">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/ChatChristian.png?raw=true" height="180">
+  <img src="https://github.com/beatriangu/Matchito/blob/main/img/ChattinwithChristian.png?raw=true" height="180">
+</p>
+
 
 ---
 
